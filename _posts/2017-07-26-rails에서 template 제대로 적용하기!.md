@@ -2,7 +2,7 @@
 layout: post
 title: rails에서 template 제대로 적용하기!
 excerpt: "rails에서 내가 봤던 demo버전의 js,css를 그대로 적용하기위한 사투"
-categories: [developing developer]
+categories: [rails]
 link: http://hashcode.co.kr/questions/2516/ruby-on-rails-template-%EC%A7%88%EB%AC%B8
 comments: true
 
