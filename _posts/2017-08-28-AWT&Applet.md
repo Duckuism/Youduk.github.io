@@ -54,6 +54,7 @@ link:
             |**Frame** |가장 일반적인 컨테이너로 윈도우와 모양이 같다. titlebar와 크기조절버튼, 닫기버튼을 가지고 있다. 그리고 메뉴를 추가할 수 있다.|
             |**Window** |Frame의 조상이며, 경계선, titlebar, 크기조절버튼, 닫기 버튼이 없으며, 메뉴도 추가할 수 없다. 단지 컴포넌트를 담을 수 있는 평면공간만을 갖는다.|
             |**Dialog** |Frame처럼, titlebar와 닫기버튼을 갖고 있지만, 메뉴는 가질 수 없으며 기본적으로 크기를 변경할 수 없다. 주로 프로그램 사용자에게 메세지를 보여주거나, 응답을 받는데 사용한다.|
+
         2. 종속적인 컨테이너
         독립적으로 사용될 수 없으며, 다른 컨테이너에 포함되어야만 한다.
 
@@ -72,48 +73,71 @@ AWT(Abstract Window Toolkit)은 이름에서 알 수 있듯이 Window프로그�
     |--------|--------|
     |**Component[] getComponents[]** |컨테이너에 포함되어 있는 모든 컴포넌트를 얻는다.|
     |**Componenet getComponenet(int n)** |컨테이너에 n번째로 추가된 컴포넌트를 얻는다.|              |**Componenet getComponenetAt(int x, int y)** |컨테이너의 지정된 위치(x,y)에 있는 컴포넌트를 얻는다.|   |**Componenet get(Componenet comp)** |컨테이너에 컴포넌트를 추가한다.|
-    |**void remove(Componenet comp)** |컨테이너에서 지정된 컴포넌트를 제거한다.|              |**Insets getInsets()** |컨테이너의 경계의 크기를 알 수 있는 Inset객체를 얻는다.|              |**LayoutManager getLayout()** |컨테이너에 설정되어 있는 LayoutManager를 얻는다.|**void setLayout(LayoutManager mgr)** |컨테이너에 LayoutManager를 설정한다.|
+    |**void remove(Componenet comp)** |컨테이너에서 지정된 컴포넌트를 제거한다.|              |**Insets getInsets()** |컨테이너의 경계의 크기를 알 수 있는 Inset객체를 얻는다.|              |**LayoutManager getLayout()** |컨테이너에 설정되어 있는 LayoutManager를 얻는다.||**void setLayout(LayoutManager mgr)** |컨테이너에 LayoutManager를 설정한다.|
 
 
 
 2. AWT의 주요 컴포넌트  
-    2.1 Frame
-    2.2 Button
-    2.3 Choice
-    2.4 List
-    2.5 Label
-    2.6 Checkbox
-    2.7 TextField
-    2.8 TextArea
-    2.9 Scrollbar
-    2.10 Canvas
-    2.11 Panel
-    2.12 ScrollPane
-    2.13 Dialog
-    2.14 FileDialog
+
+    1. Frame
+GUI프로그래밍의 가장 대표적인 컴포넌트로 다른 컴포넌트들을 포함할 수 있는 컨테이너이다. titlebar와 최대화버튼, 최소화버튼, 닫기버튼이 있으며 크기를 조절할 수 있다.
+        1. Frame객체를 하나 만들고, - 생성자에 사용된 String은 Frame의 titlebar에 나타난다.
+~~~java
+    Frame f = new Frame("Login")
+~~~
+        2. 생성된 Frame의 크기를 설정한 다음, - 폭(width):300픽셀(pixel), 높이 200픽셀
+~~~java
+    f.setSize(300,200);
+~~~
+
+        3. Frame을 화면에 보이도록 한다. - Frame객체를 생성했다고 해서 화면에 보이는 것은 아니고 반드시 setVisible()을 사용해야 화면에 나타난다.
+~~~java
+    f.setVisible
+~~~
+
+
+    Frame객체의 설정작업(크기조절)이 모두 끝난 후에 마지막으로 setVisible()을 호출하도록 한다. 만일 setSize() 보다 setVisible(true)를 먼저 호출하면, Frame의 크기가 변겨오디는 과정이, 아주 짧은 시간동안이지만 화면에 보일 것이다. 이렇게 되면, 보기에도 좋지 않을 뿐더러 Frame이 변경될 때마다 화면을 갱신해야하므로 비효율 적이다.
+
+* setSize()와 setVisible()은 Frame의 조상인 Componenet에 정의된 메서드이다.
+
+
+
+    2. Button
+    3. Choice
+    4. List
+    5. Label
+    6. Checkbox
+    7. TextField
+    8. TextArea
+    9. Scrollbar
+    10. Canvas
+    11. Panel
+    12. ScrollPane
+    13. Dialog
+    14. FileDialog
 3. 그 외의 AWT 클래스
-    3.1 Font
-    3.2 Color
+    1. Font
+    2. Color
 4. 메뉴 만들기
-    4.1 메뉴를 구성하는 컴포넌트
-    4.2 PopupMenu
+    1. 메뉴를 구성하는 컴포넌트
+    2. PopupMenu
 5. 레이아웃 매니저
-    5.1 레이아웃 매니저를 이용한 컴포넌트 배치
-    5.2 BorderLayout
-    5.3 FlowLayout
-    5.4 GridLayout
-    5.5 CardLayout
+    1. 레이아웃 매니저를 이용한 컴포넌트 배치
+    2. BorderLayout
+    3. FlowLayout
+    4. GridLayout
+    5. CardLayout
 6. 이벤트 처리
-    6.1 이벤트란?
-    6.2 이벤트의 발생과 처리
-    6.3 이벤트 처리 방법
-    6.4 Adapter 클래스
+    1. 이벤트란?
+    2. 이벤트의 발생과 처리
+    3. 이벤트 처리 방법
+    4. Adapter 클래스
 7. AWT의 그래픽
-    7.1 paint()와 Graphics
-    7.2 AWT쓰레드와 repaint()
-    7.3 Image를 이용해서 이미지 출력하기
+    1. paint()와 Graphics
+    2. AWT쓰레드와 repaint()
+    3. Image를 이용해서 이미지 출력하기
 8. 애플릿(Applet)
-    8.1 애플릿(Applet)이란?
-    8.2 Applet의 생명주기(Life cycle)와 주요 메서드
-    8.3 Applet의 보안 제약(Security restriction)
-    8.4 Applet과 HTML태그
+    1. 애플릿(Applet)이란?
+    2. Applet의 생명주기(Life cycle)와 주요 메서드
+    3. Applet의 보안 제약(Security restriction)
+    4. Applet과 HTML태그
