@@ -19,14 +19,15 @@ link:
     메뉴와 관련된 컴포넌트들을 제외한 모든 컴포넌트의 조상은 Componene클래스이고 Component클래스의 조상은 Object클래스이다. Component클래스와 그 자손 클래스들은 윈도우, 스크롤바, 버튼 등 GUI응용프로그램의 화면을 구성하는데 사용되는 클래스들이다. 이들은 AWT컴포넌트 또는 줄여서 컴포넌트라고 부른다.
 
     |  <center>패키지명</center> |  <center>설명</center>|
-    |--------|--------|
+    |:--------|:--------|
     |**java.awt** |AWT를 이용한 GUI어플리케이션을 작성하는데 필요한 기본적인 클래스와 컴포넌트를 제공한다.|
     |**java.awt.datatranfer** |여러 어플리케이션 사이의, 또는 단일 어플리케이션 내에서의 데이터 전송을 구현하는데 필요한 클래스와 인터페이스를 제공한다.|
     |**java.awt.dnd** |GUI의 장점 중의 하나인 끌어놓기(Drag and Drop)기능을 구현하는데 필요한 클래스들을 제공한다.|
     |**java.awt.event** |GUI어플리케이션에서 발생하는 이벤트를 처리하는데 필요한 클래스와 인터페이스를 제공한다.|
     |**java.awt.font** |폰트와 관련된 클래스와 인터페이스를 제공한다.|
     |**java.awt.image** |이미지를 생성하거나 변경하는데 사용되는 클래스를 제공한다.|
-    |**java.awt.print** |출력에 관련된 클래스와 인터페이스를 제공한다.|<br />
+    |**java.awt.print** |출력에 관련된 클래스와 인터페이스를 제공한다.|
+
     >AWT 일반 컴포넌트의 상속계층도
     ![AWT 일반 컴포넌트의 상속계층도](http://pds14.egloos.com/pds/200901/26/65/a0104265_497d30427d480.gif)
     >AWT 메뉴 컴포넌트의 상속계층도
@@ -74,11 +75,16 @@ link:
 
 * Container의 메서드    
 
-    |  <center>메서드<center> |  <center>설명</center>
-    |--------|--------|
+    |  <center>메서드<center> |  <center>설명</center>|
+    |:--------|:--------|
     |**Component[] getComponents[]** |컨테이너에 포함되어 있는 모든 컴포넌트를 얻는다.|
-    |**Componenet getComponenet(int n)** |컨테이너에 n번째로 추가된 컴포넌트를 얻는다.|              |**Componenet getComponenetAt(int x, int y)** |컨테이너의 지정된 위치(x,y)에 있는 컴포넌트를 얻는다.|   |**Componenet get(Componenet comp)** |컨테이너에 컴포넌트를 추가한다.|
-    |**void remove(Componenet comp)** |컨테이너에서 지정된 컴포넌트를 제거한다.|              |**Insets getInsets()** |컨테이너의 경계의 크기를 알 수 있는 Inset객체를 얻는다.|              |**LayoutManager getLayout()** |컨테이너에 설정되어 있는 LayoutManager를 얻는다.||**void setLayout(LayoutManager mgr)** |컨테이너에 LayoutManager를 설정한다.|
+    |**Componenet getComponenet(int n)** |컨테이너에 n번째로 추가된 컴포넌트를 얻는다.|              
+    |**Componenet getComponenetAt(int x, int y)** |컨테이너의 지정된 위치(x,y)에 있는 컴포넌트를 얻는다.|   
+    |**Componenet get(Componenet comp)** |컨테이너에 컴포넌트를 추가한다.|
+    |**void remove(Componenet comp)** |컨테이너에서 지정된 컴포넌트를 제거한다.|
+    |**Insets getInsets()** |컨테이너의 경계의 크기를 알 수 있는 Inset객체를 얻는다.|              
+    |**LayoutManager getLayout()** |컨테이너에 설정되어 있는 LayoutManager를 얻는다.|
+    |**void setLayout(LayoutManager mgr)** |컨테이너에 LayoutManager를 설정한다.|
 
 
 
