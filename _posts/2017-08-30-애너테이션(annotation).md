@@ -13,7 +13,7 @@ link:
   2. 표준 애너테이션
   3. 메타 애너테이션
   4. 애너테이션 타입 정의하기(이 부분이 실제로 쓰는 부분)
-
+~~~java
 수업 복습 내용
 
 @Test(count=1,exception = "ClassCastException")
@@ -49,3 +49,4 @@ link:
   String[] types default{"rawtype","unchecked"};
 }
 @Test; default가 있으면 이렇게 가능
+~~~
