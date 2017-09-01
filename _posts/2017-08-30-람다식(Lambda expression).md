@@ -77,7 +77,7 @@ Funtion<String, Integer> f = (String s)
 |**배열 생성 메서드 참조** |Function<Integer, int[]> f = x -> new int[x];|Function<Integer, int[]> f2 = int[]::new;|
 
 
-<h4>* 수업 복습내용<h4>
+<h4>* 수업 복습내용</h4>
 
 ~~~java
 //기존
