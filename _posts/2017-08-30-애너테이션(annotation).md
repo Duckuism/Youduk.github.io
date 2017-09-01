@@ -14,8 +14,11 @@ link:
   3. 메타 애너테이션
   4. 애너테이션 타입 정의하기(이 부분이 실제로 쓰는 부분)
 
+
+<h4>* 수업 복습내용<h4>
+
 ~~~java
-수업 복습 내용
+
 
 @Test(count=1,exception = "ClassCastException")
 
