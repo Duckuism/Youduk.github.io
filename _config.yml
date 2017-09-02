@@ -36,11 +36,11 @@ owner:
   name: Ducku's Museum
   avatar: Youduk.jpeg
   job: "portfolio & Tech blog"
-  bio: "A student to dream programmer & designer"
-  email: rnejrl123456@gmail.com
+  bio: "A student to dream programmer & designer"<br/>rnejrl123456@gmail.com
+  email: #username
   disqus-shortname:
   twitter: #username
-  facebook: #username
+  facebook: Youduk Han
   google:
     plus: #username
     analytics:
