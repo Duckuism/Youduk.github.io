@@ -1,4 +1,4 @@
-<!-- ---
+---
 layout: post
 title: Syntax Highlighting Post
 excerpt: "Demo post displaying the various ways of highlighting code in Markdown."
@@ -118,4 +118,4 @@ end
 
 An example of a Gist embed below.
 
-{% gist mmistakes/6589546 %} -->
+{% gist mmistakes/6589546 %}
