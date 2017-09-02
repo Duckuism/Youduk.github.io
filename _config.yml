@@ -4,7 +4,7 @@
 ####################################
 #
 title: Ducku's Museum
-email: rnejrl123456@gmail.com
+email:
 description: A student to dream programmer & designer
 url: https://youduk.github.io/
 
@@ -36,7 +36,7 @@ owner:
   name: Ducku's Museum
   avatar: Youduk.jpeg
   job: "portfolio & Tech blog"
-  bio: "A student to dream programmer & designer"<br/>rnejrl123456@gmail.com
+  bio: "A student to dream programmer & designer"
   email: #username
   disqus-shortname:
   twitter: #username
