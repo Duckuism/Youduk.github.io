@@ -8,14 +8,14 @@ comments: true
 
 ---
 
-###### 이번에 멋쟁이 사자처럼 해커톤을 진행하면서, 서비스를 부각시키기 위해 유료 템플릿을 사용하기로 결정했다. 하지만.. 으잉..? 도대체 왜 css,js파일을 assets 안에 넣었는데 적용이 안되는 거냐고요 ㅠㅠ 
+###### 이번에 멋쟁이 사자처럼 해커톤을 진행하면서, 서비스를 부각시키기 위해 유료 템플릿을 사용하기로 결정했다. 하지만.. 으잉..? 도대체 왜 css,js파일을 assets 안에 넣었는데 적용이 안되는 거냐고요 ㅠㅠ
 
 ##### 나의 작업 환경 : 운영체제: mac os x, 프레임워크: ruby on rails, ide: Rubymine
 
 ##### 전체적인 삽질 순서
 
 1. 마음에 드는 유료 템플릿을 얻었다!! 자, 그럼 나의 서비스 개발을 위해 데모 버전을 한 번 적용시켜볼까?
-   오류 내용 : css와 js가 전혀 적용되지 않은 생 html파일만 로딩됨.. 
+   오류 내용 : css와 js가 전혀 적용되지 않은 생 html파일만 로딩됨..
    레일즈 "꺼져 이새끼야, 너의 미천한 실력으로는 나를 import 할 수 없다. 에셋 공부 더 하고 와라"
    해결 방법 : rails의 asset pipeline에 대한 공식 문서 참조, 인터넷 탐색으로 추가 탐색
    그리고 이 모든 방법들을 다 적용해보면서 새로고침 새로고침...
@@ -26,14 +26,14 @@ comments: true
 프론트엔드를 좋아하는 사람으로 나는 이번 멋쟁이 사자처럼에서 프론트엔드 부분을 맞아 웹서비스 페이지 디자인을 했다.
 하지만 얼마 전 한 팀원이 "형, 이런 것도 있네요? 유료템플릿이래요."
 
-![이모티콘](http://mblogthumb2.phinf.naver.net/20131114_233/jhyun4394_1384356056863KJfde_PNG/%BE%C6%C0%CC%C4%DC4.png?type=w2){: .center} <br />
+![이모티콘](http://mblogthumb2.phinf.naver.net/20131114_233/jhyun4394_1384356056863KJfde_PNG/%BE%C6%C0%CC%C4%DC4.png?type=w2)<br />
 아.. 아니 이런 게 존재했단 말야..?
 그에 비하면 내가 개발한 웹서비스 디자인은.. 똥 그자체였다.
 한껏 자괴감을 맛본 후 쿨하게 유료 템플릿을 이용해서 커스터마이징을 하기로 결정하고 신나게 쓸 페이지들을 골랐다. 그런데...
 
 ?????????????????????
 js랑 css가 적용되지 않은 완전 생 html파일만 로딩이 되었다. 충격 그 자체..
-분명히 폴더 그대로 옮겼는데 왜 적용이 안되는거지? 
+분명히 폴더 그대로 옮겼는데 왜 적용이 안되는거지?
 
 나는 또 삽질에 들어갔다. 이번에는 한 10시간 한 것 같다. 머리가 나쁘면 시간이 낭비된다...
 
@@ -67,12 +67,12 @@ js랑 css가 적용되지 않은 완전 생 html파일만 로딩이 되었다. �
 
 위의 질문은 선뜻 이해가 되지 않을 수도 있다.
 
-아래의 사진을 보자. 
+아래의 사진을 보자.
 
 ![Smithsonian Image](/img/2017-07-26-16.png)
 {: .center}
 
-위의 사진에서 stylesheets_link_tag는 stylesheets안에 있는 css파일들을 application.html.erb파일로 모두 불러오겠다는 얘기이다. 그리고 javascript_include_tag는 js파일들을 모두 불러오겠다는 의미이다. 하지만, 지금 내가 사용하고 있는 html파일은 이 부분이 필요가 없다. 왜? 헤드 부분과 스크립트 부분에서 참조를 하기위한 경로 설정을 해놓고 있기 때문에! 만약 위의 사진에 
+위의 사진에서 stylesheets_link_tag는 stylesheets안에 있는 css파일들을 application.html.erb파일로 모두 불러오겠다는 얘기이다. 그리고 javascript_include_tag는 js파일들을 모두 불러오겠다는 의미이다. 하지만, 지금 내가 사용하고 있는 html파일은 이 부분이 필요가 없다. 왜? 헤드 부분과 스크립트 부분에서 참조를 하기위한 경로 설정을 해놓고 있기 때문에! 만약 위의 사진에
 
 {% highlight ruby %}
 <%= csrf_meta_tags %>
@@ -89,7 +89,7 @@ js랑 css가 적용되지 않은 완전 생 html파일만 로딩이 되었다. �
 
 app/views/layout/application.html.erb 파일은 위 사진과 같은 상태로 비워두면 된다.
 
-그리고 이제 무엇을 해야하는가?! 
+그리고 이제 무엇을 해야하는가?!
 
 > 지식 4. 내가 원하는 템플릿의 파일을 assets 폴더 안에 넣어야 에셋 파이프라인에서 불러올 수 있다.
 
@@ -149,7 +149,7 @@ app/views/layout/application.html.erb 파일은 위 사진과 같은 상태로 �
 
 >지식 5. rails에서 변수가 존재하는 새로운 파일들을 사용하려면 import해야 한다!!
 
-이 부분에 대해 구글링을 하다가 아주 좋은 자료를 발견했다. 
+이 부분에 대해 구글링을 하다가 아주 좋은 자료를 발견했다.
 
 (rails파일 import관련 답변: [http://hashcode.co.kr/questions/2516/ruby-on-rails-template-%EC%A7%88%EB%AC%B8](http://hashcode.co.kr/questions/2516/ruby-on-rails-template-%EC%A7%88%EB%AC%B8))
 
@@ -159,11 +159,11 @@ app/views/layout/application.html.erb 파일은 위 사진과 같은 상태로 �
 
 내 블로그를 참조하시는 분들은 이런 수고를 하지 않으셨으면 하는 마음에서 나의 결과물을 남긴다!
 
-application.html.erb에서 css,js 파일을 tag기능으로 한꺼번에 불러올 때 
+application.html.erb에서 css,js 파일을 tag기능으로 한꺼번에 불러올 때
 
 먼저 application.css 파일에서 모든 css파일을 모아서 application.html.erb의 tag로 보내주는 것이고,
 
-application.js 파일에서 모든 js파일을 모아서 application.html.erb의 tag로 보내주는 것이다. 
+application.js 파일에서 모든 js파일을 모아서 application.html.erb의 tag로 보내주는 것이다.
 
 따라서 application.css와 application.js 파일에 import명령을 내려줘야 application.html.erb 파일 혹은 다른 view 파일에서 다른 파일들을 인식해서 사용할 수 있다. 조금 이해하기 어렵다면 그냥 아래와 같이 따라하자.
 
@@ -217,8 +217,3 @@ app/assets/stylesheets/application.css
 하지만 깔끔하게 적용된 나의 템플릿을 보자면 감탄을 금할 길이 없다.. 낄낄낄
 
 다음 달에 있을 해커톤에 멋진 페이지를 보여줄 수 있기를!!!!
-
-
-
-
-
