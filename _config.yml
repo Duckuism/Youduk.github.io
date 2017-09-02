@@ -3,7 +3,7 @@
 # Site wide configuration
 ####################################
 #
-title: Ducku's Museum
+title: Ducku's Tech Salon
 email: rnejrl123456@gmail.com
 description: A student to dream programmer & designer
 url: https://youduk.github.io
@@ -33,7 +33,7 @@ kramdown:
 ####################################
 #
 owner:
-  name: Ducku's Museum
+  name: Ducku's Tech Salon
   avatar: Youduk.jpeg
   job: "portfolio & Tech blog"
   bio: "A student to dream programmer & designer"
