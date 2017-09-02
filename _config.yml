@@ -35,8 +35,8 @@ kramdown:
 owner:
   name: Ducku's Museum
   avatar: Youduk.jpeg
-  job: "portfolio & Tech blog<br/><br/>rnejrl123456@gmail.com"
-  bio: "A student to dream programmer & designer"
+  job: "portfolio & Tech blog"
+  bio: "A student to dream programmer & designer<br/><br/>rnejrl123456@gmail.com"
   email: #username
   disqus-shortname:
   twitter: #username
