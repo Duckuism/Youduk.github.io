@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: post
 title: AWT&Applet
 excerpt: "기초적인 프로그래밍 학습에 좋은 AWT."
@@ -167,4 +167,4 @@ link:
     1. 애플릿(Applet)이란?
     2. Applet의 생명주기(Life cycle)와 주요 메서드
     3. Applet의 보안 제약(Security restriction)
-    4. Applet과 HTML태그
+    4. Applet과 HTML태그 -->
