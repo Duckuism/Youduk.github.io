@@ -3,7 +3,7 @@
 # Site wide configuration
 ####################################
 #
-title: Ducku's Tech Salon
+title: Ducku Salon
 email: rnejrl123456@gmail.com
 description: A student to dream programmer & designer
 url: https://youduk.github.io/
@@ -26,7 +26,7 @@ kramdown:
   entity_output: as_char
   toc_levels: 1..6
   enable_coderay: false
-  
+
 paginate: 10
 gems:
   - jekyll-paginate
@@ -39,7 +39,7 @@ disqus:
 ####################################
 #
 owner:
-  name: Ducku's Tech Salon
+  name: Ducku Salon
   avatar: Youduk.jpeg
   job: "portfolio & Tech blog"
   bio: "A student to dream programmer & designer"
