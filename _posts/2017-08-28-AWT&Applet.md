@@ -93,12 +93,10 @@ link:
     GUI프로그래밍의 가장 대표적인 컴포넌트로 다른 컴포넌트들을 포함할 수 있는 컨테이너이다. titlebar와 최대화버튼, 최소화버튼, 닫기버튼이 있으며 크기를 조절할 수 있다.
         1. Frame객체를 하나 만들고, - 생성자에 사용된 String은 Frame의 titlebar에 나타난다.
         ~~~java
-            Frame f = new Frame("Login")
+            Frame f = new Frame("Login");
         ~~~
 
-
-
-        2. 생성된 Frame의 크기를 설정한 다음, - 폭(width):300픽셀(pixel), 높이 200픽셀
+        2. 생성된 Frame의 크기를 설정한 다음 - 폭(width):300픽셀(pixel), 높이 200픽셀
         ~~~java
             f.setSize(300,200);
         ~~~
