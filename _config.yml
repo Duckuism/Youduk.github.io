@@ -26,6 +26,10 @@ kramdown:
   entity_output: as_char
   toc_levels: 1..6
   enable_coderay: false
+  
+paginate: 10
+gems:
+  - jekyll-paginate
 
 disqus:
   id: "https-youduk-github-io"
