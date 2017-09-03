@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AWT&Applet
+title: AWT와Applet
 excerpt: "기초적인 프로그래밍 학습에 좋은 AWT."
 categories: [java]
 link:
