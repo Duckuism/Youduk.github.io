@@ -4,6 +4,7 @@ title: 람다식(Lambda expression)
 excerpt: ""
 categories: [java]
 link:
+comments: true
 ---
 ### 람다식
 ###### 참고도서 : 자바의 정석(남궁성 저, 도우출판)

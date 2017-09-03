@@ -4,6 +4,7 @@ title: 애너테이션(annotation)
 excerpt: ""
 categories: [java]
 link:
+comments: true
 ---
 ### 애너테이션
 ###### 참고도서 : 자바의 정석(남궁성 저, 도우출판)
