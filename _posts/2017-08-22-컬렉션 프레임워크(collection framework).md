@@ -4,7 +4,7 @@ title: 컬렉션 프레임워크 (collections framework)
 excerpt: "표준화된 프로그래밍을 위해!"
 categories: [java]
 link:
-
+comments: true
 ---
 
 ### 컬렉션 프레임워크에 대해
