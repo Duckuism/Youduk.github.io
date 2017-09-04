@@ -3,7 +3,7 @@ layout: default
 ---
 
 {% for post in paginator.posts %}
->>>>>>> fd9b2dd46ab66573b308186f649b4a5f34c566ed
+
 <section class="post">
   <header class="post-header">
     <p class="post-meta">
@@ -59,9 +59,6 @@ layout: default
     </div><!-- /.image-wrap -->
     {% endif %}
 
-</section>
-{% endfor %}
-
 <!-- Pagination links -->
 <div class="pagination">
   {% if paginator.previous_page %}
@@ -76,3 +73,6 @@ layout: default
     <span class="next ">Next</span>
   {% endif %}
 </div>
+
+</section>
+{% endfor %}
