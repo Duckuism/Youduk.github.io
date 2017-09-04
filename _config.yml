@@ -27,8 +27,6 @@ kramdown:
   toc_levels: 1..6
   enable_coderay: false
 
-# paging
-gems: [jekyll-paginate]
 paginate: 10
 paginate_path: "paging/page:num"
 
