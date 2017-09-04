@@ -4,8 +4,8 @@ title: AWT와Applet
 excerpt: "기초적인 프로그래밍 학습에 좋은 AWT."
 categories: [java]
 link:
+comments: true
 ---
-
 # AWT
 
 ###### 참고 자료 : 자바의 정석(남궁성 저, 도우 출판)
@@ -29,9 +29,12 @@ link:
     |**java.awt.print** |출력에 관련된 클래스와 인터페이스를 제공한다.|
 
     >AWT 일반 컴포넌트의 상속계층도
-    ![AWT 일반 컴포넌트의 상속계층도](http://pds14.egloos.com/pds/200901/26/65/a0104265_497d30427d480.gif)
+
+    ![AWT 일반 컴포넌트의 상속계층도](http://pds14.egloos.com/pds/200901/26/65/a0104265_497d30427d480.gif);
     >AWT 메뉴 컴포넌트의 상속계층도
-    ![AWT 메뉴 컴포넌트의 상속계층도](http://pds10.egloos.com/pds/200901/26/65/a0104265_497d3043dff73.gif)
+
+    ![AWT 메뉴 컴포넌트의 상속계층도](http://pds10.egloos.com/pds/200901/26/65/a0104265_497d3043dff73.gif);
+
     컴포넌트는 버튼이나 체크박스와 같은 일반적인 컴포넌트와 메뉴와 관련된 메뉴컴포넌트로 나누어진다. Component는 일반적인 컴포넌트의 최상위 조상이며, MenuComponenet는 메뉴관련 컴포넌트들의 최상위 조상이다.
 
     3. 컴포넌트
@@ -94,12 +97,10 @@ link:
     GUI프로그래밍의 가장 대표적인 컴포넌트로 다른 컴포넌트들을 포함할 수 있는 컨테이너이다. titlebar와 최대화버튼, 최소화버튼, 닫기버튼이 있으며 크기를 조절할 수 있다.
         1. Frame객체를 하나 만들고, - 생성자에 사용된 String은 Frame의 titlebar에 나타난다.
         ~~~java
-            Frame f = new Frame("Login")
+            Frame f = new Frame("Login");
         ~~~
 
-
-
-        2. 생성된 Frame의 크기를 설정한 다음, - 폭(width):300픽셀(pixel), 높이 200픽셀
+        2. 생성된 Frame의 크기를 설정한 다음 - 폭(width):300픽셀(pixel), 높이 200픽셀
         ~~~java
             f.setSize(300,200);
         ~~~

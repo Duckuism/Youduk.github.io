@@ -4,6 +4,7 @@ title: 람다식(Lambda expression)
 excerpt: ""
 categories: [java]
 link:
+comments: true
 ---
 ### 람다식
 ###### 참고도서 : 자바의 정석(남궁성 저, 도우출판)
@@ -77,7 +78,7 @@ Funtion<String, Integer> f = (String s)
 |**배열 생성 메서드 참조** |Function<Integer, int[]> f = x -> new int[x];|Function<Integer, int[]> f2 = int[]::new;|
 
 
-<h4>* 수업 복습내용<h4>
+<h4>* 수업 복습내용</h4>
 
 ~~~java
 //기존
