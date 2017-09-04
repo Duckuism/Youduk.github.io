@@ -28,7 +28,7 @@ kramdown:
   enable_coderay: false
 
 paginate: 10
-paginate_path: "page:num"
+paginate_path: "/page:num"
 
 disqus:
   id: "https-youduk-github-io"
