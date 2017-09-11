@@ -2,12 +2,12 @@
 layout: post
 title: CSS3 - BOX MODEL
 excerpt: "display - block, inline, inline-block, flex, box-sizing"
-categories: [SQL]
+categories: [CSS]
 link:
 comments: true
 ---
 
-##### 참고 자료 : 멋쟁이 사자처럼 노지승님의 동영상 강의(멋쟁이 사자처럼 5기가 아니면 들을 수 없는 강의이다.)
+##### 참고 자료 : 멋쟁이 사자처럼 노지승님의 동영상 강의(멋쟁이 사자처럼 5기가 아니면 들을 수 없는 강의이다. 강의를 바탕으로 정리한 것이므로 문제가 될 시 자진 삭제하겠다.)
 
 레이아웃을 잡을 때 가장 중요한 박스의 display 속성 정리
 
