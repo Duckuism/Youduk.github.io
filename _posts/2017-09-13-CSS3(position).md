@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CSS3 - position
+title: CSS3 - POSITION
 excerpt: "position - static, relative, absolute, fixed"
 categories: [CSS]
 link:
