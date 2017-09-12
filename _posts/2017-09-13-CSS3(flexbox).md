@@ -24,7 +24,7 @@ flexbox를 이용하면 float랑 position이 필요없을 정도이다.
 * 자식 요소들을 가로로 배치하고 싶으면 flex-direction:row;(기본값)
 * 세로로 배치하고 싶으면 flex-direction:column;
 
-![Smithsonian Image](/img/2017-09-13-20.PNG)![Smithsonian Image](/img/2017-09-13-21.PNG)![Smithsonian Image](/img/2017-09-13-22.PNG)<br />
+![Smithsonian Image](/img/2017-09-13-20.PNG)<br />![Smithsonian Image](/img/2017-09-13-21.PNG)![Smithsonian Image](/img/2017-09-13-22.PNG)<br />
 
 * flex-direction에 따라 바뀌는 정렬의 기준, 두 개의 축.
 flex-direction과 같은 방향의 축 : main axis
@@ -40,7 +40,7 @@ flex-direction과 수직 방향의 축 : cross axis
 
 <h3>3.크기를 비례하게 줄여서 한 줄만 쓸 것인가, 본래 크기를 유지한 채 다른 줄로 내려 갈 것인가.</h3>
 
-![Smithsonian Image](/img/2017-09-13-25.PNG)![Smithsonian Image](/img/2017-09-13-26.PNG)![Smithsonian Image](/img/2017-09-13-27.PNG)<br />
+![Smithsonian Image](/img/2017-09-13-25.PNG)<br />![Smithsonian Image](/img/2017-09-13-26.PNG)![Smithsonian Image](/img/2017-09-13-27.PNG)<br />
 
 <h3>4.아이템들의 순서를 한 번에 바꿀 수 있다!</h3>
 
