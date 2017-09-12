@@ -13,12 +13,13 @@ flexbox를 이용하면 float랑 position이 필요없을 정도이다.
 
 ![Smithsonian Image](/img/2017-09-13-17.PNG)<br />
 
-flxbox 사용법
-1. 정렬을 할 요소를 가진 부모에게 display:flex만 설정하면, flexbox 사용 준비 완료.
+<h1>flexbox 사용법</h1>
+
+<h3>1.정렬을 할 요소를 가진 부모에게 display:flex만 설정하면, flexbox 사용 준비 완료.</h3>
 
 ![Smithsonian Image](/img/2017-09-13-18.PNG)![Smithsonian Image](/img/2017-09-13-19.PNG)<br />
 
-2. 방향 결정 : 아이템을 어느 방향으로 정렬할 지를 결정하는 flex-direction: row || column;
+<h3>2.방향 결정 : 아이템을 어느 방향으로 정렬할 지를 결정하는 flex-direction: row || column;</h3>
 
 * 자식 요소들을 가로로 배치하고 싶으면 flex-direction:row;(기본값)
 * 세로로 배치하고 싶으면 flex-direction:column;
@@ -37,10 +38,10 @@ flex-direction과 수직 방향의 축 : cross axis
 * align-items(아이템들을 통째로 움직인다.) : flex-start, flex-end, center, space-between
 * align-content(아이템 하나하나 움직인다.) : flex-start, flex-end, center, space-between
 
-3. 크기를 비례하게 줄여서 한 줄만 쓸 것인가, 본래 크기를 유지한 채 다른 줄로 내려 갈 것인가.
+<h3>3.크기를 비례하게 줄여서 한 줄만 쓸 것인가, 본래 크기를 유지한 채 다른 줄로 내려 갈 것인가.</h3>
 
 ![Smithsonian Image](/img/2017-09-13-25.PNG)![Smithsonian Image](/img/2017-09-13-26.PNG)![Smithsonian Image](/img/2017-09-13-27.PNG)<br />
 
-4. 아이템들의 순서를 한 번에 바꿀 수 있다!
+<h3>4.아이템들의 순서를 한 번에 바꿀 수 있다!</h3>
 
 ![Smithsonian Image](/img/2017-09-13-29.PNG)![Smithsonian Image](/img/2017-09-13-30.PNG)<br />
