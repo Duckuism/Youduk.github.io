@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CSS3 - FLEXBOX
-excerpt: "FLEXBOX"
+excerpt: "flexbox"
 categories: [CSS]
 link:
 comments: true
