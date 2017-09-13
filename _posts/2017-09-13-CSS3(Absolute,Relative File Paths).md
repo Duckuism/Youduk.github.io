@@ -7,7 +7,9 @@ link:
 comments: true
 ---
 
-######참고자료 :  1. https://www.w3schools.com/html/html_filepaths.asp
+######참고자료 :  
+
+1. https://www.w3schools.com/html/html_filepaths.asp
 2. http://88240.tistory.com/122
 
 <h3>HTML 파일 경로</h3>
@@ -27,8 +29,6 @@ comments: true
 
 \http://www.google.com, C:\users\document\untitled.jpg
 
-출처: http://88240.tistory.com/122 [shaking blog]
-
 상대 경로(Relative path) : 상대 경로는 현재 페이지에서 상대적으로 가리키는 경로이다.
 
 * / : 루트
@@ -40,10 +40,10 @@ ex) index.php가 C:\index\a에 위치한다면,
             ./ 는 a,
             ../ 는 index라는 것.
 
-- 3가지를 간단히 정리하자면,
-   1  '/'    -> 가장 최상의 디렉토리로 이동한다.(Web root)
-   2  './'   -> 파일이 현재 디렉토리를 의미한다.
-   3  '../'  -> 상위 디렉토리로 이동한다
+* 3가지를 간단히 정리하자면,
+   * 1  '/'    -> 가장 최상의 디렉토리로 이동한다.(Web root)
+   * 2  './'   -> 파일이 현재 디렉토리를 의미한다.
+   * 3  '../'  -> 상위 디렉토리로 이동한다
 
 만약 두단계 상위 디렉토리로 이동하려면? '../../'
 
