@@ -7,6 +7,11 @@ link:
 comments: true
 ---
 
+참고 자료
+1. 멋사 5기 웹 개발자 노지승님의 강의(멋사 5기가 아니면 볼 수 없다. 문제시 게시글을 내리겠다.)
+2. http://flexboxfroggy.com/(flexbox 연습 사이트)
+
+
 flexbox를 이용하면 float랑 position이 필요없을 정도이다.
 
 <h3>flexbox 사용시 고려해야 하는 순서</h3>
@@ -45,11 +50,12 @@ flex-direction과 수직 방향의 축 : cross axis (flex-direction:row일 때: 
 ![Smithsonian Image](https://i.stack.imgur.com/bNwiG.png)
 
 * align-items: center 와 align-content:center 비교
+
 ~~~CSS
 {display:flex; flex-wrap: wrap; align-items: center || align-content:center;}
 ~~~
 
-![Smithsonian Image](/img/2017-09-13-34.PNG =100px)![Smithsonian Image](/img/2017-09-13-35.PNG)<br />
+![Smithsonian Image](/img/2017-09-13-34.PNG)![Smithsonian Image](/img/2017-09-13-35.PNG)<br />
 
 * align-items: flex-start 와 align-content: flex-start 비교
 
