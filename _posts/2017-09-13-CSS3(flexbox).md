@@ -49,7 +49,7 @@ flex-direction과 수직 방향의 축 : cross axis (flex-direction:row일 때: 
 {display:flex; flex-wrap: wrap; align-items: center || align-content:center;}
 ~~~
 
-![Smithsonian Image](/img/2017-09-13-34.PNG =100x20)![Smithsonian Image](/img/2017-09-13-35.PNG)<br />
+![Smithsonian Image](/img/2017-09-13-34.PNG =100x)![Smithsonian Image](/img/2017-09-13-35.PNG)<br />
 
 * align-items: flex-start 와 align-content: flex-start 비교
 
