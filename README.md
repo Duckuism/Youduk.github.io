@@ -1,4 +1,14 @@
-### Update 03/08/2016
+
+
+개인 포트폴리오 
+
+유용한 학습 사이트
+
+취업 정보
+
+
+
+<!-- ### Update 03/08/2016
 I'm working on making leonids a [jekyll theme](https://jekyllrb.com/docs/themes/) so that people can easily install the theme without having to fork or download anything from here. Actually the first gem version is published, you can install it by following the official [doc](https://jekyllrb.com/docs/themes/). You can find the rubygem version [here](https://rubygems.org/gems/leonids). But it will be on beta until I can finish the doc of how you can install leonids with the rubygem version.
 
 ### Update 05/06/2016
@@ -42,4 +52,4 @@ docker run --rm -it --volume=$PWD:/srv/jekyll -p 4000:4000 jekyll/jekyll:pages j
 - [ ] Build a timeline page.
 - [ ] Build a portfolio page.
 - [ ] Redesign categories page. Ref: [dribbble: blog category section By Ilja Miskov](https://dribbble.com/shots/2274792-Blog-Category-Selection)
-- [ ] Multi languages support.
+- [ ] Multi languages support. -->
