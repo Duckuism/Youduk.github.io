@@ -7,8 +7,13 @@ link:
 comments: true
 ---
 
-###### 참고 영상 : http://olc.oss.kr/lec/detail.jsp?lecid=254
+전체 프린트 다 감쌀 때 윈도우 알트 쉬프트 에이 컬럼 편집.
+쉬프트 커멘드 엘 하면 단축키 목록
 
+톰캣 실행 위치 Downloads/apache-tomcat-8.5.13/bin/startup.sh
+
+###### 참고 영상 : http://olc.oss.kr/lec/detail.jsp?lecid=254
+###### 참고 자료 : https://github.com/keesun/servlet2spring/tree/master/src/whiteship
 강의 주제 : 서블릿&jsp 프로그래밍에서 spring MVC 프로그래밍으로의 변화 과정
 
 * 서블릿 등장 배경 : 웹페이지가 처음 나왔을 때는 정적인 html 페이지만 보여줄 수 있었다. 그래서 내용이 바뀌는 동적인 페이지들을 보여주고 싶었다.
@@ -93,6 +98,9 @@ J2EE 패턴
 
 1. J2EE - decorating pattern : 전/후 처리기가 필요할 때, 기존 코드를 수정하지 않고 부가 기능을 추가할 수 있다.
 
+![Smithsonian Image](/img/2017-09-15-02.PNG)<br />
+
+
 servlet필터를 사용해보니
 * 서블릿 코드를 수정하지 않고 부가기능을 추가할 수 있어 좋다. (기존의 서블릿 코드는 두고 필터를 정의할 때 원하는 기능 추가)
 * 하나의 필터(TimerFilter)로 여러 서블릿/URL(예제에서는 url패턴으로 적용)에 부가 기능을 추가할 수 있어 좋다.
@@ -110,4 +118,29 @@ servlet필터는 언제 사용할 수 있을까?
 
 2. J2EE - Front Controller 패턴 : 컨트롤러 하나로 모든 요청을 처리하고 싶을 때, 일관된 뷰 관리, 네비게이션, 요청 처리 기능을 한 곳으로 모을 수 있다. 즉, 1번처럼 여러개 의 서블릿을 등록하는 것이 아니라 서블릿은 하나만 등록하고, 자기가 실행하고 싶은 기능들로 요청이 들어왔을 때 맵핑을 해주고 실행한 후, 실행이 끝나면 찾아갈 뷰까지 찾아줄 수 있는 패턴(dispatcher view 패턴 역할까지 같이 할 수 있는 - front controller 패턴 안에 dispatcher기능을 넣으면 dispatcher를 사용할 필요가 없다.)
 
+![Smithsonian Image](/img/2017-09-15-03.PNG)<br />
+
+
 3. J2EE - Dispatcher View 패턴 : Front Controller 패턴에서 View를 찾아오는 기능을 dispatcher에 위임하는 패턴
+
+![Smithsonian Image](/img/2017-09-15-04.PNG)<br />
+
+
+*WhiteshipServlet 만들어보기.
+
+![Smithsonian Image](/img/2017-09-15-05.PNG)<br />
+
+WhiteshipServlet의 부족한 점
+* 핸들러 맵핑 로직을 변경할 수 없다.
+* 핸들러를 여러 형태로 만들 수 없다.
+* 예외 처리 로직을 제공하지 않는다.
+* 뷰를 찾는 로직을 변경할 수 없다.
+-> 스프링 mvc를 사용하는게 났겠다.
+
+Spring = 현존하는 가장 유연한 MVC프레임 워크
+* 핸들러 맵핑 로직을 변경할 수 있다.
+* 핸들러를 여러 형태로 만들 수 있다.
+* 다양한 예외 처리 로직을 제공한다.
+* 뷰를 찾는 로직을 변경할 수 있다.
+
+![Smithsonian Image](/img/2017-09-15-06.PNG)<br />
