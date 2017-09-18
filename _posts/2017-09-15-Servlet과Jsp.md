@@ -2,7 +2,7 @@
 layout: post
 title: JSP와 Servlet
 excerpt: ""
-categories: [Servlet, JSP, Spring]
+categories: [Servlet/JSP/Spring]
 link:
 comments: true
 ---
