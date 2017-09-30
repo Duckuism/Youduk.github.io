@@ -27,8 +27,16 @@ kramdown:
   toc_levels: 1..6
   enable_coderay: false
 
+
 paginate: 10
 paginate_path: "/blog/page:num/"
+
+plugins:
+ - jekyll-mentions
+ - jemoji
+ - jekyll-redirect-from
+ - jekyll-sitemap
+ - jekyll-paginate
 
 disqus:
   id: "https-youduk-github-io"
