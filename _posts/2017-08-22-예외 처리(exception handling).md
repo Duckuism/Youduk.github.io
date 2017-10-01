@@ -33,3 +33,317 @@ undo와 redo의 개념 : http://hengki.net/96
 ###### 에러나 예외는 모두 실행 시(runtime) 발생하는 오류이다.
 
 ![Smithsonian Image](/img/2017-08-22-01.png)<br />
+
+~~~java
+//ArithmeticException이 발생하는 예외 케이스 (정수는 0으로 나눌 수 없으므로 오류 발생 )
+class ExceptionEx2{
+  public static void main(String args[]){
+    int number = 100;
+    int result = 0;
+
+    for(int i = 0; i < 10; i++){
+      result = number / (int)(Math.random() * 10);
+      System.out.println(result);
+    }
+  }
+}
+
+//예외 처리를 한 후의 상태
+class ExceptionEx3{
+  public static void main(String args[]){
+    int number = 100;
+    int result = 0;
+
+    for(int i = 0; i < 10; i++){
+      try{//ArithmeticException이 발생하지 않을 때 실행되는 코드
+        result = number / (int)(Math.random() * 10);
+        System.out.println(result);  
+      }catch(ArithmeticException e){ //ArithmeticException이 발생하면 실행되는 코드
+        System.out.println("0");
+      }
+    }
+  }
+}
+
+~~~
+
+### try-catch문에서의 흐름
+
+헷갈리기 쉬운 부분이므로 잘 알아두자.
+
+* try블럭 내에서 예외가 발생한 경우
+1. 발생한 예외와 일치하는 catch블럭이 있는지 확인한다.
+2. 일치하는 catch블럭을 찾게 되면, 그 catch블럭 내의 문장들을 수행하고 전체 try-catch문을 빠져나가서 그 다음 문장을 계속해서 수행한다. 만일 일치하는 catch블럭을 찾지 못하면, 예외는 처리되지 못한다.
+
+* try블럭 내에서 예외가 발생하지 않은 경우
+1. catch블럭을 거치지 않고 전체 try-catch문을 빠져나가서 수행을 계속한다.
+
+~~~java
+//예외가 발생하지 않는 경우
+class ExceptionEx4{
+  public static void main(String args[]){
+    System.out.println(1);
+    System.out.println(2);
+    try{
+      System.out.println(3);
+      System.out.println(4);
+    }catch(Exception e){
+      System.out.println(5); // 예외가 발생하지 않아 실행되지 않음
+    }
+    System.out.println(6);
+  }
+}
+
+실행결과:
+1
+2
+3
+4
+6
+
+//예외가 발생하는 경우
+class ExceptionEx5{
+  public static void main(String args[]){
+    System.out.println(1);
+    System.out.println(2);
+    try{
+      System.out.println(3);
+      System.out.println(0/0); // 일부로 ArithmeticException을 발생시킴. 발생하는 즉시 catch문으로 이동
+      System.out.println(4); // 실행되지 않음
+    }catch(ArithmeticException ae){
+      System.out.println(5); // 예외가 발생하였기 때문에 실행됨.
+    }
+    System.out.println(6);
+  }
+}
+
+실행결과:
+1
+2
+3
+5
+6
+
+//예외가 발생하는 경우(발생하는 예외의 클래스 명 대신 조상 클래스인 Exception을 넣은 경우, instanceof연산자의 결과가 참으로써 형변환이 가능하므로 문제 없이 코드가 실행된다.)
+class ExceptionEx6{
+  public static void main(String args[]){
+    System.out.println(1);
+    System.out.println(2);
+    try{
+      System.out.println(3);
+      System.out.println(0/0); // 일부로 ArithmeticException을 발생시킴. 발생하는 즉시 catch문으로 이동
+      System.out.println(4); // 실행되지 않음
+    }catch(Exception e){ //ArithmeticException의 참조변수 ae를 조상클래스인 Exception의 참조변수 e로 바꿈.
+      System.out.println(5); // 예외가 발생하였기 때문에 실행됨.
+    }
+    System.out.println(6);
+  }
+}
+
+실행결과:
+1
+2
+3
+5
+6
+
+//ArithmeticException catch문과 Exception catch문을 같이 쓰는 경우.
+//ArithmeticException이 발생하면 ArithmeticException catch문을 실행하고 Exception catch문을 건너뛴다.
+//ArithmeticException을 제외한 모든 예외가 발생하면 Exception catch 문을 실행한다.
+
+class ExceptionEx7{
+  public static void main(String args[]){
+    System.out.println(1);
+    System.out.println(2);
+    try{
+      System.out.println(3);
+      System.out.println(0/0); // 일부로 ArithmeticException을 발생시킴. ArithmeticException catch문으로 이동
+      System.out.println(4); // 실행되지 않음
+    }catch(ArithmeticException ae){
+      if(ae instanceof ArithmeticException)
+        System.out.prigntln("true");
+      System.out.prigntln("ArithmeticException");
+    }catch(Exception e){ //ArithmeticException을 제외한 모든 예외가 처리된다.
+      System.out.println("Exception");
+    }
+    System.out.println(6);
+  }
+}
+
+실행결과:
+1
+2
+3
+true
+ArithmeticException
+6
+
+~~~
+
+### printStackTrace()와 getMassage()
+
+* printStackTrace() 예외발생 당시의 호출스택(Call Stack)에 있었던 메서드의 정보와 예외 메세지를 화면에 출력한다.
+* getMassage() 발생한 예외클래스의 인스턴스에 저장된 메세지를 얻을 수 있다.
+
+~~~java
+class ExceptionEx8{
+  public static void main(String args[]){
+    System.out.println(1);
+    System.out.println(2);
+    try{
+      System.out.println(3);
+      System.out.println(0/0); // 일부로 ArithmeticException을 발생시킴. 발생하는 즉시 catch문으로 이동
+      System.out.println(4); // 실행되지 않음
+    }catch(ArithmeticException ae){
+      ae.printStackTrace(); // 참조변수 ae를 통해, 생성된 ArithmeticException인스턴스에 접근할 수 있다.
+      System.out.println("예외메시지:" + ae.getMassage());
+    }
+    System.out.println(6);
+  }
+}
+
+실행결과:
+1
+2
+3
+java.lang.ArithmeticException: / by zero at ExceptionEx8.main(ExceptionEx8.java:7)
+예외메시지 : / by zero
+6
+~~~
+
+### 키워드 throws를 이용하여 고의로 예외 발생시키기
+
+~~~java
+1. 연산자 new를 이용해서 발생시키려는 예외 클래스의 객체를 만든 다음
+  Exception e = new Exception("고의로 발생시킴");
+2. 키워드 throws를 이용해서 예외를 발생시킨다.
+  throw e;
+
+class ExceptionEx9{
+  public static void main(String args[]){
+    try{
+      Exception e = new Exception("고의로 발생시킴");
+      throw e; //예외 발생. 위의 두 줄을 throw new Exception("고의로 발생시킴");로 줄여쓸 수 있다.
+    }catch(Exception e)
+      system.out.println("에러 메시지 :" + e.getMassage()); //Exception 인스턴스 생성 시 지정한 문자열을 getMassage로 읽을 수 있다.
+      e.printStackTrace();
+  }
+  System.out.println("프로그램이 정상 종료되었음");
+}
+
+실행결과:
+에러 메시지 : 고의로 발생시켰음.
+java.lang.Exception: 고의로 발생시켰음. at ExceptionEx9.main(ExceptionEx9.java:4)
+프로그램이 정상 종료되었음.
+~~~
+
+### 발생할 가능성이 있는 예외들을 메서드에 직접 선언하기
+
+~~~java
+//메서드 예외 선언 기본 구조
+void method() throws Exception1, Exception2, ... ExceptionN{
+  //메서드의 내용
+}
+~~~
+
+명시된 예외들을 API에서 확인하여 필수적으로 처리해야 하는 예외들은 처리해주어야 한다.
+
+사실 예외를 throws에 명시하는 것은 예외를 처리하는 것이 아니라, 자신(예외가 발생할 가능성이 있는 메서드)을 호출한 메서드에게 예외를 전달하여 예외처리를 떠맡기는 것이다. 전달된 예외들은 해당 메서드를 호출한 또 다른 메서드에 다시 전달될 수 있다. 이렇게 전달된 메서드들 중에 어떤 메서드도 해당 예외를 처리하지 못하면 결국 처음 메서드를 호출한 main까지 다시 떠넘겨져서 결국 예외처리를 하지 못하고 비정상적인 종료가 되고 만다. 그렇다면 이 예외들을 해결하는 방법에 대해 알아보자.
+
+### 메서드에 직접 선언된 메서드를 처리하는 방법
+
+#### 방법1. 호출된 메서드에서 직접 처리. (호출한 메서드는 예외가 발생했는지 알 수 없음)
+
+~~~java
+class ExceptionEx13{
+
+  public static void main(String[] args){
+    method1(); //같은 클래스의 static멤버이므로 객체 생성 없이 호출
+  }
+
+  static void method1(){
+    try{
+      throw new Exception();
+    }catch(Exception e){
+      System.out.println("method1 메서드에서 예외가 처리되었습니다.");
+      e.printStackTrace();
+    }
+  }
+
+}
+
+실행결과 :
+method1메서드에서 예외가 처리 되었습니다.
+java.lang.Exception
+    at ExceptionEx13.method1(ExceptionEx13.java:8)
+    at ExceptionEx13.main(ExceptionEx13.java:3)
+~~~
+
+#### 방법2. 호출된 메서드에서 예외를 선언하여 자신을 호출한 메서드에 예외를 전달하고, 호출한 메서드가 예외 처리.
+
+~~~java
+class ExceptionEx14{
+
+  public static void main(String[] args){
+    try{
+      method1();
+    }catch(Exception e){
+      System.out.println("main 메서드에서 예외가 처리되었습니다.");
+      e.printStackTrace();
+    }
+  }
+
+  static void method1() throws Exception{
+    throw new Exception();    
+  }
+
+}
+
+실행결과 :
+main메서드에서 예외가 처리 되었습니다.
+java.lang.Exception
+    at ExceptionEx14.method1(ExceptionEx14.java:12)
+    at ExceptionEx14.main(ExceptionEx14.java:4)
+~~~
+
+### finally블럭
+
+예외발생여부에 상관없이 try-catch 함께 실행되어야 할 코드를 포함하고 있으며 try-catch문의 끝에 위치한다.
+
+~~~java
+//try-catch-finally의 기본 구조
+  try{
+    //예외가 발생할 가능성이 있는 문장들을 넣는다.
+  }catch(Exception e1){
+    //예외처리를 위한 문장을 적는다.
+  }finally{
+    //예외의 발생여부에 관계없이 항상 수행되어야하는 문장들을 넣는다.
+    //finally블럭은 try-catch문의 맨 마지막에 위치해야한다.
+  }
+
+//실제 사용 예
+class FinallyTest2{
+  public static void main(String args[]){
+    try{
+      startInstall(); //프로그램 설치에 필요한 준비를 한다.
+      copyFiles(); //파일들을 복사한다.
+    }catch(Exception e){
+      e.printStackTrace();
+    }finally{
+      deleteTempFiles(); //프로그램 설치에 사용된 임시파일들을 삭제한다.
+    }
+  }
+
+  static void startInstall(){
+    //프로그램 설치에 필요한 준비를 하는 코드
+  }
+
+  static void copyFiles(){
+    //파일들을 복사하는 코드를 넣는다.
+  }
+
+  static void deleteTempFiles(){
+    //임시파일들을 삭제하는 코드를 적는다.
+  }
+}
+~~~
