@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MySQL mac os 설정 방법
+title: MySQL mac os 설정 방법 및 에러
 excerpt: "참고 자료와 정리"
 categories: [SQL]
 comments: true
@@ -45,3 +45,39 @@ set character_set_server = utf8;<br />
 <h5>No mapping found for HTTP request with URI 에러</h5>
 
 http://acua.tistory.com/entry/No-mapping-found-for-HTTP-request-with-URI <br />
+
+위의 이유는 아니었고 root-context.xml에서 base-package가 내가 원하는 패키지로 설정이 안되어서 일어난 경우도 있었다.
+
+<h5> Page directive: illegal to have multiple occurrences of 'contentType' with different values 에러 </h5>
+
+http://namsieon.com/16
+
+<h5>STS, 이클립스 설정 메모리 늘리기</h5>
+
+http://skycow79.tistory.com/26
+
+http://doublesprogramming.tistory.com/15
+
+<h5>이클립스 메모리 설정과 초기 설정 팁<h5>
+
+http://alnet.tistory.com/14
+
+<h5>Caught exception while allowing TestExecutionListener 에러</h5>
+
+https://github.com/slippStudy/passion/issues/27
+
+http://jellyms.kr/105
+아래 방법으로 해결
+
+
+<h5>myBatis에러</h5>
+
+https://kr-zephyr.github.io/java/mybatis/resolve-issue/2016/08/11/mybatis-mapped-statements-collection-does-not-contain-value.html
+
+
+
+<h5>fail to load applicationContext 에러</h5>
+
+http://lks21c.blogspot.kr/2011/12/junit-fail-to-load-applicationcontext.html
+
+이건 결국 설정 문제
