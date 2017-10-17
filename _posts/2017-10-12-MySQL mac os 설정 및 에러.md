@@ -3,6 +3,7 @@ layout: post
 title: MySQL mac os 설정 방법 및 에러
 excerpt: "참고 자료와 정리"
 categories: [SQL]
+link:
 comments: true
 ---
 
