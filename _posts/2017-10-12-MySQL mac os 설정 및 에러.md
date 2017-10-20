@@ -82,3 +82,22 @@ https://kr-zephyr.github.io/java/mybatis/resolve-issue/2016/08/11/mybatis-mapped
 http://lks21c.blogspot.kr/2011/12/junit-fail-to-load-applicationcontext.html
 
 이건 결국 설정 문제
+
+WARN : org.springframework.web.servlet.PageNotFound - No mapping found for HTTP request with URI [/replies] in DispatcherServlet with name 'appServlet'
+
+org.springframework.beans.factory.UnsatisfiedDependencyException
+org.springframework.beans.factory.NoSuchBeanDefinitionException
+
+root-context.xml에 sqlSessionFactory beans를 추가해주지 않아서 생기는 문제였다.
+<br />
+https://stackoverflow.com/questions/18001600/caused-by-org-springframework-beans-factory-nosuchbeandefinitionexception<br />
+https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/htmlsingle/#orm-hibernate<br />
+
+페이징 처리할 때 작업 순서(즉, 풀 작업 순서)
+
+1. DAO(ReplyDAO)
+2. XML Mapper(relyMapper.xml)
+3. DAOImpl(ReplyDAOImpl)
+4. Service(ReplyService)
+5. ServiceImpl(ReplyServiceImpl)
+6. Controller(ReplyController)
