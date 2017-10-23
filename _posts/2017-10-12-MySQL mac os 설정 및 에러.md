@@ -101,3 +101,7 @@ https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/htmlsingle/#
 4. Service(ReplyService)
 5. ServiceImpl(ReplyServiceImpl)
 6. Controller(ReplyController)
+
+<h5>Uncaught TypeError: $ is not a function 에러</h5>
+
+https://www.xetown.com/qna/146140
