@@ -11,14 +11,13 @@ comments: true
 
 개요 참고 자료들
 
-https://hyunseob.github.io/2016/09/25/typescript-introduction/
-(https://hyunseob.github.io/2016/09/25/typescript-introduction/)
-<https://hyunseob.github.io/2016/09/25/typescript-introduction/>
-autolink: <https://hyunseob.github.io/2016/09/25/typescript-introduction/>
 
-['일반 링크'](http://han41858.tistory.com/14)
-['새창으로 링크'](http://han41858.tistory.com/14){: target="_blank" }
-['새창으로 버튼 링크'](http://han41858.tistory.com/14){: .btn.btn-default target="_blank" }
+<https://hyunseob.github.io/2016/09/25/typescript-introduction/><br />
+
+
+['일반 링크'](http://han41858.tistory.com/14)<br />
+['새창으로 링크'](http://han41858.tistory.com/14){: target="_blank" }<br />
+['새창으로 버튼 링크'](http://han41858.tistory.com/14){: .btn.btn-default target="_blank" }<br />
 
 https://www.slideshare.net/mrg7211/angular2-62956558
 
