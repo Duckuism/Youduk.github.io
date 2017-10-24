@@ -26,3 +26,9 @@ https://www.youtube.com/watch?v=8LmLdpKQlGw
 
 <유튜브 아이오닉2와 타입스크립트, 앵귤러까지 무료 강좌를 올리시는 감사한 분의 재생목록>
 https://www.youtube.com/user/thruthesky/videos
+
+<타입 스크립트 공식 문서>
+http://www.typescriptlang.org/docs/home.html
+
+<맥 파일 경로 따기>
+http://macnews.tistory.com/2417
