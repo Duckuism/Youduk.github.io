@@ -35,5 +35,5 @@ comments: true
 ### 타입 스크립트 공식 문서
 <http://www.typescriptlang.org/docs/home.html><br />
 
-## 맥 파일 경로 따기
+### 맥 파일 경로 따기
 <http://macnews.tistory.com/2417><br />
