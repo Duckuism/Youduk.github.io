@@ -37,3 +37,6 @@ comments: true
 
 ### 맥 파일 경로 따기
 <http://macnews.tistory.com/2417><br />
+
+### 지킬 테마 후보.
+<http://jekyllthemes.org/themes/jekyllmetro/>
