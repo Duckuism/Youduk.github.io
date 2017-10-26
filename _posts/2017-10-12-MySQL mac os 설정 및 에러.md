@@ -105,3 +105,18 @@ https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/htmlsingle/#
 <h5>Uncaught TypeError: $ is not a function 에러</h5>
 
 https://www.xetown.com/qna/146140
+
+<h5>Uncaught TypeError: Cannot read property 'replace' of undefined</h5>
+
+첫번쨰<script></script>안에 선언한 변수를 두 번째 <script></script>안에서 읽으려고 해서 나는 오류였다.
+
+
+<sql 외래키 오류 해결 쿼리문>
+
+foreign key 제약 조건 삭제
+alter table tbl_reply drop foreign key fk_board;
+
+제약 조건 외래키 및 on delete cascade 속성 추가 쿼리문
+alter table tbl_reply add constraint fk_board
+foreign key(bno) references tbl_board(bno)
+on delete cascade;
