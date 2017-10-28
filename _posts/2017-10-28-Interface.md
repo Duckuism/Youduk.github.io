@@ -1,0 +1,292 @@
+---
+layout: post
+title: Interface
+excerpt: ""
+categories: [Typescript]
+link:
+comments: true
+---
+
+### 이 강의는 타입스크립트 코리아 이웅재님의 강의를 기반으로 만들어졌습니다. 개인의 공부 및 복습 목적이므로 문제가 있으면 삭제하도록 하겠습니다.
+
+### Interface
+
+기본적으로 자바에서 다루는 인터페이스와 굉장히 비슷하다.
+
+### 기본적인 사용 예
+
+~~~javascript
+
+const person: { name: string; age: number } = {
+  name: 'Mark',
+  age: 35
+};
+
+~~~
+
+위와 같은 형식으로 object literal 타입으로 지정하면, 이 것을 쓸 때마다 이 형식으로 써야한다.
+
+하지만 인터페이스를 쓰면,
+
+~~~javascript
+
+interface Person{
+  name: string;
+  age: number;
+}
+
+
+const person:Person = {
+  name: 'Mark',
+  age: 35
+};
+
+
+~~~
+
+이렇게 지정해놓으면 오류가 났을 때 해당 인터페이스에서 오류가 났다고 알려준다. 자바스크립트 소스에는 인터페이스 자체가 표시되지 않는다.
+
+### function에서 인터페이스를 사용하는 경우
+
+인터페이스 타입을 인자로 받은 함수에서 인터페이스의 속성을 파라미터 표기법으로 사용한다.
+
+~~~javascript
+
+interface Person{
+  name: string;
+  age: number;
+}
+
+
+const person:Person = {
+  name: 'Mark',
+  age: 35
+};
+
+function hello(p: Person): void {
+  console.log('안녕하세요 ${p.name} 입니다.');
+}
+~~~
+
+### 인터페이스에 optional한 property를 주는 경우
+
+1) 선택적 속성 추가하는 경우
+
+~~~javascript
+
+interface Person{
+  name: string;
+  age?: number; //age가 있을 수도 있고 없을 수도 있다. 따라서 Person 타입의 객체가 age 속성이 없어도 상관 없음
+}
+
+
+const person:Person = {
+  name: 'Mark'
+};
+
+function hello(p: Person): void {
+  console.log('안녕하세요 ${p.name} 입니다.');
+}
+~~~
+
+2) indexable type
+
+인덱서블 타입은 어레이와 딕셔너리와 유사한 두 가지가 있다.
+
+~~~javascript
+//Array와 유사한 경우
+
+interface Person2 {
+  [index: number]: string;
+}
+
+const p2: Person2 = {};
+p2[0] = 'hi';
+p2[100] = 'hello';
+
+//Dictionary와 유사한 경우(프로퍼티에 값이 있다는 것.)
+interface Person{
+  name: string;
+  [index: string] string; //indexable 타입의 이름은 상관없다. 편의상 index로 지정. 타입은 string 또는 number만 지정할 수 있다.
+}
+
+const person:Person = {
+  name: 'Mark'
+};
+
+person.anybody = "Anna"; //Person.속성 형식의 값이 스트링 형식이면 추가 가능.
+
+function hello(p: Person): void {
+  console.log('안녕하세요 ${p.name} 입니다.');
+}
+~~~
+
+### 인터페이스 안에 구현되지 않은 함수를 넣는 경우
+
+~~~javascript
+//일반 함수 형식
+interface Person{
+  name: string;
+  hello(): void;
+}
+
+const person:Person = {
+  name: 'Mark',
+  hello: function(){
+
+  }
+};
+
+function hello(p: Person): void {
+  console.log('안녕하세요 ${p.name} 입니다.');
+}
+~~~
+
+~~~javascript
+//애로우 함수 형식
+interface Person{
+  name: string;
+  hello(): string;
+  //hello()?: string; 형식으로 function도 optional property로 지정 가능.
+}
+
+const person:Person = {
+  name: 'Mark',
+  hello: (): string => {
+     return 'Hello';
+  }
+  // ES6부터 프로퍼티 이름이랑 실제 변수 명이랑 같으면 생략하고 쓸 수 있다. 아래와 같은 표기가 가능.
+  hello(): string {
+    return 'Hello';
+  }
+};
+
+function hello(p: Person): void {
+  console.log('안녕하세요 ${p.name} 입니다.');
+}
+~~~
+
+### 클래스가 인터페이스를 구현하는 경우
+
+자바랑 거의 비슷하다고 생각하면 된다.
+
+~~~javascript
+interface IPerson{
+  name: string;
+  hello(): void;
+}
+
+class Person implements IPerson {
+  name : string = null;
+
+  consructor(name: string){
+    this.name = name;
+  }
+
+  hello(): void{
+    console.log('안녕하세요 ${this.name} 입니다.');
+  }
+
+  public hi(): void{
+    console.log('안녕하세요 ${this.name} 입니다.');
+  }
+}
+
+const person: IPerson = new Person('Mark');
+
+person.하면 ide에서 쓸 수 있는 것이 name, hello()가 나온다.
+
+const person: Person = new Person('Mark');
+
+person.하면 ide에서 쓸 수 있는 것이 name, hello(), hi()가 나온다.
+
+~~~
+
+### 인터페이스를 상속받는 인터페이스를 만드는 경우
+
+~~~javascript
+interface Person {
+    name: string;
+    age?: number;
+}
+
+interface Korean extends Person {
+    city: string;
+}
+
+const k: Korean = { //두 개의 인터페이스를 상속했으므로 name, city 속성은 꼭 갖고, age는 옵셔널하게 같은 변수가 생성.
+    name: '이웅재',
+    city: '서울'
+};
+~~~
+
+### 함수 인터페이스 (이해는 되나 좀 어렵다. 사용하기가 헷갈릴 듯.)
+
+~~~javascript
+interface HelloPerson {
+    // (name: string, age: number): void;
+    (name: string, age?: number): void;
+}
+
+//interface의 형식에 맞춰서 함수를 써줘야하는데, function(){}로 써도 에러가 나지는 않는다. 이 함수 인터페이스는 사용할 때 타입체크, 에러체크를 하기 때문에 사용하려고 함수를 입력하면 에러가 뜬다. 그러나 helloPerson('Mark'); 와 같은 식으로 함수 인터페이스 속성 형식에 맞춰서 필수적인 string을 지정해주면 에러가 뜨지 않는다. 좀 헷갈리기도 하고 이상함...
+let helloPerson: HelloPerson = function (name: string) {
+    console.log(`안녕하세요! ${name} 입니다.`);
+};
+
+helloPerson('Mark'); // 안녕하세요! Mark 입니다.
+
+/*
+
+함수의 타입 체크는 할당할때가 아니라 사용할때 한다는 점을 명심
+
+*/
+~~~
+
+### indexable type
+
+~~~javascript
+interface StringArray {
+    [index: number]: string;
+}
+
+const sa: StringArray = {}; // 옵셔널하다 : 바로 밑에 줄을 안써도 상관없다. 즉, 값이 있을 때만 어레이 형식으로 맞춰주면 되는 것.
+sa[100] = '백';
+
+interface StringDictionary {
+    [index: string]: string;
+}
+
+const sd: StringDictionary = {}; // 옵셔널하다 : 바로 밑에 줄을 안써도 상관없다. 즉, 값이 있을 때만 스트링 형식으로 맞춰주면 되는 것.
+sd.hundred = '백';
+
+interface StringArrayDictionary {
+    [index: number]: string;
+    [index: string]: string;
+}
+
+const sad: StringArrayDictionary = {};
+// 당연히 옵셔널하다.
+sad[100] = '백'; //어레이처럼 넣기
+sad.hundred = '백'; //딕셔너리처럼 넣기
+//어레이, 딕셔너리 처럼 넣기 모두 가능
+~~~
+
+~~~javascript
+interface StringDictionary {
+    [index: string]: string;
+    name: string;
+}
+
+const sd: StringDictionary = {
+    name: '이름' // 필수
+};
+
+sd.any = 'any'; // 어떤 프로퍼티도 가능
+
+////////////////////////////////////////////////
+
+interface StringDictionaryNo {
+    [index: string]: string;
+    // name: number; // (X) 인덱서블 타입이 string 값을 가지기 때문에 number 를 필수로 끌어오면 에러
+}
+~~~
