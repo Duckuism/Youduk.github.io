@@ -1,0 +1,301 @@
+---
+layout: post
+title: Typescript의 기본 타입들
+excerpt: "Typescript 타입들에 대해"
+categories: [Typescript]
+link:
+comments: true
+---
+
+### 이 강의는 타입스크립트 코리아 이웅재님의 강의를 기반으로 만들어졌습니다. 개인의 공부 및 복습 목적이므로 문제가 있으면 삭제하도록 하겠습니다.
+
+
+타입스크립트에서 기본적으로 제공하는 데이터 타입에 대해 알아본다.
+
+***사용자가 만든 타입들은 결국 아래의 기본 자료형들로 쪼개진다.***
+
+* 자바스크립트 기본 자료형을 포함한다.(superset)
+    * Boolean
+    * Number
+    * String
+    * Null
+    * Undefined
+    * Symbol(ECMAScript 6에 추가)
+    * Array : object형 (엄밀히 primitive 타입은 아니지만, 기본 자료형으로 친다.)
+
+* 자바스크립트 기본 자료형에 몇 가지 타입이 더 제공된다.
+    * Any
+    * Void
+    * Never
+    Any, Void, Never는 함수의 리턴타입 지정에 많이 쓰인다. Void, Never로 지정하면 할 게 없다. Any는 적폐..
+    * Enum
+    * Tuple : object형 (Array의 변칙형태라고 생각하면 되는데, 잘 쓰진 않음.)
+
+
+#### Primitive Type
+
+* 오브젝트와 레퍼런스 형태가 아닌 실제 값을 저장하는 자료형
+* Primitive 형의 변수들에 Object 형의 내장 함수를 사용 가능 한것은 자바스크립트의 처리 방식 때문이다.(자바스크립트가 일시적으로 Object로 처리하고 다시 primitive로 돌려놓음 - 메모리를 아끼기 위해서라고 함.)
+
+~~~typescript
+let name = 'mark';
+
+name.toString();
+~~~
+
+#### Literal
+
+* 값 자체가 변하지 않는 값
+* 상수와 다른 것은 상수는 가리키는 포인터가 고정이라는 것이고(즉 한 번 값을 지정하면 바뀌지 않는 모든 값이 상수), 리터럴은 그 자체가 값이자 그릇이다.(값 그 자체를 가리키는 것.)
+
+~~~typescript
+35; // number 리터럴
+'mark' // string 리터럴
+true // boolean 리터럴
+
+// object 리터럴
+{
+    name: 'mark',
+    age: 35
+}
+~~~
+
+#### Boolean/boolean
+
+* true / false
+* 자바스크립트, 타입스크립트에서 boolean이라고 부른다.
+* 타입스크립트에서 Boolean과 boolean은 다르다. Boolean은 오브젝트의 Wrapper 클래스이고 boolean은 기본형. 되도록 소문자 boolean을 쓰는 것을 권장한다.
+
+~~~typescript
+let isDone: boolean = false;
+
+typeof isDone === 'boolean' // true
+
+// Type 'boolean' is assignable to type 'Boolean'.
+let isOk: Boolean = true;
+
+// Type 'Boolean' is not assignable to type 'boolean'.
+// 'boolean' is a primitive, but 'Boolean' is a wrapper object.
+// Prefer using 'boolean' when possible.
+let isNotOk: boolean = new Boolean(true);
+~~~
+
+#### Number/number
+
+* 자바스크립트와 같이 타입스크립트의 모든 숫자는 부동 소수점 값이다.
+* 타입스크립트는 16진수, 10진수 리터럴외에도 2진수, 8진수 리터럴을 지원한다.
+* 넘버도 new Number로 생성한 것을 primitive형인 number에 넣을 수 없고 되도록 primitive형인 number를 쓰는 것을 권장한다.
+
+~~~typescript
+let decimal: number = 6; // 10진수 리터럴
+
+let hex: number = 0xf00d; // 16진수 리터럴
+
+let binary: number = 0b1010; // 2진수 리터럴
+
+let octal: number = 0o744; // 8진수 리터럴
+
+~~~
+
+
+#### String
+
+* 텍스트 형식을 참조하기 위해 'string' 형식 사용.
+* 큰 따옴표나 작은 따옴표를 사용한다.
+
+~~~typescript
+let name: string = "mark";
+
+name = 'anna';
+~~~
+
+##### String - Template String
+* ES6에 들어가는 Template String을 사용하는데, 이유는
+    * 한 줄에 안 쓰고 두 줄에 쓸 것이 있을 때
+    * 두 줄 사이에 자바스크립트 변수를 받고 싶을 때
+* '${expr}'과 같은 형태로 사용한다.
+
+~~~typescript
+let fullName: string = `Bob Bobbington`;
+let age: number = 37;
+
+let sentence: string = `Hello, my name is ${ fullName }.
+
+I'll be ${ age + 1 } years old next month.`;
+
+// template string 을 사용하지 않을 경우
+let sentence: string = "Hello, my name is " + fullName + ".\n\n" +
+    "I'll be " + (age + 1) + " years old next month.";
+~~~
+
+#### Undefined & Null
+* 타입 스크립트에서 undefined와 null은 각각 undefined와 null이라는 고유한 타입을 가진다.
+* void와 마찬가지로 undefined와 null은 그 자체로 쓸모가 없다.
+* 둘 다 소문자만 존재 한다.
+
+~~~typescript
+// 이 변수들에 할당할 수 있는 것들은 거의 없다.
+
+let u: undefined = undefined;
+let n: null = null;
+~~~
+
+##### undefined와 null은 다른 모든 타입들의 서브 타입이다
+* 즉, 모든 다른 타입들에 대입(할당)이 가능하다.
+
+~~~typescript
+let name: string = null;
+let age: number = undefined;
+
+// strictNullChecks => true
+// Type 'null' is not assignable to type 'string'.
+let name: string = null; (X)
+
+// null => null || void, undefined => undefined || void
+// Type 'null' is not assignable to type 'undefined'.
+let u: undefined = null; // (X)
+
+let v: void = undefined; // (O)
+
+let union: string | null | undefined = 'str';
+~~~
+
+##### 자바스크립트의 null
+* 자바스크립트의 null과 타입스크립트의 null은 똑같다.
+* 무언가가 있는데, 사용할 준비가 덜 된 상태.
+* null 타입은 null이라는 값만 가질 수 있다.
+* 런타임에서 typeof연산자를 이용하면 object이다.
+
+~~~typescript
+let n: null = null;
+
+console.log(n); // null
+console.log(typeof n); // object
+~~~
+
+##### 자바스크립트의 undefined
+* 값을 할당하지 않는 변수는 undefined라는 값을 가진다. 즉 null처럼 무언가가 있지도 않은 것. 아얘 준비가 안된 것
+* object의 property가 없을 때도 undefined이다.
+* 런타임에서 typeof연산자를 이용해서 확인하면 undefined이다.
+
+~~~typescript
+let u: undefined = undefined;
+
+console.log(u); // undefined
+console.log(typeof u); // undefined
+~~~
+
+#### Void
+* 타입이 없는 상태
+* 'any'와 반대의 의미
+* Void는 없다. 무조건 소문자
+* 주로 함수의 리턴 값이 없을 때 사용.
+
+~~~typescript
+function returnVoid(message): void {
+    console.log(message);
+}
+
+returnVoid('리턴이 없다');
+~~~
+
+#### any
+* 어떤 타입이어도 상관없는 타입
+* 최대한 안 쓰는 것이 핵심. 컴파일 타임에 타입 체크가 정상적으로 이루어지지 않기 때문
+* 따라서 컴파일 옵션 중에 any를 쓰면 오류가 되도록 하는 옵션도 있다.
+
+~~~typescript
+function returnAny(message): any {
+    console.log(message);
+}
+
+returnVoid('리턴은 아무거나');
+~~~
+
+#### Never
+* 리턴에 주로 사용
+* 사용 빈도가 낮음
+
+~~~typescript
+// Function returning never must have unreachable end point
+function error(message: string): never {
+    throw new Error(message);
+}
+
+// Inferred return type is never
+function fail() {
+    return error("Something failed");
+}
+
+// Function returning never must have unreachable end point
+function infiniteLoop(): never {
+    while (true) {
+    }
+}
+~~~
+
+#### Array
+* 자바스크립트에서 array는 객체다. (Ojbect.prototype을 상속하고 있음)
+* 사용 방법
+    * Array<타입>
+    * 타입[]
+
+~~~typescript
+let list: number[] = [1, 2, 3];
+
+let list: Array<number> = [1, 2, 3];
+~~~
+
+
+#### Tuple
+* 배열인데 타입이 한 가지가 아닌 경우
+* Array와 마찬가지로 객체이다.
+* 꺼내 사용할 때 주의가 필요하다. (타입이 정확히 무엇인지 모르므로.)
+    * 배열을 Destructuting하면 타입이 제대로 얻어진다.
+
+~~~typescript
+// Declare a tuple type
+let x: [string, number];
+// Initialize it
+x = ["hello", 10]; // OK
+// Initialize it incorrectly
+x = [10, "hello"]; // Error
+
+x[3] = "world"; // OK, 'string' can be assigned to 'string | number'
+
+console.log(x[5].toString()); // OK, 'string' and 'number' both have 'toString'
+
+x[6] = true; // Error, 'boolean' isn't 'string | number'
+
+const person: [string, number] = ['mark', 35];
+
+const [name, age] = person;
+
+~~~
+
+#### Enum
+* C 언어와 같다.
+* 아래 예제만 이해하면 된다.
+* enum의 원소의 결과 값은 string형
+
+~~~typescript
+enum Color {Red, Green, Blue}
+let c: Color = Color.Green;
+
+enum Color {Red = 1, Green, Blue}
+let c: Color = Color.Green;
+
+enum Color {Red = 1, Green = 2, Blue = 4}
+let c: Color = Color.Green;
+
+enum Color {Red = 1, Green, Blue}
+let colorName: string = Color[2]
+  //enum의 이름인 Green을 뱉기 때문에 string형으로 지정을 하는 것.
+~~~
+
+#### Symbol
+* ECMAScript 2015의 Symbol이다.
+* primitive 타입의 값을 담아서 사용한다.
+* 고유하고 수정불가능한 값으로 만들어 준다.
+* 따라서 주로 접근을 제어하는데 쓰이는 경우가 많았다.
+    * 자바스크립트에서는 public과 private의 구분이 명확하지 않아서 public을 만들 때 symbol을 썼었다.

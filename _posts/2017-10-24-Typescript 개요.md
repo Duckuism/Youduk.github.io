@@ -40,3 +40,89 @@ comments: true
 
 ### 지킬 테마 후보.
 <http://jekyllthemes.org/themes/jekyllmetro/>
+
+### nvm을 통해 node.js 설치하기.
+<http://snowdeer.info/install-node-js-on-mac/>
+
+### 타입스크립트 컴파일러 설치.
+<https://blog.wonhada.com/?p=296>
+
+### vs code js 개발환경 구축
+<http://poiemaweb.com/typescript-vscode>
+
+
+1. 프로젝트 폴더 생성
+2. 터미널로 프로젝트 폴더 안으로 이동
+3. '$ npm init -y' (package.json내용을 쓰라고 나옴)
+4. '$ npm i typescript' (이 프로젝트 폴더에 타입스크립트를 인스톨한다는 얘기.)
+나는 처음에 글로벌로 설치헀는데, 글로벌로 설치하는 경우는 어떤 폴더나 경로에서 ts파일을 실행시키던 가능하다는 얘기이고, 이 경우는 폴더 내에서만으로 한정시키는 듯 하다. 글로벌로 설치하는 걸 안 좋아한다는 게 무슨 뜻인지 몰랐는데, 명령어나 경로같은 것들을 프로젝트 마다 편하게 설정하게 위해서는 글로벌을 설치하지 않는 것이 좋을 듯 하다. 아래 7,8번과 같은 경로 설정을 해놓고 프로젝트 폴더 안에만 타입스크립트 모듈 컴파일러를 깔면, 그 폴더 안에서 혹은 npm스크립트를 이용해서만 지정한 transpile명령어를 실행할 수 있지만, 글로벌로 타입스크립트 모듈 컴파일러를 깔면, 그냥 일반 터미널에서도 해당 transpile명령어를 실행할 수가 있다.
+5. 해당 폴더를 비쥬얼 스튜디오 코드로 연다.
+6. .bin 안에 있는 명령어는 npm스크립트에서 경로 안붙이고 쓸 수 있다. (npm스크립트가 아닌 일반 터미널에서는 '$ ./node_modules/.bin/tsc test.ts(파해당 파일명)' 로 쓰면 된다.)
+7. tsc 명령어로 컴파일을 하면 test.js가 생기는데, 여기에 컴파일 할 때 여러가지 설정을 추가할 수 있는데,
+컴파일된 js파일을 어디다가 만들지를 지정
+ts파일을 어떤 js파일로 만들건지(es6, es5 등등..)를 하려면 ts.config 파일에 넣으면 된다.
+하지만 처음 프로젝트를 생성할 때는 파일 자체가 존재하지 않으므로 '$ ./node_modules/.bin/tsc test.ts(파해당 파일명)'처럼 직접 경로를 설정하여
+이 파일만 실행해달라고 요구하는 것.
+8. 만약 /package.json에서
+"scripts": {
+    "transpile": "tsc test.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+위와 같이 transpile 속성에 파일명을 설정하면,
+터미널에서 '$ npm run transpile' 을 입력하면, test.ts 파일을 컴파일 하게 되는 것.
+
+그런데 ts.config파일이 없는데, 어떤 js파일로 만들어졌고, 어디서 실행 가능한 js파일인지가 알 수 없는데
+아무것도 정하지 않으면 default값으로 정해져 있는 값이 미리 정해져 있다.
+
+
+    //원래는 "transpile": "node_modules/.bin/tsc" 가 맞는 상대경로.
+    //그러나 node_modules안의 .bin에 있는 명렁어는 경로 설정을 안해도
+    //쓸 수 있게 만들어서 npm스크립트에서는 쓸 수 있는 것이다.
+    //일반 터미널 커멘드 라인은 package.json에서 사용하는 npm스크립트 경로가 아니므로
+    //$ node_modules/.bin/tsc test.ts(해당 파일명)로 실행해야 하는 것.
+
+9.
+
+컴파일러를 글로벌로 설치 후 컴파일러를 사용하는 방법은
+    * cil 명령어로 파일 컴파일 -> 터미널에서 글로벌 명령어로 실행
+    * 특정 프로젝트 폴더에서 타입스크립트 컴파일러 설정에 맞춰 컴파일
+        * '$ tsc --init'(tsconfig.json파일이 생성된다 -> 컴파일 디폴트 세팅을 여기서 할 수 있다.)
+        * ' '"target":"es5" ': 컴파일된 결과물을 es5속성에 맞추겠다.(라이브러리는 설정을 안하면 es5의 디폴트 라이브러리가 들어감)
+    * 특정 프로젝트 폴더에서 타입스크립트 컴파일러 설정에 맞춰 컴파일(watch모드)
+
+타입스크립트 컴파일러를 프로젝트 폴더에 설치 한 후 사용하는 방법은
+(글로벌로 설치하지 않았으므로 tsc 명령어를 쳐도 인식하지 못한다.)
+    * .bin 안의 명령어로 파일 컴파일(.bin안의 명령어는 정확하게 경로를 써줘야 한다. '$ ./node_modules/.bin/tsc test.ts(파해당 파일명)' )
+    * npm 스크립트로 파일 컴파일($ npn run transpile)
+    * 프로젝트에 있는 타입스크립트 설정에 맞춰 npm 스크립트로 컴파일($ ./node_modules/.bin/tsc 이미 경로에 transpile속성에 tsc test.ts라고 해두었으므로.)
+    * 프로젝트에 있는 타입스크립트 설정에 맞춰 npm 스크립트로 컴파일(watch)
+
+
+10. Typescript버전 바꾸기
+npm_modules 파일을 지우고, 원하는 프로젝트 폴더 내에서 npm i Typescript + 원하는 버전 명령어로 실행해서 재설치하면 된다.
+
+11. tslint 설정 파일 생성
+$ ./node_modules/.bin/tslint --init
+이 tslint.config 파일에다가 서로간에 코딩을 위해 정한 매뉴얼을 설정해놓으면 되는 것.
+
+12. 에디터가 tslint를 항상 사용하도록 플러그인 설치
+commend p 누르고
+ext intall tslint를 검색하면
+자동으로 찾아진다. 이걸 설치
+
+13.Compiler Options설정
+
+tsconfig.json -> 컴파일에 관련된 여러가지 옵션 설정
+
+http://json.schemastore.org/tsconfig
+관련된 옵션들을 모두 볼 수 있다.
+
+중요한 옵션들
+1. compileOptions : type
+처음에는 타입 정의하는 것이 굉장히 까다로운 부분이었는데 타입스크립트 측에서 이 부분을 안고 가야된다고 생각을 해서 정의를 해서 업데이트 했다.
+어떤 모듈을 받으면 @types에서 받아서 그 타입을 쓴다고 알려주는 수준이 된 것.
+중요한 속성은 @typeRoots와 @types가 있다.
+
+target
+lib -> 어떤 메서드 정의를 찾지 못할 때는, 이 라이브러리 설정에서 무엇을 쓰고 있는 지를 잘 확인해야 한다.
