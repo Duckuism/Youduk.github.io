@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Interface
+title: 5. Interface
 excerpt: ""
 categories: [Typescript]
 link:

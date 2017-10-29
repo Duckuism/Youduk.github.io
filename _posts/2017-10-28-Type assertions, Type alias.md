@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Type assertions, Type alias
+title: 4. Type assertions, Type alias
 excerpt: ""
 categories: [Typescript]
 link:

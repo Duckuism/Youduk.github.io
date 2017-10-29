@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Typescript의 기본 타입들
+title: 2. Typescript의 기본 타입들
 excerpt: "Typescript 타입들에 대해"
 categories: [Typescript]
 link:

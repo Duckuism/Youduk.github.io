@@ -1,6 +1,6 @@
 ---
 layout: post
-title: var, let, const
+title: 3. var, let, const
 excerpt: ""
 categories: [Typescript]
 link:
