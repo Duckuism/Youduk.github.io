@@ -98,7 +98,8 @@ pre code {
   .nl { color: #A0A000 } /* Name.Label */
   .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
   .nt { color: #008000; font-weight: bold } /* Name.Tag */
-  .nv { color: #B8860B } /* Name.Variable */
+  .nv { color: #47e4be } /* Name.Variable */
+  .nx { color: #B8860B }
   .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
   .w { color: #bbbbbb } /* Text.Whitespace */
   .mf { color: #e65bd3 } /* Literal.Number.Float */
@@ -114,7 +115,7 @@ pre code {
   .sh { color: #BB4444 } /* Literal.String.Heredoc */
   .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
   .sx { color: #008000 } /* Literal.String.Other */
-  .sr { color: #BB6688 } /* Literal.String.Regex */
+  .sr { color: #47e4be } /* Literal.String.Regex */
   .s1 { color: #BB4444 } /* Literal.String.Single */
   .ss { color: #B8860B } /* Literal.String.Symbol */
   .bp { color: #AA22FF } /* Name.Builtin.Pseudo */
