@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f537e92f-99c0-48a3-9991-6742f1f86d7b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2017-11-03-Jqeury 선택자.md" afterPath="$PROJECT_DIR$/_posts/2017-11-03-Jqeury 선택자.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2017-11-06-jquery객체 선택, 탐색.md" afterPath="$PROJECT_DIR$/_posts/2017-11-06-jquery객체 선택, 탐색.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/2017-11-08-1108TIL.md" afterPath="$PROJECT_DIR$/_posts/2017-11-08-1108TIL.md" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,7 +29,7 @@
               <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
                 <state split_layout="FIRST">
                   <first_editor relative-caret-position="437">
-                    <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+                    <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
                     <folding />
                   </first_editor>
                   <second_editor>
@@ -47,8 +46,8 @@
             <entry file="file://$PROJECT_DIR$/_posts/2017-11-08-1108TIL.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
                 <state split_layout="FIRST">
-                  <first_editor relative-caret-position="828">
-                    <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+                  <first_editor relative-caret-position="199">
+                    <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
                     <folding />
                   </first_editor>
                   <second_editor>
@@ -183,12 +182,12 @@
       <updated>1510099234709</updated>
       <workItem from="1510099236572" duration="636000" />
       <workItem from="1510099898387" duration="645000" />
-      <workItem from="1510100578192" duration="2486000" />
+      <workItem from="1510100578192" duration="4440000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3767000" />
+    <option name="totallyTimeSpent" value="5721000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
@@ -343,7 +342,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="437">
-            <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor>
@@ -356,10 +355,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2017-11-08-1108TIL.md">
-      <provider editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="406">
-            <caret line="18" column="92" lean-forward="false" selection-start-line="18" selection-start-column="92" selection-end-line="18" selection-end-column="92" />
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="199">
+            <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
             <folding />
           </first_editor>
           <second_editor>
@@ -367,7 +366,7 @@
           </second_editor>
         </state>
       </provider>
-      <provider selected="true" editor-type-id="Gfm">
+      <provider editor-type-id="Gfm">
         <state />
       </provider>
     </entry>
