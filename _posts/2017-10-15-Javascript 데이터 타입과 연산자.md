@@ -5,6 +5,9 @@ excerpt: "데이터 타입, typeof연산자"
 categories: [javascript]
 link:
 comments: true
+pinned: true
+image:
+  feature: javascript.png
 ---
 
 ### 참고 자료 : 인사이트 자바스크립트(송형주, 고현준 저 / 한빛미디어)
@@ -70,13 +73,13 @@ console.log(str); //처음 생성했을 때와 마찬가지로 String 출력. �
 
 * 이스케이프 문자 사용
 
-    |  <center>이스케이프 문자</center> |  <center>설명</center> |  
-    |:--------|:--------|
-    |\t |수평 탭|
-    |\n |줄 바꿈|
-    |\\' |작은 따옴표|
-    |\\" |큰 따옴표|
-    |\\\ |역 슬래시|
+    | <center>이스케이프 문자</center> | <center>설명</center> |
+    | :------------------------ | :------------------ |
+    | \t                        | 수평 탭                |
+    | \n                        | 줄 바꿈                |
+    | \\'                       | 작은 따옴표              |
+    | \\"                       | 큰 따옴표               |
+    | \\\                       | 역 슬래시               |
 
 
 #### 3. 불린 boolean

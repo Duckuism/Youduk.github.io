@@ -5,6 +5,9 @@ excerpt: "참고 자료와 정리"
 categories: [SQL]
 link:
 comments: true
+pinned: true
+image:
+  feature: mysql.jpg
 ---
 
 

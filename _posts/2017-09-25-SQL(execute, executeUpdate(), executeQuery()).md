@@ -5,6 +5,9 @@ excerpt: "execute, executeUpdate(), executeQuery()의 차이"
 categories: [Servlet/JSP/Spring]
 link:
 comments: true
+pinned: true
+image:
+  feature: mysql.jpg
 ---
 
 1.execute

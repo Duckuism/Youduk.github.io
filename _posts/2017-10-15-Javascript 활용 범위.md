@@ -5,6 +5,9 @@ excerpt: "자바스크립트의 언어적 특징과 활용처"
 categories: [javascript]
 link:
 comments: true
+pinned: true
+image:
+  feature: javascript.png
 ---
 
 ### 참고 자료  
