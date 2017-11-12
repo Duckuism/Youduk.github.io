@@ -5,6 +5,9 @@ excerpt: "position - static, relative, absolute, fixed"
 categories: [CSS]
 link:
 comments: true
+pinned: true
+image:
+  feature: css.jpg
 ---
 
 float랑 position을 언제 써야할까?

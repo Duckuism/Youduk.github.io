@@ -5,6 +5,9 @@ excerpt: "flexbox"
 categories: [CSS]
 link:
 comments: true
+pinned: true
+image:
+  feature: css.jpg
 ---
 
 참고 자료
@@ -35,8 +38,8 @@ flexbox를 이용하면 float랑 position이 필요없을 정도이다.
 
 
 * flex-direction에 따라 바뀌는 정렬의 기준, 두 개의 축.
-flex-direction과 같은 방향의 축 : main axis (flex-direction:row일 때: 가로 / flex-direction:column일 때: 세로)
-flex-direction과 수직 방향의 축 : cross axis (flex-direction:row일 때: 세로 / flex-direction:column일 때: 가로)
+  flex-direction과 같은 방향의 축 : main axis (flex-direction:row일 때: 가로 / flex-direction:column일 때: 세로)
+  flex-direction과 수직 방향의 축 : cross axis (flex-direction:row일 때: 세로 / flex-direction:column일 때: 가로)
 
 ![Smithsonian Image](/img/2017-09-13-23.PNG)![Smithsonian Image](/img/2017-09-13-24.PNG)<br />
 

@@ -5,7 +5,9 @@ excerpt: "rails에서 내가 봤던 demo버전의 js,css를 그대로 적용하�
 categories: [rails]
 link: http://hashcode.co.kr/questions/2516/ruby-on-rails-template-%EC%A7%88%EB%AC%B8
 comments: true
-
+pinned: true
+image:
+  feature: rails.png
 ---
 
 ###### 이번에 멋쟁이 사자처럼 해커톤을 진행하면서, 서비스를 부각시키기 위해 유료 템플릿을 사용하기로 결정했다. 하지만.. 으잉..? 도대체 왜 css,js파일을 assets 안에 넣었는데 적용이 안되는 거냐고요 ㅠㅠ

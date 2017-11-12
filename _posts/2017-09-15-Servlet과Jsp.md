@@ -5,6 +5,9 @@ excerpt: ""
 categories: [Servlet/JSP/Spring]
 link:
 comments: true
+pinned: true
+image:
+  feature: javaServletJsp.png
 ---
 
 전체 프린트 다 감쌀 때 윈도우 알트 쉬프트 에이 컬럼 편집.
@@ -41,13 +44,13 @@ command + option + s = generate override 단축키
 * 자바 코딩은 편하다.
 * 화면(html)을 작성하는 코드를 맞추기 힘들다.
 * 매번 web.xml에 서블릿 맵핑 코드를 추가하는 것이 번거롭고 힘들다.
--> 이것에 대한 보완으로 jsp가 등장했다.
+  -> 이것에 대한 보완으로 jsp가 등장했다.
 
 JSP의 사용 후기
 * 화면(html)코드는 쉽게 작성할 수 있다.
 * 자바 코드를 사용하기 힘들다.
--> jsp와 서블릿을 같이 사용해볼까?
--> 화면코드는 jsp로, 자바 코드는 서블릿으로.
+  -> jsp와 서블릿을 같이 사용해볼까?
+  -> 화면코드는 jsp로, 자바 코드는 서블릿으로.
 
 ~~~java
 
@@ -84,9 +87,9 @@ servlet과 jsp를 합친 model2를 사용해보니
 * 서블릿으로 자바 코딩하기 편하다.
 * jsp로 화면을 작성하기 편하다.
 * 이 모습이 MVC와 비슷하다.
-Model(지금은 없지만 보통은 javaBeans로 모델을 만들고)
-View(JSP가 담당)
-Controller(servlet이 담당)
+  Model(지금은 없지만 보통은 javaBeans로 모델을 만들고)
+  View(JSP가 담당)
+  Controller(servlet이 담당)
 
 ![Smithsonian Image](/img/2017-09-15-01.png)<br />
 
@@ -95,7 +98,7 @@ model2로 만족할 수 있는가?
 * 서블릿을 실행하기 전/후에 부가적인 작업을 추가하고 싶다.
 * 컨트롤러 하나로 모든 요청을 처리할 수 없을까?
 * 요청 처리가 끝나고 보여줄 뷰를 좀 더 편하게 제공할 수는 없을까?
--> J2EE 패턴을 보자!
+  -> J2EE 패턴을 보자!
 
 J2EE 패턴
 
@@ -138,7 +141,7 @@ WhiteshipServlet의 부족한 점
 * 핸들러를 여러 형태로 만들 수 없다.
 * 예외 처리 로직을 제공하지 않는다.
 * 뷰를 찾는 로직을 변경할 수 없다.
--> 스프링 mvc를 사용하는게 났겠다.
+  -> 스프링 mvc를 사용하는게 났겠다.
 
 Spring = 현존하는 가장 유연한 MVC프레임 워크
 * 핸들러 맵핑 로직을 변경할 수 있다.

@@ -5,6 +5,9 @@ excerpt: "Absolute, Relative File Paths"
 categories: [CSS]
 link:
 comments: true
+pinned: true
+image:
+  feature: css.jpg
 ---
 
 ######참고자료 :  
@@ -47,9 +50,9 @@ ex) index.php가 C:\index\a에 위치한다면,
 
 만약 두단계 상위 디렉토리로 이동하려면? '../../'
 
-|  <center>Path</center> |<center>Description</center>|
-|:--------|:--------|
-|\<img src = "picture.jpg"|picture.jpg는 현재 페이지와 같은 폴더 안에 위치해 있다.|
-|\<img src = "images/picture.jpg"|picture.jpg는 현재 폴더 안에 위치된 이미지 폴더 안에 위치해 있다.|
-|\<img src = "/images/picture.jpg">|picture.jpg는 현재 웹의 root에 위치한 이미지 폴더 안에 위치해 있다.|
-|\<img src = "../picture.jpg">|picture.jpg는 현재 폴더로부터 한단계 위 폴더 안에 위치해있다.|
+| <center>Path</center>              | <center>Description</center>             |
+| :--------------------------------- | :--------------------------------------- |
+| \<img src = "picture.jpg"          | picture.jpg는 현재 페이지와 같은 폴더 안에 위치해 있다.    |
+| \<img src = "images/picture.jpg"   | picture.jpg는 현재 폴더 안에 위치된 이미지 폴더 안에 위치해 있다. |
+| \<img src = "/images/picture.jpg"> | picture.jpg는 현재 웹의 root에 위치한 이미지 폴더 안에 위치해 있다. |
+| \<img src = "../picture.jpg">      | picture.jpg는 현재 폴더로부터 한단계 위 폴더 안에 위치해있다. |
