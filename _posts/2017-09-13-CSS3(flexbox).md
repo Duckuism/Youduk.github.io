@@ -7,7 +7,7 @@ link:
 comments: true
 pinned: true
 image:
-  feature: css.jpg
+  feature:
 ---
 
 참고 자료

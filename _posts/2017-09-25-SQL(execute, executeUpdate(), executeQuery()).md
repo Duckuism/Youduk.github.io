@@ -7,7 +7,7 @@ link:
 comments: true
 pinned: true
 image:
-  feature: mysql.jpg
+  feature:
 ---
 
 1.execute

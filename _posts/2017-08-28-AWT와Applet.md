@@ -7,7 +7,7 @@ link:
 comments: true
 pinned: true
 image:
-  feature: java.jpg
+  feature:
 ---
 # AWT
 

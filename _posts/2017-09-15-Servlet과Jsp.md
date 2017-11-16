@@ -7,7 +7,7 @@ link:
 comments: true
 pinned: true
 image:
-  feature: javaServletJsp.png
+  feature:
 ---
 
 전체 프린트 다 감쌀 때 윈도우 알트 쉬프트 에이 컬럼 편집.

@@ -7,7 +7,7 @@ link:
 comments: true
 pinned: true
 image:
-  feature: css.jpg
+  feature:
 ---
 
 ###### 참고 : https://www.w3schools.com/cssref/css_selectors.asp

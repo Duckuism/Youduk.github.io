@@ -7,7 +7,7 @@ link:
 comments: true
 pinned: true
 image:
-  feature: css.jpg
+  feature:
 ---
 
 float랑 position을 언제 써야할까?

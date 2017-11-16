@@ -7,7 +7,7 @@ link:
 comments: true
 pinned: true
 image:
-  feature: javascript.png
+  feature:
 ---
 
 ### 참고 자료 : 인사이트 자바스크립트(송형주, 고현준 저 / 한빛미디어)
