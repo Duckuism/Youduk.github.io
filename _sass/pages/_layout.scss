@@ -1,6 +1,8 @@
 /* LAYOUT CSS */
 .cover {
   background-color: $background-color;
+  background-image: url("../../img/cover1.jpeg");
+  background-position: center;
   position: fixed;
   text-align: center;
   width: 100%;
@@ -18,8 +20,11 @@
   }
 }
 .cover-card {
-  color: $text-color;
+  color:$text-color;
   padding: 0 30px;
+  color: white;
+  text-shadow: 1px 1px 1px #000000;
+
   .avatar {
     border-radius: 50%;
     width: 100px;
