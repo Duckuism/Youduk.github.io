@@ -2,7 +2,7 @@
 layout: post
 title: Javascript 데이터 타입과 연산자
 excerpt: "데이터 타입, typeof연산자"
-categories: [javascript]
+categories: [JavaScriptES5]
 link:
 comments: true
 pinned: true

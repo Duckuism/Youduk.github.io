@@ -2,7 +2,7 @@
 layout: post
 title: Javascript의 활용 범위
 excerpt: "자바스크립트의 언어적 특징과 활용처"
-categories: [javascript]
+categories: [JavaScriptES5]
 link:
 comments: true
 pinned: true
