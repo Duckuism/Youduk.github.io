@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 아톰 javacript 개발환경 구축
+title: 아톰 Javacript 개발환경 구축
 excerpt: "아톰 + JS"
-categories: [JavaScript]
+categories: [ATOM]
 link:
 comments: true
 pinned: true
