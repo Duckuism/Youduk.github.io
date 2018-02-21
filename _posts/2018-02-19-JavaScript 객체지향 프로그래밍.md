@@ -1,7 +1,7 @@
 ---
 layout: post
 title: JavaScript 객체지향 프로그래밍 
-excerpt: "JavaScript로 하는 객체지향 프로그래밍"
+excerpt: "원시 타입과 참조 타입"
 categories: [JavaScriptES5]
 link:
 comments: true
@@ -48,7 +48,41 @@ image:
 
 ### 타입이란?
 
-클래스라는 개념을 대체할 타입이라는 개념이 존재하며, 타입은 크게 두 종류로 나뉜다.
+클래스라는 개념을 대체할 타입이라는 개념이 존재하며, 타입은 크게 원시 타입과 참조타입 두 종류로 나뉜다. 
+
+---
+
+### 리터럴 형식
+
+들어가기 전에, 리터럴 형식이 무엇인지에 대해 파악할 필요가 있다.
+
+- 리터럴 형식 : 값을 표현하는 방식
+
+  - 리터럴(literal) : 코드에 직접 입력된 이름이나 가격처럼 변수에 저장되지 않은 값
+
+  - ```javascript
+    //문자열
+    var name = "Nicolas";
+    var selection = "a";
+
+    //숫자
+    var count = 25;
+    var cost = 1.51;
+
+    //불리언
+    var found = true;
+
+    //null
+    var object = null;
+
+    //undefined
+    var flag = undefined;
+    var ref ; // 자동으로 undefined가 할당됨.
+    ```
+
+---
+
+### 원시 타입
 
 * 원시 타입 : 단순한 데이터를 저장
 
@@ -62,14 +96,12 @@ image:
 
   * Undefined : undefined라는 값만 있는 타입 (undefined는 아무런 값도 할당되지 않은 변수에 할당되는 값)
 
-  * 원시 타입의 복사
+  * 원시 타입의 복사(값 자체가 저장된다.)
 
     * ~~~javascript
       var color1 = "red";
       var color2 = color1;
       ~~~
-
-    ​
 
   * 원시 타입의 종류 확인 (typeof 연산자 사용. null은 '===' 사용)
 
@@ -105,35 +137,167 @@ image:
       * Number method : https://www.w3schools.com/js/js_number_methods.asp
       * Boolean method : https://www.w3schools.com/js/js_booleans.asp
 
+
+---
+
+### 참조 타입
+
 * 참조 타입 : 객체로서 저장(메모리상의 주소를 가리킨다.). 자바스크립트 객체를 나타내며 클래스와 가장 가까운 개념.
 
   * 참조 값 : 참조 타입의 인스턴스(instance). 객체(objects)와 같은 말. 객체는 순서가 없는 프로퍼티(property로 구성)
   * 프로퍼티(property) : 이름(문자열)과 값으로 구성되어 있다.
   * 메소드(method) : 프로퍼티의 값이 함수 일 때 해당 프로퍼티
 
-* 리터럴 형식 : 값을 표현하는 방식
+* 객체 생성(객체 참조 생성)
 
-  * 리터럴(literal) : 코드에 직접 입력된 이름이나 가격처럼 변수에 저장되지 않은 값
+  * 인스턴스 화(instantiate) : 객체를 만드는 것. 자바스크립트에는 객체 생성을 하는 두 가지 방법이 있다. 
+
+    1. new 연산자와 생성자를 사용 : 관례상 생성자는 대문자로 시작하여 생성자가 아닌 함수와 구분 한다.
+
+       * ~~~javascript
+         var object = new Object(); // 일반 객체(generic obejct)를 하나 작성하고 객체의 참조(값을 가리키는 메모리 주소)를 object변수에 저장
+         ~~~
+
+       * 이 때, object에 저장된 값은 사실 객체 인스턴스가 아니라 객체가 있는 메모리 상의 위치를 가리키는 포인터(또는 참조)이다. 이것이 바로 객체와 원시 값의 가장 큰 차이점이다. 원시 값은 변수에 직접 값 자체가 저장된다.
+
+       * ~~~javascript
+         var object1 = new Object(); //새로운 객체 생성 후, 참조 값을 object1에 할당
+         var object2 = object1; //object1에 저장된 참조 값을 object2에 할당
+         ~~~
+
+       * 이 때, object1과 object2는 같은 객체를 가리키는 포인터이다.
+
+    2. 객체 리터럴 방식 사용
+
+       * ~~~javascript
+         var object = {};
+         ~~~
+
+    3. <u>생성자, 객체 리터럴 방식의 차이</u>
+
+       1. 생성자 함수로 생성된 객체(인스턴스)는 자신의 프로토타입으로 생성자 함수의 프로토타입 프로퍼티가 가리키는 프로토타입 객체를 참조한다.
+       2. 반면, 객체 리터럴로 생성된 객체(인스턴스)는 자신의 프로토타입으로 Object를 참조한다.
+
+* 객체 참조 제거
+
+  * 자바스크립트는 가비지 컬렉션 기능이 있는 언어이므로 참조 타입을 사용할 때 메모리 할당에 대해 고민하지 않아도 된다. 하지만 가비지 컬렉터가 메모리를 해제할 수 있도록 사용하지 않는 객체에 대해서는 참조 제거를 해두는 편이 좋다.
+
+  * 가비지 컬렉션(garbage collection) : 동적으로 할당된 메모리 블럭이나 객체 중 더 이상 사용하지 않는 것을 제거하여 사용할 수 있는 메모리로 만드는 기능
+
+  * 가비지 컬렉터(garbage collerctor) : 프로그래밍 언어에서 가비지 컬렉션을 수행하는 부분.
 
   * ~~~javascript
-    //문자열
-    var name = "Nicolas";
-    var selection = "a";
-
-    //숫자
-    var count = 25;
-    var cost = 1.51;
-
-    //불리언
-    var found = true;
-
-    //null
-    var object = null;
-
-    //undefined
-    var flag = undefined;
-    var ref ; // 자동으로 undefined가 할당됨.
+    var object1 = new Ojbect();
+    //실행할 코드
+    object1 = null; // 참조 제거
     ~~~
 
+  * 객체를 수백만 개씩 사용하는 대규모 어플리케이션에서는 객체의 참조 제거가 특히 중요하다
 
+* 프로퍼티 추가 및 제거
 
+  * ~~~javascript
+    var object1 = new Object();
+    var object2 = object1;
+
+    object1.myCustomProperty = "Awesome!";
+    console.log(object2.myCustomProperty); //"Awesome!"
+    ~~~
+
+---
+
+### 내장 참조 타입
+
+(Object 타입 외 JavaScript에서 기본적으로 제공하는 유용한 내장 참조 타입)
+
+* 종류
+  * Array : 숫자 인덱스 값을 가진 순차 목록
+  * Date : 날짜와 시간
+  * Error : 실행 중 발생하는 에러 (에러의 종류에 따라 더 구체적인 하위 에러 타입이 존재한다.)
+  * Function : 함수
+  * Object : 일반적인 객체
+  * RegExp : 정규 표현식
+
+* 내장 참조 타입 인스턴스화
+
+  * ~~~javascript
+    var items = new Array();
+    var now = new Date();
+    var error = new Error("에러가 발생했습니다.");
+    var func = new Function("console.log('Hi');");
+    var object = new Object();
+    var re = new RegExp("\\d+");
+    ~~~
+
+* 리터럴 형식
+
+  * 일부 내장 참조 타입은 리터럴 형식 사용 가능 : new 연산자와 객체의 생성자를 사용하여 명시적으로 객체를 만들지 않고도 참조 값을 만들 수 있다.(원시 값 리터럴에 new 연산자가 필요 없는 것과 같다.)
+
+    * 객체 및 배열 리터럴
+
+      * ~~~javascript
+        var book = {
+            name : "객체지향 자바스크립트의 원리",
+            year : 2014
+        };
+
+        var book = {
+            "name" : "객체지향 자바스크립트의 원리",
+            "year" : 2014
+        }; // 프로퍼티 이름을 문자열 리터럴로 만들면 공백과 같은 특수 문자도 사용 가능.
+        ~~~
+
+      * 위 방식은 아래 코드와 동일하다.
+
+        ~~~javascript
+        var book = new Object();
+        book.name = "객체지향 자바스크립트의 원리";
+        book.year = 2014;
+        ~~~
+
+    * 배열 리터럴
+
+      * ~~~javascript
+        var colors = ["red", "blue", "green"];
+        console.log(colors[0]); //"red"
+        ~~~
+
+      * 위 방식은 아래 코드와 동일하다.
+
+        ~~~javascript
+        var colors = new Array("red", "blue", "green")
+        console.log(colors[0]); //"red"
+        ~~~
+
+    * 함수 리터럴
+
+      * 함수는 보통 리터럴 형식을 사용해 정의된다.
+
+      * ~~~javascript
+        function reflect(value){
+            return value;
+        }
+        ~~~
+
+      * 위 방식은 아래 코드와 동일하다.
+
+        ~~~javascript
+        var reflect = new Function("value", "return value;");
+        //생성자 함수 정의 방식은 가독성이 떨어지고 디버그가 어려우므로 사용 빈도가 낮다.
+        ~~~
+
+    * 정규 표현식 리터럴
+
+      * RegExp생성자를 사용하지 않고 정규표현식을 정의할 수 있다.
+
+      * ~~~javascript
+        var numbers = /\d+/g; //문자열 안에 있는 문자를 어떻게 이스케이프 해야 할지 고민 할 필요가 없어 코드 작성이 훨씬 수월하다.
+        ~~~
+
+      * 위 방식은 아래 코드와 동일하다.
+
+        ~~~javascript
+        var numbers = new RegExp("\\d+","g");
+        ~~~
+
+        ​
