@@ -5,9 +5,9 @@
 
 pre, code {
   font-family: $font-family-monospace;
-  color: #000000;
+  color: mediumslateblue;
   font-size: 0.9em;
-  background-color: #0000000d;
+  background-color: ghostwhite;
   font-size: ($font-size-base - 3);
 }
 code {
@@ -29,11 +29,11 @@ pre { // only apply for code blocks
   font-weight: normal;
 }
 pre code {
-  background: transparent;
+  background: ghostwhite;
   white-space: pre;
   overflow: auto;
   word-wrap: normal;
-  color: #000000;
+  color: mediumslateblue;
   span {
     word-break: break-all;
   }
@@ -44,7 +44,7 @@ pre code {
     position: relative;
   }
   pre code {
-    color: #000000;
+    color: mediumslateblue;
     &::before {
       content: attr(data-lang);
       position: absolute;
@@ -87,7 +87,7 @@ pre code {
   .kt { color: #2196f3; font-weight: bold } /* Keyword.Type */
   .m { color: #e65bd3 } /* Literal.Number */
   .s { color: #f77a7a } /* Literal.String */
-  .na { color: #db92e2 } /* Name.Attribute */
+  .na { color: #e65bd3 } /* Name.Attribute */
   .nb { color: #AA22FF } /* Name.Builtin */
   .nc { color: #f43ae7 } /* Name.Class */
   .no { color: #880000 } /* Name.Constant */

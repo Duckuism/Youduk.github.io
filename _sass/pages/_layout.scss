@@ -1,7 +1,7 @@
 /* LAYOUT CSS */
 .cover {
-  background-color: $background-color;
-  background-image: url("../../img/cover1.jpeg");
+  background-color: $white;
+  /*background-image: url("../../img/cover1.jpeg");*/
   background-position: center;
   position: fixed;
   text-align: center;
@@ -22,8 +22,7 @@
 .cover-card {
   color:$text-color;
   padding: 0 30px;
-  color: white;
-  text-shadow: 1px 1px 1px #000000;
+  color: black;
 
   .avatar {
     border-radius: 50%;
