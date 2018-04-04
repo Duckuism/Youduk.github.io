@@ -2,6 +2,7 @@
 layout: post
 title: Recursion 관련 알고리즘
 excerpt: "주사위로 이동 가능한 경우의 수 모두 구하기, 이미지에서 닫힌 영역 단색 칠하는 함수 구현하기, n비트의 모든 경우의 수를 출력, 순열 구하기, N개 괄호로 만들 수 있는 모든 조합 출력하기"
+tags: [Java, Algorithm, Recursion]
 categories: [Algorithm]
 link:
 comments: true
@@ -125,7 +126,7 @@ http://arabiannight.tistory.com/entry/%EC%9E%90%EB%B0%94Java-ArrayListT-%EC%A0%9
 
 - 못 풀었다. 로직은 어느정도 생각이 났는데, 조건에 관련된 부분을 내가 놓쳐서 못하는 듯.
 
-  ```java
+- ~~~java
   import java.util.ArrayList; //순서가 있고, 데이터의 중복을 허용.
 
   public class Exercise {
@@ -136,57 +137,50 @@ http://arabiannight.tistory.com/entry/%EC%9E%90%EB%B0%94Java-ArrayListT-%EC%A0%9
           ArrayList<String> arrList = new ArrayList<String>();
 
           int flag = 0;
-  ```
+        for(String s : arrList){
+            //만약 s가 null이면 0과 1을 추가하고,
+            //값이 있다면 처음부터 0과 1을 번갈아서 String으로 더하면 될 것같은데!
+        }
 
-```
-      for(String s : arrList){
-          //만약 s가 null이면 0과 1을 추가하고,
-          //값이 있다면 처음부터 0과 1을 번갈아서 String으로 더하면 될 것같은데!
-      }
+        //종료조건
+        if(n == 1){
+            return arrList;
+        }
+        return bitCombinations(n-1);
+    }
+  }    
+  ~~~
 
-      //종료조건
-      if(n == 1){
-          return arrList;
-      }
-      return bitCombinations(n-1);
-  }
-```
 
-  }
-
-```
-  ​
 
 * 모범 답안
 
-  계속 헬퍼함수를 만든다. 이 부분을 내가 익숙하지 않아서 그런 것 같기도 하다.
-  답안을 보니 로직은 비슷했던 것 같은데, 코드를 짜는 능력이 부족했다 ㅠㅠ
+*  계속 헬퍼함수를 만든다. 이 부분을 내가 익숙하지 않아서 그런 것 같기도 하다.
+   답안을 보니 로직은 비슷했던 것 같은데, 코드를 짜는 능력이 부족했다 ㅠㅠ
 
-  ~~~java
-  import java.util.ArrayList;
+* ~~~java
+    import java.util.ArrayList;
 
-  public class Exercise{
-      public static ArrayList<String> bitCombinations(int n){
-          return bitCombRec(n, "", new ArrayList<String>());//대체로 매개변수가 다 넘어가고, List를 만드는 함수는 대체로 String을 누적해 쌓다가 그게 완성이 되면 List에 하나 넣어주는 형식. 빈 문자열인 ""에 0과 1을 누적해서 n비트가 완성이 되면 ArrayList에 넣어줄 것이다. 그리고 마지막에 ArrayList 반환
-      }
-      
-      private static ArrayList<String> bitCombRec(int n, String s, ArrayList<String> list){
-          //종료 조건 s가 n비트가 되면 이니까, 길이를 비교하면 된다.
-          if(n == s.length()){//s가 n비트가 되었으면
-              list.add(s);//list에 n비트 길이의 문자열 s를 추가한다.
-              return list;
-          }
-          //잘 모르겠을 때는 우선 그냥 똑같이 쓰고, 어떻게 바꿀까를 고민하자.
-          bitCombRec(n, s+"0", list);
-          bitCombRec(n, s+"1", list);
-          return list;
-      }
-  }
-```
+    public class Exercise{
+        public static ArrayList<String> bitCombinations(int n){
+            return bitCombRec(n, "", new ArrayList<String>());//대체로 매개변수가 다 넘어가고, List를 만드는 함수는 대체로 String을 누적해 쌓다가 그게 완성이 되면 List에 하나 넣어주는 형식. 빈 문자열인 ""에 0과 1을 누적해서 n비트가 완성이 되면 ArrayList에 넣어줄 것이다. 그리고 마지막에 ArrayList 반환
+        }
+        
+        private static ArrayList<String> bitCombRec(int n, String s, ArrayList<String> list){
+            //종료 조건 s가 n비트가 되면 이니까, 길이를 비교하면 된다.
+            if(n == s.length()){//s가 n비트가 되었으면
+                list.add(s);//list에 n비트 길이의 문자열 s를 추가한다.
+                return list;
+            }
+            //잘 모르겠을 때는 우선 그냥 똑같이 쓰고, 어떻게 바꿀까를 고민하자.
+            bitCombRec(n, s+"0", list);
+            bitCombRec(n, s+"1", list);
+            return list;
+        }
+    }
+  ~~~
 
-  ​
-
-http://galgum.tistory.com/18
+* http://galgum.tistory.com/18
 
 
 
