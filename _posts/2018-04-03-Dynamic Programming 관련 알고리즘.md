@@ -2,7 +2,7 @@
 layout: post
 title: Dynamic Programming 관련 알고리즘
 excerpt: "주어진 값 N에 대해 피보나치 수열의 값을 구하기"
-tags: [Java, Algorithm, Basic]
+tags: [Java, Algorithm, DP]
 categories: [Algorithm]
 link:
 comments: true

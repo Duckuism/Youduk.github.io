@@ -178,6 +178,7 @@ http://arabiannight.tistory.com/entry/%EC%9E%90%EB%B0%94Java-ArrayListT-%EC%A0%9
             return list;
         }
     }
+    ~~~
   ~~~
 
 * http://galgum.tistory.com/18
@@ -348,3 +349,4 @@ http://arabiannight.tistory.com/entry/%EC%9E%90%EB%B0%94Java-ArrayListT-%EC%A0%9
   ```
 
   ​
+  ~~~

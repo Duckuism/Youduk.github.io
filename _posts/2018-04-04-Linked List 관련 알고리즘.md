@@ -2,7 +2,7 @@
 layout: post
 title: Linked List 관련 알고리즘
 excerpt: "Single linked list 구현하기, Single linked list에서 중복 데이터 제거하기, Single linked list 역으로 정렬하기,Single linked list에서 뒤에서 K번째 원소를 반환하는 함수 구현하기, Single linked list에서 회문(palindrome)판별하기"
-tags: [Java, Algorithm, Basic]
+tags: [Java, Algorithm, Linked List]
 categories: [Algorithm]
 link:
 comments: true

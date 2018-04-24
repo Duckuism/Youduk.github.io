@@ -2,7 +2,7 @@
 layout: post
 title: Bit Operation 관련 알고리즘
 excerpt: "기본적인 비트 연산 구현 연습, 2의 제곱수 판별, 두 수의 비트 차이수 구하기"
-tags: [Java, Algorithm, Basic]
+tags: [Java, Algorithm, BitOperation]
 categories: [Algorithm]
 link:
 comments: true

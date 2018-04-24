@@ -2,7 +2,7 @@
 layout: post
 title: Priority Queue 관련 알고리즘
 excerpt: "PriorityQueue를 이용하여 heap sort 구현하기, 매우 많은 수에서 top10 구하기, 연속된 정수 입력에서 중간값(median) 추적하기"
-tags: [Java, Algorithm, Basic]
+tags: [Java, Algorithm, priority Queue]
 categories: [Algorithm]
 link:
 comments: true

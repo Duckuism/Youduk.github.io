@@ -2,7 +2,7 @@
 layout: post
 title: Tree&Graph 관련 알고리즘
 excerpt: "Binary Tree에서 최대값 찾기, Binary Tree의 Balance가 맞는지 판별하기, 오름 차순으로 정렬된 배열을 Binary Search Tree로 구현하기, 주어진 Binary Tree가 Binary Search Tree인지 판별하기"
-tags: [Java, Algorithm, Basic]
+tags: [Java, Algorithm, Tree, Graph]
 categories: [Algorithm]
 link:
 comments: true
