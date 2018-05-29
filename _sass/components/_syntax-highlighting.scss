@@ -84,20 +84,20 @@ pre code {
   .o { color: #fff } /* Operator */
   .p { color: #fff} /* Punctuation */
   
-  .m { color: #AA75F5 } /* Literal.Number */
-  .mi { color: #ED645D}
-  .n { color: #AA75F5 } /* Name */
-  .nb { color: #AA75F5 } /* Name.Builtin */
-  .ni { color: #AA75F5; font-weight: bold } /* Name.Entity */
-  .nl { color: #AA75F5 } /* Name.Label */
-  .nn { color: #AA75F5; font-weight: bold } /* Name.Namespace */
-  .py { color: #AA75F5;} /* Name.Property*/
-  .nv { color: #AA75F5 } /* Name.Variable */
-  .w { color: #AA75F5 } /* Text.Whitespace */
-  .bp { color: #AA75F5 } /* Name.Builtin.Pseudo */
-  .vc { color: #AA75F5 } /* Name.Variable.Class */
-  .vg { color: #AA75F5 } /* Name.Variable.Global */
-  .vi { color: #AA75F5 } /* Name.Variable.Instance */
+  .m { color: #C79FFE } /* Literal.Number */
+  .mi { color: #CE4F49}
+  .n { color: #C79FFE } /* Name */
+  .nb { color: #C79FFE } /* Name.Builtin */
+  .ni { color: #C79FFE; font-weight: bold } /* Name.Entity */
+  .nl { color: #C79FFE } /* Name.Label */
+  .nn { color: #C79FFE; font-weight: bold } /* Name.Namespace */
+  .py { color: #C79FFE;} /* Name.Property*/
+  .nv { color: #C79FFE } /* Name.Variable */
+  .w { color: #C79FFE } /* Text.Whitespace */
+  .bp { color: #C79FFE } /* Name.Builtin.Pseudo */
+  .vc { color: #C79FFE } /* Name.Variable.Class */
+  .vg { color: #C79FFE } /* Name.Variable.Global */
+  .vi { color: #C79FFE } /* Name.Variable.Instance */
 
 
   .kn{ color : #E91E63 } /*Keyword.Namespace*/
@@ -122,10 +122,10 @@ pre code {
   .s1 { color: #FFB6B3 } /* Literal.String.Single */
   .ss { color: #FFB6B3 } /* Literal.String.Symbol */
 
-  .na { color: #ED645D } /* Name.Attribute */
-  .nc { color: #ED645D } /* Name.Class */  
-  .nd { color: #ED645D } /* Name.Decorator */
-  .ne { color: #ED645D; font-weight: bold } /* Name.Exception */
-  .nf { color: #ED645D } /* Name.Function */
-  .nx { color: #ED645D } /* Name.Other*/
+  .na { color: #CE4F49 } /* Name.Attribute */
+  .nc { color: #FFFF00 } /* Name.Class */  
+  .nd { color: #CE4F49 } /* Name.Decorator */
+  .ne { color: #CE4F49; font-weight: bold } /* Name.Exception */
+  .nf { color: #CE4F49 } /* Name.Function */
+  .nx { color: #CE4F49 } /* Name.Other*/
 }
