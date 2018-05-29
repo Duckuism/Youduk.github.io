@@ -1,4 +1,9 @@
-- name: leonids
-  descr: "Bacon ipsum dolor sit amet doner meatball jowl short ribs, chicken prosciutto salami frankfurter. Pig drumstick turducken short ribs, brisket meatloaf ham hock shankle andouille corned beef strip steak. Venison ham bresaola strip steak. Pork belly ribeye prosciutto t-bone."
-  image: pong.png
-  github: https://github.com/renyuanz/leonids
+- name: 철학더쿠
+  descr: "철학에 관련된 강의와 질답을 올리는 게시판을 만드는 사이드 프로젝트"
+  # image: pong.png
+  github: https://github.com/YouDuk/Philosophy_Ducku
+
+- name: 알몸프로젝트
+  descr: "일반인과 헬스케어 전문가들을 연결시켜주는 매칭서비스 프로젝트"
+  # image: pong.png
+  website: https://www.youtube.com/playlist?list=PLMijezviBtBWl8ZsY2oLwtUEEo-Dz9y2o

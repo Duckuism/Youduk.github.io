@@ -1,8 +1,20 @@
-- name: Massachusets Instutite of Technology
-  link: http://web.mit.edu/
-  date: 2011 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+- name: Naver boostcourse Ace
+  link: https://m.post.naver.com/viewer/postView.nhn?volumeNo=13598041&memberNo=34635212
+  date: 2018 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
   descr: <br> (expected graduation in 2019)
 
-- name: Harvard
-  link: http://www.harvard.edu/
-  date: 2007 - 2011
+- name: In Full-stack web engineer course, BITCAMP
+  link: http://bitcamp.co.kr/index.php?main_page=home
+  date: 2017 - 2018
+
+- name: LIKE LION, Programming Union Club
+  link: https://likelion.net/
+  date: 2017
+
+- name: In Front-end developer course, CODESTATES, Bootcamp
+  link: https://codestates.com/#/
+  date: 2017
+
+- name: Textile & fashion design, Inha Univ.
+  link: http://www.inha.ac.kr/mbshome/mbs/kr/index.do
+  date: 2010 - 2018
