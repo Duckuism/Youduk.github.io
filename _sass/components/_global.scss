@@ -16,6 +16,11 @@ img {
   max-width: 100%;
   box-shadow: 0 0 10px 3px grey;
   border-radius: 0.5%;
+  transition: all .10s;
+}
+
+img:hover{
+  transform: scale(1.1);
 }
 
 // Tables

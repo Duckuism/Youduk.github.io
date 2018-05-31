@@ -35,10 +35,12 @@ blockquote {
 a {
    text-decoration: none;
    color: $primary;
+   transition: all .4s;
    &:hover,
    &:focus {
      color: lighten($primary, 14%);
      text-decoration: none;
+     font-size: 130%;
    }
 }
 
@@ -56,7 +58,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   color: $text-color;
   &:hover,
   &:focus {
-    color: lighten($text-color, 24%);
+    color: lighten($text-color, 24%);  
   }
 }
 h1 { font-size: $font-size-h1; margin: ($font-size-h1 / 2) 0 ($font-size-h1 / 2.5) 0;}
