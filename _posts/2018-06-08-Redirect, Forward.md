@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Redirect,Forward
+title: Redirect, Forward
 excerpt: "Redirect와 Forward의 개념, 차이, Jsp와 Servlet의 연동"
 tags: [Boostcourse]
 categories: [JSP, Servlet]
