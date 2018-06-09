@@ -13,8 +13,7 @@
     background-position: center;
     padding: 30px;
   }
-  @include media-query($medium-screen) {
-    height: 100vh;
+  @include media-query($medium-screen) {    
     position: initial;
     width: 100%;
   }
@@ -48,9 +47,8 @@
     display: block;
   }
   @include media-query($medium-screen) {
-    text-align: right;
-    margin: 0 auto;
-    padding: 0 0px 80px;
+    text-align: center;
+    margin: 0 auto;    
   }
 }
 .social-links {

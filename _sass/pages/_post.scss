@@ -12,11 +12,24 @@
     padding: 50px 30px 0;
   }
   @include media-query($medium-screen) {
-    height: 100vh;
-    overflow-y: scroll;
+    height: 100vh;    
     position: initial;
     top: 0;
+    padding: 4% 10%;
   }
+  @include media-query($large-screen) {
+    height: 100vh;    
+    position: initial;
+    top: 0;
+    padding: 4% 20%;
+  }
+  @include media-query($larger-screen) {
+    height: 100vh;    
+    position: initial;
+    top: 0;
+    padding: 4% 30%;
+  }
+
 }
 
 .image-credit {
@@ -96,6 +109,7 @@ a.read-more {
 
 #post img {
   display:block;
+  max-width: 100%;
 }
 
 #post h1 {

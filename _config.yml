@@ -37,6 +37,7 @@ plugins:
  - jekyll-redirect-from
  - jekyll-sitemap
  - jekyll-paginate
+ - redcarpet
 
 disqus:
   id: "https-youduk-github-io"
