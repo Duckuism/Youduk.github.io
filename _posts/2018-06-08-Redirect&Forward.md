@@ -68,11 +68,11 @@ redirect가 되었다는 것을 확인할 수 있는 text를 입력한다.
 
 
 
-![](/Img/Redirect_1.png)
+![](/img/Redirect_1.png)
 
 위의 그림에서 redirect01요청 응답 코드가 302인 것을 확인할 수 있다.
 
-![](/Img/Redirect_2.png)
+![](/img/Redirect_2.png)
 
 위에서부터 순서대로 실행된다.
 
@@ -104,7 +104,7 @@ redirect가 되었다는 것을 확인할 수 있는 text를 입력한다.
 
 #### Forward : WAS의 서블릿이나 JSP가 요청을 받은 후 그 요청을 처리하다가, 추가적인 처리를 같은 웹 어플리케이션안에 포함된 다른 서블릿이나 JSP에게 위임하는 행위
 
-![](/Img/Forward_1.png)
+![](/img/Forward_1.png)
 
 1. 웹 브라우저에서 WAS에게 요청을 보내고, Servlet1에서 요청을 받음
 2. Servlet1은 요청을 일정 부분만 처리한 후, 그 결과를 HttpServletRequest에 저장
@@ -209,7 +209,7 @@ public class NextServlet extends HttpServlet {
 
 이렇게 코드를 작성하고 FrontServlet을 run on server 하면 아래와 같은 창을 얻을 수 있다. Hello 출력 횟수가 run 할 때마다 random하게 바뀐다.
 
-![](/Img/Forward_2.png)
+![](/img/Forward_2.png)
 
 redirect와는 달리 URL이 바뀌지 않은 것을 알 수 있다.
 
@@ -239,7 +239,7 @@ redirect와는 달리 URL이 바뀌지 않은 것을 알 수 있다.
 - 프로그램 로직 수행은 Servlet에서, 결과 출력은 JSP에서 하는 것이 유리하다.
 - Servlet과 JSP의 장단점을 해결하기 위해서 Servlet에서 프로그램 로직이 수행되고, 그 결과를 JSP에게 포워딩하는 방법이 사용되게 되었다. 이를 Servlet과 JSP연동이라고 한다.
 
-![](/Img/Servlet&Jsp_1.png)
+![](/img/Servlet&Jsp_1.png)
 
 
 
