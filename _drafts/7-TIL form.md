@@ -20,10 +20,8 @@ image:
 - Introduction to algorithm 스터디
   - 발표 준비 / 책 읽기 / 정렬 소스 만들기 / 문제풀이
 - boostcourse 프로젝트 (Java+Spring)
-- NTS UI개발 입사지원(~6.17)
-  - 코드 스피츠 정리해서 블로깅
-  - 알고리즘 블로깅
-  - 이력서 정리
+
+  
 
 
 ## Schedule
@@ -46,6 +44,6 @@ image:
 
 ## Today's Algorithm
 
-##### 
+
 
 ## Today's Diary
