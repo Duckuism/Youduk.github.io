@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Access denied for user 'root'@'localhost' 
-excerpt: "MySQL"
+excerpt: "MySQL ERROR"
 tags: [Boostcourse]
 categories: [MySQL]
 link:

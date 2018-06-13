@@ -11,6 +11,10 @@ image:
   feature:
 ---
 
+이 강의는 connect 재단의 boostcourse 강의를 공부 목적으로 정리한 것입니다.
+
+
+
 ## Redirect
 
 #### 리다이렉트 (redirect) : 서버가 클라이언트에게 특정 URL로 이동하라는 요청을 보내는 것
