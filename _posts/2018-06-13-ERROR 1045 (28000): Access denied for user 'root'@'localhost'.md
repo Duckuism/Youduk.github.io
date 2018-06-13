@@ -21,7 +21,6 @@ image:
 
 1. 비밀번호를 틀리게 입력했을 경우
    1. 비밀번호를 초기화 하는 방법이 있겠다. : http://babytiger.tistory.com/entry/mysql%EC%97%90-%EB%A1%9C%EA%B7%B8%EC%9D%B8%EC%9D%B4-%EC%95%88-%EB%90%A0-%EA%B2%BD%EC%9A%B0
-   2. 
 2. 정말로 접근 권한 자체가 없을 경우 (이 경우는 보통 sudo를 입력하면 대부분 해결된다.)
    1. root의 db를 전체 삭제했다가 다시 생성하는 방법이 있겠다. 하지만 그다지 좋은 방법이 아니고, 이런 식으로 문제를 해결하면 안 된다. : https://www.wsgvet.com/bbs/board.php?bo_table=web&wr_id=181
    2. 역시나 갓 구글링.. sudo 명령어로 root에 접근 권한을 부여받고, -p 옵션을 이용해서 패스워드를 입력하면 됐다. 
