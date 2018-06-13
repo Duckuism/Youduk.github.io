@@ -14,8 +14,8 @@ code {
   color: #fff;
   border-radius: 2px;
   white-space: nowrap;
+  board: 5px solid #2A2433;
 }
-
 
 pre { // only apply for code blocks
   overflow: auto;
@@ -132,4 +132,8 @@ pre code {
   .ne { color: #ED645D; font-weight: bold } /* Name.Exception */
   .nf { color: #ED645D } /* Name.Function */
   .nx { color: #ED645D } /* Name.Other*/
+}
+
+.highlighter-rouge{
+  padding: 0.6% 1%;
 }
