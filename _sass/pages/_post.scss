@@ -8,26 +8,15 @@
   padding: 20px 20px 0;
   -webkit-transform: translate3d(0,0,1px);
   transform: translate3d(0,0,1px);
+  display: flex;
+  flex-wrap: wrap;
   @include media-query($small-screen) {
-    padding: 50px 30px 0;
   }
   @include media-query($medium-screen) {
-    height: 100vh;    
-    position: initial;
-    top: 0;
-    padding: 4% 10%;
   }
   @include media-query($large-screen) {
-    height: 100vh;    
-    position: initial;
-    top: 0;
-    padding: 4% 20%;
   }
   @include media-query($larger-screen) {
-    height: 100vh;    
-    position: initial;
-    top: 0;
-    padding: 4% 30%;
   }
 
 }
@@ -44,6 +33,10 @@
 // Post Section
 section.post {
 	margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 350px;
+  padding: 1%;
 }
 
 // Back home button
@@ -100,6 +93,23 @@ a.read-more {
 
 // Post content
 
+.post-container{
+  width:100%;
+  word-wrap: break-word;
+  @include media-query($small-screen) {
+    padding: 2% 5%;
+  }
+  @include media-query($medium-screen) {
+    padding: 4% 10%;
+  }
+  @include media-query($large-screen) {
+    padding: 4% 20%;
+  }
+  @include media-query($larger-screen) {
+    padding: 4% 30%;
+  }  
+}
+
 #post {
   padding-bottom: 50px;
   .post-header {
@@ -130,6 +140,7 @@ a.read-more {
 #page {
   padding-bottom: 50px;
   min-height: 70vh;
+  margin: 0px auto;
   .page-header {
     margin: 0 auto 50px;
   }
@@ -168,7 +179,7 @@ a.read-more {
   }
 }
 .post-image-feature {
-  margin-bottom: 40px;
+  width:100%;
   .feature-image {
     width: 100%;
     max-height: 500px;
