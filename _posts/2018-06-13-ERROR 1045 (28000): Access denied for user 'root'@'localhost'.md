@@ -8,7 +8,7 @@ link:
 comments: true
 pinned: true
 image:
-  feature:
+  feature: mysql.jpg
 ---
 
 ## ERROR 해결
