@@ -11,7 +11,7 @@ image:
   feature: codespitz.png
 ---
 
-이 강의는 codespitz 스터디의 내용을 바탕으로 정리한 내용입니다.
+이 포스트는 codespitz 스터디 강의와 교안을 개인적인 복습 용도로 정리한 내용입니다. 모든 저작권은 codespitz에 있으며 문제시 삭제하겠습니다.
 
 <https://www.youtube.com/watch?v=_o1zsrBkZyg&t=4s>
 
@@ -161,7 +161,17 @@ overflow가 hidden, scroll일 때만 flow랑 관련이 있다.
 * New BFC : overflow가  hidden 또는 scroll이라면 이 값을 갖는 요소로부터 새로운 BFC를 만든다.
 * First Line Box Bound :  새로운 BFC를 만들 때 LINE BOX들의 경계면을 인식해서 영역을 잡는다. 이후에 overflow가 아닌 div가 들어오면 BFC가 확장된다. relative를 주면 이 BFC 전체가 움직이게 되는 것이다.
 
-
+![](/img/overflow_1.png)
+![](/img/overflow_2.png)
+![](/img/overflow_3.png)
+![](/img/overflow_4.png)
+![](/img/overflow_5.png)
+![](/img/overflow_6.png)
+![](/img/overflow_7.png)
+![](/img/overflow_8.png)
+![](/img/overflow_9.png)
+![](/img/overflow_10.png)
+![](/img/overflow_11.png)
 
 ## OVERFLOW-X, OVERFLOW-Y - visible / hidden / scroll / clip / auto(default)
 
