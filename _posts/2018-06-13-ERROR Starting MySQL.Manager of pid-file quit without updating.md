@@ -8,7 +8,7 @@ link:
 comments: true
 pinned: true
 image:
-  feature: mysql.jpg
+  feature: mysql.png
 ---
 
 또한 mysql.server start 명령어도 입력 시에 다음과 같은 에러가 났다. 
