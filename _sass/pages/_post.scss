@@ -126,6 +126,10 @@ a.read-more {
   max-width: 100%;
   height: auto;
   margin: 4% auto;
+  transition: transform 0.5s;
+  &:hover {
+    transform:scale(1.5);
+  }
 }
 
 #post h1 {
