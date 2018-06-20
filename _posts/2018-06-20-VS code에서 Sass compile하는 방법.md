@@ -21,7 +21,7 @@ Sass 컴파일러는 대표적으로 3가지가 있습니다.
 - ~~Ruby Gem~~
 - ~~Node.js NPM~~
 
-저희는 명령어를 사용하지 않고 간단하게 쓸 수 있는 VS CODE 기반의 Live Sass Compiler를 사용해보겠습니다. (공식 도큐먼트에 있는 내용과는 달리 확장프로그램을 이용하여 하는 방식입니다. 공식 도큐먼트 방법은 다음 링크에 첨부되어 있습니다. https://code.visualstudio.com/docs/languages/css)
+저희는 명령어를 사용하지 않고 간단하게 쓸 수 있는 VS CODE 기반의 Live Sass Compiler를 사용해보겠습니다. (공식 도큐먼트에 있는 내용과는 달리 확장프로그램을 이용하여 하는 방식입니다. 공식 도큐먼트 방법 Node.js NPM을 이용하는 방법으로써, 다음 링크에 첨부되어 있습니다. https://code.visualstudio.com/docs/languages/css)
 
 
 
