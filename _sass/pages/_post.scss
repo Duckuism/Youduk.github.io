@@ -123,7 +123,9 @@ a.read-more {
 
 #post img {
   display:block;
+  width:auto;
   max-width: 100%;
+  min-width: 50%;
   height: auto;
   margin: 4% auto;
   transition: transform 0.5s;
