@@ -11,8 +11,6 @@ image:
   feature: sass.png
 ---
 
-# VS CODE에서 Sass 환경설정하고 컴파일하기!
-
 
 
 Sass 컴파일러는 대표적으로 3가지가 있습니다.
