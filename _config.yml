@@ -42,8 +42,6 @@ plugins:
 disqus:
   id: "https-youduk-github-io"
 
-google_analytics: "UA-121414052-1"
-
 
 #
 ###################################
