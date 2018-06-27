@@ -18,6 +18,9 @@
   </div>
   <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
   {% include js.html %}
+  {% if jekyll.environment == 'production' %}
+  {% include analytics.html %}
+  {% endif %}
 </body>
 
 </html>
