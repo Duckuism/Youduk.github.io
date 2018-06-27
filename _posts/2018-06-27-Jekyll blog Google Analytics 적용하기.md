@@ -45,9 +45,9 @@ Website Name에는 원하는 블로그 이름을 넣으시고, Website URL 부�
 
 설명에 보면 추적할 모든 웹페이지의 head 부분에 넣으라고 나와있습니다. 저희는 블로그 전체를 추적할 것이기 때문에 모든 레이아웃의 최상단인 파일(보통 jekyll blog의 경우 default.html)의 head 부분에 붙여넣겠습니다. 제 블로그는 default.html이 head.html을 include하는 형식이므로 head.html의 맨 앞에 붙여넣었습니다.
 
-![](/img/GA4.png)
-
 ![](/img/GA5.png)
+
+![](/img/GA4.png)
 
 자 이제 거의 다 되었습니다. 이제 jekyll 블로그를 github에 push합니다. 그리고 rendering이 완료 될 때까지 조금 기다렸다가 블로그에 접속한 후 개발자도구를 열고 network 탭을 클릭하여 analytics.js가 제대로 나오는지 확인합니다.
 
