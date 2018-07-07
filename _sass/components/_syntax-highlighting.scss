@@ -12,8 +12,8 @@ pre, code {
 }
 code {
   color: #fff;
-  border-radius: 2px;
   white-space: nowrap;
+  padding: 3px;
   board: 5px solid #2A2433;
 }
 
@@ -21,14 +21,10 @@ pre { // only apply for code blocks
   overflow: auto;
   display: block;
   padding: 1em;
-  margin: 0 0 1em;
-  line-height: $base-line-height * 0.925;
   word-break: break-all;
   word-wrap: break-word;
   border-radius: 0;
   font-weight: normal;
-  box-shadow:0 0 10px 3px grey;
-  border-radius:0.5%;
 }
 pre code {
   background: #2A2433;
@@ -41,9 +37,8 @@ pre code {
   }
 }
 .highlight {
-  margin-top: 30px;
-  box-shadow:0 0 10px 3px grey;
-  border-radius:0.5%;
+  overflow:auto;
+  box-shadow: 0 0 1em #888888;
   pre {
     position: relative;
   }
@@ -132,8 +127,4 @@ pre code {
   .ne { color: #ED645D; font-weight: bold } /* Name.Exception */
   .nf { color: #ED645D } /* Name.Function */
   .nx { color: #ED645D } /* Name.Other*/
-}
-
-.highlighter-rouge{
-  padding: 0.6% 1%;
 }
