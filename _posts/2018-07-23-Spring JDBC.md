@@ -1,0 +1,845 @@
+---
+layout: post
+title: Spring JDBC
+excerpt: ""
+tags: [Boostcourse]
+categories: [Spring]
+link:
+comments: true
+pinned: true
+image:
+  feature: spring.png
+---
+
+# 1) Spring JDBC 소개
+
+**들어가기 전에**
+
+JDBC를 이용해서 프로그래밍을 하게 되면 반복적인 코드가 많이 발생합니다.
+
+이러한 반복적인 코드는 개발자의 생산성을 떨어트리는 주된 원인이 됩니다.
+
+이러한 문제를 해결하기 위해 등장한 것이 Spring JDBC입니다.
+
+이번 시간엔 Spring JDBC에 대해 알아보도록 하겠습니다.
+
+------
+
+**학습 목표**
+
+1. Spring JDBC에 대한 개념을 이해합니다.
+2. Spring JDBC의 핵심 클래스와 인터페이스에 대해 이해합니다.
+
+------
+
+**핵심 개념**
+
+- JdbcTemplate
+- RowMapper
+  - 한 행에는 여러 가지 컬럼이 존재한다. 해당 컬럼들을 원하는 객체에 맵핑을 해줘야 할 필요가 있는데, 이 때 사용하는 객체
+
+**Spring JDBC 패키지**
+
+- org.springframework.jdbc.core
+  - jdbc template 클래스와 jdbc template의 다양한 콜백 인터페이스를 포함하고 있다. 추가로 여러가지 관련 클래스를 포함하고 있다.
+- org.springframework.jdbc.datasource
+  - 데이터소스에 접근을 쉽게 하는 유틸리티 클래스와 자바EE 컨테이너 외부에 수정되지않고 운영되는 JDBC 코드와 테스트에서 사용할 수 있는 여러가지 간단한 데이터소스 구현체를 포함하고 있다. 
+- org.springframework.jdbc.object
+  - RDBMS의 조회, 갱신, 저장 프로시저를 스레드 세이프하고 재사용 가능한 객체로 나타내는 클래스를 포함한다.
+- org.springframework.jdbc.support
+  - SQL Exception 변환기능와 약간의 유틸리티 클래스를 제공하고 있다.
+
+**JDBC Template**
+
+- org.springframework.jdbc.core에서 가장 중요한 클래스입니다.
+- 리소스 생성, 해지를 처리해서 연결을 닫는 것을 잊어 발생하는 문제 등을 피할 수 있도록 합니다.
+- 스테이먼트(Statement)의 생성과 실행을 처리합니다.
+- SQL 조회, 업데이트, 저장 프로시저 호출, ResultSet 반복호출 등을 실행합니다.
+- JDBC 예외가 발생할 경우 org.springframework.dao패키지에 정의되어 있는 일반적인 예외로 변환시킵니다.
+
+------
+
+![](/img/SpringJDBC1.png)
+
+* 연결 파라미터 정의 : 어떤 데이터베이스에 접속할건지 등에 대한정보
+* SQL문 : 스프링 프레임워크가 알아낼 수 없으므로 개발자가 해야한다.
+* 파라미터 선언과 파라미터 값 제공 : 파라미터가 어떤 값들을 가지고 쿼리문을 수행할지도 스프링이 알 수가 없으므로 개발자가 해야한다.
+* 이터레이션에 대한 작업 : 흐름 제어는 개발자가 진행해야한다.
+
+**실습코드**
+
+**JdbcTemplate select 예제1**
+
+열의 수 구하기
+
+```java
+int rowCount = this.jdbcTemplate.queryForInt("select count(*) from t_actor");
+```
+
+**JdbcTemplate select 예제2**
+
+변수 바인딩 사용하기
+
+```java
+int countOfActorsNamedJoe = this.jdbcTemplate.queryForInt("select count(*) from t_actor where first_name = ?", "Joe"); 
+```
+
+**JdbcTemplate select 예제3**
+
+String값으로 결과 받기
+
+```java
+String lastName = this.jdbcTemplate.queryForObject("select last_name from t_actor where id = ?", new Object[]{1212L}, String.class); 
+```
+
+**JdbcTemplate select 예제4**
+
+한 건 조회하기
+
+```java
+Actor actor = this.jdbcTemplate.queryForObject(
+
+  "select first_name, last_name from t_actor where id = ?",
+
+  new Object[]{1212L},
+
+  new RowMapper<Actor>() {
+
+    public Actor mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+      Actor actor = new Actor();
+
+      actor.setFirstName(rs.getString("first_name"));
+
+      actor.setLastName(rs.getString("last_name"));
+
+      return actor;
+
+    }
+
+  });
+```
+
+* 한 행에는 여러 가지 컬럼이 존재한다. 해당 컬럼들을 원하는 객체에 맵핑을 해줘야 할 필요가 있는데, 이 때 사용하는 객체가 RowMapper이다. RowMapper를 상속받은 이름없는 객체를 이용해서 Row라는 메서드를 오버라이딩하고 있는 것을 볼 수 있다. 한 건의 결과가 ResultSet에 담겨있기 때문에 해당 ResultSet의 값을 Actor에 담아서 리턴을 하고 있다. 이렇게 실행하면 한 행의 데이터를 조회해서 객체에 담아서 리턴을 해줄 수 있다.
+
+**JdbcTemplate select 예제5**
+
+여러 건 조회하기
+
+```java
+List<Actor> actors = this.jdbcTemplate.query(
+
+  "select first_name, last_name from t_actor",
+
+  new RowMapper<Actor>() {
+
+    public Actor mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+      Actor actor = new Actor();
+
+      actor.setFirstName(rs.getString("first_name"));
+
+      actor.setLastName(rs.getString("last_name"));
+
+      return actor;
+
+    }
+
+  });
+```
+
+* 앞의 한 건을 조회할 때랑 다른 점은 .query() 메서드를 사용하고 있는 부분이다.
+
+**JdbcTemplate select 예제6**
+
+중복 코드 제거 (1건 구하기와 여러 건 구하기가 같은 코드에 있을 경우)
+
+```java
+public List<Actor> findAllActors() {
+
+  return this.jdbcTemplate.query( "select first_name, last_name from t_actor", new ActorMapper());
+
+}
+
+private static final class ActorMapper implements RowMapper<Actor> {
+
+  public Actor mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+    Actor actor = new Actor();
+
+    actor.setFirstName(rs.getString("first_name"));
+
+    actor.setLastName(rs.getString("last_name"));
+
+    return actor;
+
+  }
+
+}
+```
+
+* 한 건 조회와 여러 건 조회 모두 동일한 RowMapper를 사용하는데 그 부분을 별도의 메서드로 추출함으로써 코드의 중복을 막았다.
+
+**JdbcTemplate insert 예제**
+
+INSERT 하기
+
+```java
+this.jdbcTemplate.update("insert into t_actor (first_name, last_name) values (?, ?)",  "Leonor", "Watling");
+```
+
+**JdbcTemplate update 예제**
+
+UPDATE 하기
+
+```java
+this.jdbcTemplate.update("update t_actor set = ? where id = ?",  "Banjo", 5276L);
+```
+
+**JdbcTemplate delete 예제**
+
+DELETE 하기
+
+```java
+this.jdbcTemplate.update("delete from actor where id = ?", Long.valueOf(actorId));
+```
+
+**JdbcTemplate외의 접근방법**
+
+- NamedParameterJdbcTemplate
+  - 물음표 대신에 이름을 사용해서 바인딩할 수 있도록 해준다. 물음표가 여러 개가 나오면 문자열로 된 이름에 비해 혼란스러울 수 있으므로 이 부분을 해결해준다.
+- SimpleJdbcTemplate
+  - JDBC template하고 NamedParameterJdbcTemplate에서 가장 빈번하게 사용되는 작업을 합쳐놓은 객체이다.
+- SimpleJdbcInsert
+  - 좀 더 쉽게 insert작업을 수행할 수 있게 도와준다.
+
+------
+
+**생각해보기**
+
+1. JDBC 프로그래밍이 불편해서 이를 해결하기 위해서 등장한 기술에는 Spring JDBC 외에도 다양한 기술들이 존재합니다. 대표적으로 JPA와 MyBatis가 그러한 기술입니다. 문제를 해결하는 방법이 왜 여러 가지가 존재할끼요?
+
+------
+
+**참고 자료**
+
+- **[참고링크] Data Access**<https://docs.spring.io/spring/docs/current/spring-framework-reference/data-access.html#jdbc>
+
+
+
+# 2) Spring JDBC 실습
+
+**들어가기 전에**
+
+이번 시간엔 실습을 통해 Spring JDBC에 대해 알아보도록 하겠습니다.
+
+------
+
+**학습 목표**
+
+1. DTO와 DAO에 대한 개념을 이해합니다.
+2. Spring JDBC를 이용해 DAO를 작성할 수 있습니다.
+
+------
+
+**핵심 개념**
+
+- DTO
+- DAO
+- NamedParameterJdbcTemplate
+
+ **DTO란?**
+
+- DTO란 Data Transfer Object의 약자입니다.
+- 계층간 데이터 교환을 위한 자바빈즈입니다.
+- 여기서의 계층이란 컨트롤러 뷰, 비지니스 계층, 퍼시스턴스 계층을 의미합니다.
+- 일반적으로 DTO는 로직을 가지고 있지 않고, 순수한 데이터 객체입니다.
+- 필드와 getter, setter를 가진다. 추가적으로 toString(), equals(), hashCode()등의 Object 메소드를 오버라이딩 할 수 있습니다.
+
+**DTO의 예**
+
+dto를 간단하게 비유한다면, 계층 간의 데이터를 전달하므로 데이터를 들고 다닐 떄 하나씩 들고 다니면 불편하므로 하나의 가방처럼 만들어서 데이터들을 한꺼번에 갖고 다니는 용도라고 생각하면 된다.
+
+```java
+public class ActorDTO {
+    private Long id;
+    private String firstName;
+    private String lastName;
+    public String getFirstName() {
+        return this.firstName;
+    }
+    public String getLastName() {
+        return this.lastName;
+    }
+    public Long getId() {
+        return this.id;
+    }
+    // ......
+}
+```
+
+**DAO란?**
+
+- DAO란 Data Access Object의 약자로 데이터를 조회하거나 조작하는 기능을 전담하도록 만든 객체입니다.
+- 보통 데이터베이스를 조작하는 기능을 전담하는 목적으로 만들어집니다.
+- 객체 지향은 어떤 객체가 한 가지 일만 정확하게 하는 것을 바란다. 이 DAO 객체는 딱 그 일만 하도록 만들어놓은 객체라고 생각하면 된다.
+
+**ConnectionPool 이란?**
+
+- DB연결은 비용이 많이 듭니다. 데이터베이스로부터 정보를 읽고 쓰는 프로그램을 실행해보면 프로그램이 DBMS에 접속하는 시간이 오래 걸리는 것을 볼 수 있다는 뜻이다.
+- 커넥션 풀은 미리 커넥션을 여러 개 맺어 둡니다.
+- 커넥션이 필요하면 커넥션 풀에게 빌려서 사용한 후 반납합니다.
+- 커넥션을 반납하지 않으면 커넥션 풀에서 사용가능한 커넥션이 없어서 프로그램이 늦어지거나 심할 경우에는 장애를 발생시킬 수도 있다.
+
+[![img](https://cphinf.pstatic.net/mooc/20180208_14/15180684447693OANG_JPEG/3_8_2_ConnectionPool.jpg?type=w760)](https://www.edwith.org/boostcourse-web/lecture/20661/#)
+
+- **ConnectionPool**
+
+**DataSource란?**
+
+- ConnectionPool은 경우에 따라서 여러 개가 사용될 수 있는데, DataSource는 이러한 커넥션 풀을 관리하는 목적으로 사용되는 객체입니다.
+- DataSource를 이용해 커넥션을 얻어오고 반납하는 등의 작업을 수행합니다.
+
+**Spring JDBC를 이용한 DAO작성 실습**
+
+[![img](https://cphinf.pstatic.net/mooc/20180208_103/1518068520531pRbvK_PNG/3_8_2_Spring_JDBC__DAO_.png?type=w760)
+](https://www.edwith.org/boostcourse-web/lecture/20661/#)
+
+* Spring Container인 ApplicationContext는 설정 파일로 ApplicationConfig라는 클래스를 읽어들인다.
+* ApplicationConfig에는 ComponentScan 어노테이션이 DAO 클래스를 찾도록 설정할 것이다. 찾은 모든 DAO 클래스는 Spring Container가 관리하게 된다.
+* ApplicationContext는 DBConfig 클래스를 import하게 되고 DBConfig 클래스에서는 DataSource와 TransactionManager 객체를 생성한다.
+* DAO는 field로 NamedParameterJdbcTemplate과 SimpleJdbcInsert를 가지게 될 것이고 두 개의 객체는 모두 DataSource를 필요로 할 것이다. 두 개의 객체 모두 SQL의 실행을 편리하게 하도록 Spring JDBC에서 제공하는 객체이기 때문에 DB 연결을 위해서 내부적으로 DataSource를 사용하기 때문이다. 이 두 개의 객체는 RoleDao 생성자에서 초기화를 하게 되고 RolaDao 생성자에서 초기화 된 두 개의 객체를 이용해서 RoleDao의 메서드들을 구현하게 된다. 
+* Spring Jdbc를 사용하는 사용자는 파라미터와 SQL을 가장 많이 신경 써야 된다. SQL은 RoleDaoSqls에 상수로 정의를 해 놓음으로써 나중에 SQL이 변경될 경우에 좀 더 편하게 수정할 수 있도록 하였다.
+* 한 건의 Role 정보를 저장하고, 전달하기 위한 목적으로 Role DTO가 사용되고 있는 것을 볼 수 있다. 
+
+**실습코드**
+
+pom.xml
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>kr.or.connect</groupId>
+	<artifactId>daoexam</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>daoexam</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.3.5.RELEASE</spring.version>
+	</properties>
+
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- basic data source -->
+        <!-- data source도 여러 가지 종류가 존재한다. -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+
+		<!-- mysql 사용을 위한 드라이버 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.45</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+   	<!--자바 사용을 위한 build 추가-->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+```
+
+ApplicationContext는 Spring이 제공해주는 클래스이다. 어떻게 객체를 생성하게 할 지를 결정하는 설정 정보가 필요한데, 이 정보를 담고 있는 부분이 ApplicationConfig이다. ApplicationConfig는 설정 관련 파일이므로 config라는 패키지를 따로 만들어서 관리한다.
+
+ApplicationConfig.java
+
+```java
+package kr.or.connect.daoexam.config;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+
+//설정 정보 파일이라는 것을 나타내기 위해 Configuration 어노테이션 추가
+@Configuration
+//Import 어노테이션을 이용하면 설정 파일을 여러 개로 나눠서 작업할 수가 있다. 이 설정 파일 하나에 모든 설정을 다 넣는 게 아니라 데이터베이스 관련 설정은 따로 배주고 싶은 것.
+@Import({DBConfig.class})
+public class ApplicationConfig {
+
+}
+```
+
+DBConfig.java
+
+```java
+package kr.or.connect.daoexam.config;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@Configuration
+//transaction 때문에 필요한 어노테이션
+@EnableTransactionManagement
+public class DBConfig {
+	private String driverClassName = "com.mysql.jdbc.Driver";
+    private String url = "jdbc:mysql://localhost:3306/connectdb?useUnicode=true&characterEncoding=utf8";
+
+    private String username = "connectuser";
+    private String password = "connect123!@#";
+
+    //Spring JDBC를 이용할 때 우리는 DataSource를 통해 DB에 접속하기로 했다. 이렇게 하기 위해서는 DataSource를 생성할 수 있는 클래스가 필요하다. 따라서 우리가 DataSource 객체를 등록을 해야 한다. 이 때 Bean 어노테이션을 사용해서 손쉽게 등록이 가능하다. DataSource객체는 우리가 작성하는 것이 아니고 이미 작성되어 있는 것을 사용한다. Pom.xml에서 DataSource 객체 라이브러리를 추가했으므로 이 라이브러리에 들어있는 객체를 사용하는 것이다. 현재 우리가 작성하는 코드는 이 DataSource 라이브러리를 사용하기 위한 설정이다.
+    //Bean 등록 방법은 메서드 쓰는 방법이랑 유사하게 사용하면 된다. 메서드 이름은 bean 등록할 때 id로 지정하는 이름과 같다.
+    @Bean
+    public DataSource dataSource() {
+        //connection을 관리하는 DataSource 객체는 다음과 같은 정보를 알아야 DataSource를 생성할 수 있다.
+    	BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName(driverClassName);
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+        return dataSource;
+
+    }
+}
+```
+
+위 과정까지가 가장 기본적인 과정이 끝난 것이고, 이제 DB에 잘 접속이 되는지 확인을 해야한다.
+
+#### 접속 확인 과정
+
+DataSourceTest.java
+
+```java
+package kr.or.connect.daoexam.main;
+
+import java.sql.Connection;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import kr.or.connect.daoexam.config.ApplicationConfig;
+
+public class DataSourceTest {
+	//실행을 시켜야 하므로 main 메서드 필요
+	public static void main(String[] args) {
+        //등록한 여러 개의 Bean들을 관리할 Spring Container 생성
+        //어노테이션 정보를 읽는 공장을 만들어야 하므로 AnnotationConfigApplicationContext생성
+        //어떤 클래스에서 정보를 읽을지만 생성자의 매개변수로 넘겨주면 된다.
+		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+        //DataSource 객체를 받아온다.
+		DataSource ds = ac.getBean(DataSource.class);
+		Connection conn = null;
+		try {
+            //Connection 객체를 DataSource를 통해서 얻어낸다.
+			conn = ds.getConnection();
+            //정상적으로 얻어 왔을 때.
+			if(conn != null)
+				System.out.println("접속 성공^^");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+            //null인데 닫으라고 할 수도 있으니 체크
+			if(conn != null) {
+				try {
+					conn.close();
+                    //close() 메서드도 throws되고 있기 떄문에 catch 블럭을 이용해서 예외 처리를 한다.
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+}
+```
+
+#### select 과정
+
+**실습코드**
+
+Role이라는 간단한 DTO를 만들어본다.
+
+Role.java
+
+```java
+package kr.or.connect.daoexam.dto;
+
+public class Role {
+	private int roleId;
+	private String description;
+	
+	public int getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	@Override
+	public String toString() {
+		return "Role [roleId=" + roleId + ", description=" + description + "]";
+	}
+	
+}
+```
+
+DTO는 자신이 가지고 있는 필드를 이용해서 해당 값을 넣거나 꺼내기 때문에 기본적으로 getter, setter메서드가 필요하다. 이 DTO가 가방이고 각 필드가 하나하나의 값이다. 이 가방에 값이 제대로 들어있는지 매번 가방을 뒤지려면 불편하다. 그런데 Object가 가지고 있는 메서드 중에 toString()이라는 메서드가 있으므로 이 메서드를 이용해서 가방 안에 있는 값을 한 번에 확인할 때 유용하다.
+
+sql을 담고 있어야 하는, query문을 담고 있어야 하는 객체를 만든다.
+
+여기 우리가 사용하고자 하는 query를 상수형태로 넣어주면 된다. final을 붙여서 상수로 만들고, 상수 네이밍 관례에 따라서 모두 대문자로 필드 이름을 지정한다.
+
+RoleDaoSqls.java
+
+```java
+package kr.or.connect.daoexam.dao;
+
+public class RoleDaoSqls {
+	public static final String SELECT_ALL = "SELECT role_id, description FROM role order by role_id";
+}
+```
+
+위에서 만든 query문을 가진 객체를 가지고 데이터에 접근할 수 있는 객체를 만든다. 이런 객체를 DAO라고 한다고 했다. Role이라는 객체에 대해 데이터를 접근할 수 있는 객체이므로 RoleDao라고 이름 짓는다. 
+
+RoleDao.java
+
+```java
+package kr.or.connect.daoexam.dao;
+
+import static kr.or.connect.daoexam.dao.RoleDaoSqls.*;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
+
+import kr.or.connect.daoexam.dto.Role;
+@Repository
+public class RoleDao {
+	private NamedParameterJdbcTemplate jdbc;
+	private SimpleJdbcInsert insertAction;
+	private RowMapper<Role> rowMapper = BeanPropertyRowMapper.newInstance(Role.class);
+
+	public RoleDao(DataSource dataSource) {
+		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+		this.insertAction = new SimpleJdbcInsert(dataSource)
+                .withTableName("role");
+	}
+	
+	public List<Role> selectAll(){
+		return jdbc.query(SELECT_ALL, Collections.emptyMap(), rowMapper);
+	}
+
+}
+```
+
+이 클래스는 Spring Container가 읽어들여서 사용해야 되는데 Bean을 등록할 수 있는 여러 가지 방법들이 있었다. 그 중 어노테이션을 붙여서 @Autowired로 읽어내게 하는 방식이 있었는데, 이 때 붙일 수 있는 어노테이션의 종류가 몇 가지 있었다. ```@Component, @Service, @Repository, @Controller``` 와 같은 것들이 있었는데, 지금과 같은 DAO 객체에는 저장소의 역할을 한다는 의미로 ```@Repository```를 사용한다. DAO가 실제 실행할 때 NamedParameterJdbcTemplate이라던가 SimpleJdbcInsert와 같은 객체들을 이용한다. 이 객체들은 Spring JDBC가 실제 JDBC를 조금 편하게 하기 위해서 이미 구현해 놓은 객체라고 생각하면 된다. 우리가 SelectAll()을 실행해서 select 할 때는 NamedParameterJdbcTemplate 안에 있는 query(), queryForObject()와 같은 메서드가 필요하다. 따라서  NamedParameterJdbcTemplate를 먼저 선언해 줘야한다.
+
+Spring JDBC에서 가장 중요한 객체는 JdbcTemplate이다. 지난 과정에서 사용했던 JdbcTemplate은 바인딩할 때 ?를 사용했었다. 그런데 ?를 사용하게 되면 sql 문자열만 봤을 때는 어떤 값이 매핑되는지 알아보기가 힘든 문제들이 있었다. 그래서 NamedParameterJdbcTemplate이 활용이 되었는데, NamedParameterJdbcTemplate은 이름을 이용해서 바인딩 하거나, 결과 값을 가져올 때 사용할 수 있다. 그래서 여기서는 이 객체를 사용한다. 
+
+생성자 부분을 보면 DataSource를 파라미터로 받아들이고 있다. Spring 버전 4.3부터는 ComponentScan으로 객체를 찾았을 때 기본 생성자가 없다면 자동으로 객체를 주입해준다. DBConfig.java에서 Bean어노테이션으로 등록했던 DataSource가 매개변수로 전달이 되게 된다. 이 DataSource 객체를 받아서 NamedParameterJdbcTemplate을 생성하게 되는 것이다.
+
+이제 실제로 우리가 하고자하는 것은 selectAll해서 정보를 가져오는 것이다. 이 selectAll 메서드는 DTO인 Role을 여러 건 가져올 거니까 List로 받아야하고 메서드 이름은 항상 소문자로 시작한다. 두 번째 단어의 첫 글자는 대문자로. 내용을 작성하는데, 복잡한 코드는 NamedParameterJdbcTemplate이 알아서 해준다. NamedParameterJdbcTemplate가 가지고 있는 메서드 중에 query()메서드에 파라미터를 넣고 실행하면 된다. 첫 번째 나오는 파라미터는 실제 쿼리문이다. 이 쿼리문은 RoleDaoSqls에 작성해놨으므로 **static import**를 사용하여 RoleDaoSqls에 선언된 변수를 class 이름없이 바로 변수 이름으로 사용할 수 있게 한다. 두 번째 파라미터에는 비어있는 Map 객체를 하나 선언하면된다. Collections.emptyMap()과 같은 것을 전달하면 된다. 이 객체는 sql문에 바인딩 할 값이 있을 경우에  바인딩 할 값을 전달할 목적으로 상요하고 있는 객체이다. 세 번째 파라미터에는 미리 만들어 놓은 rowMapper를 전달하면 된다. 이 객체는  select 한 건, 한 건의 결과를 DTO에 저장하는 목적으로 사용을 하게 된다. BeanPropertyRowMapper 객체를 이용해서 column의 값을 자동으로 DTO에 담아주게 된다. query() 메서드는 결과가 여러 건이었을 때 내부적으로 반복하면서 DTO를 생성하고, 이 생성한 DTO를 List에다가 담고 이 List를 반환해 준다. 
+
+
+
+| DBMS    | JAVA   |
+| ------- | ------ |
+| rold_id | roleId |
+
+대부분의 DBMS는 대소문자를 구별하기 않기 때문에 DBMS에서는 column 명의 단어와 단어를 구분할 때 '_'를 사용하고, 자바에서는 카멜표기법을 이용해서 단어와 단어가 만날 때 대문자를 사용한다. 이렇게 같은 데이터를 나타내는 이름이 다르면 개발이 힘들 수 있는데, BeanPropertyRowMapper는 DBMS와 Java의 이름의 규칙을 맞춰주는 기능을 갖고 있다. 
+
+ApplicationConfig.java 에 추가
+
+```java
+@ComponentScan(basePackages = { "kr.or.connect.daoexam.dao" })
+```
+
+Bean을 등록하는 방법으로 어노테이션을 이용했으므로 ApplicationConfig에 ComponentScan으로 읽어낼 거라는 표시를 해줘야 한다. 그래야 설정  파일을 읽어낼 때 약속된 어노테이션이 붙어있는 객체들을 찾아내서 작업을 진행한다. basePackages를 지정해서 사용한다. 중괄호를 이용해서 패키지를 여러 개 나열해서 사용할 수도 있다. ComponenetScan을 추가했으므로 자동으로 RoleDao에 Repository가 붙어있는 클래스를 Bean으로 등록해준 것이랑 같은 역할을 하게 된다.
+
+
+
+필요한 코드들을 모두 작성했으므로 테스트를 해야한다.
+
+SelectAllTest.java
+
+```java
+package kr.or.connect.daoexam.main;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import kr.or.connect.daoexam.config.ApplicationConfig;
+import kr.or.connect.daoexam.dao.RoleDao;
+import kr.or.connect.daoexam.dto.Role;
+
+public class SelectAllTest {
+
+	public static void main(String[] args) {
+		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class); 
+		
+		RoleDao roleDao =ac.getBean(RoleDao.class);
+
+		List<Role> list = roleDao.selectAll();
+		
+		for(Role role: list) {
+			System.out.println(role);
+		}
+
+	}
+
+}
+```
+
+반복되어 나오는 코드들이다. AnnotationConfigApplicationContext를 생성했고 ApplicationContext에서 getBean()메서드를 사용하여 roleDao 객체를 얻어낸 다음 roleDao가 가지고 있는 selectAll()이라는 메서드를 수행해서 실제 리스트를 받아내는 것이다.
+
+DTO에서 지정한 필드명이 roleId, description과 같은지 잘 확인해봐야한다. 테스트에서는 제대로 작동하지 않아서 찾아보니 DTO에 설정한 필드명에 오타가 있었다.
+
+**실습코드**
+
+RoleDaoSqls.java에 추가
+
+```java
+public static final String UPDATE = "UPDATE role SET description = :description WHERE ROLE_ID = :roleId";
+```
+
+RoleDao.java
+
+```java
+package kr.or.connect.daoexam.dao;
+
+import static kr.or.connect.daoexam.dao.RoleDaoSqls.*;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
+
+import kr.or.connect.daoexam.dto.Role;
+@Repository
+public class RoleDao {
+	private NamedParameterJdbcTemplate jdbc;
+	private SimpleJdbcInsert insertAction;
+	private RowMapper<Role> rowMapper = BeanPropertyRowMapper.newInstance(Role.class);
+
+	public RoleDao(DataSource dataSource) {
+		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+		this.insertAction = new SimpleJdbcInsert(dataSource)
+                .withTableName("role");
+
+	}
+	
+	public int insert(Role role) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(role);
+		return insertAction.execute(params);
+	}
+
+	public int update(Role role) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(role);
+		return jdbc.update(UPDATE, params);
+	}
+	
+
+}
+```
+
+JDBCTest.java
+
+```java
+package kr.or.connect.daoexam.main;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import kr.or.connect.daoexam.config.ApplicationConfig;
+import kr.or.connect.daoexam.dao.RoleDao;
+import kr.or.connect.daoexam.dto.Role;
+
+public class JDBCTest {
+
+	public static void main(String[] args) {
+		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+
+		RoleDao roleDao = ac.getBean(RoleDao.class);
+		
+		Role role = new Role();
+		role.setRoleId(201);
+		role.setDescription("PROGRAMMER");
+		
+		int count = roleDao.insert(role);
+		System.out.println(count + "건 입력하였습니다.");
+			
+		int count = roleDao.update(role);
+		System.out.println(count +  " 건 수정하였습니다.");
+	}
+
+}
+```
+
+**실습코드**
+
+RoleDaoSqls.java에 추가
+
+```java
+public static final String SELECT_BY_ROLE_ID = "SELECT role_id, description FROM role where role_id = :roleId";
+public static final String DELETE_BY_ROLE_ID = "DELETE FROM role WHERE role_id = :roleId";
+```
+
+RoleDao.java에 추가
+
+```java
+package kr.or.connect.daoexam.dao;
+
+import static kr.or.connect.daoexam.dao.RoleDaoSqls.*;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
+
+import kr.or.connect.daoexam.dto.Role;
+@Repository
+public class RoleDao {
+	private NamedParameterJdbcTemplate jdbc;
+	private SimpleJdbcInsert insertAction;
+	private RowMapper<Role> rowMapper = BeanPropertyRowMapper.newInstance(Role.class);
+
+	public RoleDao(DataSource dataSource) {
+		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+		this.insertAction = new SimpleJdbcInsert(dataSource)
+                .withTableName("role");
+	}
+	
+	public int deleteById(Integer id) {
+		Map<String, ?> params = Collections.singletonMap("roleId", id);
+		return jdbc.update(DELETE_BY_ROLE_ID, params);
+	}
+	
+	public Role selectById(Integer id) {
+		try {
+			Map<String, ?> params = Collections.singletonMap("roleId", id);
+			return jdbc.queryForObject(SELECT_BY_ROLE_ID, params, rowMapper);		
+		}catch(EmptyResultDataAccessException e) {
+			return null;
+		}
+	}
+
+}
+```
+
+JDBCTest.java에 추가
+
+```java
+Role resultRole = roleDao.selectById(201);
+System.out.println(resultRole);
+		
+int deleteCount = roleDao.deleteById(500);
+System.out.println(deleteCount + "건 삭제하였습니다.");
+	
+Role resultRole2 = roleDao.selectById(500);
+System.out.println(resultRole2);
+		
+```
+
+------
+
+**생각해보기**
+
+1. JdbcTemplate을 이용하지 않고 NamedParameterJdbcTemplate를 이용하여 DAO를 작성한 이유는 무엇이라고 생각하나요?
+
+------
+
+**참고 자료**
+
+- **[참고링크] Data Access Object Pattern**<https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm>
+
+
+- **[참고링크] Using JDBC to Connect to a Database**<https://ejbvn.wordpress.com/category/week-2-entity-beans-and-message-driven-beans/day-09-using-jdbc-to-connect-to-a-database/>
+
