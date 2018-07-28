@@ -503,6 +503,8 @@ public class DataSourceTest {
 }
 ```
 
+---
+
 #### select 과정
 
 **실습코드**
@@ -662,11 +664,18 @@ public class SelectAllTest {
 
 DTO에서 지정한 필드명이 roleId, description과 같은지 잘 확인해봐야한다. 테스트에서는 제대로 작동하지 않아서 찾아보니 DTO에 설정한 필드명에 오타가 있었다.
 
+---
+
+#### Insert, Update구현
+
 **실습코드**
 
 RoleDaoSqls.java에 추가
 
+필요한 쿼리문을 추가한다. insert는 추가해주지 않아도 된다. (우리가 임의로 값을 넣어서 테스트할 것 이므로)
+
 ```java
+//여기서 :이후에 나와있는 부분이 값으로 바인딩 될 부분이다.
 public static final String UPDATE = "UPDATE role SET description = :description WHERE ROLE_ID = :roleId";
 ```
 
@@ -696,29 +705,38 @@ import kr.or.connect.daoexam.dto.Role;
 @Repository
 public class RoleDao {
 	private NamedParameterJdbcTemplate jdbc;
+    //1.SimpleJdbcInsert 선언
 	private SimpleJdbcInsert insertAction;
 	private RowMapper<Role> rowMapper = BeanPropertyRowMapper.newInstance(Role.class);
 
 	public RoleDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+        //2.생성자에서 생성. dataSource를 매개변수로 넘기고 어떤 테이블에 Insert 할 것인지 withTableName메서드를 사용하여 명시한 후 SimpleJdbcInsert를 생성을 하고 변수 insertAction에 할당.
 		this.insertAction = new SimpleJdbcInsert(dataSource)
                 .withTableName("role");
 
 	}
 	
+    //3.insert 메서드 구현
+    //Insert문 같은 경우에는 Primary key를 자동으로 생성해야 하는 경우도 존재한다. 이럴 때는 생성된 Primary key 값을 다시 읽어오는 부분이 필요하다. 그 떄는 SimpleJdbcInsert객체가 이 일을 수행해주는데 이번 예제에서는 Primary key값을 직접 넣어준다. 다음 파트에서는 Primary key를 자동으로 생성하도록 코드를 변경한다.
+    //role객체를 받아들여서
 	public int insert(Role role) {
+        //해당 role 객체에 있는 값을 웹으로 바꿔준다. 이 때 우리가 Role 클래스에서 선언한 roleId를 column명인 rold_id로 알아서 맵 객체를 생성해준다. 
 		SqlParameterSource params = new BeanPropertySqlParameterSource(role);
+        //이렇게 생성한 맵 객체를 SimpleJdbcInsert가 가지고 있는 execute()라는 메서드의 파라미터로 전달을 할 경우에 값이 알아서 저장되게 될 것이다.
 		return insertAction.execute(params);
 	}
 
+    //static import를 통해 쿼리문을 담아 놓은 UPDATE 변수를 사용할 수 있게 하고, NamedParameterJdbcTemplate이 가지고 있는 update() 메서드에 첫 번째 파라미터에 sql, 두 번째 파라미터로 맵 객체를 넘겨준다. 이 맵 객체는 sql문에서 :이후에 나왔던 단어들의 값을 채워줄 객체라고 생각하면 된다.
 	public int update(Role role) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(role);
 		return jdbc.update(UPDATE, params);
 	}
 	
-
 }
 ```
+
+이제 코드가 잘 작동이 되는지 테스트해본다.
 
 JDBCTest.java
 
@@ -735,10 +753,13 @@ import kr.or.connect.daoexam.dto.Role;
 public class JDBCTest {
 
 	public static void main(String[] args) {
+        //기본적으로 RoleDao까지 얻어오는 부분은 똑같이 실행을 하면 된다.
 		ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 
 		RoleDao roleDao = ac.getBean(RoleDao.class);
 		
+        //위에서 얻어온 roleDao에게 insert 메서드가 잘 적용이 되는지 테스트하면 된다.
+        //insert문을 실행하려면 DTO객체인 Role에 값이 들어있어야한다. 그러므로 Role객체를 생성하고 값을 넣어준다.
 		Role role = new Role();
 		role.setRoleId(201);
 		role.setDescription("PROGRAMMER");
@@ -753,11 +774,16 @@ public class JDBCTest {
 }
 ```
 
+---
+
+#### 1건 select하는 메서드와 delete하는 기능 구현
+
 **실습코드**
 
 RoleDaoSqls.java에 추가
 
 ```java
+//쿼리문에 *보다는 정확한 Column명을 사용하는 것이 훨씬 명확한 의미전달을 가능하게 해준다.
 public static final String SELECT_BY_ROLE_ID = "SELECT role_id, description FROM role where role_id = :roleId";
 public static final String DELETE_BY_ROLE_ID = "DELETE FROM role WHERE role_id = :roleId";
 ```
@@ -799,15 +825,18 @@ public class RoleDao {
 	
 	public int deleteById(Integer id) {
 		Map<String, ?> params = Collections.singletonMap("roleId", id);
+        //NamedParameterJdbcTemplate이 가지고 있는 update를 실행하면 된다.
 		return jdbc.update(DELETE_BY_ROLE_ID, params);
 	}
 	
 	public Role selectById(Integer id) {
 		try {
 			Map<String, ?> params = Collections.singletonMap("roleId", id);
-			return jdbc.queryForObject(SELECT_BY_ROLE_ID, params, rowMapper);		
-		}catch(EmptyResultDataAccessException e) {
-			return null;
+            //1건 select할 때는 queryForObject라는 메서드 이용
+			return jdbc.queryForObject(SELECT_BY_ROLE_ID, params, rowMapper);	            
+		}catch(EmptyResultDataAccessException e) {//조건에 맞는 값이 없을 때 예외 발생
+			//이 부분을 주의해서 사용해야한다.
+            return null;
 		}
 	}
 
