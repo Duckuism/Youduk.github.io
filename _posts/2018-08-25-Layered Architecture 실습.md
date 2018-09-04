@@ -71,7 +71,7 @@ image:
 
 방명록 요구사항 5/6
 
-* 방명록이 6건 입력되자 아래 페잊이 수가 2건 보여진다. 1페이지를 누르면 /guestbook/list?start=0을 요청하고, 2페이지를 누르면 /guestbook/list?start=5를 요청하게 된다.
+* 방명록이 6건 입력되자 아래 페이지 수가 2건 보여진다. 1페이지를 누르면 /guestbook/list?start=0을 요청하고, 2페이지를 누르면 /guestbook/list?start=5를 요청하게 된다.
 * /guestbook/list는 /guestbook/list?start=0과 결과가 같다.
 
 방명록 요구사항 6/6
