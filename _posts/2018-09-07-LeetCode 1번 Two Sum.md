@@ -75,9 +75,9 @@ const twoSum = (nums, target)=>{
 
 1. Brute Force (완전 탐색)
 
-   The brute force approach is simple. Loop through each element $x$ and find if there is another value that equals to $target - x$.
+   The brute force approach is simple. Loop through each element $x$ and find if there is another value that equals to $$target - x$$.
 
-   완전 탐색 접근은 간단합니다. 각 요소 $x$에 대해 loop를 돌고 $target-x$와 같은 값이 있는지를 찾습니다.
+   완전 탐색 접근은 간단합니다. 각 요소 $$x$$에 대해 loop를 돌고 $$target-x$$와 같은 값이 있는지를 찾습니다.
 
    ~~~java
    public int[] twoSum(int[] nums, int target) {
@@ -94,11 +94,11 @@ const twoSum = (nums, target)=>{
 
    **Complexity Analysis** (복잡도 분석)
 
-   - Time complexity : $O(n^2)$. For each element, we try to find its complement by looping through the rest of array which takes $O(n)$ time. Therefore, the time complexity is $O(n^2)$.
+   - Time complexity : $$O(n^2)$$. For each element, we try to find its complement by looping through the rest of array which takes $$O(n)$$ time. Therefore, the time complexity is $$O(n^2)$$.
 
-     시간 복잡도 : $O(n^2)$. 우리는 각각의 요소에 대해 $O(n) $ 시간을 소요하여 해당 요소를 제외한 배열의 나머지 전체를 탐색함으로써 보완 요소를 찾으려고 시도한다. 따라서 시간 복잡도는 $O(n^2)$ 이다.
+     시간 복잡도 : $$O(n^2)$$. 우리는 각각의 요소에 대해 $$O(n)$$ 시간을 소요하여 해당 요소를 제외한 배열의 나머지 전체를 탐색함으로써 보완 요소를 찾으려고 시도한다. 따라서 시간 복잡도는 $$O(n^2)$$ 이다.
 
-   - Space complexity : $O(1)$. 
+   - Space complexity : $$O(1)$$. 
 
 2. Two-pass Hash Table (두 번의 해시 테이블 사용)
 
@@ -106,13 +106,13 @@ const twoSum = (nums, target)=>{
 
    우리의 런타임 시간 복잡도를 개선하기 위해 우리는 보완 요소가 배열안에 존재하는지를 체크하는 좀 더 효율적인 방법을 찾을 필요가 있다. 만일 보완 요소가 존재한다면 우리는 그것의 인덱스를 찾을 필요가 있다. 배열 안의 각 요소들과 해당 요소 인덱스와의 연결 관계를 유지하는 가장 좋은 방법은 무엇일까? 해쉬테이블이다.
 
-   We reduce the look up time from $O(n)$ to $O(1)$ by trading space for speed. A hash table is built exactly for this purpose, it supports fast look up in *near* constant time. I say "near" because if a collision occurred, a look up could degenerate to $O(n)$ time. But look up in hash table should be amortized $O(1)$ time as long as the hash function was chosen carefully.
+   We reduce the look up time from $$O(n)$$ to $$O(1)$$ by trading space for speed. A hash table is built exactly for this purpose, it supports fast look up in *near* constant time. I say "near" because if a collision occurred, a look up could degenerate to $$O(n)$$ time. But look up in hash table should be amortized $$O(1)$$ time as long as the hash function was chosen carefully.
 
-   우리는 빠른 공간 교환에 의해서 찾는 시간을 $O(n)$에서 $O(1)$까지 감소시킬 수 있다. 하나의 해쉬 테이블은 정확히 이 목적을 위해 만들어지며, 이 해쉬 테이블은 *거의* ​ 일정한빠른 탐색속도를 지원한다. *거의* 라고 말을 하는 이유는 한 번 충돌이 일어나면 탐색 속도는 $O(n)$ 까지 악화될 수 있기 때문이다. 그러나 해쉬 테이블에서의 탐색은 해쉬 함수가 주의깊게 선택되는 한은 $O(1)$로 분할 상황 된다.
+   우리는 빠른 공간 교환에 의해서 찾는 시간을 $$O(n)$$에서 $$O(1)$$까지 감소시킬 수 있다. 하나의 해쉬 테이블은 정확히 이 목적을 위해 만들어지며, 이 해쉬 테이블은 *거의* ​ 일정한빠른 탐색속도를 지원한다. *거의* 라고 말을 하는 이유는 한 번 충돌이 일어나면 탐색 속도는 $$O(n)$$ 까지 악화될 수 있기 때문이다. 그러나 해쉬 테이블에서의 탐색은 해쉬 함수가 주의깊게 선택되는 한은 $$O(1)$$로 분할 상황 된다.
 
-   A simple implementation uses two iterations. In the first iteration, we add each element's value and its index to the table. Then, in the second iteration we check if each element's complement ($target - nums[i]$) exists in the table. Beware that the complement must not be $nums[i]$ itself!
+   A simple implementation uses two iterations. In the first iteration, we add each element's value and its index to the table. Then, in the second iteration we check if each element's complement ($$target - nums[i]$$) exists in the table. Beware that the complement must not be $$nums[i]$$ itself!
 
-   간단한 코드 실행은 두 번의 반복 횟수를 사용한다. 첫 번째 반복에서 우리는 각 요소의 값과 인덱스를 해쉬 테이블에 추가한다. 그리고 두 번째 박복에서 우리는 각 요소의 보완 요소인 $target - nums[i]$의 값이 테이블안에 존재하는지를 체크한다. $nums[i]$ 자기 자신은 보완 요소가 될 수 없다는 것을 잊어먹지 말아라!
+   간단한 코드 실행은 두 번의 반복 횟수를 사용한다. 첫 번째 반복에서 우리는 각 요소의 값과 인덱스를 해쉬 테이블에 추가한다. 그리고 두 번째 박복에서 우리는 각 요소의 보완 요소인 $$target - nums[i]$$의 값이 테이블안에 존재하는지를 체크한다. $$nums[i]$$ 자기 자신은 보완 요소가 될 수 없다는 것을 잊어먹지 말아라!
 
    ~~~java
    public int[] twoSum(int[] nums, int target) {
@@ -132,13 +132,13 @@ const twoSum = (nums, target)=>{
 
    **Complexity Analysis:**
 
-   - Time complexity : $O(n)$. We traverse the list containing $n$ elements exactly twice. Since the hash table reduces the look up time to $O(1)$, the time complexity is $O(n)$.
+   - Time complexity : $$O(n)$$. We traverse the list containing $$n$$ elements exactly twice. Since the hash table reduces the look up time to $$O(1)$$, the time complexity is $$O(n)$$.
 
-     시간 복잡도 : $O(n)$. 우리는 $n$개의 요소들을 포함하는 리스트를 정확히 두 번 가로지른다. 해쉬테이블은 탐색시간을 $O(1)$로 감소시키므로 시간복잡도는 $O(n)$.
+     시간 복잡도 : $$O(n)$$. 우리는 $$n$$개의 요소들을 포함하는 리스트를 정확히 두 번 가로지른다. 해쉬테이블은 탐색시간을 $$O(1)$$로 감소시키므로 시간복잡도는 $$O(n)$$.
 
-   - Space complexity : $O(n)$. The extra space required depends on the number of items stored in the hash table, which stores exactly $n$ elements. 
+   - Space complexity : $$O(n)$$. The extra space required depends on the number of items stored in the hash table, which stores exactly $$n$$ elements. 
 
-     공간 복잡도 : $O(n)$. 해쉬테이블 안에 n개의 요소들을 저장하기 위해 필요한 아이템들(key 값은 각 요소의 값, value값은 각 요소의 index 값)의 개수만큼 추가 공간이 요구된다.
+     공간 복잡도 : $$O(n)$$. 해쉬테이블 안에 $$n$$개의 요소들을 저장하기 위해 필요한 아이템들(key 값은 각 요소의 값, value값은 각 요소의 index 값)의 개수만큼 추가 공간이 요구된다.
 
 3. One-pass Hash Table (한 번의 해쉬테이블 사용)
 
@@ -162,10 +162,10 @@ const twoSum = (nums, target)=>{
 
    **Complexity Analysis:**
 
-   - Time complexity : $O(n)$. We traverse the list containing $n$ elements only once. Each look up in the table costs only $O(1)$ time.
+   - Time complexity : $$O(n)$$. We traverse the list containing $n$ elements only once. Each look up in the table costs only $$O(1)$$ time.
 
-     시간 복잡도 : $O(n)$. 우리는 n 개의 요소를 가진 리스트를 딱 한 번 가로지른다. 테이블에서의 각 탐색은 $O(1)$ 만큼의 시간을 소비한다.
+     시간 복잡도 : $$O(n)$$. 우리는 $$n$$ 개의 요소를 가진 리스트를 딱 한 번 가로지른다. 테이블에서의 각 탐색은 $$O(1)$$ 만큼의 시간을 소비한다.
 
-   - Space complexity : $O(n)$. The extra space required depends on the number of items stored in the hash table, which stores at most $n$ elements.
+   - Space complexity : $$O(n)$$. The extra space required depends on the number of items stored in the hash table, which stores at most $$n$$ elements.
 
-     해쉬테이블 안에 n개의 요소들을 저장하기 위해 필요한 아이템들(key 값은 각 요소의 값, value값은 각 요소의 index 값)의 개수만큼 추가 공간이 요구된다.
+     해쉬테이블 안에 $$n$$개의 요소들을 저장하기 위해 필요한 아이템들(key 값은 각 요소의 값, value값은 각 요소의 index 값)의 개수만큼 추가 공간이 요구된다.
