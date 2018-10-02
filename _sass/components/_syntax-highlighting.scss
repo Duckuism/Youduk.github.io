@@ -20,7 +20,7 @@ code {
 pre { // only apply for code blocks
   overflow: auto;
   display: block;
-  padding: 1em;
+  padding: 0.5em;
   word-break: break-all;
   word-wrap: break-word;
   border-radius: 0;
@@ -127,4 +127,5 @@ pre code {
   .ne { color: #ED645D; font-weight: bold } /* Name.Exception */
   .nf { color: #ED645D } /* Name.Function */
   .nx { color: #ED645D } /* Name.Other*/
+  .gutter.gl{ width:20px; }
 }

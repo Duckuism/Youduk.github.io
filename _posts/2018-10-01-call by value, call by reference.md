@@ -24,7 +24,7 @@ A함수에서 B함수를 호출하면서 인자를 넘겨줄 때 scope 때문에
 
 ### call by value가 불편할 때
 
-~~~C++
+~~~c++
 void swap(int a, int b){
     int temp;
     temp = a;
@@ -57,7 +57,7 @@ int main(){
   * 값을 넘기는 대신, 값을 갖고 있는 변수의 주소를 넘긴다.
   * a, b 변수가 저장되어 있는 메모리의 주소를 넘기면 실제 저장되어 있는 메모리 값에 접근이 가능하므로 scope를 생각하지 않고 값 자체를 바꿀 수 있다.
 
-~~~C++
+~~~c++
 //int형 값이 아니라 주소를 받는다.
 void swap(int* a, int* b){
     int temp;
@@ -83,7 +83,7 @@ int main(){
 
 위와 같이 포인터를 사용하면 아래와 같이 함수 하나로 여러 변수를 바꿀 수 있다.
 
-~~~C++
+~~~c++
 //int형 값이 아니라 주소를 받는다.
 void swap(int* a, int* b){
     int temp;
