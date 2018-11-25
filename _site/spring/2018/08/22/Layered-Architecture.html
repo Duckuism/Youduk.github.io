@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Layered Architecture</title>
+  <meta name="description" content="">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/spring/2018/08/22/Layered-Architecture.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio &amp; Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href="http://localhost:4000/">
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src="http://localhost:4000/img/spring.png" alt="Layered Architecture feature image">
+
+  
+</div>
+<!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Layered Architecture">Layered Architecture</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        22 AUG 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    4 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h1 id="1-레이어드-아키텍처layered-architecture-란">1) 레이어드 아키텍처(Layered Architecture) 란?</h1>
+
+<p><strong>들어가기 전에</strong>
+이번 시간엔 웹 어플리케이션을 만들 때 자주 사용하는 레이어드 아키텍처(Layered Architecture) 에 대해 알아보도록 하겠습니다.</p>
+
+<hr>
+
+<p><strong>학습 목표</strong></p>
+
+<ol>
+  <li>웹 어플리케이션 개발시 레이어드 아키텍처(Layered Architecture) 가 사용되는 이유에 대해 이해합니다.</li>
+  <li>웹 어플리케이션 개발시 각 레이어의 구성요소에 대해서 이해합니다.</li>
+</ol>
+
+<hr>
+
+<p><strong>핵심 개념</strong></p>
+
+<ul>
+  <li>Controller</li>
+  <li>Service</li>
+  <li>Repository</li>
+</ul>
+
+<p><strong>Controller에서 중복되는 부분을 처리하려면?</strong></p>
+
+<ul>
+  <li>
+    <p>별도의 객체로 분리합니다.</p>
+  </li>
+  <li>
+    <p>별도의 메소드로 분리합니다.</p>
+  </li>
+  <li>
+    <p>예를 들어 쇼핑몰에서 게시판에서도 회원 정보를 보여주고, 상품 목록 보기에서도 회원 정보를 보여줘야 한다면 회원 정보를 읽어오는 코드는 어떻게 해야 할까요?</p>
+
+    <p>A : 게시판을 보여주는 컨트롤러도 별도로 있을 거고 상품의 목록을 보여주는 컨트롤러도 별도로 있다. 따라서 회원 정보를 읽어들이는 것만 별도의 객체로 만들고, 해당 컨트롤러들이 이 객체를 이용하면 된다. 이렇게 컨트롤러들이 중복으로 호출하는 부분들을 별도의 객체인 서비스로 구현을 하게 된다.</p>
+  </li>
+</ul>
+
+<p><strong>컨트롤러와 서비스</strong></p>
+
+<ul>
+  <li>
+    <p>서비스 객체는 보통 업무과 관련된 메서드를 가지고 있다. 이것들을 비즈니스 메서드라고 한다.</p>
+  </li>
+  <li>
+    <p>비지니스 메소드를 별도의 Service객체에서 구현하도록 하고 컨트롤러는 Service객체를 사용하도록 합니다.</p>
+  </li>
+</ul>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16767/#"><img src="https://cphinf.pstatic.net/mooc/20180219_85/1519008848012uvMNx_PNG/1.png?type=w760" alt="img"></a></p>
+
+<ul>
+  <li><strong>컨트롤러와 서비스</strong></li>
+</ul>
+
+<p><strong>서비스(Service)객체란?</strong></p>
+
+<ul>
+  <li>
+    <p>비지니스 로직(Business logic)을 수행하는 메소드를 가지고 있는 객체를 서비스 객체라고 합니다.</p>
+  </li>
+  <li>
+    <p>보통 하나의 비지니스 로직은 하나의 트랜잭션으로 동작합니다.</p>
+  </li>
+</ul>
+
+<p><strong>트랜잭션(Transaction)이란?</strong></p>
+
+<ul>
+  <li>
+    <p>트랙잭션은 하나의 논리적인 작업을 의미한다.</p>
+  </li>
+  <li>
+    <p>트랜잭션의 특징은 크게 4가지로 구분됩니다.</p>
+    <ol>
+      <li>원자성 (Atomicity) : 전체가 성공하거나, 전체가 실패하는 것을 의미.</li>
+      <li>일관성 (Consistency)</li>
+      <li>독립성 (Isolation)</li>
+      <li>지속성 (Durability)</li>
+    </ol>
+  </li>
+</ul>
+
+<p><strong>원자성 (Atomicity)</strong></p>
+
+<p>예를 들어 “출금”이라는 기능의 흐름이 다음과 같다고 생각해봅시다.</p>
+
+<ol>
+  <li>잔액이 얼마인지 조회한다.</li>
+  <li>출금하려는 금액이 잔액보다 작은지 검사한다.</li>
+  <li>출금하려는 금액이 잔액보다 작다면 (잔액 - 출금액)으로 수정한다.</li>
+  <li>언제, 어디서 출금했는지 정보를 기록한다.</li>
+  <li>사용자에게 출금한다.</li>
+</ol>
+
+<p>위의 작업이 4번에서 오류가 발생했다면 어떻게 될까요?</p>
+
+<p>4번에서 오류가 발생했다면 그 뒤의 일은 수행하지 않게 되므로, 진행했던 4번 앞의 작업을 모두 원래대로 복원을 시켜야 합니다.</p>
+
+<p>이를 rollback이라고 합니다.</p>
+
+<p>5번까지 모두 성공했을 때만 정보를 모두 반영해야 합니다.</p>
+
+<p>이를 commit 한다고 합니다.</p>
+
+<p>이렇게 rollback 하거나 commit을 하게 되면 하나의 트랜잭션 처리가 완료됩니다.</p>
+
+<p>위에서 처럼 1~5번을 순서대로 나누었지만 결국 ‘출금’ 이라는 기능 하나이므로, 따로 나누어 생각하는 것이 아니라 rollback과 commit 단위로 묶어서 생각을 해야한다. 이것을 원자성이라고 하는 것.</p>
+
+<p><strong>일관성 (Consistency)</strong></p>
+
+<p>일관성은 트랜잭션의 작업 처리 결과가 항상 일관성이 있어야 한다는 것입니다.</p>
+
+<p>트랜잭션이 진행되는 동안에 데이터가 변경되더라도 업데이트된 데이터로 트랜잭션이 진행되는 것이 아니라, 처음에 트랜잭션을 진행하기 위해 참조한 데이터로 진행됩니다.</p>
+
+<p>이렇게 함으로써 각 사용자는 일관성 있는 데이터를 볼 수 있는 것입니다.</p>
+
+<p><strong>독립성 (Isolation)</strong></p>
+
+<p>독립성은 둘 이상의 트랜잭션이 동시에 병행 실행되고 있을 경우에 어느 하나의 트랜잭션이라도 다른 트랜잭션의 연산을 끼어들 수 없습니다.</p>
+
+<p>하나의 특정 트랜잭션이 완료될 때까지, 다른 트랜잭션이 특정 트랜잭션의 결과를 참조할 수 없습니다.</p>
+
+<p><strong>지속성 (Durability)</strong></p>
+
+<p>지속성은 트랜잭션이 성공적으로 완료됬을 경우, 결과는 영구적으로 반영되어야 한다는 점입니다.</p>
+
+<p><strong>JDBC 프로그래밍에서 트랜잭션 처리 방법</strong></p>
+
+<p>DB에 연결된 후 Connection객체의 setAutoCommit메소드에 false를 파라미터로 지정합니다. (default는 true로 되어 있다. 따라서 spring에서 java파일을 바꾸고 별도로 commit을 하지 않아도 바로 데이터베이스에 반영이 되었던것.)</p>
+
+<p>지금처럼 여러 개의 작업이 성공적으로 끝나야지만 commit을 반영하고 싶다면 setAutoCommit 메서드에 false라고 파라미터를 지정한 다음, 작업을 다 수행하고 조건이 만족됐을 때만 commit이라는 메서드가 수행되게끔 코드를 짠다면, JDBC에서도 트랜잭션을 처리할 수 있다.</p>
+
+<p>입력, 수정, 삭제 SQL이 실행을 한 후 모두 성공했을 경우 Connection이 가지고 있는 commit()메소드를 호출합니다.</p>
+
+<p><strong><a href="https://github.com/EnableTransactionManagement" class="user-mention">@EnableTransactionManagement</a></strong></p>
+
+<p>Spring Java Config파일에서 트랜잭션을 활성화 할 때 사용하는 애노테이션입니다.</p>
+
+<p>Java Config를 사용하게 되면 PlatformTransactionManager 구현체를 모두 찾아서 그 중에 하나를 매핑해 사용합니다.</p>
+
+<p>특정 트랜잭션 메니저를 사용하고자 한다면 TransactionManagementConfigurer를 Java Config파일에서 구현하고 원하는 트랜잭션 메니저를 리턴하도록 합니다.</p>
+
+<p>아니면, 특정 트랜잭션 메니저 객체를 생성시 <a href="https://github.com/Primary" class="user-mention">@Primary</a> 애노테이션을 지정합니다.</p>
+
+<p><strong>서비스 객체에서 중복으로 호출되는 코드의 처리</strong></p>
+
+<p>서비스 객체에서 중복으로 query하는 부분도 존재한다. 서비스 객체들마나 비즈니스 메서드를 가지고 있다. 하나의 비즈니스 메서드는 트랜잭션 단위로 작업이 처리가 되는데, 하나의 트랜잭션에는 여러 개의 DB 작업이 수행될 수도 있다. 이 때, 비즈니스 메서드마다 중복되는 기능을 호출하는 경우도 생긴다. 서비스 객체에도 중복되는 부분이 있다면 별도의 객체로 분리하거나 별도의 메서드로 분리해서 사용한다.</p>
+
+<p>데이터 엑세스 메소드를 별도의 Repository(Dao) 객체에서 구현하도록 하고 Service는 Repository객체를 사용하도록 합니다.</p>
+
+<p><strong>레이어드 아키텍처</strong></p>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16767/#"><img src="https://cphinf.pstatic.net/mooc/20180219_283/1519009121486u3LkD_PNG/2.png?type=w760" alt="img"></a></p>
+
+<ul>
+  <li>Presentation Layer : 컨트롤러 객체가 동작을 하게 한다.</li>
+  <li>Service Layer : 비지니스 메서드를 가지고 있는 서비스 객체가 동작한다. 서비스 객체는 Repository Layer에 있는 DAO 객체를 사용하게 된다.</li>
+  <li>Repository Layer : 실제 데이터베이스에 접근해서 데이터를 가져오는 등의 일들만 처리한다. 여기에 존재하는 객체가 DAO객체이다.</li>
+  <li>현재 과정은 웹 과정이므로 Presentation Layer가 웹이지만, 다른 플랫폼으로 변경한다고 하면 Service Layer, Repository Layer는 그대로 두고 재사용하면서 Presentation Layer만 변경하면 손쉽게 변경할 수 있을 것이다. 재사용 측면이나 유지보수 측면에서 봤을 때, Presentation Layer와 Service Layer / Repository Layer는 아얘 설정파일도 분리를 해놓는 것이 좋다. 따라서 아래에서 설정의 분리에 대해 설명한다.</li>
+</ul>
+
+<p><strong>설정의 분리</strong></p>
+
+<p>Spring 설정 파일을 프리젠테이션 레이어쪽과 나머지(서비스 레이어, 레포지토리 레이어)를 분리할 수 있습니다.</p>
+
+<p>web.xml 파일에서 프리젠테이션 레이어에 대한 스프링 설정은 DispathcerServlet이 읽도록 하고, 그 외의 설정(서비스 레이어, 레포지토리 레이어 설정)은 ContextLoaderListener를 통해서 읽도록 합니다.</p>
+
+<p>DispatcherServlet을 경우에 따라서 2개 이상 설정할 수 있는데 이 경우에는 각각의 DispathcerServlet의 ApplicationContext가 각각 독립적이기 때문에 각각의 설정 파일에서 생성한 빈을 서로 사용할 수 없습니다.</p>
+
+<p>위의 경우와 같이 동시에 필요한 빈은 ContextLoaderListener를 사용함으로써 공통으로 사용하게 할 수 있습니다. 하지만 위와 같은 경우는 흔하지 않다.</p>
+
+<p>ContextLoaderListener와 DispatcherServlet은 각각 ApplicationContext를 생성하는데, ContextLoaderListener가 생성하는 ApplicationContext가 root컨텍스트가 되고 DispatcherServlet이 생성한 인스턴스는 root컨텍스트를 부모로 하는 자식 컨텍스트가 됩니다.</p>
+
+<p>참고로, 자식 컨텍스트들은 root컨텍스트의 설정 빈을 사용할 수 있습니다.</p>
+
+<hr>
+
+<p><strong>생각해보기</strong></p>
+
+<ol>
+  <li>레이어로 구성하지 않을 경우 어떤 문제가 발생할까요?</li>
+  <li>레이어를 구성하지 않고 중복코드를 제거할 수 있을까요?</li>
+</ol>
+
+<hr>
+
+<p><strong>참고 자료</strong></p>
+
+<ul>
+  <li>
+<strong>[참고링크] Understanding Spring Web Application Architecture: The Classic Way</strong><a href="https://www.petrikainulainen.net/software-development/design/understanding-spring-web-application-architecture-the-classic-way/">https://www.petrikainulainen.net/software-development/design/understanding-spring-web-application-architecture-the-classic-way/</a>
+</li>
+</ul>
+
+<p><a href="https://sites.google.com/site/telosystutorial/springmvc-jpa-springdatajpa/presentation/architecture"><img src="https://cphinf.pstatic.net/mooc/20180219_188/1519008743702UsH9R_PNG/B00KXgyAG2IcrCWfDIw2.png?type=mfullfill_199_148" alt="img"></a></p>
+
+<ul>
+  <li>
+<strong>[참고링크] Architecture - Tutorial for Telosys Tools 2.1</strong><a href="https://sites.google.com/site/telosystutorial/springmvc-jpa-springdatajpa/presentation/architecture">https://sites.google.com/site/telosystutorial/springmvc-jpa-springdatajpa/presentation/architecture</a>
+</li>
+</ul>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/spring/2018/08/22/Layered-Architecture.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/spring/2018/08/22/Layered-Architecture.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/spring/2018/08/22/Layered-Architecture.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/spring/2018/08/22/Layered-Architecture.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/spring/2018/08/22/Layered-Architecture.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  © 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

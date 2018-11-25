@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>VS code에서 Sass+Compass 사용 하기!</title>
+  <meta name="description" content="">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/vs%20code/2018/06/20/VS-code%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5-Sass+compass-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio &amp; Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href="http://localhost:4000/">
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src="http://localhost:4000/img/sass.png" alt="VS code에서 Sass+Compass 사용 하기! feature image">
+
+  
+</div>
+<!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="VS code에서 Sass+Compass 사용 하기!">VS code에서 Sass+Compass 사용 하기!</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        20 JUN 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    4 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>안녕하세요! 이번에는 저번 포스팅에 이어서 VS code에서 sass와 함께 compass를 사용하는 방법을 알아보겠습니다.</p>
+
+<h2 id="1-ruby-설치">1. Ruby 설치</h2>
+
+<p>먼저 compass를 설치하기 위해서는 Ruby를 설치해야합니다.</p>
+
+<p>https://www.ruby-lang.org/ko/documentation/installation/</p>
+
+<p>위 링크로 가셔서 미리 자신의 운영체제에 맞는 명령어를 사용해서 Ruby를 설치해주세요. 나중에 더 깊게 공부하고싶다면 미리 RVM도 설치해놓는 것이 좋습니다.(https://rvm.io/rvm/install)</p>
+
+<h2 id="2-compass-설치">2. Compass 설치</h2>
+
+<p>이제 프로젝트 폴더 내에  compass를 설치해보겠습니다.</p>
+
+<p>SSH쉘로 접속합니다. (윈도우는 git bash, 맥은 터미널을 사용합니다.)</p>
+
+<p><code class="highlighter-rouge">$cd 나의 프로젝트폴더 위치</code> : 먼저 cd 명령어로 내가 작업할 프로젝트 폴더 위치로 이동합니다.</p>
+
+<p><img src="/img/compass1.png" alt=""></p>
+
+<p><code class="highlighter-rouge">$gem update --system</code> : ruby를 최신버전으로 업데이트 합니다.</p>
+
+<p><img src="/img/compass3.png" alt=""></p>
+
+<p><code class="highlighter-rouge">$gem install compass</code> : compass를 설치합니다.</p>
+
+<p><img src="/img/compass4.png" alt=""></p>
+
+<p><code class="highlighter-rouge">$compass version</code> : compass가 잘 설치되었는지 compass 버전을 확인해봅니다.</p>
+
+<p><img src="/img/compass2.png" alt=""></p>
+
+<h2 id="3-프로젝트-폴더를-compass와-연결하기">3. 프로젝트 폴더를 compass와 연결하기</h2>
+
+<p>이제 compass가 설치되었으니, 내 프로젝트 폴더와 compass를 연결하는 방법을 알아보겠습니다. 방법에는 두 가지가 있습니다.</p>
+
+<ol>
+  <li>compass watch로 내 프로젝트 폴더랑 연결하기</li>
+</ol>
+
+<p>먼저 compass를 사용하기를 원하는 프로젝트의 폴더로 이동합니다. 저는 저번 포스팅에서 만들어두었던 vscodeProject1로 이동해볼게요. 이동하면 명령어 입력하는 부분 앞에 자신의 쉘이 위치한 폴더 트리가 보일 것입니다.</p>
+
+<p>그리고 명령어 <code class="highlighter-rouge">$compass watch</code>를 입력합니다.</p>
+
+<p><img src="/img/compass5.png" alt=""></p>
+
+<p>자, 이제 compass가 프로젝트 폴더를 감시하게 하면됩니다. 그럼 끝입니다! 이제 compass에 관련된 함수들을 모두 쓸 수 있습니다. 만약 중지하려면 control+c를 누르면 됩니다.</p>
+
+<h3 id="4-내-프로젝트를-compass-프로젝트로-생성해서-연결하기">4. 내 프로젝트를 compass 프로젝트로 생성해서 연결하기</h3>
+
+<p>또 다른 방법으로 compass를 사용할 수 있는데요.</p>
+
+<p>그 방법은 바로 compass 명령어를 통해서 프로젝트 폴더를 만드는 것입니다.</p>
+
+<p>이 과정은 프로젝트 폴더 내에 compass를 설치해야하는 2번 과정을 건너뛸 수 있게 해줍니다.</p>
+
+<p>대신 이 과정은 프로젝트 폴더 내에 compass가 설치되어 있는 것이 아니라, global로 compass가 설치되어 있어야합니다.(root 폴더에서 <code class="highlighter-rouge">$ gem install compass</code> 명령어 수행)</p>
+
+<p>이번에는 compass 명령어로 프로젝트를 만들어야 하므로 먼저 프로젝트 폴더가 생성되길 원하는 위치로 이동합니다.</p>
+
+<p><img src="/img/compass6.png" alt=""></p>
+
+<p><code class="highlighter-rouge">$compass create vscodeProject2</code> : 프로젝트 폴더가 생성되길 원하는 위치에서 compass폴더를 생성합니다.</p>
+
+<p><img src="/img/compass7.png" alt=""></p>
+
+<p><code class="highlighter-rouge">$cd vscodeProject2</code> : 그리고 생성된 폴더 안으로 이동합니다.</p>
+
+<p><img src="/img/compass8.png" alt=""></p>
+
+<p><code class="highlighter-rouge">$compass watch</code> : 이제  compass watch를 실행합니다.</p>
+
+<p><img src="/img/compass9.png" alt=""></p>
+
+<p>위의 코드 세줄은 scss가 변경되는 때마다 자동적으로 css로 컴파일 하겠다는 것을 의미합니다.</p>
+
+<h2 id="5-compass-사용하기">5. compass 사용하기</h2>
+
+<p>이제 본격적으로 compass를 사용해보겠습니다.</p>
+
+<p>가장 먼저 해야할 것은 scss파일에서 <a href="https://github.com/import" class="user-mention">@import</a> 구문을 통해 compass를 사용하겠다고 명시하는 것입니다.</p>
+
+<p>compass는 모듈로 나눠져 있으므로 각각의 모듈들을 사용하기 위해서는 먼저 원하는 모듈을 scss파일로 import하여 가져온 후 사용해야합니다. compass의 모듈 종류를 한 번 볼까요?</p>
+
+<ul>
+  <li>Browser Support : <code class="highlighter-rouge">@import "compass/support"</code>
+https://compass-style.org/reference/compass/support/</li>
+  <li>CSS3 : <code class="highlighter-rouge">@import "compass/css3"</code>
+https://compass-style.org/reference/compass/css3/</li>
+  <li>Helpers : Helper는 따로 import가 필요하지 않습니다. 기존에 Sass가 제공하는 함수들을 더 효과적으로 사용할 수 있게해줍니다.
+https://compass-style.org/reference/compass/helpers/</li>
+  <li>Layout : <code class="highlighter-rouge">@import "compass/layout"</code>
+https://compass-style.org/reference/compass/layout/</li>
+  <li>Reset : <code class="highlighter-rouge">@import "compass/reset"</code>
+https://compass-style.org/reference/compass/reset/</li>
+  <li>Typography : <code class="highlighter-rouge">@import "compass/typography"</code>
+https://compass-style.org/reference/compass/typography/</li>
+  <li>Utilities : <code class="highlighter-rouge">@import "compass/utilities"</code>
+https://compass-style.org/reference/compass/utilities/</li>
+</ul>
+
+<p>예시를 위해 scss 파일을 열고 맨 위에 다음 코드를 추가해보겠습니다. compass의 css3 모듈을 사용하겠다는 뜻입니다.</p>
+
+<p><code class="highlighter-rouge">@import "compass/css3"</code></p>
+
+<p>그럼 일반 css를 사용할 때랑 compass의 css모듈을 사용할 때랑 차이를 볼까요?</p>
+
+<p>만약 일반 css를 사용할 때 3개의 column에 20px의 gutter를 준다면 코드는 다음과 같습니다.</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+<td class="rouge-code"><pre><span class="nt">div</span>
+<span class="p">{</span>
+        <span class="na">-webkit-column-count</span><span class="p">:</span><span class="m">3</span><span class="p">;</span>
+        <span class="na">-moz-column-count</span><span class="p">:</span><span class="m">3</span><span class="p">;</span>
+        <span class="nl">column-count</span><span class="p">:</span><span class="m">3</span><span class="p">;</span>
+        <span class="na">-webkit-column-gap</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span>
+        <span class="na">-moz-column-gap</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span>
+        <span class="nl">column-gap</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>하지만 compass/css3 모듈을 통해 사용한다면 코드가 다음과 같습니다</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="rouge-code"><pre><span class="nt">div</span>
+<span class="p">{</span>
+        <span class="k">@include</span> <span class="nd">column-count</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
+        <span class="k">@include</span> <span class="nd">column-gap</span><span class="p">(</span><span class="m">20px</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>우리가 웹표준을 지키기 위해서 사용하던 vendor prefix가 다 사라진 걸 볼 수 있죠? 엄청나네요!</p>
+
+<p>만약 background-image에 gradient를 지정해야할 때는 어떨까요?</p>
+
+<p>먼저 일반 css를 사용할 때입니다.</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+<td class="rouge-code"><pre><span class="nc">.gradient</span>
+<span class="p">{</span>
+        <span class="nl">background-image</span><span class="p">:</span> <span class="nf">-webkit-gradient</span><span class="p">(</span><span class="n">linear</span><span class="o">,</span> <span class="m">50%</span> <span class="m">0%</span><span class="o">,</span> <span class="m">50%</span> <span class="m">100%</span><span class="o">,</span> <span class="nf">color-stop</span><span class="p">(</span><span class="m">0%</span><span class="o">,</span> <span class="mh">#ffffff</span><span class="p">)</span><span class="o">,</span> <span class="nf">color-stop</span><span class="p">(</span><span class="m">100%</span><span class="o">,</span> <span class="mh">#000000</span><span class="p">));</span>
+        <span class="nl">background-image</span><span class="p">:</span> <span class="nf">-webkit-linear-gradient</span><span class="p">(</span><span class="mh">#ffffff</span><span class="o">,</span> <span class="mh">#000000</span><span class="p">);</span>
+        <span class="nl">background-image</span><span class="p">:</span> <span class="nf">-moz-linear-gradient</span><span class="p">(</span><span class="mh">#ffffff</span><span class="o">,</span> <span class="mh">#000000</span><span class="p">);</span>
+        <span class="nl">background-image</span><span class="p">:</span> <span class="nf">-o-linear-gradient</span><span class="p">(</span><span class="mh">#ffffff</span><span class="o">,</span> <span class="mh">#000000</span><span class="p">);</span>
+        <span class="nl">background-image</span><span class="p">:</span> <span class="nf">linear-gradient</span><span class="p">(</span><span class="mh">#ffffff</span><span class="o">,</span> <span class="mh">#000000</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>그리고 compass/css3 모듈을 사용할 때입니다.</p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="rouge-code"><pre><span class="nc">.gradient</span>
+<span class="p">{</span>
+        <span class="k">@include</span> <span class="nd">background-image</span><span class="p">(</span><span class="nf">linear-gradient</span><span class="p">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="mh">#000</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>엄청나죠..?</p>
+
+<p>하지만 아직 compass가 어떤 형식인지 감이 안 올 수도 있는데요. 쉽게 얘기하자면 scss파일에 compass를 설치하면 추가적으로 다른 문법을 쓸 수 있고, compass와 연결(watch)이 되어있으면 scss파일을 css파일로 변환할 때 compass 문법까지 적용되어서 css파일이 생성된다고 보시면 됩니다.</p>
+
+<p>이렇게 유용한 compass, 꼭 sass랑 같이 쓰세요!</p>
+
+<p>다음 포스팅에서 뵙겠습니다~!!</p>
+
+<p>참고:</p>
+
+<ul>
+  <li>https://compass-style.org/install/</li>
+  <li>https://compass-style.org/help/</li>
+  <li>https://compass-style.org/reference/compass/</li>
+  <li>https://thesassway.com/beginner/getting-started-with-sass-and-compass</li>
+  <li>https://stackoverflow.com/questions/18375691/does-import-compass-includes-the-whole-framework</li>
+  <li>https://www.webdesignerdepot.com/2013/11/how-to-write-simple-elegant-css-with-compass-sass/</li>
+</ul>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/vs%20code/2018/06/20/VS-code%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5-Sass+compass-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/vs%20code/2018/06/20/VS-code%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5-Sass+compass-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/vs%20code/2018/06/20/VS-code%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5-Sass+compass-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/vs%20code/2018/06/20/VS-code%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5-Sass+compass-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/vs%20code/2018/06/20/VS-code%E1%84%8B%E1%85%A6%E1%84%89%E1%85%A5-Sass+compass-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  © 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

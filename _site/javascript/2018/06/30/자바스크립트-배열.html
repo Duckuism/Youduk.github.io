@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>자바스크립트 배열</title>
+  <meta name="description" content="배열의 선언, 배열 메서드, 배열 탐색">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/javascript/2018/06/30/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%87%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%AF.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/javascript.png"
+  
+  alt="자바스크립트 배열 feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="자바스크립트 배열">자바스크립트 배열</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        30 JUN 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    4 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h1 id="자바스크립트-배열">자바스크립트 배열</h1>
+
+<p><strong>배열의 선언</strong></p>
+
+<p>자바스크립트 배열의 선언은 간단합니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="c1">//배열 안에는 모든 타입이 다 들어갈 수 있다. 함수도 배열 안에 배열도, 배열 안에 객체도 들어갈 수 있다.</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s2">"hello"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="p">[]];</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>new Array() 문으로 선언할 수도 있지만, 보통은 간단히 ‘[]’ 를 사용합니다.</p>
+
+<p>배열에는 length 속성이 있어 그 길이를 쉽게 알 수 있습니다.</p>
+
+<p>배열에 원소 추가는 index번호와 함께 추가할 수 있습니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="nx">a</span><span class="p">[</span><span class="mi">1000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">//1001;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mi">500</span><span class="p">]);</span> <span class="c1">//undefined; 자바에서 모든 타입이 기본 값으로 초기화되는 것과는 달리 자바스크리브에서는 할당하지 않은 상태를 나타내는 undefined로 초기화가 된다.</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>배열은 사실 <strong>push메서드</strong>를 통해서 뒤에 순차적으로 추가할 수 있습니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>배열의 유용한 메서드들</strong></p>
+
+<p>배열은 순서가 있고, push 와 같은 메서드를 제공하고 있어, 추가/삭제/변경이 용이합니다.</p>
+
+<p>그밖에도 많은 메서드가 있습니다. indexOf, join, slice,concat 의 활용을 좀 더 알아보는 게 좋습니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">//배열의 원소에 특정 값이 들어 있는지 확인할 수 있다.</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">//2</span>
+
+<span class="c1">//배열의 문자열로 합칠 수 있다.</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">].</span><span class="nx">join</span><span class="p">();</span> <span class="c1">//"1,2,3,4" </span>
+
+<span class="c1">//배열을 합칠 수 있다.</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">].</span><span class="nx">concat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>  <span class="c1">//[1,2,3,4,2,3]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이밖에도 배열에는 유용한 메서드가 많습니다. 배열의 여러 가지 메서드도 모두 함수이므로 반환 값이 존재합니다.</p>
+
+<p>주의할 점은 어떤 메서드는 새로운 배열을 반환하고, 어떤 메서드는 원래 배열의 값을 변경시킨다는 것입니다.</p>
+
+<p>예를 들어서 concat은 원래 배열은 그대로 있고 합쳐진 새로운 배열을 반환합니다. 이점을 주의해야 합니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1">//origin과 changed는 같은 배열원소를 가지고 있지만, 두 개가 가리키는 메모리 주소는 다릅니다.즉 reference가 다르다고 할 수 있습니다. </span>
+<span class="kd">var</span> <span class="nx">origin</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">changed</span> <span class="o">=</span> <span class="nx">origin</span><span class="p">.</span><span class="nx">concat</span><span class="p">();</span>  <span class="c1">//[1,2,3,4]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">origin</span> <span class="o">===</span> <span class="nx">changed</span><span class="p">);</span>  <span class="c1">//[1, 2, 3, 4] [1, 2, 3, 4] false</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>배열 탐색 - (foreach,map, filter)</strong></p>
+
+<p>배열의 순회는 for 문을 사용하거나, forEach와 같은 메서드를 통해서 할 수 있습니다.</p>
+
+<p>다른 프로그래밍 언어와 비슷한 문법인 자바스크립트 for문은 여러분들이 금방 찾아서 학습이 가능할 것 같아 생략하고요.</p>
+
+<p>forEach를 통한 배열 탐색을 공부할 필요가 있습니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1">//forEach는 함수를 인자로 받고 있어요.</span>
+<span class="p">[</span><span class="s2">"apple"</span><span class="p">,</span><span class="s2">"tomato"</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>forEach를 사용하면 더는 배열의 길이를 체크하는 for문을 추가하거나, i++과 같은 증가시켜주는 코드가 필요 없습니다.</p>
+
+<p>이 부분은 알아서 자바스크립트 파서가 처리해줍니다.</p>
+
+<p>결국, for문을 쓰면서 생길 수 있는 실수를 줄여줍니다.</p>
+
+<p>그리고 코드의 가독성도 좋아서 읽기 편한 코드를 만들 수 있습니다.</p>
+
+<p>for문과 성능 차이도 있을 수 있지만 미미한 차이입니다.</p>
+
+<p>한 가지 더 특이한 점은 forEach와 같은 메서드가 함수를 인자로 갖는다는 점입니다.</p>
+
+<p>이런 특징은 자바스크립트에서 많이 나오는데요, 배열에서는 이런 식으로 동작하는 메서드들이 꽤 있습니다.</p>
+
+<p>filter, map은 아주 중요하고요.</p>
+
+<p>이 부분을 이해한 후에 reduce를 공부하고, some, every등도 같이 알아보면 좋습니다.</p>
+
+<p>그리고 여기 소개되고 있는 메서드들의 반환값도 주의해야 합니다.</p>
+
+<p>어떤 메서드는 새로운 배열을 반환하기도 합니다.</p>
+
+<p>아래는 새로운 배열을 반환하는 map메서드 예제입니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">newArr</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"apple"</span><span class="p">,</span><span class="s2">"tomato"</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="nx">index</span> <span class="o">+</span> <span class="s2">"번째 과일은 "</span> <span class="o">+</span> <span class="nx">value</span> <span class="o">+</span> <span class="s2">"입니다"</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newArr</span><span class="p">)</span><span class="c1">// 여러분들이 실행해보세요</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>그리고 더 학습하고 싶은 부분이 생기면 자바스크립트 함수형 프로그래밍을 공부하는 것도 좋습니다.</p>
+
+<p>지금 단계에서는 forEach, map, filter메서드는 반드시 이해해야 합니다.</p>
+
+<p>그리고 익숙해질 때까지 앞으로 나오는 반복문은 이 메서드들을 이용해보는 걸 추천합니다.</p>
+
+<p>아 물론 for문과 while문을 사용한 배열의 탐색을 잘 모른다면, 그것부터 익숙하게 연습하세요!</p>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/javascript/2018/06/30/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%87%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%AF.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/javascript/2018/06/30/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%87%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%AF.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/javascript/2018/06/30/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%87%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%AF.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/javascript/2018/06/30/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%87%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%AF.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/javascript/2018/06/30/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%87%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%AF.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

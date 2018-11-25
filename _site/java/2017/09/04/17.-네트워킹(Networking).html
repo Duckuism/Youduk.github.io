@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>17. 네트워킹(Networking)</title>
+  <meta name="description" content="">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/java/2017/09/04/17.-%E1%84%82%E1%85%A6%E1%84%90%E1%85%B3%E1%84%8B%E1%85%AF%E1%84%8F%E1%85%B5%E1%86%BC(Networking).html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="17. 네트워킹(Networking)">17. 네트워킹(Networking)</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        4 SEP 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    5 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h3 id="네트워킹networking">네트워킹(Networking)</h3>
+
+<h6 id="참고-도서--자바의-정석남궁성-저-도우-출판">참고 도서 : 자바의 정석(남궁성 저, 도우 출판)</h6>
+
+<ul>
+  <li>흐름을 읽기 위한 단원 목차 훑기</li>
+</ul>
+
+<ol>
+  <li>네트워킹
+    <ol>
+      <li>클라리언트/서버(client/server)</li>
+      <li>IP주소(IP address)</li>
+      <li>InetAddress</li>
+      <li>URL(Uniform Resource Locator)</li>
+      <li>URLConnection</li>
+    </ol>
+  </li>
+  <li>소켓 프로그래밍
+    <ol>
+      <li>TCP와 UDP</li>
+      <li>TCP소켓 프로그래밍</li>
+      <li>UDP소켓 프로그래밍</li>
+    </ol>
+  </li>
+</ol>
+
+<h3>1.네트워킹</h3>
+
+<p>네트워킹이란 두 대 이상의 컴퓨터를 케이블로 연결하여 네트워크를 구성하는 것.</p>
+
+<h5>1.1 클라이언트/서버</h5>
+
+<p>‘클라이언트/서버’는 컴퓨터간의 관계를 역할로 구분하는 개념이다. 서버(server)는 서비스를 제공하는 컴퓨터(service provider)이고, 클라이언트(client)는 서비스를 사용하는 컴퓨터(service user)가 된다.</p>
+
+<p>서버에 접속하는 클라이언트 수에 따라 하나의 서버가 여러 가지 서비스를 제공하기도 하고 하나의 서비스를 여러 대의 서버로 제공하기도 한다.</p>
+
+<p>서버가 서비스를 제공하기 위해서는 서버프로그램이 있어야 하고 클라이언트가 서비스를 제공받기 위해서는 서버프로그램과 연결할 수 있는 클라이언트 프로그램이 있어야 한다. 일반 PC의 경우 주로 서버에 접속하는 클라이언트 역할을 수행하지만, FTP Serv - U와 같은 FTP서버프로그램이나 Tomcat과 같은 웹서버프로그램을 설치하면 서버역할도 수행할 수 있다.</p>
+
+<p>네트워크를 구성할 때 전용 서버를 두는 것을 서버기반모델(server-based model)이라하고 별도의 전용서버없이 각 클라이언트가 서버역할을 동시에 수행하는 것을 P2P모델(peer-to-peer model)이라 한다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"><center>서버기반 모델(server-based model)</center></th>
+      <th style="text-align: left"><center>P2P 모델(peer-to-peer model)</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">* 안정적인 서비스의 제공이 가능하다.<br />* 공유데이터의 관리와 보안이 용이하다. <br />* 서버구축비용과 관리비용이 든다.</td>
+      <td style="text-align: left">* 서버구축 및 운용비용을 절감할 수 있다.<br />* 자원의 활용을 극대화 할 수 있다.<br />* 자원의 관리가 어렵다.<br />* 보안이 취약하다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5>1.2 IP주소</h5>
+
+<ul>
+  <li>IP주소 : 컴퓨터(호스트,host)를 구별하는데 사용되는 고유한 값</li>
+</ul>
+
+<p>인터넷에 연결된 모든 컴퓨터는 IP주소를 갖는다. IP주소는 4 byte(32bit)의 정수로 구성되어 있으며, 4개의 정수가 마침표를 구분자로 ‘a,b,c,d’와 같은 형식으로 표현된다. 여기서 a,b,c,d는 부호없는 1 byte값, 즉 0~255사이의 정수이다.</p>
+
+<p>IP주소는 다시 네트워크 주소와 호스트 주소로 나눌 수 있는데, 32bit(4byte)의 IP주소 중에서 네트워크 주소와 호스트 주소가 각각 몇 bit를 차지하는 지는 네트워크를 어떻게 구성하였는지에 따라 달라진다. 그리고 서로 다른 두 호스트의 IP주소의 네트워크 주소가 같다는 것은 두 호스트가 같은 네트워크에 포함되어 있다는 것을 의미한다.</p>
+
+<p>IP주소와 서브넷 마스크를 비트 연산자 ‘&amp;’로 연산하면 IP주소에서 네트워크 주소만을 뽑아낼 수 있다.</p>
+
+<h5>1.3 InetAddress</h5>
+
+<p>InetAddress는 자바에서 IP주소를 다루기 위해 제공하는 클래스이다.</p>
+
+<p><img src="https://cfile22.uf.tistory.com/image/13336B3A5036CE0E2A7416" alt="Smithsonian Image" /><br /></p>
+
+<h5>1.4 URL(Uniform Resource Locator)</h5>
+
+<ul>
+  <li>URL : 인터넷에 존재하는 여러 서버들이 제공하는 자원에 접근할 수 있는 주소를 표현하기 위한 것. ‘프로토콜://호스트명:포트번호/경로명/파일명?쿼리스트링#참조’의 형태로 이루어져 있다.</li>
+</ul>
+
+<p>https://www.codechbo.com:80/sample/hello.html?referer=codechobo#index1</p>
+
+<ul>
+  <li>프로토콜 : 자원에 접근하기 위해 서버와 통신하는데 사용되는 통신규약(http)</li>
+  <li>호스트명 : 자원을 제공하는 서버의 이름(www.codechobo.com)</li>
+  <li>포트번호 : 통신에 사용되는 서버의 포트번호(80)
+-&gt;HTTP프로토콜에서는 80번 포트를 사용하기 때문에 URL에서 포트번호를 생략하는 경우 80으로 간주한다. 각 프로토콜에 따라 통신에 사용하는 포트번호가 다르며 생략되면 각 프로토콜의 기본 포트가 사용된다.</li>
+  <li>경로명 : 접근하려는 자원이 저장된 서버상의 위치(/sample/)</li>
+  <li>파일명 : 접근하려는 자원의 이름(hello.html)</li>
+  <li>쿼리(query) : URL에서 ‘?’이후의 부분(refere=codechobo)</li>
+  <li>참조(anchor) : URL에서 ‘#’이후의 부분(index1)</li>
+</ul>
+
+<p>URL을 다루기 위해 자바에서 제공하는 클래스인 URL클래스의 메서드 목록</p>
+
+<p><img src="https://cfile30.uf.tistory.com/image/1417C9464F02767605575A" alt="Smithsonian Image" /><br /></p>
+
+<ul>
+  <li>URL 객체를 생성하는 방법
+URL url = new URL(“https://www.codechbo.com/sample/hello.html”);
+URL url = new URL(“www.codechobo.com”, “/sample/hello.html”);
+URL url = new URL(“http”,”www.codechbo.com”,80,”/sample/hello.html”);</li>
+</ul>
+
+<h5>1.5 URLConnection</h5>
+
+<p>URLConnection은 어플리케이션과 URL간의 통신연결을 나타내는 클래스의 최상위 클래스로 추상클래스이다. URLConnection을 상속받아 구현한 클래스로는 HttpURLConnection과 JarURLConnection이 있으며 URL의 프로토콜이 http프로토콜이라면 openConnection()은 Http URLConnection을 반환한다. URLConnection을 사욯해서 연결하고자하는 자원에 접근하고 읽고 쓰기를 할 수 있다.</p>
+
+<p>URLConnection 클래스의 메서드 목록</p>
+
+<p><img src="https://cfile27.uf.tistory.com/image/182D79364F0279583277B8" alt="Smithsonian Image" /><br /></p>
+
+<h3>2. 소켓 프로그래밍</h3>
+
+<p>소켓 프로그래밍은 소켓을 이용한 통신 프로그래밍을 뜻하는데, 소켓(socket)이란 프로세스간의 통신에 사용되는 양쪽 끝단(endpoint)을 의미한다.</p>
+
+<h5>2.1 TCP와 UDP</h5>
+<p>TCP/IP 프로토콜은 이기종 시스템간의 통신을 위한 표준 프로토콜로 프로토콜의 집합이다. TCP와 UDP모두 TCP/IP프로토콜(TCP/IP protocol suites)에 포함되어 있으며, OSI 8계층의 전송계층(transport layer)에 해당하는 프로토콜이다. TCP와 UDP는 전송 방식이 다르며, 각 방식에 따른 장단점이 있다. 어플리케이션의 특징에 따라 적절한 프로토콜을 선택하여 사용하도록 하자.</p>
+
+<p><img src="https://img1.daumcdn.net/thumb/R1920x0/?fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F2254775057586D6F10F5E5" alt="Smithsonian Image" /><br /></p>
+
+<p>TCP : 전화에 비유. TCP는 데이터를 전송하기 전에 먼저 상대편과 연결을 한 후에 데이터를 전송하며 잘 전송되었는지 확인하고 전송에 실패했다면 해당 데이터를 재전송하기 때문에 신뢰 있는 데이터 전송이 요구되는 통신에 적합하다. 예를 들면 파일을 주고 받을 때.</p>
+
+<p>UDP : 소포에 비유. 상대편과 연결하지 않고 데이터를 전송하며, 데이터를 전송하지만 데이터가 바르게 수신되었는지 확인하지 않기 떄문에 데이터가 전송되었는지 확인할 길이 없다. 또한 데이터를 보낸 순서대로 수신한다는 보장이 없다. 대신 확인 과정이 필요하지않으므로 TCP에 비해 빠른 전송이 가능하다. 게임이나 동영상 데이터를 보낼 때 적합하다.</p>
+
+<h5>2.2 TCP 소켓 프로그래밍</h5>
+
+<p>서버 프로그램과 클라이언트 프로그램간의 통신과정 단계</p>
+
+<blockquote>
+  <ol>
+    <li>서버 프로그램에서는 서버 소켓을 사용해서 서버 컴퓨터의 특정 포트에서 클라이언트의 연결요청을 처리할 준비를 한다.</li>
+    <li>클라이언트 프로그램은 접속할 서버의 IP주소와 포트 정보를 가지고 소켓을 생성해서 서버에 연결을 요청한다.</li>
+    <li>서버소켓은 클라이언트의 연결요청을 받으면 서버에 새로운 소켓을 생성해서 클라이언트의 소켓과 연결되도록 한다.</li>
+    <li>이제 클라이언트의 소켓과 새로 생성된 서버의 소켓은 서버소켓과 관계없이 일대일 통신을 한다.</li>
+  </ol>
+</blockquote>
+
+<p>서버소켓(ServerSocket)은 포트와 결합(bind)되어 포트를 통해 원격 사용자의 연결요청을 기다리다가 연결요청이 올 때마다 새로운 소켓을 생성하여 상대편 소켓과 통신할 수 있도록 연결한다. 여기까지가 서버소켓의 역할이고, 실제적인 데이터 통신은 서버소켓과 관계없이 소켓과 소켓 간에 이루어진다.</p>
+
+<p>여러 개의 소켓이 하나의 포트를 공유해서 사용할 수 있지만, 서버소켓은 다르다. 서버 소켓을 포트를 독점한다. 만일 한 포트를 둘 이상의 서버 소켓과 연결하는 것이 가능하다면 클라이언트 프로그램이 어떤 서버소켓과 연결되어야하는지 알 수 없을 것이다.</p>
+
+<p>소켓은 두 개의 스트림, 입력스트림과 출력스트림을 가지고 있으며, 이 스트림들은 연결된 상대편 소켓의 스트림들과 교차연결된다. 한 소켓의 입력스트림은 상대편 소켓의 출력 스트림과 연결되고, 출력 스트림은 입력스트림과 연결된다. 그래서 한 소켓이 출력 스트림으로 데이터를 보내면 상대편 소켓에서는 입력스트림으로 받게 된다.</p>
+
+<p>자바에서는 TCP를 이용한 소켓프로그래밍을 위해 Socket과 ServerSocket클래스를 제공하며 다음과 같은 특징을 갖는다.</p>
+<blockquote>
+  <p>Socket : 프로세스간의 통신을 담당하며, InputStream과 OuputStream을 가지고 있다. 이 두스트림을 통해 프로세스간의 통신(입출력)이 이루어진다.
+ServerSocket : 포트와 연결(binc)되어 외부의 연결요청을 기다리다 연결요청이 들어오면, Socket을 생성해서 소켓과 소켓간의 통신이 이루어 지도록 한다. 한 포트에 하나의 ServerSocket만 연결할 수 있다.(프로토콜이 다르면 같은 포트를 공유할 수 있다.)</p>
+</blockquote>
+
+<h5>2.3 UDP 소켓 프로그래밍</h5>
+
+<p>TCP소켓 프로그래밍에서는 Socket과 ServerSocket을 사용하지만, UDP소켓 프로그래밍에서는 DatagramSocket과 DatagramPacket을 사용한다. UDP는 연결지향적인 프로토콜이 아니므로 Server이 필요하지 않으며 UDP통신에서 사용하는 소켓은 DatagramSocket이다. 데이터는 DatagramPacket에 담아서 전송한다. DatagramPacket은 헤더와 데이터로 구성되어 있으며, 헤더에는 DatagramPacket을 수신할 호스트의 정보(호스트의 주소의 포트)가 저장되어 있다. DatagramPacket을 전송하면 DatagramPacket에 지정된 주소(호스트의 포트)의 DatagramSocket에 도착한다.</p>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/java/2017/09/04/17.-%E1%84%82%E1%85%A6%E1%84%90%E1%85%B3%E1%84%8B%E1%85%AF%E1%84%8F%E1%85%B5%E1%86%BC(Networking).html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/java/2017/09/04/17.-%E1%84%82%E1%85%A6%E1%84%90%E1%85%B3%E1%84%8B%E1%85%AF%E1%84%8F%E1%85%B5%E1%86%BC(Networking).html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/java/2017/09/04/17.-%E1%84%82%E1%85%A6%E1%84%90%E1%85%B3%E1%84%8B%E1%85%AF%E1%84%8F%E1%85%B5%E1%86%BC(Networking).html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/java/2017/09/04/17.-%E1%84%82%E1%85%A6%E1%84%90%E1%85%B3%E1%84%8B%E1%85%AF%E1%84%8F%E1%85%B5%E1%86%BC(Networking).html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/java/2017/09/04/17.-%E1%84%82%E1%85%A6%E1%84%90%E1%85%B3%E1%84%8B%E1%85%AF%E1%84%8F%E1%85%B5%E1%86%BC(Networking).html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

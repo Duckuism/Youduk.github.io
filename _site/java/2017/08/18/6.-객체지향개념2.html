@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>6. 객체지향개념 - 2(OOP, Object Oriented Programming)</title>
+  <meta name="description" content="상속, 메서드 오버라이딩, package와 import, 제어자">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/java/2017/08/18/6.-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B72.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="6. 객체지향개념 - 2(OOP, Object Oriented Programming)">6. 객체지향개념 - 2(OOP, Object Oriented Programming)</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        18 AUG 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    8 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>#객체지향프로그래밍(OOP)</p>
+
+<h3 id="참고도서--자바의-정석-남궁성-저-도우-출판">참고도서 : 자바의 정석 (남궁성 저, 도우 출판)</h3>
+
+<h1>클래스를 재사용하는 방법</h1>
+
+<h3>방법1. 상속</h3>
+
+<p>상속 : 기존의 클래스를 재사용하여 새로운 클래스를 작성하는 것</p>
+
+<p>상속의 장점</p>
+<ul>
+  <li>적은 양의 코드로 새로운 클래스 작성 가능</li>
+  <li>코드를 공통으로 관리하여 코드의 추가 및 변경 용이</li>
+</ul>
+
+<p>위와 같은 특징이 코드의 재사용성을 높이고 중복을 제거하여 프로그램의 생산성과 유지보수에 크게 기여한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="c1">//상속 관계 구현 방법</span>
+<span class="kd">class</span> <span class="err">새로</span> <span class="err">작성하는</span> <span class="err">클래스</span> <span class="err">이름</span> <span class="nc">extends</span> <span class="err">상속받는</span> <span class="err">클래스</span> <span class="err">이름</span><span class="o">{</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+
+<span class="err">조상</span> <span class="err">클래스</span> <span class="o">:</span> <span class="err">상속해주는</span> <span class="err">클래스</span> <span class="o">(</span> <span class="o">=</span> <span class="err">부모</span><span class="o">(</span><span class="n">parent</span><span class="o">)</span><span class="err">클래스</span><span class="o">,</span> <span class="err">상위</span><span class="o">(</span><span class="kd">super</span><span class="o">)</span><span class="err">클래스</span><span class="o">,</span> <span class="err">기반</span><span class="o">(</span><span class="n">base</span><span class="o">)</span><span class="err">클래스</span><span class="o">)</span>
+<span class="err">자손</span> <span class="err">클래스</span> <span class="o">:</span> <span class="err">상속</span> <span class="err">받는</span> <span class="err">클래스</span> <span class="o">(</span> <span class="o">=</span> <span class="err">자식</span><span class="o">(</span><span class="n">child</span><span class="o">)</span><span class="err">클래스</span><span class="o">,</span> <span class="err">하위</span><span class="o">(</span><span class="n">sub</span><span class="o">)</span><span class="err">클래스</span><span class="o">,</span> <span class="err">파생된</span><span class="o">(</span><span class="n">derived</span><span class="o">)</span><span class="err">클래스</span><span class="o">)</span>
+
+<span class="c1">//상속 예</span>
+<span class="kd">class</span> <span class="nc">Child</span> <span class="kd">extends</span> <span class="n">Parent</span><span class="o">{</span> <span class="c1">//조상클래스:Parent, 자손클래스Child</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+
+<span class="err">상속계층도</span> <span class="o">:</span> <span class="err">클래스</span> <span class="err">간의</span> <span class="err">상속관계를</span> <span class="err">그림으로</span> <span class="err">표현한</span> <span class="err">것</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>상속의 특징</p>
+<ul>
+  <li>자손클래스는 조상클래스의 모든 멤버를 상속받으므로, Child클래스는 Parent클래스의 멤버를 포함한다. 즉, 자손 클래스는 조상 클래스보다 같거나 많은 멤버를 갖는다. 상속을 거듭할수록 클래스의 멤버 개수는 늘어난다. 따라서 상속을 ‘확장(extends)’이라는 의미로 표현하는 것.</li>
+  <li>조상 클래스가 변경되면 자손 클래스(조상 클래스 하위의 모든 자손 클래스들을 포함)는 자동적으로 영향을 받게 되지만, 자손 클래스가 변경되는 것은 조상 클래스에 아무런 영향을 주지 못한다.</li>
+  <li>생성자와 초기화 블럭은 상속되지 않는다. 멤버만 상속된다.</li>
+  <li>접근 제어자(access modifier)가 private 또는 default인 멤버들은 상속되지 않는다기보다 상속은 받지만 자손 클래스로부터의 접근이 제한 되는 것.</li>
+  <li>자손 클래스의 인스턴스를 생성하면 조상 클래스의 멤버와 자손 클래스의 멤버가 합쳐진 하나의 인스턴스로 생성된다.</li>
+  <li>단일 상속만을 허용한다.</li>
+  <li>Object클래스는 모든 클래스의 조상이다. (따라서 toString(), equals()같 같은 기본적인 11개의 메서드가 정의되어 있다.)</li>
+</ul>
+
+<h3>방법2. 포함</h3>
+
+<p>포함 : 한 클래스의 멤버변수로 다른 클래스 타입의 참조변수를 선언하는 것</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>
+<span class="kd">class</span> <span class="nc">Circle</span><span class="o">{</span>
+  <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>  <span class="c1">//원점의 x좌표</span>
+  <span class="kt">int</span> <span class="n">y</span><span class="o">;</span>  <span class="c1">//원점의 y좌표</span>
+  <span class="kt">int</span> <span class="n">r</span><span class="o">;</span>  <span class="c1">//반지름(radius)</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Point</span><span class="o">{</span>
+  <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>  <span class="c1">//x좌표</span>
+  <span class="kt">int</span> <span class="n">y</span><span class="o">;</span>  <span class="c1">//y좌표</span>
+<span class="o">}</span>
+
+<span class="c1">//포함 관계의 예 : Circle 클래스가 Point 클래스 인스턴스를 멤버 변수로 '포함'하게 함으로써 좀 더 간단하게 작성 가능</span>
+<span class="kd">class</span> <span class="nc">Circle</span><span class="o">{</span>
+  <span class="n">Point</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="o">();</span> <span class="c1">//원점의 x,y 좌표</span>
+  <span class="kt">int</span> <span class="n">r</span><span class="o">;</span> <span class="c1">//반지름(radius)</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3>상속 vs 포함</h3>
+
+<p>언제 상속을 써야하고 언제 포함을 써야할까?</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>상속관계 '~은 ~이다'(is-a)'
+포함관계 '~은 ~을 가지고 있다.(has-a)'
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>하지만 이와 같은 구분법은 굉장히 허술하다. 어떤 목적을 가지고 코딩을 하는지를 잘 생각해보고 상황에 따라 결정하면 된다.</p>
+
+<h1>오버라이딩</h1>
+
+<h4>오버라이딩 : 조상 클래스로부터 상속받은 메서드의 내용을 변경하는 것. 상속받은 메서드를 그대로 사용하기도 하지만, 자손 클래스 자신에 맞게 변경해야하는 경우에 사용.</h4>
+
+<h4>오버라이딩의 조건</h4>
+
+<p>자손 클래스에서 오버라이딩하는 메서드는 조상 클래스의 메서드와</p>
+<ul>
+  <li>이름이 같아야 한다.</li>
+  <li>매개변수가 같아야 한다.</li>
+  <li>반환타입이 같아야 한다.
+ =&gt; 즉, 선언부가 서로 일치해야 한다.</li>
+</ul>
+
+<h4>오버라이딩의 제한 조건</h4>
+<ul>
+  <li>접근 제어자는 조상 클래스의 메서드보다 좁은 범위로 변경 할 수 없다.</li>
+  <li>조상 클래스의 메서드보다 많은 수의 예외를 선언할 수 없다.</li>
+  <li>인스턴스 메서드를 static메서드로 또는 그 반대로 변경할 수 없다.</li>
+</ul>
+
+<h4>super vs this / super() vs this()</h4>
+
+<h5> 1.super vs this</h5>
+
+<p>모든 인스턴스 메서드에는 자신이 속한 인스턴스의 주소가 지역변수로 저장되는데, 이것이 참조 변수인 this와 super의 값이 된다.</p>
+
+<p>this: : 자기 자신을 참조하는 참조 변수.</p>
+
+<p>super : 자손 클래스에서 조상 클래스로부터 상속받은 멤버를 참조하는데 사용되는 참조 변수. 조상의 멤버와 자신의 멤버를 구별하는데 사용된다는 점을 제외하고는 근본적으로는 this와 같다.(즉, super대신 자손 클래스 멤버에 this를 붙여서 구별할 수도 있지만, 목적에 맞게 자기 자신과 다른 클래스를 구별할 떄는 this를, 조상 클래스와 자손 클래스를 구별할 때는 super를 사용하는 것이 좋다.) 상속받은 멤버와 자신의 클래스에 정의된 멤버의 이름이 같을 때는 super를 붙여서 구별한다.</p>
+
+<ul>
+  <li>static메서드(클래스 메서드)는 인스턴스와 관련이 없다. 그래서 this와 마찬가지로 super역시 static 메서드에서는 사용할 수 없고 인스턴스메서드에서만 사용할 수 있다.</li>
+</ul>
+
+<h5> 2.super() vs this()</h5>
+
+<p>this() : 같은 클래스의 다른 생성자를 호출하는 데 사용.
+super() : 조상 클래스의 생성자를 호출하는 데 사용</p>
+
+<p>자손 클래스의 인스턴스를 생성하면, 자손의 멤버와 조상의 멤버가 모두 합쳐진 하나의 인스턴스가 생성된다. 따라서 자손 클래스의 인스턴스가 조상 클래스의 멤버들을 사용할 수 있다. 이 때, 조상 클래스의 멤버들을 사용하려면 조상 클래스의 초기화가 먼저 이루어져있어야하므로 Object를 제외한 모든 클래스의 생성자 첫 줄에 생성자, this() 또는 super()를 호출해야 한다. 만약 없다면 컴파일러가 자동으로 super()를 생성자의 첫 줄에 삽입한다.</p>
+
+<h1>Package와 import</h1>
+
+<p>패키지 : 클래스의 묶음.</p>
+
+<p>패키지의 특징</p>
+<ul>
+  <li>클래스 또는 인터페이스 포함 가능</li>
+  <li>같은 이름의 클래스일지라도 서로 다른 패키지에 속하면 패키지 명으로 구별 가능.</li>
+  <li>하나의 소스파일에는 첫 번째 문장으로 단 한 번의 패키지 선언만을 허용(import랑 혼동하지 말 것.)</li>
+  <li>모든 클래스는 반드시 하나의 패키지에 속해야 한다.</li>
+  <li>패키지는 점(.)을 구분자로 하여 계층구조로 구성한다.</li>
+  <li>패키지는 물리적으로 클래스 파일(.class)을 포함하는 하나의 디렉토리이다.</li>
+</ul>
+
+<p>패키지 선언</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>
+<span class="kn">package</span> <span class="err">패키지명</span><span class="o">;</span>
+
+<span class="err">반드시</span> <span class="err">주석과</span> <span class="err">공백을</span> <span class="err">제외한</span> <span class="err">첫</span> <span class="err">번째</span> <span class="err">문장이어야</span> <span class="err">하며</span><span class="o">,</span> <span class="err">하나의</span> <span class="err">소스파일에</span> <span class="err">단</span> <span class="err">한번만</span> <span class="err">선언</span> <span class="err">가능하다</span><span class="o">.&lt;</span><span class="n">br</span> <span class="o">/&gt;</span>
+<span class="err">해당</span> <span class="err">소스파일에</span> <span class="err">포함된</span> <span class="err">모든</span> <span class="err">클래스나</span> <span class="err">인터페이스는</span> <span class="err">선언된</span> <span class="err">패키지에</span> <span class="err">속하게</span> <span class="err">된다</span><span class="o">.&lt;</span><span class="n">br</span> <span class="o">/&gt;</span>
+<span class="err">만약</span> <span class="err">패키지를</span> <span class="err">선언하지</span> <span class="err">않으면</span> <span class="err">자바에서</span> <span class="err">기본으로</span> <span class="err">이름없는</span> <span class="err">패키지</span><span class="o">(</span><span class="n">unnamed</span> <span class="kn">package</span><span class="o">)</span><span class="err">를</span> <span class="err">선언한다</span><span class="o">.&lt;</span><span class="n">br</span> <span class="o">/&gt;</span>
+<span class="err">즉</span><span class="o">,</span> <span class="err">패키지를</span> <span class="err">선언하지</span> <span class="err">않은</span> <span class="err">모든</span> <span class="err">클래스들은</span> <span class="err">같은</span> <span class="err">패키지에</span> <span class="err">속하는</span> <span class="err">셈이다</span><span class="o">.&lt;</span><span class="n">br</span> <span class="o">/&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>import문</p>
+
+<p>import문: 소스 코드 작성 시, 다른 패키지의 클래스를 사용하려면 일일히 클래스 앞에 사용하려는 패키지의 이름을 적어야하는데, 이 과정을 생략할 수 있게 해주는 문장이다. 컴파일 시에 컴파일러는 import문을 통해 사용된 클래스들의 패키지를 알아 낸 다음, 모든 클래스 이름 앞에 패키지명을 붙여 준다.</p>
+
+<p>import문 선언 방법</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1">//모든 소스 파일에서 import문은 package문 다음에, 클래스 선언문 이전에 위치해야 한다. 한 소스 파일에 여러 번 선언 가능하다. java.lang 패키지 클래스들은 따로 선언을 하지 않아도 묵시적으로 선언되어 있어서 java.lang 패키지의 클래스들은 import 선언문 없이 사용 가능하다.</span>
+<span class="kn">import</span> <span class="err">패키지명</span><span class="nn">.</span><span class="err">클래스명</span><span class="o">;</span> <span class="err">또는</span>
+<span class="kn">import</span> <span class="err">패키지명</span><span class="nn">.*</span><span class="o">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>일반적인 소스파일의 구성</p>
+<ol>
+  <li>package문</li>
+  <li>import문</li>
+  <li>클래스 선언</li>
+</ol>
+
+<p>static import문 : static멤버를 호출할 때 클래스 이름 생략 가능.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Integer</span><span class="o">.*;</span> <span class="c1">// Integer클래스의 모든 static메서드</span>
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Math</span><span class="o">.</span><span class="na">random</span><span class="o">;</span> <span class="c1">// 괄호 안붙임. Math.random()을 random()만으로 참조 가능.</span>
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">System</span><span class="o">.</span><span class="na">out</span><span class="o">;</span> <span class="c1">// System.out을 out만으로 참조 가능.</span>
+
+<span class="mi">1</span><span class="o">)</span><span class="kd">static</span> <span class="n">import</span><span class="err">문</span> <span class="err">사용</span> <span class="err">전</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">());</span>
+<span class="mi">2</span><span class="o">)</span><span class="kd">static</span> <span class="n">import</span><span class="err">문</span> <span class="err">사용</span> <span class="err">후</span>
+<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">random</span><span class="o">());</span> <span class="c1">// 클래스 명인 System과 Math를 생략했다.</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1>제어자(modifier)</h1>
+
+<p>제어자 : 제어자는 클래스, 변수 또는 메서드의 선언부에 함께 사용되어 부가적인 의미를 부여한다.</p>
+
+<ul>
+  <li>접근 제어자 : public, protected, default, private</li>
+  <li>그 외 제어자: static, final, abstract, native, transient, synchronized, volatile, strictfp</li>
+</ul>
+
+<p>접근 제어자는 한 번에 네 가지 중 하나만 선택 가능하지만, 그 외 제어자는 중복이 가능하다. 제어자는 클래스나 멤버변수와 메서드에 주로 사용된다.</p>
+
+<p>접근 제어자 1. static - 클래스의, 공통적인</p>
+
+<p><img src="https://cfile238.uf.daum.net/image/20099334502C94A70DF199" alt="Smithsonian Image" /><br /></p>
+
+<p>접근 제어자 2. final - 마지막의, 변경될 수 없는</p>
+
+<p><img src="https://cfile7.uf.tistory.com/image/24266133564D43D5012E30" alt="Smithsonian Image" /><br /></p>
+
+<p>접근 제어자 3. abstract - 추상의, 미완성의</p>
+
+<p><img src="https://cfile24.uf.tistory.com/image/2249B348564D45541F4D80" alt="Smithsonian Image" /><br /></p>
+
+<p>접근 제어자 별 접근 가능 범위</p>
+
+<p><img src="https://cfile1.uf.tistory.com/image/12665F4A5002E8C1077A27" alt="Smithsonian Image" /><br /></p>
+
+<p>이처럼 접근 제어자로 접근 범위를 제한함에 따라 클래스 내부에 선언된 데이터를 보호한다. 즉, 중요한 데이터를 외부에서 변경하지 못하게 막는 것이다. 또한 외부에는 불필요한, 내부적으로만 사용되는 부분을 감추기 위해 접근 제어자를 사용하는데 이런 과정을 ‘데이터 감추기(data hiding)’ 또는 ‘캡슐화(encapsulation)’라고 한다.</p>
+
+<p>제어자의 조합</p>
+
+<p>대상에 따라 사용할 수 있는 제어자</p>
+
+<p><img src="https://cfile23.uf.tistory.com/image/225B8C4557E6121E241937" alt="Smithsonian Image" /><br /></p>
+
+<p>제어자 조합 시 주의사항</p>
+<ol>
+  <li>메서드에 static과 abstract를 함께 사용할 수 없다.
+  static메서드는 몸통이 있는 메서드에만 사용할 수 있기 때문에.</li>
+  <li>클래스에 abstract와 final을 동시에 사용할 수 없다.
+  클래스에 사용되는 final은 클래스를 확장할 수 없다는 의미이고 abstract는 상속을 통해서 완성되어야 한다는 의미이므로 서로 모순되기 때문이다.</li>
+  <li>abstract메서드의 접근 제어자가 private일 수 없다.
+  abstract메서드는 자손클래스에서 구현해주어야 하는데 접근 제어자가 private이면, 자손클래스에서 접근할 수 없기 때문이다.</li>
+  <li>메서드에 private와 final을 같이 사용할 필요는 없다.
+  접근 제어자가 private인 메서드는 오버라이딩될 수 없기 때문이다. 이 둘 중 하나만 사용해도 의미가 충분하다.</li>
+</ol>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/java/2017/08/18/6.-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B72.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/java/2017/08/18/6.-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B72.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/java/2017/08/18/6.-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B72.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/java/2017/08/18/6.-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B72.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/java/2017/08/18/6.-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B72.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

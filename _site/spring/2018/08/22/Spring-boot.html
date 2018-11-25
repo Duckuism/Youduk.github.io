@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Spring boot application 시작하기</title>
+  <meta name="description" content="">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/spring/2018/08/22/Spring-boot.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/spring.png"
+  
+  alt="Spring boot application 시작하기 feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Spring boot application 시작하기">Spring boot application 시작하기</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        22 AUG 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    1 min read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>기존 스프링 프로젝트 스프링 부트로 바꾸기</p>
+
+<ol>
+  <li>스프링 부트란?
+    <ol>
+      <li>jsp를 지원하지 않는다.</li>
+      <li>was위에 war를 올려놓고 실행하는 것이 아니라, 바로 실행가능한 jar파일로 실행한다. 즉, 자체적으로 was를 가지고 있다는 뜻. 꼭 jar가 아니라 was로 실행할 수도 있다. 이럴 때는 jsp를 사용해도 된다.</li>
+      <li>JSP가 지원되지 않으므로 thymeleaf를 이용해서 결과를 출력할 것.</li>
+      <li>스프링 부트가 등장한 이유 : 웹어플리케이션을 만들기 위해 자바랑 스프링을 쓰지만, 자바스크립트랑 노드, 파이썬 장고. 자바랑 스프링을 이용해서 만들었던 것 보다 훨씬 가볍게 만들 수 있다. 자바랑 스프링은 기본적으로 알아야할 것들이 너무 많다. 따라서 가볍게 프로젝트를 진행할 수 있는 스프링 부트의 니즈가 생겼다.
+        <ol>
+          <li>아주 손쉽게 프로젝트를 시작할 수 있도록 한다.</li>
+          <li>주관을 가지고 만들어진 제품이지만(따라서 대부분 알아서 설정한다.) 요구사항이 다양해짐으로써 주어진 틀에서도 얼마든지 벗어날 수 있도록 한다. (커스터마이징이 가능하도록 한다.)</li>
+          <li>프로덕션을 위한 모니터링, 헬스 체크등의 기능도 제공한다.</li>
+          <li>코드제네레이션을 제공하는 도구가 아니다. XML설정은 필요 없다. spring 사용할 때 xml에 설정을 넣어놨던 것을 안 해도 된다. 스프링 부트가 알아서 해준다.</li>
+        </ol>
+      </li>
+      <li>스프링 부트란?
+        <ol>
+          <li>독립적이고, 실제 제품 수준의 애플리케이션을 쉽게 만들어준다.</li>
+          <li>특정 버전의 서드파티 라이브러리들을 특정한 방법으로 사용할 수 있도록 확장점ㅇ르 제공한다.</li>
+          <li>최소한의 노력으로 시작할 수 있도록 틀을 만들어놓았따.</li>
+          <li>스프링 부트는 최소한의 설정만 필요하다. 그러나, 보안 관련 설정 등 추가적인 설정이 추가로 될 가능성이 크다.</li>
+          <li>java -jar를 이용하여 쉽게 실행할 수 있다.(큰 장점 중의 하나) jar가 가진 내장 톰캣은 jsp는 지원하지 않는다. 대신 thymeleaf를 이용하면 된다.</li>
+          <li>war로 묶어서 배포할 수 있다.</li>
+          <li>커맨드 라인 툴도 제공한다.</li>
+        </ol>
+      </li>
+      <li>스프링 부트 요구사항
+        <ol>
+          <li>자바 8 or 자바 9 spring 5.0.4 릴리즈 이상을 사용한다. Maven 3.2+, gradle 4이상 지원한다.</li>
+          <li>서블릿 컨테이너 : 내부적으로 내장 tomcat을 가지고 있지만 설정을 통해 바꿔줄 수도 있다.
+            <ol>
+              <li>tomcat 8.5 이상 서블릿 버전 3.1이상</li>
+              <li>jetty 9.4</li>
+              <li>undertow 1.4</li>
+              <li>서블릿 3.0 이상 지원하는 서블릿 컨테이너도 지원한다.</li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>스프링 부트로 프로젝트 만들기
+    <ol>
+      <li>https://start.spring.io
+        <ol>
+          <li>STS로 만들 수 있다.</li>
+          <li>CLI로 만들 수 있다.</li>
+          <li>inteliJ 상용 버전으로 만들 수 있다.</li>
+        </ol>
+      </li>
+      <li>inteliJ community</li>
+      <li>eclipse</li>
+      <li>maven pom.xml 파일</li>
+    </ol>
+  </li>
+  <li>스프링 애플리케이션 실행</li>
+  <li>datasource 설정하기</li>
+  <li>spring JDBC를 이용한 dao작성하기</li>
+  <li>service를 작성하기</li>
+  <li>controller 작성과 thymeleaf를 이용한 결과 출력</li>
+  <li>마치며</li>
+</ol>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/spring/2018/08/22/Spring-boot.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/spring/2018/08/22/Spring-boot.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/spring/2018/08/22/Spring-boot.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/spring/2018/08/22/Spring-boot.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/spring/2018/08/22/Spring-boot.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

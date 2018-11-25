@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>DDL</title>
+  <meta name="description" content="create, drop">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/mysql/2018/06/16/DDL.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/mysql.png"
+  
+  alt="DDL feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="DDL">DDL</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        16 JUN 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    4 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>이 강의는 connect 재단의 boostcourse 강의를 공부 목적으로 정리한 것입니다.</p>
+
+<h1 id="ddldata-definition-language">DDL(Data Definition Language)</h1>
+
+<p>데이터베이스에 스키마 객체를 생성하거나 변경하거나 제거하는 일들을 수행한다.</p>
+
+<h2 id="mysql-데이터-타입"><strong>MySQL 데이터 타입</strong></h2>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16722/#"><img src="https://mooc.phinf.nhnnext.org/20180131_89/1517386938999sf3SM_PNG/2_8_3_MySQL__-1.PNG?type=w760" alt="img" /></a></p>
+
+<ul>
+  <li><strong>MySQL 데이터 타입-1</strong></li>
+</ul>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16722/#"><img src="https://mooc.phinf.nhnnext.org/20180131_46/1517386952668I67cM_PNG/2_8_3_MySQL__-2.PNG?type=w760" alt="img" /></a></p>
+
+<ul>
+  <li><strong>MySQL 데이터 타입-2</strong></li>
+</ul>
+
+<h2 id="테이블-생성"><strong>테이블 생성</strong></h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>create table 테이블명( 
+          필드명1 타입 [NULL | NOT NULL][DEFAULT ][AUTO_INCREMENT], 
+          필드명2 타입 [NULL | NOT NULL][DEFAULT ][AUTO_INCREMENT], 
+          필드명3 타입 [NULL | NOT NULL][DEFAULT ][AUTO_INCREMENT], 
+          ........... 
+          PRIMARY KEY(필드명) 
+          );
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>데이터 형 외에도 속성값의 빈 값 허용 여부는 NULL 또는 NOT NULL로 설정</li>
+  <li>DEFAULT 키워드와 함께 입력하지 않았을 때의 초기값을 지정</li>
+  <li>입력하지 않고 자동으로 1씩 증가하는 번호를 위한 AUTO_INCREMENT</li>
+  <li>Primary key를 옵션에서 지정하지 않고 맨 마지막에 지정해도 된다.</li>
+</ul>
+
+<p><strong>테이블 생성 실습</strong></p>
+
+<p>EMPLOYEE와 같은 구조를 가진 EMPLOYEE2 테이블을 생성하시오.</p>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16722/#"><img src="https://mooc.phinf.nhnnext.org/20180131_144/1517387104021xnStV_PNG/2_8_3___.png?type=w760" alt="img" /></a></p>
+
+<ul>
+  <li><strong>테이블 생성 실습</strong></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>CREATE TABLE EMPLOYEE2(   
+            empno      INTEGER NOT NULL PRIMARY KEY,  
+           name       VARCHAR(10),   
+           job        VARCHAR(9),   
+           boss       INTEGER,   
+           hiredate   VARCHAR(12),   
+           salary     DECIMAL(7, 2),   
+           comm       DECIMAL(7, 2),   
+          deptno     INTEGER);
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/img/DDL2.png" alt="" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>create table book(
+isbn varchar(10) primary key,
+title varchar(20) not null,
+price integer not null
+);
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/img/DDL1.png" alt="" /></p>
+
+<h2 id="테이블-수정-컬럼-추가--삭제"><strong>테이블 수정 (컬럼 추가 / 삭제)</strong></h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>alter table 테이블명
+          add  필드명 타입 [NULL | NOT NULL][DEFAULT ][AUTO_INCREMENT];
+
+alter table 테이블명
+         drop  필드명;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>테이블 수정 실습 (컬럼 추가)</strong></p>
+
+<p>실습 – EMPLOYEE2 테이블에 생일(birthdate)칼럼을 varchar(12)형식으로 추가하시오.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>alter table EMPLOYEE2
+
+add birthdate varchar(12);
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16722/#"><img src="https://mooc.phinf.nhnnext.org/20180131_255/15173873316052tWyD_PNG/2_8_3___%28%29.png?type=w760" alt="img" /></a></p>
+
+<p><img src="/img/DDL3.png" alt="" /></p>
+
+<ul>
+  <li><strong>테이블 수정 실습(컬럼추가)</strong></li>
+</ul>
+
+<p><strong>테이블 수정 실습 (컬럼 삭제)</strong></p>
+
+<p>실습 – EMPLOYEE2 테이블의 생일(birthdate)칼럼을 삭제하시오.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>alter table EMPLOYEE2
+
+drop birthdate;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16722/#"><img src="https://mooc.phinf.nhnnext.org/20180131_264/15173874516941y662_PNG/2_8_3___%28%29.png?type=w760" alt="img" /></a></p>
+
+<p><img src="/img/DDL4.png" alt="" /></p>
+
+<ul>
+  <li><strong>테이블 수정 실습(컬럼추가삭제)</strong></li>
+</ul>
+
+<p><strong>테이블 수정 (컬럼 수정)</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>alter table  테이블명
+     change  필드명  새필드명 타입 [NULL | NOT NULL][DEFAULT ][AUTO_INCREMENT];
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>change 키워드를 사용하고  칼럼을 새롭게 재정의 (이름부터 속성까지 전부)</li>
+</ul>
+
+<p><strong>테이블 수정 실습 (컬럼 수정)</strong></p>
+
+<p>실습 – EMPLOYEE2 테이블의 부서번호(deptno)를 dept_no로 수정하시오.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>alter table EMPLOYEE2
+
+change deptno dept_no int(11);
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16722/#"><img src="https://mooc.phinf.nhnnext.org/20180131_244/15173875762404JQ0U_PNG/2_8_3___%28%29.png?type=w760" alt="img" /></a></p>
+
+<p><img src="/img/DDL5.png" alt="" /></p>
+
+<ul>
+  <li><strong>테이블 수정 실습(컬럼수정)</strong></li>
+</ul>
+
+<h2 id="테이블-이름-변경"><strong>테이블 이름 변경</strong></h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>alter table  테이블명 rename 변경이름
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>테이블 이름 변경 실습</strong></p>
+
+<p>실습 – EMPLOYEE2 테이블의 이름을 EMPLOYEE3로 변경하시오.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>alter table EMPLOYEE2
+
+rename EMPLOYEE3;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16722/#"><img src="https://mooc.phinf.nhnnext.org/20180131_40/1517387645188A8ER4_PNG/2_8_3____.png?type=w760" alt="img" /></a></p>
+
+<p><img src="/img/DDL6.png" alt="" /></p>
+
+<ul>
+  <li><strong>테이블 이름 변경 실습</strong></li>
+</ul>
+
+<h2 id="테이블-삭제하기"><strong>테이블 삭제하기</strong></h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>drop table 테이블이름;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>참고로, 제약 조건(foreign key)이 있을 경우에는 drop table 명령으로도 테이블이 삭제되지 않을 수 있습니다.</p>
+
+<p><img src="/img/DDL7.png" alt="" /></p>
+
+<p>위의 메시지는 foreign key 제약 조건으로 department 테이블과 연관 관계를 갖고 있는데, department 테이블에 없는 값을 넣었기 때문에 안 된다는 얘기이다. 즉, employee  테이블은 department 테이블을 참고하고 있는데, 참고하고 있는 원본을 무작정 지울 수 없게 제약 조건이 걸리는 것이다. 또한 employee가 department를 참조 하고 있기 때문에, 참조하고 있는 원본인 department에 존재하지 않는 값은 넣을 수 없다.</p>
+
+<p>만약 department에 있는 값을 넣으면 정상적으로 들어간다</p>
+
+<p><img src="/img/DDL8.png" alt="" /></p>
+
+<p>그럴 경우는 테이블을 생성한 반대 순서로 삭제를 해야합니다.</p>
+
+<p><strong>테이블 삭제 실습</strong></p>
+
+<p>* 테이블 삭제 후 desc 명령을 수행하면, 존재하지 않는 테이블이라고 표시됩니다.</p>
+
+<p>실습 – EMPLOYEE2 테이블을 삭제하시오.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>drop table EMPLOYEE2;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16722/#"><img src="https://mooc.phinf.nhnnext.org/20180131_181/15173877575931jc56_PNG/2_8_3___.png?type=w760" alt="img" /></a></p>
+
+<ul>
+  <li><strong>테이블 삭제 실습</strong></li>
+</ul>
+
+<hr />
+
+<p><strong>생각해보기</strong></p>
+
+<ul>
+  <li>칼럼의 길이가 10인데, 해당 칼럼에 값이 저장되어 있습니다.  이 때 칼럼의 길이를 5로 바꾼다면 어떤 일이 벌어질까요?</li>
+  <li><strong>문자열을 저장하는 데이터 타입인 CHAR와 VARCHAR 차이점에 대해 알아보고 어떤 상황에서 CHAR 또는 VARCHAR 를 선택하는 것이 효율적인지 생각해봅시다.</strong></li>
+  <li>문자열 데이터 타입에는 문자셋을 지정할 수 있습니다. 문자셋에 따라 해당 필드가 차지하는 공간 크기를 한번 계산해보자. (예: VARCHAR(10) CHARACTER SET UTF8; 은 몇 Byte 크기를 차지할까요? ASCII 일때는 또 몇 Byte 크기를 가질까요?</li>
+</ul>
+
+<hr />
+
+<p><strong>참고 자료</strong></p>
+
+<ul>
+  <li>
+    <p><strong>[참고링크] 13.1.18 CREATE TABLE Syntax</strong><a href="https://dev.mysql.com/doc/refman/5.7/en/create-table.html">https://dev.mysql.com/doc/refman/5.7/en/create-table.html</a></p>
+  </li>
+  <li>
+    <p><strong>[참고링크] 13.1.8 ALTER TABLE Syntax</strong><a href="https://dev.mysql.com/doc/refman/5.7/en/alter-table.html">https://dev.mysql.com/doc/refman/5.7/en/alter-table.html</a></p>
+  </li>
+  <li>
+    <p><strong>[참고링크] 13.1.29 DROP TABLE Syntax</strong><a href="https://dev.mysql.com/doc/refman/5.7/en/drop-table.html">https://dev.mysql.com/doc/refman/5.7/en/drop-table.html</a></p>
+  </li>
+</ul>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/mysql/2018/06/16/DDL.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/mysql/2018/06/16/DDL.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/mysql/2018/06/16/DDL.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/mysql/2018/06/16/DDL.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/mysql/2018/06/16/DDL.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

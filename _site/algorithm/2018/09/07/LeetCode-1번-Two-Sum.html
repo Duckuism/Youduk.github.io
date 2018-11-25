@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Leet code 1번 Two Sum</title>
+  <meta name="description" content="Brute Force, Two-pass Hash Table, One-pass Hash Table">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/algorithm/2018/09/07/LeetCode-1%E1%84%87%E1%85%A5%E1%86%AB-Two-Sum.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio &amp; Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href="http://localhost:4000/">
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src="http://localhost:4000/img/algorithms.png" alt="Leet code 1번 Two Sum feature image">
+
+  
+</div>
+<!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Leet code 1번 Two Sum">Leet code 1번 Two Sum</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        7 SEP 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    9 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>최근 취업준비를 하면서 모 스타트업 테스트를 위해 LeetCode라는 사이트를 이용해보는 중인데, 기존에 사용하던 백준과 달리 Java로 모범답안이 나와있어서 정말 좋다. 문제를 풀어보고 모범 답안을 번역해서 올려보겠다.</p>
+
+<h3 id="문제">문제</h3>
+
+<p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
+
+<p>주어진 정수들의 배열은 특정 타겟 값이 될때까지 더한 두 숫자의 인덱스들을 반환합니다.</p>
+
+<p>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the <em>same</em> element twice.</p>
+
+<p>각 출력당 하나의 정답만 있다고 가정하고, 같은 숫자는 중복되어 쓰이지 않습니다.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="rouge-code"><pre>Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h3 id="나의-답안-java-javascript-es6">나의 답안 (Java, JavaScript ES6)</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td>
+<td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">twoSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++){</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]+</span><span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="n">target</span><span class="o">){</span>
+                    <span class="n">result</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+                    <span class="n">result</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">j</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td>
+<td class="rouge-code"><pre><span class="cm">/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */</span>
+<span class="kd">const</span> <span class="nx">twoSum</span> <span class="o">=</span> <span class="p">(</span><span class="nx">nums</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">nums</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="nx">j</span><span class="o">&lt;</span><span class="nx">nums</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">((</span><span class="nx">nums</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">+</span><span class="nx">nums</span><span class="p">[</span><span class="nx">j</span><span class="p">])</span> <span class="o">==</span> <span class="nx">target</span><span class="p">){</span>
+                <span class="k">return</span> <span class="p">[</span><span class="nx">i</span><span class="p">,</span><span class="nx">j</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h3 id="leet-code-모범-답안-해석">Leet Code 모범 답안 해석</h3>
+
+<ol>
+  <li>
+    <p>Brute Force (완전 탐색)</p>
+
+    <p>The brute force approach is simple. Loop through each element $x$ and find if there is another value that equals to <script type="math/tex">target - x</script>.</p>
+
+    <p>완전 탐색 접근은 간단합니다. 각 요소 <script type="math/tex">x</script>에 대해 loop를 돌고 <script type="math/tex">target-x</script>와 같은 값이 있는지를 찾습니다.</p>
+
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td>
+<td class="rouge-code"><pre><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">twoSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">i</span><span class="o">,</span> <span class="n">j</span> <span class="o">};</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">"No two sum solution"</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div>    </div>
+
+    <p><strong>Complexity Analysis</strong> (복잡도 분석)</p>
+
+    <ul>
+      <li>
+        <p>Time complexity : <script type="math/tex">O(n^2)</script>. For each element, we try to find its complement by looping through the rest of array which takes <script type="math/tex">O(n)</script> time. Therefore, the time complexity is <script type="math/tex">O(n^2)</script>.</p>
+
+        <p>시간 복잡도 : <script type="math/tex">O(n^2)</script>. 우리는 각각의 요소에 대해 <script type="math/tex">O(n)</script> 시간을 소요하여 해당 요소를 제외한 배열의 나머지 전체를 탐색함으로써 보완 요소를 찾으려고 시도한다. 따라서 시간 복잡도는 <script type="math/tex">O(n^2)</script> 이다.</p>
+      </li>
+      <li>
+        <p>Space complexity : <script type="math/tex">O(1)</script>.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Two-pass Hash Table (두 번의 해시 테이블 사용)</p>
+
+    <p>To improve our run time complexity, we need a more efficient way to check if the complement exists in the array. If the complement exists, we need to look up its index. What is the best way to maintain a mapping of each element in the array to its index? A hash table.</p>
+
+    <p>우리의 런타임 시간 복잡도를 개선하기 위해 우리는 보완 요소가 배열안에 존재하는지를 체크하는 좀 더 효율적인 방법을 찾을 필요가 있다. 만일 보완 요소가 존재한다면 우리는 그것의 인덱스를 찾을 필요가 있다. 배열 안의 각 요소들과 해당 요소 인덱스와의 연결 관계를 유지하는 가장 좋은 방법은 무엇일까? 해쉬테이블이다.</p>
+
+    <p>We reduce the look up time from <script type="math/tex">O(n)</script> to <script type="math/tex">O(1)</script> by trading space for speed. A hash table is built exactly for this purpose, it supports fast look up in <em>near</em> constant time. I say “near” because if a collision occurred, a look up could degenerate to <script type="math/tex">O(n)</script> time. But look up in hash table should be amortized <script type="math/tex">O(1)</script> time as long as the hash function was chosen carefully.</p>
+
+    <p>우리는 빠른 공간 교환에 의해서 찾는 시간을 <script type="math/tex">O(n)</script>에서 <script type="math/tex">O(1)</script>까지 감소시킬 수 있다. 하나의 해쉬 테이블은 정확히 이 목적을 위해 만들어지며, 이 해쉬 테이블은 <em>거의</em> ​ 일정한빠른 탐색속도를 지원한다. <em>거의</em> 라고 말을 하는 이유는 한 번 충돌이 일어나면 탐색 속도는 <script type="math/tex">O(n)</script> 까지 악화될 수 있기 때문이다. 그러나 해쉬 테이블에서의 탐색은 해쉬 함수가 주의깊게 선택되는 한은 <script type="math/tex">O(1)</script>로 분할 상황 된다.</p>
+
+    <p>A simple implementation uses two iterations. In the first iteration, we add each element’s value and its index to the table. Then, in the second iteration we check if each element’s complement (<script type="math/tex">target - nums[i]</script>) exists in the table. Beware that the complement must not be <script type="math/tex">nums[i]</script> itself!</p>
+
+    <p>간단한 코드 실행은 두 번의 반복 횟수를 사용한다. 첫 번째 반복에서 우리는 각 요소의 값과 인덱스를 해쉬 테이블에 추가한다. 그리고 두 번째 박복에서 우리는 각 요소의 보완 요소인 <script type="math/tex">target - nums[i]</script>의 값이 테이블안에 존재하는지를 체크한다. <script type="math/tex">nums[i]</script> 자기 자신은 보완 요소가 될 수 없다는 것을 잊어먹지 말아라!</p>
+
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+<td class="rouge-code"><pre><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">twoSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">complement</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">complement</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">complement</span><span class="o">)</span> <span class="o">!=</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">i</span><span class="o">,</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">complement</span><span class="o">)</span> <span class="o">};</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">"No two sum solution"</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div>    </div>
+
+    <p><strong>Complexity Analysis:</strong></p>
+
+    <ul>
+      <li>
+        <p>Time complexity : <script type="math/tex">O(n)</script>. We traverse the list containing <script type="math/tex">n</script> elements exactly twice. Since the hash table reduces the look up time to <script type="math/tex">O(1)</script>, the time complexity is <script type="math/tex">O(n)</script>.</p>
+
+        <p>시간 복잡도 : <script type="math/tex">O(n)</script>. 우리는 <script type="math/tex">n</script>개의 요소들을 포함하는 리스트를 정확히 두 번 가로지른다. 해쉬테이블은 탐색시간을 <script type="math/tex">O(1)</script>로 감소시키므로 시간복잡도는 <script type="math/tex">O(n)</script>.</p>
+      </li>
+      <li>
+        <p>Space complexity : <script type="math/tex">O(n)</script>. The extra space required depends on the number of items stored in the hash table, which stores exactly <script type="math/tex">n</script> elements.</p>
+
+        <p>공간 복잡도 : <script type="math/tex">O(n)</script>. 해쉬테이블 안에 <script type="math/tex">n</script>개의 요소들을 저장하기 위해 필요한 아이템들(key 값은 각 요소의 값, value값은 각 요소의 index 값)의 개수만큼 추가 공간이 요구된다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>One-pass Hash Table (한 번의 해쉬테이블 사용)</p>
+
+    <p>It turns out we can do it in one-pass. While we iterate and inserting elements into the table, we also look back to check if current element’s complement already exists in the table. If it exists, we have found a solution and return immediately.</p>
+
+    <p>우리가 위 과정을 한 번에 할 수 있다는 것은 명백하다. 우리는 반복하면서 해쉬테이블에 요소들을 삽입하는 동시에 현재 요소들의 보완 요소들이 테이블 안에 이미 존재하는지를 다시 체크해볼 수 있다. 만일 존재한다면 우리는 답을 찾고 즉시 반환한다.</p>
+
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+<td class="rouge-code"><pre><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">twoSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">complement</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">complement</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">complement</span><span class="o">),</span> <span class="n">i</span> <span class="o">};</span>
+        <span class="o">}</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">"No two sum solution"</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div>    </div>
+
+    <p><strong>Complexity Analysis:</strong></p>
+
+    <ul>
+      <li>
+        <p>Time complexity : <script type="math/tex">O(n)</script>. We traverse the list containing $n$ elements only once. Each look up in the table costs only <script type="math/tex">O(1)</script> time.</p>
+
+        <p>시간 복잡도 : <script type="math/tex">O(n)</script>. 우리는 <script type="math/tex">n</script> 개의 요소를 가진 리스트를 딱 한 번 가로지른다. 테이블에서의 각 탐색은 <script type="math/tex">O(1)</script> 만큼의 시간을 소비한다.</p>
+      </li>
+      <li>
+        <p>Space complexity : <script type="math/tex">O(n)</script>. The extra space required depends on the number of items stored in the hash table, which stores at most <script type="math/tex">n</script> elements.</p>
+
+        <p>해쉬테이블 안에 <script type="math/tex">n</script>개의 요소들을 저장하기 위해 필요한 아이템들(key 값은 각 요소의 값, value값은 각 요소의 index 값)의 개수만큼 추가 공간이 요구된다.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/algorithm/2018/09/07/LeetCode-1%E1%84%87%E1%85%A5%E1%86%AB-Two-Sum.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/algorithm/2018/09/07/LeetCode-1%E1%84%87%E1%85%A5%E1%86%AB-Two-Sum.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/algorithm/2018/09/07/LeetCode-1%E1%84%87%E1%85%A5%E1%86%AB-Two-Sum.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/algorithm/2018/09/07/LeetCode-1%E1%84%87%E1%85%A5%E1%86%AB-Two-Sum.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/algorithm/2018/09/07/LeetCode-1%E1%84%87%E1%85%A5%E1%86%AB-Two-Sum.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  © 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Markdown 문법</title>
+  <meta name="description" content="사소하지만 필요한 것">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/markdown/2017/07/07/markdown-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio &amp; Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href="http://localhost:4000/">
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Markdown 문법">Markdown 문법</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        7 JUL 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    13 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>마크 다운으로 블로그 정리를 하는 분들과 나 자신을 위해 기능별로 사용하는 문법들을 정리해 보았습니다. 깃허브 블로그를 사용하신다는 전제하에 진행하므로 Github Flavored Markdown(GFM), PHP Markdown Extra 문법 내용까지 모두 수록하였습니다. 이 포스팅에서 몇 개의 것들은 코드는 동일하지만 제 블로그 테마 CSS에 의해 기본 마크 다운 효과와 다르게 보이는 것도 있으니 이 점 착오없으시길 바랍니다. 또한 유용한 HTML태그들도 같이 보여드립니다. &lt;&gt;태그 안에 감싸져 있는 것들은 모두 html태그 입니다.</p>
+
+<p>참고한 사이트들 : <br>
+<a href="https://gist.github.com/ihoneymon/652be052a0727ad59601">https://gist.github.com/ihoneymon/652be052a0727ad59601</a><br>
+<a href="https://sergeswin.com/1013">https://sergeswin.com/1013</a><br>
+<a href="https://docs.moodle.org/archive/ko/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4%EC%9D%98_%EA%B3%A0%EA%B8%89_%ED%99%9C%EC%9A%A9">https://docs.moodle.org/archive/ko/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4%EC%9D%98_%EA%B3%A0%EA%B8%89_%ED%99%9C%EC%9A%A9</a><br>
+<a href="https://3slifehiking.tistory.com/4">https://3slifehiking.tistory.com/4</a><br></p>
+
+<hr>
+
+<h1 id="1-heading">&lt;1. Heading&gt;</h1>
+
+<h1 id="헤딩1">헤딩1</h1>
+<h2 id="헤딩2">헤딩2</h2>
+<h3 id="헤딩3">헤딩3</h3>
+<h4 id="헤딩4">헤딩4</h4>
+<h5 id="헤딩5">헤딩5</h5>
+<h6 id="헤딩6">헤딩6</h6>
+
+<h1>헤딩1</h1>
+<h2>헤딩2</h2>
+<h3>헤딩3</h3>
+<h4>헤딩4</h4>
+<h5>헤딩5</h5>
+<h6>헤딩6</h6>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td>
+<td class="rouge-code"><pre><span class="gh"># 헤딩1</span>
+<span class="gu">## 헤딩2</span>
+<span class="gu">### 헤딩3</span>
+<span class="gu">#### 헤딩4</span>
+<span class="gu">##### 헤딩5</span>
+<span class="gu">###### 헤딩6</span>
+
+<span class="nt">&lt;h1&gt;</span>헤딩1<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>헤딩2<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;h3&gt;</span>헤딩3<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;h4&gt;</span>헤딩4<span class="nt">&lt;/h4&gt;</span>
+<span class="nt">&lt;h5&gt;</span>헤딩5<span class="nt">&lt;/h5&gt;</span>
+<span class="nt">&lt;h6&gt;</span>헤딩6<span class="nt">&lt;/h6&gt;</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+
+<h1 id="2-line-break">&lt;2. Line break&gt;</h1>
+
+<p>줄<br>바꿈<br>을<br>해봅니다.</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre>줄<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>바꿈<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>을<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>해봅니다.
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+
+<h1 id="3-link">&lt;3. Link&gt;</h1>
+
+<h3 id="url-link">URL link</h3>
+
+<p><a href="https://hyunseob.github.io/2016/09/25/typescript-introduction/">https://hyunseob.github.io/2016/09/25/typescript-introduction/</a><br>
+<a href="https://han41858.tistory.com/14">‘일반 링크’</a><br>
+<a href="https://han41858.tistory.com/14" target="_blank">‘새창으로 링크’</a><br>
+<a href="https://han41858.tistory.com/14" class="btn btn-default" target="_blank">‘새창으로 버튼 링크’</a><br></p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="rouge-code"><pre><span class="nv">&lt;https://hyunseob.github.io/2016/09/25/typescript-introduction/&gt;</span><span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="p">[</span><span class="nv">'일반 링크'</span><span class="p">](</span><span class="sx">https://han41858.tistory.com/14</span><span class="p">)</span><span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="p">[</span><span class="nv">'새창으로 링크'</span><span class="p">](</span><span class="sx">https://han41858.tistory.com/14</span><span class="p">)</span>{: target="_blank" }<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="p">[</span><span class="nv">'새창으로 버튼 링크'</span><span class="p">](</span><span class="sx">https://han41858.tistory.com/14</span><span class="p">)</span>{: .btn.btn-default target="_blank" }<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h3 id="inline-link">Inline link</h3>
+
+<p><a href="https://www.google.co.kr%20%E2%80%9C%EA%B5%AC%EA%B8%80%E2%80%9D">Google</a></p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td>
+<td class="rouge-code"><pre>//기본 문법 : <span class="p">[</span><span class="nv">링크</span><span class="p">](</span><span class="sx">https://example.com</span> <span class="nn">"링크 제목"</span><span class="p">)</span>
+<span class="p">[</span><span class="nv">Google</span><span class="p">](</span><span class="sx">https://www.google.co.kr</span> “구글”)
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h3 id="reference-link">Reference link</h3>
+
+<p><a href="https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg" title="ryon">Google</a><br></p>
+
+<p><a href="/download/edu_tables_all.sql">Naver</a><br></p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td>
+<td class="rouge-code"><pre>//기본 문법 : <span class="p">[</span><span class="nv">링크1</span><span class="p">][</span><span class="ss">1</span><span class="p">]</span> <span class="p">[</span><span class="nv">1</span><span class="p">]</span>: https://example1.com/ "링크제목1"
+
+<span class="p">[</span><span class="nv">Google</span><span class="p">][</span><span class="ss">1</span><span class="p">]</span>
+<span class="p">[</span><span class="nv">Naver</span><span class="p">][</span><span class="ss">2</span><span class="p">]</span>
+<span class="p">[</span><span class="ss">1</span><span class="p">]:</span> <span class="sx">https://google.com/</span> “구글”
+<span class="p">[</span><span class="ss">2</span><span class="p">]:</span> <span class="sx">https://naver.com/</span> “네이버”
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h3 id="internal-anchored-links">Internal (Anchored) Links</h3>
+
+<p><a href="#index">목차</a></p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="rouge-code"><pre>//기본 문법 : <span class="p">[</span><span class="nv">링크</span><span class="p">](</span><span class="sx">#id</span><span class="p">)</span> 내부 링크
+
+<span class="p">[</span><span class="nv">목차</span><span class="p">](</span><span class="sx">#index</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+
+<h1 id="4-image">&lt;4. Image&gt;</h1>
+
+<h3 id="파일-경로로-이미지-삽입">파일 경로로 이미지 삽입<br>
+</h3>
+<p><img src="/img/2017-07-07-01.jpg" alt="Smithsonian Image"></p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre><span class="p">![</span><span class="nv">Smithsonian Image</span><span class="p">](</span><span class="sx">/img/2017-07-07-01.jpg</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h3 id="인터넷-주소로-이미지-삽입">인터넷 주소로 이미지 삽입<br>
+</h3>
+<p><img src="https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg" alt="Smithsonian Image"></p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre><span class="p">![</span><span class="nv">Smithsonian Image</span><span class="p">](</span><span class="sx">https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h3 id="링크-이미지-참조">링크 이미지 참조</h3>
+
+<p><img src="https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg" alt="Smithsonian Image" title="ryon"></p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="rouge-code"><pre><span class="p">![</span><span class="nv">Smithsonian Image</span><span class="p">][</span><span class="ss">1</span><span class="p">]</span>
+
+<span class="p">[</span><span class="ss">1</span><span class="p">]:</span> <span class="sx">https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg</span> <span class="nn">"ryon"</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h3 id="이미지에-css-입히기">이미지에 css 입히기<br>
+</h3>
+
+<p>이미지에 직접 css를 입힐 수 있습니다. 이 부분은 관련 사이트 링크로 대체합니다.</p>
+
+<p><a href="https://stackoverflow.com/questions/255170/markdown-and-image-alignment">https://stackoverflow.com/questions/255170/markdown-and-image-alignment</a></p>
+
+<hr>
+
+<h1 id="5-emphasis">&lt;5. Emphasis&gt;</h1>
+
+<p><em>single asterisks</em>
+<em>single underscores</em></p>
+
+<p><strong>double asterisks</strong>
+<strong>double underscores</strong></p>
+
+<p><strong><em>double asterisks</em></strong>
+<strong><em>double underscores</em></strong></p>
+
+<p><del>underline</del>
+<del>cancelline</del></p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+<td class="rouge-code"><pre><span class="ge">*single asterisks*</span>
+<span class="ge">_single underscores_</span>
+
+<span class="gs">**double asterisks**</span>
+<span class="gs">__double underscores__</span>
+
+<span class="gs">***double asterisks**</span><span class="err">*</span>
+<span class="gs">___double underscores__</span>_
+
+<span class="nt">&lt;del&gt;</span>underline<span class="nt">&lt;/del&gt;</span>
+~~cancelline~~
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+
+<h1 id="6-division">&lt;6. Division&gt;</h1>
+
+<hr>
+
+<hr>
+
+<hr>
+
+<hr>
+
+<hr>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+<td class="rouge-code"><pre><span class="p">* * *
+
+***
+
+*****
+
+- - -
+
+---------------------------------------
+</span></pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+
+<h1 id="7-list">&lt;7. List&gt;</h1>
+<h3 id="ordered-list">Ordered List</h3>
+
+<ol>
+  <li>Number1</li>
+  <li>Number2</li>
+  <li>Number3</li>
+</ol>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="rouge-code"><pre><span class="p">1.</span> Number1
+<span class="p">2.</span> Number2
+<span class="p">3.</span> Number3
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+
+<h3 id="unordered-list">Unordered List</h3>
+
+<ul>
+  <li>Number1
+    <ul>
+      <li>Number1-1
+        <ul>
+          <li>Number1-1-1</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Number1
+    <ul>
+      <li>Number1-1
+        <ul>
+          <li>Number1-1-1</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Number1</li>
+  <li>Number2</li>
+  <li>Number3</li>
+</ul>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td>
+<td class="rouge-code"><pre><span class="p">*</span> Number1
+<span class="p">  *</span> Number1-1
+<span class="p">    *</span> Number1-1-1
+<span class="p">
++</span> Number1
+<span class="p">  +</span> Number1-1
+<span class="p">    +</span> Number1-1-1
+<span class="p">
+-</span> Number1
+<span class="p">-</span> Number2
+<span class="p">-</span> Number3
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+
+<h1 id="8-blockquote">&lt;8. BlockQuote&gt;</h1>
+
+<blockquote>
+  <p>This is a blockquote.</p>
+</blockquote>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre><span class="gt">&gt; This is a blockquote.</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<blockquote>
+  <p>This is a blockquote.</p>
+  <blockquote>
+    <p>This is a blockquote.</p>
+  </blockquote>
+</blockquote>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td>
+<td class="rouge-code"><pre><span class="gt">&gt; This is a blockquote.</span>
+<span class="gt">&gt;&gt; This is a blockquote.</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+
+<h1 id="9-remark">&lt;9. Remark&gt;</h1>
+
+<p>포스팅 페이지 맨 아래에 주석이 추가된 것을 확인할 수 있습니다.</p>
+
+<p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="rouge-code"><pre>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.<span class="p">[</span><span class="nv">^1</span><span class="p">]</span> I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.<span class="p">[</span><span class="nv">^2</span><span class="p">]</span> When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among the tall grass by the trickling stream; and, as I lie close to the earth, a thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath
+
+<span class="p">[</span><span class="ss">^1</span><span class="p">]:</span> <span class="sx">1번</span> 주석 내용입니다.
+<span class="p">[</span><span class="ss">^2</span><span class="p">]:</span> <span class="sx">[블로그</span> 홈](https://youduk.github.io/)
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+
+<h1 id="10-table">&lt;10. table&gt;</h1>
+
+<p>테이블은 조금 복잡하니 만약 어려우시면 마크다운 테이블 생성 사이트를 이용하세요.<br>
+<a href="https://www.tablesgenerator.com/markdown_tables">https://www.tablesgenerator.com/markdown_tables</a><br></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>테이블 속성1</th>
+      <th>테이블 속성2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>성공</td>
+      <td>실패</td>
+    </tr>
+    <tr>
+      <td>여자</td>
+      <td>남자</td>
+    </tr>
+    <tr>
+      <td>짜장</td>
+      <td>짬뽕</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="rouge-code"><pre>테이블 속성1 | 테이블 속성2
+---|---
+성공|실패
+여자|남자
+짜장|짬뽕
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"><center>가운데 정렬 속성명1</center></th>
+      <th style="text-align: left"><center>가운데 정렬 속성명2</center></th>
+      <th style="text-align: left"><center>가운데 정렬 속성명3</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">왼쪽 정렬 속성</td>
+      <td style="text-align: left">왼쪽 정렬 속성</td>
+      <td style="text-align: left">왼쪽 정렬 속성</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">왼쪽 정렬 속성</td>
+      <td style="text-align: left">왼쪽 정렬 속성</td>
+      <td style="text-align: left">왼쪽 정렬 속성</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">왼쪽 정렬 속성</td>
+      <td style="text-align: left">왼쪽 정렬 속성</td>
+      <td style="text-align: left">왼쪽 정렬 속성</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="rouge-code"><pre>|  <span class="nt">&lt;center&gt;</span>가운데 정렬 속성명1<span class="nt">&lt;/center&gt;</span> |<span class="nt">&lt;center&gt;</span>가운데 정렬 속성명2<span class="nt">&lt;/center&gt;</span>|<span class="nt">&lt;center&gt;</span>가운데 정렬 속성명3<span class="nt">&lt;/center&gt;</span>|
+|:--------|:--------|:--------|
+|왼쪽 정렬 속성|왼쪽 정렬 속성|왼쪽 정렬 속성|
+|왼쪽 정렬 속성|왼쪽 정렬 속성|왼쪽 정렬 속성|
+|왼쪽 정렬 속성|왼쪽 정렬 속성|왼쪽 정렬 속성|
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><center>가운데 정렬 속성명1</center></th>
+      <th style="text-align: center"><center>가운데 정렬 속성명2</center></th>
+      <th style="text-align: center"><center>가운데 정렬 속성명3</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">가운데 정렬 속성</td>
+      <td style="text-align: center">가운데 정렬 속성</td>
+      <td style="text-align: center">가운데 정렬 속성</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">가운데 정렬 속성</td>
+      <td style="text-align: center">가운데 정렬 속성</td>
+      <td style="text-align: center">가운데 정렬 속성</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">가운데 정렬 속성</td>
+      <td style="text-align: center">가운데 정렬 속성</td>
+      <td style="text-align: center">가운데 정렬 속성</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="rouge-code"><pre>|  <span class="nt">&lt;center&gt;</span>가운데 정렬 속성명1<span class="nt">&lt;/center&gt;</span> |<span class="nt">&lt;center&gt;</span>가운데 정렬 속성명2<span class="nt">&lt;/center&gt;</span>|<span class="nt">&lt;center&gt;</span>가운데 정렬 속성명3<span class="nt">&lt;/center&gt;</span>|
+|:--------:|:--------:|:--------:|
+|가운데 정렬 속성|가운데 정렬 속성|가운데 정렬 속성|
+|가운데 정렬 속성|가운데 정렬 속성|가운데 정렬 속성|
+|가운데 정렬 속성|가운데 정렬 속성|가운데 정렬 속성|
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+
+<h1 id="11-code-block">&lt;11. Code block&gt;</h1>
+
+<p>개발자에게 가장 중요한 기능 중 하나입니다. 지정할 수 있는 언어는 c, c++, c#, clojure, go, java, javascript, python, python3, ruby, scala, swift이 있습니다.(2016년 5월 기준)</p>
+
+<p>코드 블럭을 지정할 수 있는 방법은 여러가지가 있습니다.</p>
+
+<p>기본 마크 다운에서는 코드문자 앞에 4칸 이상 공백이나 탭 하나가 있으면 코드 블럭이 씌워지지만</p>
+
+<p>깃허브에서 쓰는 확장된 마크다운 문법인 Github Flavored Markdown(GFM)에서는 좀 더 추가적인 방법을 제공합니다.</p>
+
+<p>단어 코드 문자열은 <code class="highlighter-rouge">console.log</code> 이런 식으로 강조 합니다.</p>
+
+<p>문자열을 코드로 표현하는 것은 <code class="highlighter-rouge">`console.log`</code> 이런 식으로 표현 합니다.</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="rouge-code"><pre>단어 코드 문자열은 <span class="sb">`console.log`</span> 이런 식으로 강조 합니다.
+
+문자열을 코드로 표현하는 것은 <span class="sb">`` `console.log` ``</span> 이런 식으로 표현 합니다.
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="rouge-code"><pre>@Service
+public class BoardServicelmpl implements BoardService{
+	@Inject
+	private BoardDAO dao;
+}
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p><img src="/img/2017-07-07-02.png" alt="Smithsonian Image"></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="rouge-code"><pre>@Service
+public class BoardServicelmpl implements BoardService{
+	@Inject
+	private BoardDAO dao;
+}
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p><img src="/img/2017-07-07-03.png" alt="Smithsonian Image"></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="rouge-code"><pre><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardServicelmpl</span> <span class="kd">implements</span> <span class="n">BoardService</span><span class="o">{</span>
+	<span class="nd">@Inject</span>
+	<span class="kd">private</span> <span class="n">BoardDAO</span> <span class="n">dao</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p><img src="/img/2017-07-07-04.png" alt="Smithsonian Image"></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="rouge-code"><pre><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardServicelmpl</span> <span class="kd">implements</span> <span class="n">BoardService</span><span class="o">{</span>
+	<span class="nd">@Inject</span>
+	<span class="kd">private</span> <span class="n">BoardDAO</span> <span class="n">dao</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p><img src="/img/2017-07-07-05.png" alt="Smithsonian Image"></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="rouge-code"><pre><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardServicelmpl</span> <span class="kd">implements</span> <span class="n">BoardService</span><span class="o">{</span>
+	<span class="nd">@Inject</span>
+	<span class="kd">private</span> <span class="n">BoardDAO</span> <span class="n">dao</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p><img src="/img/2017-07-07-06.png" alt="Smithsonian Image"></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardServicelmpl</span> <span class="kd">implements</span> <span class="n">BoardService</span><span class="o">{</span>
+	<span class="nd">@Inject</span>
+	<span class="kd">private</span> <span class="n">BoardDAO</span> <span class="n">dao</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><img src="/img/2017-07-07-07.png" alt="Smithsonian Image"></p>
+
+<h1 id="12-check-box">&lt;12. Check Box&gt;</h1>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>checkBox1</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>checkBox2</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>checkBox3</li>
+</ul>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="rouge-code"><pre><span class="p">-</span> <span class="p">[</span><span class="nv"> </span><span class="p">]</span> checkBox1
+<span class="p">-</span> <span class="p">[</span><span class="nv"> </span><span class="p">]</span> checkBox2
+<span class="p">-</span> <span class="p">[</span><span class="nv"> </span><span class="p">]</span> checkBox3
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+<h1 id="13-colored-text">&lt;13. Colored Text&gt;</h1>
+
+<p>Some Markdown text with <span style="color:blue">some <em>blue</em> text</span>.</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre>Some Markdown text with <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">"color:blue"</span><span class="nt">&gt;</span>some <span class="ge">*blue*</span> text<span class="nt">&lt;/span&gt;</span>.
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>Some Markdown text with <span style="color:blue">some <em>blue</em> text</span>.</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre><span class="nt">&lt;p&gt;</span>Some Markdown text with <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">"color:blue"</span><span class="nt">&gt;</span>some <span class="nt">&lt;em&gt;</span>blue<span class="nt">&lt;/em&gt;</span> text<span class="nt">&lt;/span&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<hr>
+<h1 id="-꼭-알아-둬야-할-고급-tip"><span style="color:red">+ 꼭 알아 둬야 할 고급 Tip</span></h1>
+
+<h2 id="로-열리는-태그를-사용할-때">’&lt;‘로 열리는 태그를 사용할 때</h2>
+
+<h4 id="출력">출력</h4>
+
+<p>2.4. Optional&lt;T&gt;와 OptionalINT</p>
+
+<p>Optional&lt;T&gt;는 지네릭 클래스로 ‘T타입의 객체’를 감싸는 래퍼 클래스이다. 그래서 Optional타입의 객체에는 모든 타입의 참조변수를 담을 수 있다.</p>
+
+<h4 id="실제-코드">실제 코드</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="rouge-code"><pre><span class="c1">//&lt;는 html태그로 인식을 하기 때문에 꼭 \를 앞에 붙여줘야 합니다. 그렇지 않으면 출력이 제대로 되지 않거나 컴파일 에러가 발생합니다.</span>
+<span class="mf">2.4</span><span class="o">.</span> <span class="n">Optional</span><span class="err">\</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="err">와</span> <span class="n">OptionalINT</span>
+
+<span class="n">Optional</span><span class="err">\</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="err">는</span> <span class="err">지네릭</span> <span class="err">클래스로</span> <span class="err">'</span><span class="n">T</span><span class="err">타입의</span> <span class="err">객체'를</span> <span class="err">감싸는</span> <span class="err">래퍼</span> <span class="err">클래스이다</span><span class="o">.</span> <span class="err">그래서</span> <span class="n">Optional</span><span class="err">타입의</span> <span class="err">객체에는</span> <span class="err">모든</span> <span class="err">타입의</span> <span class="err">참조변수를</span> <span class="err">담을</span> <span class="err">수</span> <span class="err">있다</span><span class="o">.</span>
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h2 id="중요-마크다운-태그-내용을-무시하게-해주는-raw-태그">
+<span style="color:red">중요!!</span> 마크다운 태그 내용을 무시하게 해주는 raw 태그</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td>
+<td class="rouge-code"><pre>
+
+//그냥 텍스트만 쓰고 싶은 마크다운 내용을 적는다.(모든 태그 효과 무시)
+
+
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p>raw태그는 마크다운 해석기를 우회하게 해주는 태그입니다. 즉, 태그 내용을 인식하는 것을 무시하게 해주는 태그입니다. 코드 안에 있는 반복문이나 태그 내용들을 모두 동작하지 않게 만들어줍니다. 다음에 나오는 5번 파일 다운로드에서 실제로 어떻게 쓰이는 지를 보여드립니다.</p>
+
+<p>Raw</p>
+
+<p>Raw temporarily disables tag processing. This is useful for generating content (eg, Mustache, Handlebars) which uses conflicting syntax.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="rouge-code"><pre>
+  In Handlebars, {{ this }} will be HTML-escaped, but {{{ that }}} will not.
+
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<p><a href="https://github.com/shd101wyy/markdown-preview-enhanced/issues/566">https://github.com/shd101wyy/markdown-preview-enhanced/issues/566</a><br></p>
+
+<p><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers#raw">https://github.com/Shopify/liquid/wiki/Liquid-for-Designers#raw</a><br></p>
+
+<p><a href="https://stackoverflow.com/questions/24102498/escaping-double-curly-braces-inside-a-markdown-code-block-in-jekyll">https://stackoverflow.com/questions/24102498/escaping-double-curly-braces-inside-a-markdown-code-block-in-jekyll</a><br></p>
+
+<p><a href="https://ozzieliu.com/2016/04/26/writing-liquid-template-in-markdown-with-jekyll/">https://ozzieliu.com/2016/04/26/writing-liquid-template-in-markdown-with-jekyll/</a><br></p>
+
+<h2 id="파일-다운로드">파일 다운로드</h2>
+
+<p>내 블로그에서 방문자가 파일을 다운로드 하게 하고 싶을 때 링크를 거는 방법입니다.</p>
+
+<h5 id="여기서-raw-태그를-사용하지-않으면-마크다운-컴파일-에러가-발생합니다">여기서 raw 태그를 사용하지 않으면 마크다운 컴파일 에러가 발생합니다.</h5>
+
+<h4 id="출력-1">출력</h4>
+
+<p>사용한 SQL 소스 파일 <a href="/download/edu_tables_all.sql">다운로드</a></p>
+
+<h4 id="실제-코드-1">실제 코드</h4>
+
+<p><img src="/img/2017-07-07-01.png" alt="Smithsonian Image"></p>
+
+<h2 id="발표-자료-작성--간단한-그래프-다이어-그램-작성-사이트-시-참고할-만한-자료">발표 자료 작성 / 간단한 그래프 다이어 그램 작성 사이트 시 참고할 만한 자료</h2>
+
+<p><a href="https://brunch.co.kr/@cheuora/24">https://brunch.co.kr/@cheuora/24</a></p>
+
+<h1 id="그리고-이-모든-것을-무효화-해주는-마크다운-전용-에디터-typora가-있습니다-이거-쓰세요">그리고 이 모든 것을 무효화 해주는 마크다운 전용 에디터 Typora가 있습니다.. 이거 쓰세요!!!</h1>
+
+<ul>
+  <li>https://typora.io/</li>
+  <li>플로우 차트 : https://support.typora.io/Draw-Diagrams-With-Markdown/</li>
+</ul>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>1번 주석 내용입니다. <a href="#fnref:1" class="reversefootnote">↩</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="https://youduk.github.io/">블로그 홈</a> <a href="#fnref:2" class="reversefootnote">↩</a></p>
+    </li>
+  </ol>
+</div>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/markdown/2017/07/07/markdown-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/markdown/2017/07/07/markdown-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/markdown/2017/07/07/markdown-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/markdown/2017/07/07/markdown-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/markdown/2017/07/07/markdown-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  © 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

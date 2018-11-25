@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>자바스크립트 함수와 호출 스택</title>
+  <meta name="description" content="함수 선언식, 함수 표현식, 호이스팅, arguments, 함수의 호출 스택">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/javascript/2018/06/02/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE%E1%84%8B%E1%85%AA-%E1%84%92%E1%85%A9%E1%84%8E%E1%85%AE%E1%86%AF-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A2%E1%86%A8.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/javascript.png"
+  
+  alt="자바스크립트 함수와 호출 스택 feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="자바스크립트 함수와 호출 스택">자바스크립트 함수와 호출 스택</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        2 JUN 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    6 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h2 id="자바스크립트-함수">자바스크립트 함수</h2>
+
+<p>자바스크립트를 잘한다는 것은 자바스크립트의 함수를 잘 다룬다는 것과 같다.</p>
+
+<h3 id="함수---함수의-선언"><strong>함수 - 함수의 선언</strong></h3>
+
+<p><strong>함수는 여러 개의 인자를 받아서, 그 결과를 출력한다.</strong></p>
+
+<p>자바스크립트의 함수는 파라미터의 개수와 인자의 개수가 일치하지 않아도 오류가 나지 않는다.</p>
+
+<p>만약, 파라미터 1개가 정의된 함수를 부를 때, 인자의 개수를 0개만 넣어 실행하면, 이미 정의된 파라미터(매개변수)는 undefined이라는 값을 갖게 된다.</p>
+
+<p>이는 변수는 초기화됐지만, 값이 할당되지 않았기 때문이다.</p>
+
+<p>아래의 코드에서 테스트해볼 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="c1">// 함수의 호출.</span>
+<span class="kd">function</span> <span class="nx">printName</span><span class="p">(</span><span class="nx">firstname</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">myname</span> <span class="o">=</span> <span class="s2">"jisu"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">myname</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span>  <span class="nx">firstname</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">printName</span><span class="p">();</span> <span class="c1">// jisu undefined</span>
+<span class="nx">printName</span><span class="p">(</span><span class="nx">park</span><span class="p">);</span> <span class="c1">// jist park</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위와 같은 형식의 함수 선언코드는 <strong>함수선언문</strong>이라고 한다.</p>
+
+<h3 id="함수---함수표현식"><strong>함수 - 함수표현식</strong></h3>
+
+<p>함수는 위의 코드와 다르게 아래 printName과 같이 표현할 수도 있다.</p>
+
+<p>이렇게 표현하면 함수선언문과 달리 선언과 호출순서에 따라서 정상적으로 함수가 실행되지 않을 수 있다는 점을 주의해야 한다. (즉, 호이스팅을 염두해 두어야한다.)</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="c1">//밖은 함수 선언식</span>
+<span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">printName</span><span class="p">());</span> 
+    <span class="c1">//함수 표현식</span>
+    <span class="kd">var</span> <span class="nx">printName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">'anonymouse'</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">test</span><span class="p">();</span>
+<span class="c1">//TypeError: printName is not a function</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>함수 표현식보다 함수 선언문을 더 자주 사용하지만, 어떤 코딩컨벤션에서는 함수 표현식을 권장하기도 한다.</p>
+
+<p>어떤 컨벤션을 갖던지 한 가지만 정해서 사용하는 게 좋다.</p>
+
+<h3 id="함수---표현식과-호이스팅"><strong>함수 - 표현식과 호이스팅</strong></h3>
+
+<p>앞선 코드에서, printName이 “printName이 is not defined” 이라고 오류가 나오지 않고, function이 아니라고 나온 이유는
+printName이 실행되는 순간 ‘undefined’으로 지정됐기 때문이다.</p>
+
+<p>자바스크립트 함수는 실행되기 전에 함수 안에 필요한 변수값들을 미리 다 모아서 선언한다. 하지만 printName이 실행되는 순간에는 선언만 되어있지 우리가 원하는 값이 할당이 되어있는 상태가 아니다. 따라서 undefined가 할당되고, 그 값이 출력되는 것.</p>
+
+<p>함수 안에 있는 변수들을 모두 끌어올려서 선언한다고 해서, 이를 hoisting이라고 부른다.
+(실제로 코드가 끌어올려지는 건 아니며<이 과정이="" 눈에="" 보이는="" 게="" 아니다="">, 자바스크립트 파서 내부적으로 그렇게 끌어올려서 처리하는 것이다.)</이></p>
+
+<p>아래 코드 역시 함수를 값으로 가지지만 어쨌든 printName도 변수이므로 끌어올려지고, 값이 할당되기 전에 실행됐으므로 undefined가 할당된 상태이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nx">printName</span><span class="p">();</span> <span class="c1">//아직, printName이 undefined으로 할당된 상태다. </span>
+<span class="kd">var</span> <span class="nx">printName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>자바스크립트 파서가 위의 코드를 실제로 읽는 방식은 아래와 같다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">printName</span><span class="p">;</span> <span class="c1">// 선언만 했으므로 undefined 할당</span>
+<span class="nx">printName</span><span class="p">();</span> <span class="c1">// 호출을 했지만 아무것도 할당된 내용이 없으므로 undefined 출력</span>
+<span class="nx">printName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){}</span> <span class="c1">// printName에 함수 내용 할당</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>printName이라는 변수가 존재하고 아직 값이 할당되기 전이므로 printName에는 ‘undefined’이라는 기본 값이 할당된 셈입니다. 이렇게 js 문서에서 선언문을 미리 모아서 상단에서 선언하는 것을 <strong>호이스팅(Hoisting)</strong> 이라고 한다.</p>
+
+<p>하지만 변수에 함수 객체를 할당하는 표현식이 아니라 함수 자체를 선언하는 선언식은 호이스팅을 통해 함수 선언과 동시에 내용까지 할당하므로 printName is not a function 에러가 뜨지 않고 선언하기 전에 함수를 이용할 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">test</span><span class="p">(){</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">printName</span><span class="p">());</span>
+    <span class="c1">//함수 선언식</span>
+	<span class="kd">function</span> <span class="nx">printName</span><span class="p">(){</span>
+		<span class="k">return</span> <span class="s2">"anonymouse"</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">test</span><span class="p">();</span> <span class="c1">// anonymouse</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="함수---반환값과-undefined"><strong>함수 - 반환값과 undefined</strong></h3>
+
+<p>아래 함수의 반환값은 무엇일까?</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">printName</span><span class="p">(</span><span class="nx">firstname</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">myname</span> <span class="o">=</span> <span class="s2">"jisu"</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">myname</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span>  <span class="nx">firstname</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>정답은 undefined.</p>
+
+<p>자바스크립트 함수는 반드시 return값이 존재하며, 없을 때는 기본 반환값인 ‘undefined’가 반환된다.</p>
+
+<p>자바스크립트에서는 void 타입이 없다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">a</span><span class="p">(){</span>    
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">());</span> <span class="c1">//undefined</span>
+
+<span class="kd">function</span> <span class="nx">a</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="kc">undefined</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">());</span> <span class="c1">//undefined</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="함수---arguments-객체"><strong>함수 - arguments 객체</strong></h3>
+
+<p>함수가 실행되면 그 안에는 arguments라는 특별한 지역변수가 자동으로 생성된다.</p>
+
+<p>arguments의 타입은 객체 입니다.(console.log( typeof arguments) 로 확인!)</p>
+
+<p>자바스크립트 함수는 선언한 파라미터보다 더 많은 인자를 보낼 수도 있다.</p>
+
+<p>이때 넘어온 인자를 arguments로 배열의 형태로 하나씩 접근할 수가 있다.</p>
+
+<p>arguments는 배열타입은 아니다.</p>
+
+<p>따라서 배열의 메서드를 사용할 수가 없다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+ <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kr">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">a</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="c1">//{'0':1, '1':2, '2':3}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>자바스크립트의 가변인자를 받아서 처리하는 함수를 만들때 등에서 arguments속성을 유용하게 사용할 수가 있다.</p>
+
+<p>arguments 객체는 꼭 필요할 때만 써야한다. 만약 무분별하게 사용하는 경우 어떠한 의도로 코드를 작성했는지 알 수 없기 때문이다. 또한 수정하려고 하는 것도 지양해야한다.</p>
+
+<h4 id="응용해보기"><strong>응용해보기</strong></h4>
+
+<ul>
+  <li>arguments속성을 사용해서 , 1~무한대까지 인자를 받아 합을 구하는 함수를 만들어보자.</li>
+</ul>
+
+<h4 id="생각해보기"><strong>생각해보기</strong></h4>
+
+<ol>
+  <li>arrow function</li>
+</ol>
+
+<p>ES2015에는 arrow function이 추가됐다.</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow function 참고 바로가기</a></p>
+
+<p>간단하게 함수를 선언할 수 있는 문법으로 처음에는 꽤 낯설 수 있다.</p>
+
+<p>하지만 점점 많이 사용되고 있는 syntax이므로 같이 알아두어도 좋을 것이다.</p>
+
+<h2 id="자바스크립트-함수-호출-스택">자바스크립트 함수 호출 스택</h2>
+
+<h3 id="함수-호출"><strong>함수 호출</strong></h3>
+
+<p>자바스크립트 함수 호출 예시 코드이다.</p>
+
+<p>이 함수를 실행해보면, run이 호출되고 그 다음에 printName이 호출되는 것을 알 수 있다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="c1">// 함수의 호출.</span>
+<span class="kd">function</span> <span class="nx">printName</span><span class="p">(</span><span class="nx">firstname</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">myname</span> <span class="o">=</span> <span class="s2">"jisu"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">myname</span> <span class="o">+</span> <span class="s2">", "</span> <span class="o">+</span>  <span class="nx">firstname</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">run</span><span class="p">(</span><span class="nx">firstname</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nx">firstname</span> <span class="o">=</span> <span class="nx">firstname</span> <span class="o">||</span> <span class="s2">"Youn"</span><span class="p">;</span>
+   <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">printName</span><span class="p">(</span><span class="nx">firstname</span><span class="p">);</span> <span class="c1">// printName 함수 호출</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">}</span>
+ 
+<span class="nx">run</span><span class="p">(</span><span class="s1">'Kim'</span><span class="p">)</span> <span class="c1">// jisu, Kim</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="함수호출과-stack"><strong>함수호출과 stack</strong></h3>
+
+<p>아래 그림은 아래 코드의 호출 스택이 어떻게 쌓이는 지를 보여준다. 마우스를 갖다 대고 있으면 그림이 바뀐다.</p>
+
+<p><img src="/img/JS_1.gif" alt="" /></p>
+
+<ul>
+  <li>
+    <p><strong>함수 호출 스택</strong></p>
+
+    <p>출처 https://medium.com/@gaurav.pandvia/understanding-javascript-function-executions-tasks-event-loop-call-stack-more-part-1-5683dea1f5ec</p>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">b</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span> 
+
+<span class="kd">function</span> <span class="nx">bar</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span> <span class="o">*</span> <span class="nx">y</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bar</span><span class="p">(</span><span class="mi">6</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>함수 호출 관계는 다음과 같다.</p>
+
+<p>bar() → foo()</p>
+
+<p>메모리에서는 우측의 Call Stack에서와같이 순서대로 쌓이게 된다.</p>
+
+<p>bar 함수에서 foo를 호출한 후 foo 함수의 결과를 받아올 때까지 bar함수는 메모리 공간에서 사라지지 못하고 기다리고 있는 것.</p>
+
+<p>이를 당연히 생각할 수 있다.</p>
+
+<p>foo의 경우에는 실행이 끝나고 return문이 실행되면 메모리 공간에서 사라진다.</p>
+
+<p>다시 말해서 Call Stack에서 없어지는 것이다.</p>
+
+<p>call stack은 이렇게 동작하지만, 함수를 연속적으로 계속 호출하면 call stack이 꽉 차버리면서 더 실행되지 못하고 오류가 발생할 것이다.</p>
+
+<p>브라우저에서는 대부분 지정된 횟수만큼만 call stack을 쌓게 미리 설정해둔 경우가 많다고 한다.</p>
+
+<p>따라서 혹시 개발 중에 <strong>Maximum call stack size exceeded</strong> 오류를 발견해도 너무 놀라지 말고, 대처하도록!</p>
+
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/javascript/2018/06/02/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE%E1%84%8B%E1%85%AA-%E1%84%92%E1%85%A9%E1%84%8E%E1%85%AE%E1%86%AF-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A2%E1%86%A8.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/javascript/2018/06/02/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE%E1%84%8B%E1%85%AA-%E1%84%92%E1%85%A9%E1%84%8E%E1%85%AE%E1%86%AF-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A2%E1%86%A8.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/javascript/2018/06/02/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE%E1%84%8B%E1%85%AA-%E1%84%92%E1%85%A9%E1%84%8E%E1%85%AE%E1%86%AF-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A2%E1%86%A8.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/javascript/2018/06/02/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE%E1%84%8B%E1%85%AA-%E1%84%92%E1%85%A9%E1%84%8E%E1%85%AE%E1%86%AF-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A2%E1%86%A8.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/javascript/2018/06/02/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3-%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE%E1%84%8B%E1%85%AA-%E1%84%92%E1%85%A9%E1%84%8E%E1%85%AE%E1%86%AF-%E1%84%89%E1%85%B3%E1%84%90%E1%85%A2%E1%86%A8.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

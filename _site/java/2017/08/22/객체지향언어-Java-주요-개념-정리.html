@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>객체지향언어 Java 주요 개념 정리</title>
+  <meta name="description" content="인터뷰 대비용 간단 정리">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/java/2017/08/22/%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%8B%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%A5-Java-%E1%84%8C%E1%85%AE%E1%84%8B%E1%85%AD-%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="객체지향언어 Java 주요 개념 정리">객체지향언어 Java 주요 개념 정리</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        22 AUG 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    3 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h3 id="자바-주요-개념">자바 주요 개념</h3>
+
+<h6 id="참고-도서--자바의-정석남궁성-저-도우출판">참고 도서 : 자바의 정석(남궁성 저, 도우출판)</h6>
+
+<ul>
+  <li>변수 : 하나의 값을 저장할 수 있는 기억공간 (변수의 타입: 기본형 / 참조형)</li>
+  <li>상수 : 한 번만 값을 저장할 수 있는 공간 (우리가 일반적으로 알고 있는 수학의 상수는 프로그래밍에서는 리터럴이다. 헷갈리지 말 것.)</li>
+  <li>리터럴 : 그 자체로 값을 의미하는 것 (우리가 알고 있는 상수)</li>
+  <li>변수의 초기화 : 변수에 처음으로 값을 저장하는 것 (지역 변수는 초기화 필수)</li>
+  <li>형변환 : 값의 타입을 다른 타입으로 변환하는 것 (boolean을 제외한 7개의 기본형은 서로 형변환 가능)</li>
+  <li>연산자 : 어떠한 기능을 수행하는 기호</li>
+  <li>피연산자 : 연산자의 작업 대상 (변수, 상수, 리터럴, 수식)</li>
+  <li>배열 : 같은 타입의 여러 변수를 하나의 묶음으로 다루는 것</li>
+  <li>배열의 초기화 : 생성된 배열에 처음으로 값을 저장하는 것</li>
+  <li>클래스
+    <ol>
+      <li>일반적 의미 : 객체를 정의해놓은 것</li>
+      <li>프로그래밍적 의미 :
+        <ol>
+          <li>데이터와 함수의 결합 (구조체 + 함수)</li>
+          <li>사용자 정의 타입</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>객체
+    <ol>
+      <li>클래스에 정의된 내용대로 메모리에 생성된 것</li>
+      <li>인스턴스 변수들의 집합</li>
+      <li>속성(변수)과 기능(메서드)의 집합 -&gt; 속성(변수), 기능(메서드) : 멤버</li>
+    </ol>
+  </li>
+  <li>인스턴스 : 어떤 클래스로부터 만들어진 객체</li>
+  <li>인스턴스화 : 클래스로부터 객체를 만드는 과정</li>
+  <li>인스턴스변수 : 각 인스턴스의 개별적인 저장공간. 인스턴스마다 다른 값 저장가능</li>
+  <li>클래스변수 : 같은 클래스의 모든 인스턴스들이 공유하는 변수</li>
+  <li>지역변수 : 메서드 내에 선언되며, 메서드의 종료와 함께 소멸</li>
+  <li>메서드 : 작업을 수행하기 위한 명령문의 집합</li>
+  <li>JVM의 메모리 구조
+    <ol>
+      <li>메서드 영역 : 클래스 정보와 클래스 변수가 저장되는 곳</li>
+      <li>호출스택 : 메서드의 작업공간. 메서드가 호출되면 메서드 수행에 필요한 메모리 공간을 할당받고 메서드가 종료되면 사용하던 메모리를 반환한다.</li>
+      <li>힙 : 인스턴스가 생성되는 공간. new연산자에 의해서 생성되는 배열과 객체는 모두 여기에 생성된다.</li>
+    </ol>
+  </li>
+  <li>기본형 매개변수 : 기본형 타입이 명시된 매개변수</li>
+  <li>참조형 매개변수 : 기본형이 아닌 타입이 명시된 매개변수</li>
+  <li>인스턴스 메서드 : 인스턴스 변수나 인스턴스 메서드와 관련된 직업을 하는 메서드</li>
+  <li>클래스 메서드 : 인스턴스 변수나 인스턴스 메서드와 관련 없는 작업을 하는 메서드</li>
+  <li>
+    <p>메서드 오버로딩 : 하나의 클래스에 같은 이름의 메서드를 여러 개 정의하는 것을 메서드 오버로딩, 간단히 오버로딩이라고 한다. (리턴 타입을 제외한 선언부 즉, 시그니처 부분이 달라야 오버로딩 성립. 오버라이드는 같은 이름, 같은 선언부인 상태에서 내용만 변경하는 것.)</p>
+  </li>
+  <li>생성자 : 인스턴스가 생성될 때마다 호출되는 ‘인스턴스 초기화 메서드’ (생성자의 이름은 클래스와 같게, 리턴 타입이 없는 것이 메서드와의 차이)
+    <ol>
+      <li>
+        <p>기본 생성자 : 매개변수가 없는 생성자</p>
+
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre> <span class="n">Car</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Car</span><span class="o">();</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+      <li>
+        <p>매개변수가 있는 생성자</p>
+
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre> <span class="n">Car</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Car</span><span class="o">(</span><span class="s">"white"</span><span class="o">,</span><span class="s">"auto"</span><span class="o">,</span><span class="mi">4</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>참조변수 this : 인스턴스 자신을 가리키는 참조 변수. 인스턴스의 주소가 저장되어 있음</p>
+  </li>
+  <li>멤버 변수의 초기화 방법
+    <ol>
+      <li>명시적 초기화</li>
+      <li>생성자</li>
+      <li>초기화 블럭
+        <ol>
+          <li>인스턴스 초기화 블럭 : 생성자에서 공통적으로 수행되는 작업에 사용되며 인스턴스가 생성될 때마다 (생성자보다 먼저) 실행된다.</li>
+          <li>클래스 초기화 블럭 : 클래스 변수의 복잡한 초기화에 사용되며 클래스가 로딩될 때 실행된다.</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li>상속
+    <ul>
+      <li>기존의 클래스를 재사용해서 새로운 클래스를 작성하는 것</li>
+      <li>두 클래스를 조상과 자손으로 관계를 맺어주는 것</li>
+    </ul>
+  </li>
+  <li>포함 : 한 클래스의 멤버 변수로 다른 클래스를 선언하는 것</li>
+  <li>오버라이딩 : 조상클래스로부터 상속받은 메서드의 내용을 상속받는 클래스에 맞게 변경하는 것
+    <ul>
+      <li>this : 인스턴스 자신을 가리키는 참조 변수 (원래는 참조변수가 항상 명시되어야하는데 같은 클래스에서는 만들기 귀찮으므로 this를 쓰는 것)</li>
+      <li>super : this와 같음. 조상의 멤버와 자신의 멤버를 구별하는데 사용</li>
+    </ul>
+  </li>
+  <li>패키지 : 서로 관련된 클래스와 인터페이스의 묶음</li>
+  <li>클래스 패스 : 클래스 파일(*.class)를 찾는 경로</li>
+  <li>제어자 : 클래스, 변수, 메서드의 선언부에 사용되어 부가적인 의미를 부여하는 것</li>
+  <li>다형성 : 조상타입의 참조 변수로 자손타입의 객체를 다룰 수 있는 것</li>
+  <li>추상 클래스 : 추상메서드(미완성 메서드)를 포함하고 있는 클래스
+    <ul>
+      <li>추상 메서드 : 선언부만 있고 구현부(몸통,body)가 없는 메서드</li>
+    </ul>
+  </li>
+  <li>인터페이스 : 추상메서드의 집합. 일종의 추상클래스. 추상클래스(미완성 설계도)보다 추상화 정도가 높다. 실제 구현된 것이 전혀 없는 기본 설계도(껍데기)</li>
+</ul>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/java/2017/08/22/%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%8B%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%A5-Java-%E1%84%8C%E1%85%AE%E1%84%8B%E1%85%AD-%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/java/2017/08/22/%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%8B%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%A5-Java-%E1%84%8C%E1%85%AE%E1%84%8B%E1%85%AD-%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/java/2017/08/22/%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%8B%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%A5-Java-%E1%84%8C%E1%85%AE%E1%84%8B%E1%85%AD-%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/java/2017/08/22/%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%8B%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%A5-Java-%E1%84%8C%E1%85%AE%E1%84%8B%E1%85%AD-%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/java/2017/08/22/%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC%E1%84%8B%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%A5-Java-%E1%84%8C%E1%85%AE%E1%84%8B%E1%85%AD-%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

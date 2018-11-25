@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Web UI</title>
+  <meta name="description" content="파일 디렉토리 구성, DOMContentLoaded, Event delegation, HTML templating">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/webfe/2018/07/18/WEB-UI.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/Boostcourse.png"
+  
+  alt="Web UI feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Web UI">Web UI</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        18 JUL 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    14 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h1 id="1-서비스-개발을-위한-디렉토리-구성">1) 서비스 개발을 위한 디렉토리 구성</h1>
+
+<p><strong>들어가기 전에</strong></p>
+
+<p>서비스를 개발할 때 JavaScript 코드가 많아지면 어떻게 보관하고 관리해야 하는지 잘 모를 때가 있습니다.</p>
+
+<p>소스코드상에서도 많아진 JavaScript 코드를 어떻게 표현해야 할지도 고민이고요.</p>
+
+<p>어려운 방법은 아니니 이번에 그것들을 알아봅니다.</p>
+
+<hr />
+
+<p><strong>학습 목표</strong></p>
+
+<ol>
+  <li>웹브라우저 렌더링에 필요한 JavaScript와 CSS파일의 구성방법을 이해한다.</li>
+</ol>
+
+<hr />
+
+<p><strong>핵심 개념</strong></p>
+
+<ul>
+  <li>개발환경 구성</li>
+  <li>브라우저에서 동작가능하도록 JavaScript와 CSS의 소스코드 위치시키</li>
+</ul>
+
+<p><strong>1. JavaScript파일 구성</strong></p>
+
+<p>간단한 내용의 JavaScript라면 한 페이지에 모두 표현하는 것도 좋습니다.</p>
+
+<p>그렇지 않다면 의미에 맞게 구분하는 방법이 더 좋습니다.</p>
+
+<p><strong>2. HTML안에 JavaScript 구성하기</strong></p>
+
+<p>CSS는 head태그 안에 상단에 위치합니다.</p>
+
+<p>JavaScript는 body 태그가 닫히기 직전에 소스파일 간 의존성을 이해해서 순서대로 배치합니다. 만약 직접 스크립트를 작성하는 것이 아니라 link를 걸 때도 body 태그 직전에서 링크를 참조한다. 이 때 특정 스크립트에서 다른 스크립트를 참조하는 경우가 있다면, 참조하는 순서대로 링크 코드를 배치해야한다.</p>
+
+<hr />
+
+<p><strong>생각해보기</strong></p>
+
+<ol>
+  <li>여러분들이 자주 가는 웹사이트를 열고, 먼저 Element 패널에서 JavaScript는 위치가 어디 있는지, CSS파일은 어떻게 위치시켰는지 알아봅니다.</li>
+  <li>크롬 개발자도구의 소스패널을 열어서 서비스에서 JavaScript 소스 파일들을 찾고 몇 개의 파일로 구성되어 있는지 알아봅니다.</li>
+</ol>
+
+<hr />
+
+<p><strong>참고 자료</strong></p>
+
+<p><a href="https://stackoverflow.com/questions/2414750/difference-between-domcontentloaded-and-load-events"><img src="https://cphinf.pstatic.net/mooc/20180205_293/1517822605877Kt6u2_PNG/qWxhJf9nCBo99pDlIG5s.png?type=mfullfill_199_148" alt="img" /></a></p>
+
+<ul>
+  <li><strong>[참고링크] Difference between DOMContentLoaded and load events</strong><a href="https://stackoverflow.com/questions/2414750/difference-between-domcontentloaded-and-load-events">https://stackoverflow.com/questions/2414750/difference-between-domcontentloaded-and-load-events</a></li>
+</ul>
+
+<h1 id="2-domcontentloaded-이벤트">2) DOMContentLoaded 이벤트</h1>
+
+<p><strong>들어가기 전에</strong></p>
+
+<p>로딩 이후에 자바스크립트 동작이 이뤄지는 것이 일반적입니다.</p>
+
+<p>자바스크립트가 실행돼야 할 가장 적절한 타이밍은 언제일까요?</p>
+
+<p>우리가 웹 사이트를 접속했을 때 콘텐츠들이 서버로부터 계속 내려온다. 예를 들어 클라이언트에서 GET 방식으로 www.XXX.com을 요청하면 사이트로부터 HTML 파일이 내려오고 이 HTML을 파싱할 것이다. 그리고 CSS, JS, Image등이 필요하면 요청해서 받아온다. 그리고 HTML과 CSS를 분석해서 배치를 결정하고 이것이 레이아웃이 된다. 렌더링 작업을 한 다음에 이미지를 가져와서 이미지까지 받아왔으면 로드가 됐다고 뜨고, 화면에 그려서 사용자가 봤을 때는 모든 게 다 제대로 보이게 된다. 그런데 이 과정이 모두 끝나기 전에 자바스크립트가 실행되서 어떤 코드를 읽고 특정 노드의 위치를 바꾸게 되면 문제가 일어난다. 따라서 자바스크립트 코딩을 할 때 자바스크립트 파일을 만들고 나서 보통은 HTML 아래쪽에다가 파일을 위치시키는 것이 일반적인 방법이다. DOMContentLoaded는 위에서 말한 브라우저의 로드 과정이 모두 끝났으므로 자바스크립트 코딩을 해도 된다는 시점을 개발자에게 명확하게 알려주는 방법이다.</p>
+
+<hr />
+
+<p><strong>학습 목표</strong></p>
+
+<ol>
+  <li>DOM ContentLoaded 이벤트를 이해한다.</li>
+  <li>Load와의 차이점을 이해한다.</li>
+</ol>
+
+<hr />
+
+<p><strong>핵심 개념</strong></p>
+
+<ul>
+  <li>DOMContentLoaded</li>
+</ul>
+
+<p><strong>load와 DOMContentLoaded의 차이 확인</strong></p>
+
+<p>웹사이트에 접속해서 크롬 개발자도구로 이를 확인할 수 있습니다.</p>
+
+<p>크롬 개발자도구의 Network panel을 열어서 하단에 <strong>DOMContentLoaded, load</strong>를 확인해보세요.</p>
+
+<p>두 개의 시간이 조금 다릅니다.</p>
+
+<p>DOM Tree 분석이 끝나면 DOMContentLoaded 이벤트가 발생하며, 그 외 모든 자원이 다 받아져서 브라우저에 렌더링(화면 표시)까지 다 끝난 시점에는 Load가 발생합니다.</p>
+
+<p>이를 이해하고, 필요한 시점에 두 개의 이벤트를 사용해서 자바스크립트 실행을 할 수 있습니다.</p>
+
+<p>보통 DOM tree가 다 만들어지면 DOM APIs를 통해서 DOM에 접근할 수 있기 때문에, 실제로 실무에서는 대부분의 자바스크립트코드는 DOMContentLoaded 이후에 동작하도록 구현합니다.</p>
+
+<p>그 방법이 로딩속도 성능에 유리하다고 생각하기 때문입니다.</p>
+
+<p><strong>DOMContentLoaded 예제</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="c1">//DOMContentLoaded가 완료되면 콜백 함수 실행</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"DOMContentLoaded"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">startSomething</span><span class="p">();</span>
+  <span class="nx">initFoo</span><span class="p">();</span>
+  <span class="nx">initBar</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"div"</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"load"</span><span class="p">,</span> <span class="nx">fucntion</span><span class="p">(){</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"window Loaded"</span><span class="p">);</span>
+<span class="p">});</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<p><strong>생각해보기</strong></p>
+
+<ol>
+  <li>
+    <p>load이벤트 이후에 작업하는 게 좋은 건 어떤 걸까요?</p>
+
+    <p>이미지가 다 보이고 나서 사용자한테 보여주는 작업과 같은 것들.</p>
+  </li>
+</ol>
+
+<hr />
+
+<p><strong>참고 자료</strong></p>
+
+<p><a href="https://stackoverflow.com/questions/2414750/difference-between-domcontentloaded-and-load-events"><img src="https://cphinf.pstatic.net/mooc/20180207_258/1517971348849owiof_PNG/OqghyfBKpKxfxQti6r2v.png?type=mfullfill_199_148" alt="img" /></a></p>
+
+<ul>
+  <li>
+    <p><strong>[참고링크] Difference between DOMContentLoaded and load events</strong><a href="https://stackoverflow.com/questions/2414750/difference-between-domcontentloaded-and-load-events">https://stackoverflow.com/questions/2414750/difference-between-domcontentloaded-and-load-events</a></p>
+
+    <p>사람들의 질문/답변에서 지식을 얻어보세요.</p>
+  </li>
+</ul>
+
+<h1 id="3-event-delegation">3) Event delegation</h1>
+
+<p><strong>들어가기 전에</strong></p>
+
+<p>list(어떤 목록)가 여러 개인 UI에 각각 비슷한 이벤트를 걸어서 처리해야 한다면 어떻게 해야 할까요?</p>
+
+<p>for문으로 addEventListener를 사용해야 할까요?</p>
+
+<hr />
+
+<p><strong>학습 목표</strong></p>
+
+<ol>
+  <li>Event delegation을 이해하고, 효율적인 이벤트 등록을 구현할 수 있다.</li>
+</ol>
+
+<hr />
+
+<p><strong>핵심 개념</strong></p>
+
+<ul>
+  <li>Event delegation</li>
+  <li>Bubbling</li>
+  <li>Capturing</li>
+</ul>
+
+<p><strong>이런 상황에서의 이벤트 등록</strong></p>
+
+<p>아래 화면은 가로로 배치된 책 리스트입니다.</p>
+
+<p>각각 리스트에 클릭을 할 때 어떤 이벤트가 발생해야 한다고 가정합니다.</p>
+
+<p>addEventListener를 사용해서 이벤트 등록을 할 수 있을겁니다.</p>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16760/#"><img src="https://cphinf.pstatic.net/mooc/20180207_239/15179786577601DaLw_PNG/3-5-3-image-list.png?type=w760" alt="img" /></a></p>
+
+<ul>
+  <li><strong>책 리스트</strong></li>
+</ul>
+
+<p>4개의 예제에는 li 태그가 있습니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://images-na.,,,,,/513hgbYgL._AC_SY400_.jpg"</span> <span class="kd">class</span><span class="o">=</span><span class="s2">"product-image"</span> <span class="o">&gt;</span>    <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://images-n,,,,,/41HoczB2L._AC_SY400_.jpg"</span> <span class="kd">class</span><span class="o">=</span><span class="s2">"product-image"</span> <span class="o">&gt;</span>    <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://images-na.,,,,51AEisFiL._AC_SY400_.jpg"</span> <span class="kd">class</span><span class="o">=</span><span class="s2">"product-image"</span> <span class="o">&gt;</span>  <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span> <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://images-na,,,,/51JVpV3ZL._AC_SY400_.jpg"</span> <span class="kd">class</span><span class="o">=</span><span class="s2">"product-image"</span> <span class="o">&gt;</span>
+ <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>li 각각에 addEventListener를 통해 이벤트를 등록합니다.</p>
+
+<p>이 코드는 잘 동작합니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">log</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">".log"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">lists</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">"ul &gt; li"</span><span class="p">);</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">len</span><span class="o">=</span><span class="nx">lists</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">lists</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">log</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"clicked"</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">src</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<p>이 때, debugger를 이용해서 디버깅이 가능하다. 처음알았다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">log</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">".log"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">lists</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">"ul &gt; li"</span><span class="p">);</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">len</span><span class="o">=</span><span class="nx">lists</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">lists</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">//이렇게 디버거 코드를 넣으면 크롬 개발자 도구에서 디버거 탭이 활성화된다.</span>
+     <span class="kr">debugger</span><span class="p">;</span>
+     <span class="nx">log</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"clicked"</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">src</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>++firstChild와 firstElementChild의 차이? 위의 강의 영상에서는 firstChild는 공백을 text노드로 인식을 하기 때문에 원하는 첫 번째 li 노드를 특정하지 못했다.</p>
+
+<hr />
+
+<p>브라우저는 4개의 이벤트 리스너를 기억하고 있습니다.</p>
+
+<p>그런데 list가 훨씬 더 많다면 브라우저는 기억해야 할 이벤트 리스너도 그만큼 많아집니다.</p>
+
+<p>비효율적이죠.</p>
+
+<p>문제는 한가지 더 있습니다. 만약 list가 한 개 더 동적으로 추가된다면 어떻게 될까요?</p>
+
+<p>네, 추가된 엘리먼트에 역시 addEventListener를 해줘야 합니다.</p>
+
+<p>이것도 꽤 불편한 일 같네요. 그래서 list의 공통 부모 요소인 ul에다가 이벤트를 추가하고 위임하는 형식으로 이벤트를 설정한다. 그러면 일일히 li 태그에 이벤트를 추가할 필요가 없다.</p>
+
+<p>이 과정을 위해 target 정보가 우리를 돕습니다.</p>
+
+<p>자, 이번에는 ul 태그에만 이벤트를 새롭게 등록합니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nx">ul</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">,</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이럴 경우 li안에 이미지를 클릭하면 위 결과는 무엇일까요?</p>
+
+<p>만약 ul &gt; li &gt; img 태그를 클릭했다면 어떤 결과가 나올까요?</p>
+
+<p>그 전에 이벤트는 실행은 될까요?</p>
+
+<p>정답은 ‘네’ 입니다.</p>
+
+<p>li 나 img 태그는 ul 태그에 속하기도 합니다.</p>
+
+<p>따라서 UL에 등록한 이벤트 리스너도 실행이 됩니다.</p>
+
+<p>이것은 이벤트 버블링이라고 합니다.</p>
+
+<p>클릭한 지점이 하위엘리먼트라고 하여도, 그것을 감싸고 있는 상위 엘리먼트까지 올라가면서 이벤트리스너가 있는지 찾는 과정입니다.</p>
+
+<p>만약 img, li, ul에 각각 이벤트를 등록했었다면, 3개의 이벤트 리스너가 실행했을 겁니다.</p>
+
+<p>아래 이미지는 하위엘리먼트는 3번부터 이벤트가 발생하고 2,1 순으로 이벤트가 발생했습니다.</p>
+
+<p>비슷하게 Capturing이라는 것도 있습니다. 반대로 이벤트가 발생하는 것인데요.</p>
+
+<p>기본적으로는 Bubbling 순서로 이벤트가 발생합니다.</p>
+
+<p>따라서 Bubbling을 잘 기억해두는 게 좋습니다.</p>
+
+<p>Capturing 단계에서 이벤트 발생을 시키고 싶다면 addEventListener 메서드의 3번째 인자에 값을 true로 주면 됩니다.</p>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16760/#"><img src="https://cphinf.pstatic.net/mooc/20180207_43/1517986448399nM5Jy_PNG/3-5-3_Event_Bubbling.png?type=w760" alt="img" /></a></p>
+
+<ul>
+  <li>
+    <p><strong>Event Bubbling</strong></p>
+
+    <p>출처 https://www.grapecity.com/en/blogs/html-and-wijmo-events/</p>
+  </li>
+  <li>
+    <p><strong>Event delegation</strong></p>
+  </li>
+</ul>
+
+<p>우리는 img나 li를 클릭해도 UL에도 이벤트가 발생하고, 이벤트 리스너 실행된다는 것을 알게 됐습니다.</p>
+
+<p>img를 클릭하면 아래 결과는 무엇이 나올까요?</p>
+
+<p>ul 그리고 img 태그가 나옵니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nx">ul</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">tagName</span><span class="p">,</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">tagName</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>네 target 정보는 실제 클릭 된 하위 엘리먼트를 알려줍니다!</p>
+
+<p>이 점을 이용해서 src를 추출할 수 있지 않을까요?</p>
+
+<p>이제 addEventListener 메서드를 한 번만 쓰면서 우리는 모든 list의 image 정보를 확인할 수 있습니다.</p>
+
+<p>더구나 list 태그가 하나 더 추가된다고 하여도 문제없이 동작합니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">);</span>
+<span class="nx">ul</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">===</span> <span class="s2">"IMG"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"clicked"</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">src</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>그런데 작은 문제가 하나 더 있는 거 같네요.</p>
+
+<p>예제를 보면, 이미지 태그는 padding 값이 있어서, img태그와 li 태그 사이에 공백이 존재합니다.</p>
+
+<p>이 부분(공백)을 클릭하면 tagName이 LI라서 위에서 구현한 조건문으로 들어가지 않았기 때문입니다.</p>
+
+<p>이 부분(공백)을 클릭해도 이미지 url을 출력할 수 있으려면 어떻게 해야할까요?</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">);</span>
+<span class="nx">ul</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">debugger</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">===</span> <span class="s2">"IMG"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"clicked"</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">src</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">===</span> <span class="s2">"LI"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"clicked"</span> <span class="o">+</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">src</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>전체코드는 여기서 확인 하세요.</p>
+
+<p><a href="https://jsbin.com/qepufol/1/edit?html,js,output">실습코드 바로가기</a></p>
+
+<hr />
+
+<p><strong>생각해보기</strong></p>
+
+<ol>
+  <li>load이벤트 이후에 작업하는 게 좋은 건 어떤 걸까요?</li>
+</ol>
+
+<hr />
+
+<p><strong>참고 자료</strong></p>
+
+<p><a href="https://stackoverflow.com/questions/2414750/difference-between-domcontentloaded-and-load-events"><img src="https://cphinf.pstatic.net/mooc/20180207_229/1517989309684XQB0S_PNG/LCEur6RlhkxoaCevm0uL.png?type=mfullfill_199_148" alt="img" /></a></p>
+
+<ul>
+  <li>
+    <p><strong>[참고링크] Difference between DOMContentLoaded and load events</strong><a href="https://stackoverflow.com/questions/2414750/difference-between-domcontentloaded-and-load-events">https://stackoverflow.com/questions/2414750/difference-between-domcontentloaded-and-load-events</a></p>
+  </li>
+  <li>
+    <p><strong>생활코딩 이벤트 전파 강의</strong><a href="https://opentutorials.org/course/1375/6768">https://opentutorials.org/course/1375/6768</a></p>
+  </li>
+</ul>
+
+<h1 id="4-html-templating">4) HTML templating</h1>
+
+<p><strong>들어가기 전에</strong></p>
+
+<p>서버로부터 받은 데이터를 화면에 반영해야 하는 경우가 많이 있습니다.</p>
+
+<p>그런데 HTML 형태는 그대로이고, 데이터만 변경이 되는 경우가 있을 텐데요.</p>
+
+<p>이럴 때는 어떻게 처리하는 게 효율적인지 알아봅니다.</p>
+
+<hr />
+
+<p><strong>학습 목표</strong></p>
+
+<ol>
+  <li>HTML Templating 이 무엇이고, 어떻게 구현해야 하는지 이해합니다.</li>
+</ol>
+
+<hr />
+
+<p><strong>핵심 개념</strong></p>
+
+<ul>
+  <li>HTML Templating 이란?</li>
+  <li>String의 replace</li>
+</ul>
+
+<p><strong>HTML Templating</strong></p>
+
+<p>아래 화면에 데이터를 Ajax로 받아와서 화면에 추가해야 한다고 생각해봅니다.</p>
+
+<p>JSON 형태의 데이터를 받을 것이고요.</p>
+
+<p>아래 리스트들의 내용은 모두 다 비슷합니다.</p>
+
+<p>list 태그로 html을 구현해보면 사진, 가격, 이름, 별점, 추가정보(있거나 없거나)를 비슷한 tag를 사용해서 표현하면 됩니다.</p>
+
+<p>여기서 templating 이라는 개념을 도입하면 좋습니다.</p>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16761/#"><img src="https://cphinf.pstatic.net/mooc/20180207_87/1517990419475nT06l_PNG/3-5-4-1_product_list.png?type=w760" alt="img" /></a></p>
+
+<ul>
+  <li><strong>product list</strong></li>
+</ul>
+
+<p><strong>HTML Templating 작업이란?</strong></p>
+
+<p>반복적인 HTML부분을 template로 만들어두고, 서버에서 온 데이터(주로JSON)을 결합해서, 화면에 추가하는 작업이라고 할 수 있습니다.</p>
+
+<p>아래 그림이 이해가 될 겁니다.</p>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16761/#"><img src="https://cphinf.pstatic.net/mooc/20180207_165/1517990489362QgF8S_PNG/3-5-4-2_about_templating.png?type=w760" alt="img" /></a></p>
+
+<p><strong>결합과정 해결하기</strong></p>
+
+<p>이제 HTML template과 JSON을 결합하면 됩니다.</p>
+
+<p>간단히 이렇게 구현할 수 있습니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>  <span class="na">title</span> <span class="p">:</span> <span class="s2">"hello"</span><span class="p">,</span>
+              <span class="na">content</span> <span class="p">:</span> <span class="s2">"lorem dkfief"</span><span class="p">,</span>
+              <span class="na">price</span> <span class="p">:</span> <span class="mi">2000</span>
+           <span class="p">};</span>
+<span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="s2">"&lt;li&gt;&lt;h4&gt;{title}&lt;/h4&gt;&lt;p&gt;{content}&lt;/p&gt;&lt;div&gt;{price}&lt;/div&gt;&lt;/li&gt;"</span><span class="p">;</span>
+
+<span class="nx">html</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">"{title}"</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">"{content}"</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">content</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">"{price}"</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">price</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>replace는 메서드 체이닝 방식으로 호출하면서 풀이를 할 수 있습니다.</p>
+
+<p>여러분들도 이 코드를 꼭 실습해보세요!</p>
+
+<hr />
+
+<p><strong>생각해보기</strong></p>
+
+<ol>
+  <li>data가 배열형태로 여러개가 있다면 어떻게 처리할까요?</li>
+  <li>간단히 반복문을 쓸 수도 있고, forEach와 같은 메서드를 사용할 수도 있을 겁니다.</li>
+  <li>위 예제에서 다뤘던 data를 여러개 선언하고, HTML Templating작업을 실습해보세요.</li>
+</ol>
+
+<hr />
+
+<p><strong>참고 자료</strong></p>
+
+<ul>
+  <li><strong>[참고링크] 라이브러리의 도움없이 templaing작업을 하는 방법</strong><a href="https://jonsuh.com/blog/javascript-templating-without-a-library/">https://jonsuh.com/blog/javascript-templating-without-a-library/</a></li>
+</ul>
+
+<h1 id="5-html-templating-실습">5) HTML templating 실습</h1>
+
+<p><strong>들어가기 전에</strong></p>
+
+<p>HTML Templating작업을 하기 위해서는 Ajax로 데이터를 가져오는 방법도 필요하고, 또 한 가지 template을 어딘가 보관해야 할 겁니다.</p>
+
+<p>몇 가지 방법이 있겠지만, 간단한 방법을 알아볼 예정입니다.</p>
+
+<hr />
+
+<p><strong>학습 목표</strong></p>
+
+<ol>
+  <li>HTML Templating 처리 작업을 할 수 있습니다.</li>
+</ol>
+
+<hr />
+
+<p><strong>핵심 개념</strong></p>
+
+<ul>
+  <li>HTML Templating 작업의 이해</li>
+</ul>
+
+<p><strong>HTML Template의 보관</strong></p>
+
+<p>아래와 같은 html 문자열을 어딘가 보관해야 합니다.</p>
+
+<p>javascript코드 안에서 이런 정적인 데이터를 보관하는 건 좋지 않기 때문입니다.</p>
+
+<p>몇 가지 방법을 알려드립니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="s2">"&lt;li&gt;&lt;h4&gt;{title}&lt;/h4&gt;&lt;p&gt;{content}&lt;/p&gt;&lt;div&gt;{price}&lt;/div&gt;&lt;/li&gt;"</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>서버에서 file로 보관하고 Ajax로 요청해서 받아옵니다.
+    <ul>
+      <li>서버 단에 여러 가지 템플릿 파일을 만들고 이 파일을 Ajax로 서버에서 받아와서 필요한 데이터와 함께 섞어서 넣는 방식이다. 이 때, ES6의 템플릿 리터럴을 사용하면 replace() 메서드를 쓰지 않고 대체해서 쓸 수 있다. -&gt; {}방식으로 넣는 것을 말하는듯.</li>
+    </ul>
+  </li>
+  <li>HTML코드 안에 숨겨둔다(?)</li>
+</ul>
+
+<p>간단한 것이라면 HTML 안에 숨겨둘 수가 있습니다.</p>
+
+<p>숨겨야 할 데이터가 많다면 별도 파일로 분리해서 Ajax로 가져오는 방법도 좋습니다.</p>
+
+<p>하지만 많지 않은 데이터이므로 우리는 HTML 안에 잘 보관해두겠습니다.</p>
+
+<p><strong>Templating</strong></p>
+
+<p>HTML 중 script 태그는 type이 javascript가 아니라면 렌더링하지 않고 무시합니다.</p>
+
+<p>바로 이걸 이용하는 겁니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"template-list-item"</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/template"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h4&gt;&lt;p&gt;{content}&lt;/</span><span class="nx">p</span><span class="o">&gt;&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">price</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이렇게 간단히 javascript에서 가져올 수가 있을 겁니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"template-list-item"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>이후 작업은 replace로 하면 끝나죠.</p>
+
+<hr />
+
+<p><strong>실습 코드</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="na">title</span> <span class="p">:</span> <span class="s2">"hello"</span><span class="p">,</span><span class="na">content</span> <span class="p">:</span> <span class="s2">"lorem dkfief"</span><span class="p">,</span><span class="na">price</span> <span class="p">:</span> <span class="mi">2000</span><span class="p">},</span>
+        <span class="p">{</span><span class="na">title</span> <span class="p">:</span> <span class="s2">"hello"</span><span class="p">,</span><span class="na">content</span> <span class="p">:</span> <span class="s2">"lorem dkfief"</span><span class="p">,</span><span class="na">price</span> <span class="p">:</span> <span class="mi">2000</span><span class="p">}</span>
+<span class="p">];</span>
+
+<span class="c1">//html 에 script에서 가져온 html template.</span>
+<span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#template-list-item"</span><span class="p">).</span><span class="nx">innerHTML</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">resultHTML</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resultHTML</span> <span class="o">+=</span> <span class="nx">html</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">"{title}"</span><span class="p">,</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="p">)</span>
+                      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">"{content}"</span><span class="p">,</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">content</span><span class="p">)</span>
+                      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s2">"{price}"</span><span class="p">,</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">price</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">".content"</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">resultHTML</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<p><strong>생각해보기</strong></p>
+
+<ol>
+  <li>template 작업이 반복적이거나 어떤 조건에 따라서 일부 데이터는 보이지 말아야 하는 것은 어떻게 처리해야 할까요? 데이터 파싱작업이 꽤 번거로울 겁니다. template를 돕는 라이브러리들이 있습니다. 이를 찾아보고 그 사용법을 알아보세요.</li>
+  <li>ES6에서는 template literal이라는 것이 나왔습니다. 더는 replace 메서드를 사용하지 않고도 아주 쉽게 해결할 수가 있습니다. 이것도 어떻게 사용하는지 알아보면 좋습니다.</li>
+</ol>
+
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/webfe/2018/07/18/WEB-UI.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/webfe/2018/07/18/WEB-UI.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/webfe/2018/07/18/WEB-UI.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/webfe/2018/07/18/WEB-UI.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/webfe/2018/07/18/WEB-UI.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

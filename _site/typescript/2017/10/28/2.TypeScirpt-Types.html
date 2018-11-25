@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>2.Typescript의 기본 타입들</title>
+  <meta name="description" content="Typescript 타입들에 대해">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/typescript/2017/10/28/2.TypeScirpt-Types.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="2.Typescript의 기본 타입들">2.Typescript의 기본 타입들</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        28 OCT 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    10 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h3 id="이-강의는-타입스크립트-코리아-이웅재님의-강의를-기반으로-만들어졌습니다-개인의-공부-및-복습-목적이므로-문제가-있으면-삭제하도록-하겠습니다">이 강의는 타입스크립트 코리아 이웅재님의 강의를 기반으로 만들어졌습니다. 개인의 공부 및 복습 목적이므로 문제가 있으면 삭제하도록 하겠습니다.</h3>
+
+<p>[‘실습 환경’]<a href="https://www.typescriptlang.org/play/index.html">https://www.typescriptlang.org/play/index.html</a></p>
+
+<p>타입스크립트에서 기본적으로 제공하는 데이터 타입에 대해 알아본다.</p>
+
+<p><strong><em>사용자가 만든 타입들은 결국 아래의 기본 자료형들로 쪼개진다.</em></strong></p>
+
+<ul>
+  <li>자바스크립트 기본 자료형을 포함한다.(superset)
+    <ul>
+      <li>Boolean</li>
+      <li>Number</li>
+      <li>String</li>
+      <li>Null</li>
+      <li>Undefined</li>
+      <li>Symbol(ECMAScript 6에 추가)</li>
+      <li>Array : object형 (엄밀히 primitive 타입은 아니지만, 기본 자료형으로 친다.)</li>
+    </ul>
+  </li>
+  <li>자바스크립트 기본 자료형에 몇 가지 타입이 더 제공된다.
+    <ul>
+      <li>Any</li>
+      <li>Void</li>
+      <li>Never
+Any, Void, Never는 함수의 리턴타입 지정에 많이 쓰인다. Void, Never로 지정하면 할 게 없다. Any는 적폐..</li>
+      <li>Enum</li>
+      <li>Tuple : object형 (Array의 변칙형태라고 생각하면 되는데, 잘 쓰진 않음.)</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="primitive-type">Primitive Type</h4>
+
+<ul>
+  <li>오브젝트와 레퍼런스 형태가 아닌 실제 값을 저장하는 자료형</li>
+  <li>Primitive 형의 변수들에 Object 형의 내장 함수를 사용 가능 한것은 자바스크립트의 처리 방식 때문이다.(자바스크립트가 일시적으로 Object로 처리하고 다시 primitive로 돌려놓음 - 메모리를 아끼기 위해서라고 함.)</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">'mark'</span><span class="p">;</span>
+
+<span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="literal">Literal</h4>
+
+<ul>
+  <li>값 자체가 변하지 않는 값</li>
+  <li>상수와 다른 것은 상수는 가리키는 포인터가 고정이라는 것이고(즉 한 번 값을 지정하면 바뀌지 않는 모든 값이 상수), 리터럴은 그 자체가 값이자 그릇이다.(값 그 자체를 가리키는 것.)</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="mi">35</span><span class="p">;</span> <span class="c1">// number 리터럴</span>
+<span class="s1">'mark'</span> <span class="c1">// string 리터럴</span>
+<span class="kc">true</span> <span class="c1">// boolean 리터럴</span>
+
+<span class="c1">// object 리터럴</span>
+<span class="p">{</span>
+    <span class="nl">name</span><span class="p">:</span> <span class="s1">'mark'</span><span class="p">,</span>
+    <span class="nx">age</span><span class="p">:</span> <span class="mi">35</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="booleanboolean">Boolean/boolean</h4>
+
+<ul>
+  <li>true / false</li>
+  <li>자바스크립트, 타입스크립트에서 boolean이라고 부른다.</li>
+  <li>타입스크립트에서 Boolean과 boolean은 다르다. Boolean은 오브젝트의 Wrapper 클래스이고 boolean은 기본형. 되도록 소문자 boolean을 쓰는 것을 권장한다.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">isDone</span><span class="p">:</span> <span class="kr">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="k">typeof</span> <span class="nx">isDone</span> <span class="o">===</span> <span class="s1">'boolean'</span> <span class="c1">// true</span>
+
+<span class="c1">// Type 'boolean' is assignable to type 'Boolean'.</span>
+<span class="kd">let</span> <span class="nx">isOk</span><span class="p">:</span> <span class="nb">Boolean</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="c1">// Type 'Boolean' is not assignable to type 'boolean'.</span>
+<span class="c1">// 'boolean' is a primitive, but 'Boolean' is a wrapper object.</span>
+<span class="c1">// Prefer using 'boolean' when possible.</span>
+<span class="kd">let</span> <span class="nx">isNotOk</span><span class="p">:</span> <span class="kr">boolean</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Boolean</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="numbernumber">Number/number</h4>
+
+<ul>
+  <li>자바스크립트와 같이 타입스크립트의 모든 숫자는 부동 소수점 값이다.</li>
+  <li>타입스크립트는 16진수, 10진수 리터럴외에도 2진수, 8진수 리터럴을 지원한다.</li>
+  <li>넘버도 new Number로 생성한 것을 primitive형인 number에 넣을 수 없고 되도록 primitive형인 number를 쓰는 것을 권장한다.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">decimal</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 10진수 리터럴</span>
+
+<span class="kd">let</span> <span class="nx">hex</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mh">0xf00d</span><span class="p">;</span> <span class="c1">// 16진수 리터럴</span>
+
+<span class="kd">let</span> <span class="nx">binary</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mb">0b1010</span><span class="p">;</span> <span class="c1">// 2진수 리터럴</span>
+
+<span class="kd">let</span> <span class="nx">octal</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mo">0o744</span><span class="p">;</span> <span class="c1">// 8진수 리터럴</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="string">String</h4>
+
+<ul>
+  <li>텍스트 형식을 참조하기 위해 ‘string’ 형식 사용.</li>
+  <li>큰 따옴표나 작은 따옴표를 사용한다.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">"mark"</span><span class="p">;</span>
+
+<span class="nx">name</span> <span class="o">=</span> <span class="s1">'anna'</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h5 id="string---template-string">String - Template String</h5>
+<ul>
+  <li>ES6에 들어가는 Template String을 사용하는데, 이유는
+    <ul>
+      <li>한 줄에 안 쓰고 두 줄에 쓸 것이 있을 때</li>
+      <li>두 줄 사이에 자바스크립트 변수를 받고 싶을 때</li>
+    </ul>
+  </li>
+  <li>’${expr}’과 같은 형태로 사용한다.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">fullName</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">`Bob Bobbington`</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">37</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">sentence</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">`Hello, my name is </span><span class="p">${</span> <span class="nx">fullName</span> <span class="p">}</span><span class="s2">.
+
+I'll be </span><span class="p">${</span> <span class="nx">age</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span><span class="s2"> years old next month.`</span><span class="p">;</span>
+
+<span class="c1">// template string 을 사용하지 않을 경우</span>
+<span class="kd">let</span> <span class="nx">sentence</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="s2">"Hello, my name is "</span> <span class="o">+</span> <span class="nx">fullName</span> <span class="o">+</span> <span class="s2">".</span><span class="err">\</span><span class="s2">n</span><span class="err">\</span><span class="s2">n"</span> <span class="o">+</span>
+    <span class="s2">"I'll be "</span> <span class="o">+</span> <span class="p">(</span><span class="nx">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">" years old next month."</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="undefined--null">Undefined &amp; Null</h4>
+<ul>
+  <li>타입 스크립트에서 undefined와 null은 각각 undefined와 null이라는 고유한 타입을 가진다.</li>
+  <li>void와 마찬가지로 undefined와 null은 그 자체로 쓸모가 없다.</li>
+  <li>둘 다 소문자만 존재 한다.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="c1">// 이 변수들에 할당할 수 있는 것들은 거의 없다.</span>
+
+<span class="kd">let</span> <span class="nx">u</span><span class="p">:</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">n</span><span class="p">:</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h5 id="undefined와-null은-다른-모든-타입들의-서브-타입이다">undefined와 null은 다른 모든 타입들의 서브 타입이다</h5>
+<ul>
+  <li>즉, 모든 다른 타입들에 대입(할당)이 가능하다.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+
+<span class="c1">// strictNullChecks =&gt; true</span>
+<span class="c1">// Type 'null' is not assignable to type 'string'.</span>
+<span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="p">(</span><span class="nx">X</span><span class="p">)</span>
+
+<span class="c1">// null =&gt; null || void, undefined =&gt; undefined || void</span>
+<span class="c1">// Type 'null' is not assignable to type 'undefined'.</span>
+<span class="kd">let</span> <span class="nx">u</span><span class="p">:</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// (X)</span>
+
+<span class="kd">let</span> <span class="nx">v</span><span class="p">:</span> <span class="k">void</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span> <span class="c1">// (O)</span>
+
+<span class="kd">let</span> <span class="nx">union</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="kc">null</span> <span class="o">|</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="s1">'str'</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h5 id="자바스크립트의-null">자바스크립트의 null</h5>
+<ul>
+  <li>자바스크립트의 null과 타입스크립트의 null은 똑같다.</li>
+  <li>무언가가 있는데, 사용할 준비가 덜 된 상태.</li>
+  <li>null 타입은 null이라는 값만 가질 수 있다.</li>
+  <li>런타임에서 typeof연산자를 이용하면 object이다.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">n</span><span class="p">:</span> <span class="kc">null</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span> <span class="c1">// null</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">n</span><span class="p">);</span> <span class="c1">// object</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h5 id="자바스크립트의-undefined">자바스크립트의 undefined</h5>
+<ul>
+  <li>값을 할당하지 않는 변수는 undefined라는 값을 가진다. 즉 null처럼 무언가가 있지도 않은 것. 아얘 준비가 안된 것</li>
+  <li>object의 property가 없을 때도 undefined이다.</li>
+  <li>런타임에서 typeof연산자를 이용해서 확인하면 undefined이다.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">u</span><span class="p">:</span> <span class="kc">undefined</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">u</span><span class="p">);</span> <span class="c1">// undefined</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">u</span><span class="p">);</span> <span class="c1">// undefined</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="void">Void</h4>
+<ul>
+  <li>타입이 없는 상태</li>
+  <li>‘any’와 반대의 의미</li>
+  <li>Void는 없다. 무조건 소문자</li>
+  <li>주로 함수의 리턴 값이 없을 때 사용.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">returnVoid</span><span class="p">(</span><span class="nx">message</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">returnVoid</span><span class="p">(</span><span class="s1">'리턴이 없다'</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="any">Any</h4>
+<ul>
+  <li>어떤 타입이어도 상관없는 타입</li>
+  <li>최대한 안 쓰는 것이 핵심. 컴파일 타임에 타입 체크가 정상적으로 이루어지지 않기 때문</li>
+  <li>따라서 컴파일 옵션 중에 any를 쓰면 오류가 되도록 하는 옵션도 있다.</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">returnAny</span><span class="p">(</span><span class="nx">message</span><span class="p">):</span> <span class="nx">any</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">returnVoid</span><span class="p">(</span><span class="s1">'리턴은 아무거나'</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="never">Never</h4>
+<ul>
+  <li>리턴에 주로 사용</li>
+  <li>사용 빈도가 낮음</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="c1">// Function returning never must have unreachable end point</span>
+<span class="kd">function</span> <span class="nx">error</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="nx">string</span><span class="p">):</span> <span class="nx">never</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Inferred return type is never</span>
+<span class="kd">function</span> <span class="nx">fail</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s2">"Something failed"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Function returning never must have unreachable end point</span>
+<span class="kd">function</span> <span class="nx">infiniteLoop</span><span class="p">():</span> <span class="nx">never</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="array">Array</h4>
+<ul>
+  <li>자바스크립트에서 array는 객체다. (Ojbect.prototype을 상속하고 있음)</li>
+  <li>사용 방법
+    <ul>
+      <li>Array<타입></타입></li>
+      <li>타입[]</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">list</span><span class="p">:</span> <span class="nx">number</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+
+<span class="kd">let</span> <span class="nx">list</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="tuple">Tuple</h4>
+<ul>
+  <li>배열인데 타입이 한 가지가 아닌 경우</li>
+  <li>Array와 마찬가지로 객체이다.</li>
+  <li>꺼내 사용할 때 주의가 필요하다. (타입이 정확히 무엇인지 모르므로.)
+    <ul>
+      <li>배열을 Destructuting하면 타입이 제대로 얻어진다.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="c1">// Declare a tuple type</span>
+<span class="kd">let</span> <span class="nx">x</span><span class="p">:</span> <span class="p">[</span><span class="nx">string</span><span class="p">,</span> <span class="nx">number</span><span class="p">];</span>
+<span class="c1">// Initialize it</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"hello"</span><span class="p">,</span> <span class="mi">10</span><span class="p">];</span> <span class="c1">// OK</span>
+<span class="c1">// Initialize it incorrectly</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s2">"hello"</span><span class="p">];</span> <span class="c1">// Error</span>
+
+<span class="nx">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"world"</span><span class="p">;</span> <span class="c1">// OK, 'string' can be assigned to 'string | number'</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">[</span><span class="mi">5</span><span class="p">].</span><span class="nx">toString</span><span class="p">());</span> <span class="c1">// OK, 'string' and 'number' both have 'toString'</span>
+
+<span class="nx">x</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// Error, 'boolean' isn't 'string | number'</span>
+
+<span class="kd">const</span> <span class="nx">person</span><span class="p">:</span> <span class="p">[</span><span class="nx">string</span><span class="p">,</span> <span class="nx">number</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'mark'</span><span class="p">,</span> <span class="mi">35</span><span class="p">];</span>
+
+<span class="kd">const</span> <span class="p">[</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">]</span> <span class="o">=</span> <span class="nx">person</span><span class="p">;</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="enum">Enum</h4>
+<ul>
+  <li>C 언어와 같다.</li>
+  <li>아래 예제만 이해하면 된다.</li>
+  <li>enum의 원소의 결과 값은 string형</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kr">enum</span> <span class="nx">Color</span> <span class="p">{</span><span class="nx">Red</span><span class="p">,</span> <span class="nx">Green</span><span class="p">,</span> <span class="nx">Blue</span><span class="p">}</span>
+<span class="kd">let</span> <span class="nx">c</span><span class="p">:</span> <span class="nx">Color</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">Green</span><span class="p">;</span>
+
+<span class="kr">enum</span> <span class="nx">Color</span> <span class="p">{</span><span class="nx">Red</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">Green</span><span class="p">,</span> <span class="nx">Blue</span><span class="p">}</span>
+<span class="kd">let</span> <span class="nx">c</span><span class="p">:</span> <span class="nx">Color</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">Green</span><span class="p">;</span>
+
+<span class="kr">enum</span> <span class="nx">Color</span> <span class="p">{</span><span class="nx">Red</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">Green</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">Blue</span> <span class="o">=</span> <span class="mi">4</span><span class="p">}</span>
+<span class="kd">let</span> <span class="nx">c</span><span class="p">:</span> <span class="nx">Color</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">Green</span><span class="p">;</span>
+
+<span class="kr">enum</span> <span class="nx">Color</span> <span class="p">{</span><span class="nx">Red</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">Green</span><span class="p">,</span> <span class="nx">Blue</span><span class="p">}</span>
+<span class="kd">let</span> <span class="nx">colorName</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+  <span class="c1">//enum의 이름인 Green을 뱉기 때문에 string형으로 지정을 하는 것.</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="symbol">Symbol</h4>
+<ul>
+  <li>ECMAScript 2015의 Symbol이다.</li>
+  <li>primitive 타입의 값을 담아서 사용한다.</li>
+  <li>고유하고 수정불가능한 값으로 만들어 준다.</li>
+  <li>따라서 주로 접근을 제어하는데 쓰이는 경우가 많았다.
+    <ul>
+      <li>자바스크립트에서는 public과 private의 구분이 명확하지 않아서 public을 만들 때 symbol을 썼었다.</li>
+    </ul>
+  </li>
+</ul>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/typescript/2017/10/28/2.TypeScirpt-Types.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/typescript/2017/10/28/2.TypeScirpt-Types.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/typescript/2017/10/28/2.TypeScirpt-Types.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/typescript/2017/10/28/2.TypeScirpt-Types.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/typescript/2017/10/28/2.TypeScirpt-Types.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

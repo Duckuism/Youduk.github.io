@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>나를 괴롭히던 nokogiri 문제 해결 과정</title>
+  <meta name="description" content="nokogiri 에러를 해결하기 위해 알아야 했던 것들에 대해 - 버전관리툴(rvm), 패키지 관리툴(homebrew/apt-get), 숨김 폴더 관리(in finder, terminal)">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/rails/2017/07/19/%E1%84%82%E1%85%A1%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%80%E1%85%AC%E1%84%85%E1%85%A9%E1%86%B8%E1%84%92%E1%85%B5%E1%84%83%E1%85%A5%E1%86%AB-nokogiri-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF-%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%BC.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="나를 괴롭히던 nokogiri 문제 해결 과정">나를 괴롭히던 nokogiri 문제 해결 과정</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        19 JUL 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    5 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h1 id="지긋지긋한-nokogiri-그-에러를-해결하기까지-했던-삽질을-기록한다">지긋지긋한 Nokogiri.. 그 에러를 해결하기까지 했던 삽질을 기록한다.</h1>
+
+<h5 id="나의-작업-환경--운영체제-mac-os-x-프레임워크-ruby-on-rails-ide-rubymine">나의 작업 환경 : 운영체제: mac os x, 프레임워크: ruby on rails, ide: Rubymine</h5>
+
+<h5 id="전체적인-삽질-순서">전체적인 삽질 순서</h5>
+
+<ol>
+  <li>
+    <p>db:migrate 오류 해결<br />
+  오류 내용 : gem이 설치가 안 되니, bundle install 해주겠니?<br />
+  하지만, ruby 버전이 맞지 않아 bundle install이 제대로 진행되지 않음<br /></p>
+  </li>
+  <li>
+    <p>ruby version 오류 해결<br />
+  오류 내용 : ruby 버전이 맞지 않는데, 좀 맞춰주겠니 멍청한 인간아<br />
+  (해결 방법 : rvm 버전 관리 툴을 통한 루비 버전 관리)<br /></p>
+  </li>
+  <li>
+    <p>bundle install 오류 해결<br />
+  오류 내용 : nokogiri를 설치하려는데, mkmf.log 파일이 보이지가 않잖아 어떻게 된거야 네 똥컴 문제니?<br />
+  (해결 방법 : 스택오버플로우를 통한 여러 삽질 후 nokogiri 공식 홈페이지 방문)<br /></p>
+  </li>
+  <li>
+    <p>nokogiri 공식 홈페이지 참고를 통한 해결<br />
+  참고 내용 : 아~ 이 문제 rvm으로 루비 버전 제대로 관리 안하면 매일 일어나는 문제라고, 여기 해결 방법도 다 나와 있는데<br /> 엄한데 가서 삽질하고 다닐래? 하여튼 밥상을 차려줘도 먹지를 못해요 ㅉㅉ<br /></p>
+  </li>
+</ol>
+
+<h3 id="삽질의-시작">삽질의 시작</h3>
+
+<p>나는 멋쟁이 사자처럼 해커톤을 진행중이다. 운 좋게도 나와 같이하는 팀원들이 내 아이디어를 믿어주고 응원해주어서 처음 나의 아이디어를 바탕으로 진행중에 있다. 전체적인 웹어플리케이션 디자인을 만들고 이제 깃을 통해 동시다발적으로 각자의 기능을 구현하려는 찰나, 예상치 못했던 복병이 나를 시험에 들게 했다. (이 과정에서 git을 조금씩 공부하게 되었는데, git 관련 내용은 따로 정리해보고자 한다.)</p>
+
+<p>git에서 pull로 데이터를 받아온 후.. 루비마인에서 개발 모드로 run을 했다. 그랬더니..</p>
+
+<p class="pull-right"><img src="/img/2017-07-19-1.png" alt="Smithsonian Image" /></p>
+
+<p><img src="https://mblogthumb2.phinf.naver.net/20140408_273/kkyy20455_1396957263255wQqIn_PNG/9.png?type=w2" alt="이모티콘" class="center" /> 나한테 왜이러냐..</p>
+
+<p>마음을 추스르고 문제를 해결하기 위해 구글신으로 접속했다. 이것이 효율적인 방법인지는 모르겠으나, 보통 에러명 전체를 검색하는 편이다. 대부분의 검색에서는 rake db:migrate를 하라고 했다. 그러나 이 명령어가 안 먹힌다는 말이다.. <br />에러 내용은 jekyll gem을 찾을 수 없다는 내용이었다. 그래서 bundle install을 실행했는데, 이번에는 nokogiri라고 하는 gem이 설치가 되지 않았다. 그 내용을 보니 루비 2.0.0버전이 설치되어 있어 현재 gems을 설치할 수 없다는 것이 었다.<br />(/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/dependency.rb:296:in `to_specs’: Could not find ‘jekyll’ (&gt;= 0) among 90 total gem(s) (Gem::LoadError))</p>
+
+<p>그렇다면 어떻게 해야 하느냐?! 루비 버전을 맞추고 bundle install을 하면 될 것 같다!<br />
+이 과정에서 구글링을 통해 찾은 답은 바로 루비 버전 관리 프로그램 RVM! <br />
+이 RVM을 통해 루비 버전을 자유롭게 바꿀 수도 있고 설치도 가능하다.<br />
+루비와 레일즈를 사용하는 개발자라면 필수적으로 설치해야하는 툴이다. 프레임워크 rails를 이용하거나 각종 gem혹은 다른 툴들을 이용할 때 루비 버전에 특정 제약이 있는 경우가 많기 때문이다.(mac같은 경우는 루비 2.0.0이 기본으로 설치되어있으나 윈도우는 그렇지 않기 때문에 설치가 필요하다.) <br />그런데 이 rvm은 맥에 기본적으로 설치되어 있지 않아서 따로 설치 명령어를 입력해야하는데, 이 때 맥용 package 관리 프로그램인 homebrew가 필요하다. 즉, 맥에 패키지 관리 프로그램인 homebrew를 먼저 설치하고 루비 버전 패키지인 rvm을 설치한 후, 루비 버전을 맞추고 bundle install을 진행해야한다는 말이었다. 한 편 윈도우 환경인 리눅스 우분투버전에서는 homebrew대신 apt-get이라는 패키지 관리 프로그램을 쓰는데, 명령어 시작이 보통 <br />
+$sudo apt-get blablabla<br />
+로 시작한다.<br />
+맥에서는 homebrew를 설치하고 $sudo apt-get 부분으로<br />
+$brew blablabla로 대체하면 똑같이 실행한다.<br />
+구글에서 검색 시, 다른 사람들이 답변한 내용을 참고할 때가 많은데 보통 apt-get으로 답변이 많이 작성되어 있다. 앞에서 말한 내용을 알고 있으면 이 부분만 $brew로 변경하면 맥에서도 똑같이 명령어를 적용할 수 있다는 것을 알 수 있다.
+(sudo라는 것은 관리자 권한으로 실행한다는 것과 같은 의미인데, homebrew는 기본적으로 root범위에서 명령어를 실행하므로 sudo 명령어와 같은 기능을 한다. - https://github.com/Homebrew/legacy-homebrew/issues/9953)</p>
+
+<p>homebrew를 설치하고 난 후</p>
+
+<p>$ brew install rvm</p>
+
+<p>을 터미널에 입력하면 설치가 진행된다.</p>
+
+<p>이후 아래 사용법이 나와 있는 사이트를 참고해서 rvm으로 루비 버전을 2.3.0 버전으로 설정했다.</p>
+
+<p>rvm와 homebrew 설치 과정 및 사용법 참조
+    1. <a href="https://rvm.io/rvm/install">https://rvm.io/rvm/install</a>
+    2. <a href="https://usabilityetc.com/articles/ruby-on-mac-os-x-with-rvm/">https://usabilityetc.com/articles/ruby-on-mac-os-x-with-rvm/</a>
+    3. <a href="https://theeye.pe.kr/archives/1747">https://theeye.pe.kr/archives/1747</a>
+    4. <a href="https://macworld.hjsong.net/76">https://macworld.hjsong.net/76</a></p>
+
+<hr />
+
+<blockquote>
+  <p>이 과정에서 nokogiri 파일을 수정하고자 하는 시도에서 맥의 숨김 파일을 봐야 하는 일이 생겼었는데, 나는 어렵게 찾았지만 다른 분들은 좀 더 쉽게 접근하시라고 방법을 남긴다.</p>
+</blockquote>
+
+<p>(터미널 일 때)
+해당 경로로 이동한 후<br />
+$ ls -a<br />
+를 입력하면 숨김파일까지 조회가 가능<br />
+(파인더 일 때)<br />
+단축키 : shift + command + . 를 누르면 숨김파일이 보인다.<br />
+혹은 터미널에서 <br />
+$ defaults write com.apple.finder AppleShowAllFiles -bool true <br />
+	-&gt; 숨김파일 보이게 해주는 명령어<br />
+$ killall Finder<br />
+	-&gt; 파인더 강제 재부팅<br />
+를 순서대로 입력하면 파인더에서 기본적으로 숨김파일까지 모두 보여준다.<br /></p>
+
+<p>출처: <br />1. <a href="https://angrygoguma.tistory.com/55">https://angrygoguma.tistory.com/55</a> <br />
+	 2. <a href="https://macnews.tistory.com/5286">https://macnews.tistory.com/5286</a>
+—</p>
+
+<p>어찌저찌 루비 버전은 맞췄는데, 이제는 nokogiri 설치 중 또 다른 에러가 뜬다.
+nokogiri의 파일 속에서 mkmf.log란 파일을 찾을 수 없다는 말이 었다. 정말 머리 쥐나는 줄 알았다. 나한테 왜 이러는 거야 노코기리 생킈야..<br /></p>
+
+<p>아래 사이트는 이 에러에 대한 해답을 찾는 과정에서 참고한 좋은 질답내용이다. 비록 이 내용만으로 해결을 하지는 못했지만, 제일 상단에 있는 답변자의 답변이 굉장히 상세하고 이 문제를 해결하는 구조를 이해하는 데에 있어서 아주 큰 도움이 되었다.
+(<a href="https://stackoverflow.com/questions/12336160/how-to-install-nokogiri-ruby-gem-with-mkmf-log-saying-libiconv-not-found">https://stackoverflow.com/questions/12336160/how-to-install-nokogiri-ruby-gem-with-mkmf-log-saying-libiconv-not-found</a>)</p>
+
+<p>이 답변에 대한 코멘트 중에 nokogiri 공식 문서 주소가 있길래 들어가 봤는데, 답은 바로 여기에 있었다.<br />
+(공식 레퍼런스 주소: <a href="https://www.nokogiri.org/tutorials/installing_nokogiri.html">https://www.nokogiri.org/tutorials/installing_nokogiri.html</a>)<br />
+이 곳에서 mac os x를 선택하고 들어가면
+자주 일어나는 에러 두 개에 대한 해결 방법이 제시되어 있다.<br />
+1.Error Message About libiconv Missing<br />
+2.Error Message About Undeclared Identifier LZMA_OK</p>
+
+<p>나는 두 번째 에러의 경우였는데, 세 번째 방법으로 성공하였다.</p>
+
+<p>brew install libxml2<br />
+(If installing directly)<br />
+gem install nokogiri – –use-system-libraries \ <br />
+  –with-xml2-include=$(brew –prefix libxml2)/include/libxml2<br />
+(If using Bundle)<br />
+bundle config build.nokogiri –use-system-libraries \ <br />
+  –with-xml2-include=$(brew –prefix libxml2)/include/libxml2<br />
+bundle install<br /></p>
+
+<p>위의 명령어를 보면 package 관리 프로그램인 homebrew로 libxml2라는 gem을 설치하고, 이 젬을 통해 nokogiri를 설치하는 것을 볼 수 있다. 이후 bundle install을 하면 완벽히 해결된다.</p>
+
+<p>정말 이렇게 해결하기 어려운 에러는 처음이었던 것 같다.</p>
+
+<p>그래도 이 에러를 해결하면서 배운 것이 참 많다. 역시 똥을 밝으면서 성장하는 것인가..</p>
+<ol>
+  <li>기본적인 파일 디렉토리 구조 파악</li>
+  <li>에러 메세지에서 해결 방법을 찾는 키워드를 보는 능력</li>
+  <li>모든 것은 공식 레퍼런스를 통해 보는 것이 가장 빠르다는 사실</li>
+  <li>패키지 관리 프로그램 homebrew를 사용해야하는 이유 인지와 사용법 습득</li>
+  <li>루비 버전 관리 프로그램 rvm을 통한 루비버전 커스터마이징 방법</li>
+  <li>맥에서 숨김 폴더를 보는 방법과 터미널에서 숨김 폴더로 이동하는 방법</li>
+  <li>첫 번째 블로깅을 통해 습득한 가벼운 마크다운 문법 지식</li>
+</ol>
+
+<p>해결하는 것이 쉽지는 않았지만 집념과 끈기로 해결 한 것에 의의를 두고 다음에 같은 문제가 일어났을 때 어려움을 겪지 않기 위해 기록을 남긴다!
+같은 문제로 고생하시는 분이 계시다면 제 자료를 참고해 보시길.. (아마 꽤나 많은 분들이 이 nokogiri로 인해 고생하셨을 것이라 생각한다. 기본적으로 이 문제는 rvm을 통해 ruby 버전이 제대로 관리되지 않는 경우에 나타난다는 사실을 꼭 인지하시길…)</p>
+
+<p>그리고 모든 문제에 대한 해답은 공식 레퍼런스에 아주 잘 나와있으니 다른 곳에서 찾지 말고 이곳에서 먼저 찾자.</p>
+
+<p>멍청한 나는 오늘도 삽질로 하루를 보낸다 껄껄껄~</p>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/rails/2017/07/19/%E1%84%82%E1%85%A1%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%80%E1%85%AC%E1%84%85%E1%85%A9%E1%86%B8%E1%84%92%E1%85%B5%E1%84%83%E1%85%A5%E1%86%AB-nokogiri-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF-%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%BC.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/rails/2017/07/19/%E1%84%82%E1%85%A1%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%80%E1%85%AC%E1%84%85%E1%85%A9%E1%86%B8%E1%84%92%E1%85%B5%E1%84%83%E1%85%A5%E1%86%AB-nokogiri-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF-%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%BC.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/rails/2017/07/19/%E1%84%82%E1%85%A1%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%80%E1%85%AC%E1%84%85%E1%85%A9%E1%86%B8%E1%84%92%E1%85%B5%E1%84%83%E1%85%A5%E1%86%AB-nokogiri-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF-%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%BC.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/rails/2017/07/19/%E1%84%82%E1%85%A1%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%80%E1%85%AC%E1%84%85%E1%85%A9%E1%86%B8%E1%84%92%E1%85%B5%E1%84%83%E1%85%A5%E1%86%AB-nokogiri-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF-%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%BC.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/rails/2017/07/19/%E1%84%82%E1%85%A1%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%80%E1%85%AC%E1%84%85%E1%85%A9%E1%86%B8%E1%84%92%E1%85%B5%E1%84%83%E1%85%A5%E1%86%AB-nokogiri-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A6-%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF-%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%BC.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ajax</title>
+  <meta name="description" content="Asynchronous JavaScript and XML">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/webfe/2018/06/04/Ajax.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Ajax">Ajax</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        4 JUN 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    1 min read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h2 id="ajax-통신의-이해">Ajax 통신의 이해</h2>
+
+<p>Ajax(Asynchronous JavaScript and XML, 에이잭스)는 비동기 방식으로 서버로부터 데이터를 갖고 오는 방식이다.</p>
+
+<h3 id="1-ajax-xmlhttprequest-통신"><strong>1. Ajax (XMLHTTPRequest 통신)</strong></h3>
+
+<p>이 기술은 웹에 데이터를 갱신할 때, 브라우저 새로고침 없이 서버로부터 데이터를 받는 것이 좋겠다는 생각에서 출발했습니다.</p>
+
+<p>더 좋은 UX를 제공할 수 있는 기술입니다.</p>
+
+<p>아래 탭 UI를 살펴봅시다.</p>
+
+<p>상단에 탭을 누를때마다 컨텐츠가 달라집니다.</p>
+
+<p>지금까지 배운 방식이라면 탭을 누를 때마다 서버에서 데이터를 다 받아와서 원하는 데이터를 띄워주는 방식으로 구현하려고 했을 것이다. 그러나 누르지도 않은 탭의 컨텐츠까지 초기로딩시점에 모두 불러온다면 초기로딩속도에 영향을 줄 것이다.</p>
+
+<p>따라서 동적으로 필요한 시점에 필요한 컨텐츠만 받아와서 갱신할 수 있다.</p>
+
+<p>이 경우가 Ajax기술을 활용할 수 있는 대표적인 경우입니다.</p>
+
+<p><a href="https://www.edwith.org/boostcourse-web/lecture/16701/#"><img src="https://mooc.phinf.nhnnext.org/20180127_24/1517019609588ClfFr_PNG/2-2-4_Ajax_.png?type=w760" alt="img" /></a></p>
+
+<ul>
+  <li><strong>Ajax통신의 이해</strong></li>
+</ul>
+
+<p>Ajax 통신으로는 XML, Plain Text, JSON 등 다양한 포맷의 데이터를 주고받을 수 있지만, 일반적으로 사용이 편리한 JSON포맷으로 데이터를 주고 받습니다</p>
+
+<p>JSON이 무엇인지 찾아보고, JSON 포맷으로 데이터를 작성하려면 어떤 규칙이 필요한지 알아보세요.</p>
+
+<h3 id="2-ajax-실행코드"><strong>2. AJAX 실행코드</strong></h3>
+
+<p>AJAX 실행 코드는 아래와 같습니다.</p>
+
+<p>아래 방법은 XMLHTTPRequest 객체를 사용하는 표준방법입니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">ajax</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+ <span class="kd">var</span> <span class="nx">oReq</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span><span class="c1">//XMLHttpRequest 객체를 생성</span>
+ <span class="nx">oReq</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"load"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">//XMLHttpRequest 객체에 이벤트를 추가. 이 이벤트는 스택에 쌓인 메서드들이 모두 사라지고 즉, 서버 요청을 준비하고 보낸 후 실행된다.</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+ <span class="p">});</span>    
+ <span class="nx">oReq</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"https://www.example.org/getData?data=data"</span><span class="p">);</span><span class="c1">//parameter를 붙여서 보낼수있음. </span>
+ <span class="nx">oReq</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><a href="https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest">예제 바로가기</a></p>
+
+<p>XMLHttpRequest객체를 생성해서, open메서드로 요청을 준비하고, send메서드로 서버로 보낸다.</p>
+
+<p>요청처리가 완료되면(서버에서 응답이 오면 이 때  ajax()는 끝난 것) load이벤트가 발생하고, 콜백함수가 실행된다.</p>
+
+<p>콜백함수가 실행될 때는 이미 ajax함수는 반환하고 콜스택에서 사라진 상태.</p>
+
+<p>이는 setTimeout함수의 콜백함수의 실행과 유사하게 동작하는 ‘비동기’로직이다.</p>
+
+<p>로컬 서버는 파이썬이나 노드로 간단하게 띄울 수 있다.</p>
+
+<p><strong>생각해보기</strong></p>
+
+<ol>
+  <li>Ajax는 비동기로 통신을 합니다. Ajax코드의 다양한 예제를 익혀보도 하자.</li>
+  <li>특히 post방식으로 데이터를 전송하는 방법도 공부해보면 좋다.</li>
+  <li>CORS라는 기술은 무엇인지도 살펴보자. 이 기술이 왜 나왔는지 이해하는게 중요하다.</li>
+</ol>
+
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/webfe/2018/06/04/Ajax.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/webfe/2018/06/04/Ajax.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/webfe/2018/06/04/Ajax.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/webfe/2018/06/04/Ajax.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/webfe/2018/06/04/Ajax.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

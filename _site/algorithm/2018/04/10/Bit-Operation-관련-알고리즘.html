@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Bit Operation 관련 알고리즘</title>
+  <meta name="description" content="기본적인 비트 연산 구현 연습, 2의 제곱수 판별, 두 수의 비트 차이수 구하기">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/algorithm/2018/04/10/Bit-Operation-%E1%84%80%E1%85%AA%E1%86%AB%E1%84%85%E1%85%A7%E1%86%AB-%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Bit Operation 관련 알고리즘">Bit Operation 관련 알고리즘</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        10 APR 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    4 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h2 id="todays-algorithm">Today’s Algorithm</h2>
+
+<h5 id="알고리즘은-20분-안에-모든-방법을-동원해서-못-풀면-바로-답을-보는-형식으로-연습">알고리즘은 20분 안에 모든 방법을 동원해서 못 풀면 바로 답을 보는 형식으로 연습!</h5>
+
+<h3 id="bit-operation-비트-연산-이론-학습">Bit Operation 비트 연산 이론 학습</h3>
+
+<ul>
+  <li>자주 출제 되지 않지만 연습 없이 만나게 되면 풀기가 매우 까다로운 것이 비트연산 문제</li>
+</ul>
+
+<p><img src="/img/2018-04-10-02.png" alt="" /></p>
+
+<ul>
+  <li>쉬프트 연산자 - «, », »&gt;
+    <ul>
+      <li>2^n으로 곱하거나 나눈 결과를 반환한다.</li>
+      <li>곱셈, 나눗셈보다 빠르다.</li>
+      <li>x « n은 x * 2^n과 같다.</li>
+      <li>x » n은 x / 2^n과 같다.</li>
+      <li>8 « 2는 8 * 2^2와 같다.</li>
+      <li>8 » 2는 8 / 2^2와 같다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="1-기본적인-비트-연산-구현-연습">1. 기본적인 비트 연산 구현 연습</h3>
+
+<ul>
+  <li>
+    <p>get(int n, int i) : n의 i번째 비트 구하기</p>
+  </li>
+  <li>
+    <p>set(int n, int i) : n의 i번째 비트 1로 설정</p>
+  </li>
+  <li>
+    <p>clear(int n, int i) : n의 i번째 비트 0으로 설정</p>
+  </li>
+  <li>
+    <p>모범 답안</p>
+  </li>
+  <li>
+    <p>이런 문제들은 대부분 마스크를 하나 잘 만들어놓고 and나 or연산을 하면 대부분 풀린다.</p>
+  </li>
+  <li>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BitOperator</span><span class="o">{</span>
+    <span class="c1">//n의 i번째 요소를 얻어야하니까 i번째 요소만 1인 숫자를 만들고 그 수를 n과 and 연산을 하면 된다.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">){</span>
+    	<span class="kt">int</span> <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="o">;</span> <span class="c1">//1이 있고 i만큼 쉬프트 연산수행.</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">n</span><span class="o">&amp;</span><span class="n">mask</span><span class="o">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">;</span> <span class="c1">//boolean이므로 비교해줘야한다.</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">set</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="o">;</span> <span class="c1">//다0인데 i번째 비트만 1이 된다.</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">|</span> <span class="n">mask</span><span class="o">;</span><span class="c1">//or이므로 n의 i번째 비트만 1이 된다.</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">clear</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="o">);</span> <span class="c1">//다 1인데 i번째 비트만 0이 된다.</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="o">;</span> <span class="c1">//i번째 비트만 0이고 나머지는 1</span>
+          
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="2-2의-제곱수-판별">2. 2의 제곱수 판별</h3>
+
+<ul>
+  <li>
+    <p>2, 4, 8, 16, 32, 64와 같이 2의 제곱으로 이뤄진 수이면 true를 반환하고 아니면 false를 반환한다.</p>
+  </li>
+  <li>
+    <p>2로 계속 나누는 방법 대신 비트 연산을 이용하여 코드를 작성한다.</p>
+  </li>
+  <li>
+    <p>이진수로 바꿨을 때, 1이 하나고 나머지가 0이면 되는데 어떻게 검사할 지를 모르겠다.</p>
+  </li>
+  <li>
+    <p>모범 답안</p>
+  </li>
+  <li>
+    <p>이건 꼭 암기해둘 것!</p>
+  </li>
+  <li>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PowerOf2</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isPowerOf2</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">){</span>
+        <span class="c1">// 2^n </span>
+        <span class="c1">// 10 = 2</span>
+        <span class="c1">// 100 = 4</span>
+        <span class="c1">// 1000 = 8</span>
+        <span class="c1">// 10000 = 16</span>
+        <span class="c1">// 16-1 = 15</span>
+        <span class="c1">// 10000 - 1 = 01111</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">i</span> <span class="o">&amp;</span> <span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">))</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">//와 이게 뭐냐 도대체. i와 i의 1의 보수를 and 연산하는 것! 만약 이 때 2의 제곱수라면 모두 0이 된다. 따라서 0.</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="3-두-수의-비트-차이수-구하기">3. 두 수의 비트 차이수 구하기</h3>
+
+<ul>
+  <li>
+    <p>예를 들어 이진수로 1101, 1110 이 두수는 2개 비트가 다르다.</p>
+  </li>
+  <li>
+    <p>비트에서 1의 갯수를 세는 방법을 모르겠는 부분이다.</p>
+  </li>
+  <li>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BitDiffCounter</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">count</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//카운트 할 인덱스</span>
+        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+          
+        <span class="c1">//1에서 a를 뺀 값과 1에서 b를 뺀 값을 xor연산.</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="o">(</span><span class="mi">1</span><span class="o">-</span><span class="n">a</span><span class="o">)^(</span><span class="mi">1</span><span class="o">-</span><span class="n">b</span><span class="o">);</span>
+          
+        <span class="c1">//이제 c에서 1의 갯수를 세면 된다. 근데 이걸 어떻게 세쥬?ㅡ_ㅡ </span>
+          
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>모범답안</p>
+  </li>
+  <li>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BitDiffCounter</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">count</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+  		
+        <span class="kt">int</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">a</span><span class="o">^</span><span class="n">b</span><span class="o">;</span> <span class="c1">// 두 수의 다른 비트 부분만 1인 mask가 생긴다. 이제 diff에서 1의 개수만 세면 된다. 로직은 같군.</span>
+          
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">diff</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="c1">//  1001</span>
+            <span class="c1">// -0111</span>
+            <span class="c1">//  0001 -&gt; 제일 앞에있는 1이 없어져서 0이 된다.</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">diff</span><span class="o">&amp;(</span><span class="n">diff</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span> <span class="c1">// 제일 앞에 있는 비트를 0으로 set한다. 계속 반복하면서 맨 앞자리를 0으로 셋하고 count를 올린다. 어차피 원래 0인 경우는 그 자리수를 건너뛰고 다음 자리 수의 1을 없애는 것. 그리고 결국 마지막 자리까지 0이 되면 반복문이 종료된다.</span>
+            <span class="n">count</span><span class="o">++;</span>
+        <span class="o">}</span>
+          
+        <span class="k">return</span> <span class="n">count</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/algorithm/2018/04/10/Bit-Operation-%E1%84%80%E1%85%AA%E1%86%AB%E1%84%85%E1%85%A7%E1%86%AB-%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/algorithm/2018/04/10/Bit-Operation-%E1%84%80%E1%85%AA%E1%86%AB%E1%84%85%E1%85%A7%E1%86%AB-%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/algorithm/2018/04/10/Bit-Operation-%E1%84%80%E1%85%AA%E1%86%AB%E1%84%85%E1%85%A7%E1%86%AB-%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/algorithm/2018/04/10/Bit-Operation-%E1%84%80%E1%85%AA%E1%86%AB%E1%84%85%E1%85%A7%E1%86%AB-%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/algorithm/2018/04/10/Bit-Operation-%E1%84%80%E1%85%AA%E1%86%AB%E1%84%85%E1%85%A7%E1%86%AB-%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

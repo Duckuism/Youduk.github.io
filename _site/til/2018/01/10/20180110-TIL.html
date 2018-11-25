@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>20180110 TIL</title>
+  <meta name="description" content="aws ec2 호스팅">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/til/2018/01/10/20180110-TIL.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="20180110 TIL">20180110 TIL</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        10 JAN 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    1 min read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h2 id="today-check-list">Today Check List</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />도메인 호스팅(배포까지만 완료 호스팅은 내일 확인)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />리뷰 띄우기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />통계 숫자 띄우기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />반응형 구현</li>
+</ul>
+
+<h2 id="tomorrow-check-list">Tomorrow Check List</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />도메인 호스팅 확인</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />리뷰 띄우기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />통계 숫자 띄우기</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />반응형 구현</li>
+</ul>
+
+<h2 id="today-i-learned">Today I learned</h2>
+
+<h3 id="aws-ec2-호스팅-순서">AWS EC2 호스팅 순서</h3>
+
+<p>https://aws.amazon.com/ko/websites/getting-started/</p>
+
+<p>자습서 선택</p>
+
+<p>https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/ec2-tutorials.html</p>
+
+<p>EC2 linux 인스턴스 시작 방법</p>
+
+<ul>
+  <li>https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/SSL-on-an-instance.html</li>
+</ul>
+
+<p>생활코딩 ec2</p>
+
+<p>https://opentutorials.org/course/2717/11280</p>
+
+<p>생활코딩에서 apt-get 명령어 대신 mac os x 에서는  yum을 쓴다.</p>
+
+<p>apache 설치는</p>
+
+<p>https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/install-LAMP.html</p>
+
+<p>생활코딩 웹 어플리케이션-인터넷을 보고 ip, 도메인 개념을 잡고 볼 것.</p>
+
+<p>도메인 연결</p>
+
+<p>https://eastsocial.co.kr/aws-ec2-web-dev-server-setting/</p>
+
+<p>닷네임코리아 도메인 연결</p>
+
+<p>https://www.codesarang.com/wordpress/2016/10/07/%ED%98%B8%EC%8A%A4%ED%8C%85%EC%96%B4hostinger%EC%97%90-%EA%B0%9C%EC%9D%B8-%EB%8F%84%EB%A9%94%EC%9D%B8-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0/</p>
+
+<p>위의 블로그에서 말하는 elastic ip 주소는 ec2 콘솔에서 IPv4 퍼블릭 IP를 등록하면 된다.</p>
+
+<p>스프링 프로젝트를 ec2 웹 서버(컴퓨터)로 보내는 방법</p>
+
+<ul>
+  <li>https://blog.naver.com/PostView.nhn?blogId=myeongseob91&amp;logNo=220916231959&amp;categoryNo=1&amp;parentCategoryNo=0&amp;viewDate=&amp;currentPage=1&amp;postListTopCurrentPage=1&amp;from=search</li>
+</ul>
+
+<p>스프링 프로젝트 배포 검색 키워드 : aws war 배포</p>
+
+<p>Elastic Beanstalk를 이용한 앱 배포</p>
+
+<ul>
+  <li>https://docs.aws.amazon.com/ko_kr/gettingstarted/latest/deploy/deploying-with-elastic-beanstalk.html</li>
+</ul>
+
+<p>애플리케이션 소스 번들 생성(프로젝트 파일을 압축해서 배포하는 것)</p>
+
+<p>https://docs.aws.amazon.com/ko_kr/elasticbeanstalk/latest/dg/applications-sourcebundle.html</p>
+
+<p>위의 Elastic Beanstalk 셋팅이 되어 있다는 가정 하에 아래 블로그 참고</p>
+
+<ul>
+  <li>https://blog.naver.com/PostView.nhn?blogId=sqlpro&amp;logNo=90195694545&amp;parentCategoryNo=&amp;categoryNo=13&amp;viewDate=&amp;isShowPopularPosts=true&amp;from=search</li>
+  <li>https://blog.naver.com/PostView.nhn?blogId=sqlpro&amp;logNo=90195761462&amp;categoryNo=13&amp;parentCategoryNo=0&amp;viewDate=&amp;currentPage=1&amp;postListTopCurrentPage=1&amp;from=search&amp;userTopListOpen=true&amp;userTopListCount=5&amp;userTopListManageOpen=false&amp;userTopListCurrentPage=1</li>
+</ul>
+
+<p>Elastic Beanstalk로 앱 배포를 완료한 후 도메인을 연결하려면 aws route53이라는 서비스를 이용해야한다.</p>
+
+<p>aws에러..</p>
+
+<ul>
+  <li>https://egloos.zum.com/kwaknu/v/5649946</li>
+</ul>
+
+<p>프로젝트 파일을 압축한 war파일을 ec2 서버로 전송해야하는데, 방법을 모르겠어서 linux gui 찾아봄.</p>
+
+<p>근데 정식으로 지원되는 내용이 아니라 비추하는 사람들이 많은듯. 윈도우나 우분투 환경만 써야할 듯 하다.</p>
+
+<ul>
+  <li>https://devopscube.com/setup-gui-for-amazon-ec2-linux/</li>
+</ul>
+
+<p>https://docs.aws.amazon.com/ko_kr/elasticbeanstalk/latest/dg/create_deploy_Java.html</p>
+
+<p>정상적으로 Elastic Beanstalk로 접속을 했음에도 불구하고 DB에 접근이 되지 않아서 이유를 살펴보니, Elastic Beanstalk 인스턴스 생성시 만드는 RDS가 아닌 기존에 만들었던 RDS는 외부 RDS로 취급하여 접근하려면 설정에서 보안 그룹을 등록해줘야했다.</p>
+
+<p>https://docs.aws.amazon.com/ko_kr/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html</p>
+
+<p>기존에 구매해두었던 도메인을 연결하려면 aws Route53을 이용해야 한다.</p>
+
+<p>https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/routing-to-beanstalk-environment.html</p>
+
+<p>https://starmethod.tistory.com/1306</p>
+
+<p>일단 여기까지하고 기다려보는 걸로. 24~48시간까지 걸릴 수 있다고 한다.</p>
+
+<p>https://jwkcp.github.io/2017/06/03/aws-route53-ns/</p>
+
+<p>https://pyrasis.com/book/TheArtOfAmazonWebServices/Chapter17/01</p>
+
+<p>elastic instance 등록하는 방법.</p>
+
+<p>https://docs.aws.amazon.com/ko_kr/elasticbeanstalk/latest/dg/customdomains.html</p>
+
+<ul>
+  <li>단일 인스턴스로 설정해줘야 도메인에 고정 탄력적ip를 연결 가능하다. 이 부분을 몰라서 계속 해맸다. 복수 인스턴스는 접속할 때 마다 새로운 ip가 생성이 되는 것이기 때문에, ip와 도메인을 연결할 수 없었던 것.</li>
+</ul>
+
+<h2 id="todays-algorithm">Today’s Algorithm</h2>
+
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/til/2018/01/10/20180110-TIL.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/til/2018/01/10/20180110-TIL.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/til/2018/01/10/20180110-TIL.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/til/2018/01/10/20180110-TIL.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/til/2018/01/10/20180110-TIL.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

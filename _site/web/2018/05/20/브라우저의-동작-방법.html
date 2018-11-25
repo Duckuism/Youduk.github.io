@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>웹 브라우저의 동작 방법</title>
+  <meta name="description" content="">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/web/2018/05/20/%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%8B%E1%85%AE%E1%84%8C%E1%85%A5%E1%84%8B%E1%85%B4-%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A1%E1%86%A8-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="웹 브라우저의 동작 방법">웹 브라우저의 동작 방법</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        20 MAY 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    2 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h2 id="브라우저의-동작-원리">브라우저의 동작 원리</h2>
+
+<p>브라우저의 동작 방식에 대해서는 개발자들도 알 필요가 없다고 생각했다. 하지만 브라우저의 동작이 각각 다르기 때문에 개발자들의 코드가 일관적으로 모든 브라우저에서 같은 결과를 내지 않는 경우가 많았다. 따라서 모든 브라우저에서 일관성 있는 결과를 보여주고, 브라우저에서의 성능(속도)을 높이기 위해서 브라우저의 동작에 대한 이해가 필수적이 되었다.</p>
+
+<p><img src="/img/Browser_1.png" alt="" /></p>
+
+<p>위의 그림은 브라우저 컴포넌트들에 대한 그림이다.</p>
+
+<p>User Interface(UI) : 우리가 요청한 페이지가 표시되는 창을 제외한 브라우저의 모든 부분</p>
+
+<p>Browser engine : 브라우저 소프트웨어를 동작시켜주는 핵심 엔진. UI와 rendering engine 사이의 동작들을 결집하는 엔진이다.</p>
+
+<p>Rendering engine : 화면에 직접 위치를 잡고 색칠을 해주는 엔진. 요청한 콘텐츠를 보여준다. 예를 들어 요청한 콘텐츠가 HTML이라면, 렌더링 엔진은 HTML과 CSS 소스를 가져와서 해석하고 해석된 소스들을 화면 위에 표시한다.</p>
+
+<ul>
+  <li>
+    <p>Firefox : Gecko / Safari : Webkit / Chorme and Opera : Blink (현재 chrome은 chromium)</p>
+  </li>
+  <li>
+    <p>Rendering 엔진의 flow</p>
+
+    <p><img src="/img/Browser_2.png" alt="" /></p>
+
+    <ul>
+      <li>Parsing HTML to construct the DOM tree : parsing은 문자 단위로 하나하나 다 해석을 해서 이 내용이 가진 의미들을 파악하는 것이다. 그리고 이것들을 어떠한 데이터 객체로 구조화 시키는 것이다. 여기서는 parsinggks HTML을 DOM(Document Object Model) tree로 구조화 시킨다고 하였다.</li>
+      <li>Render tree construction : DOM tree와 CSS Tree를 합쳐서 전체 구조를 결정한다.</li>
+      <li>Layout of the render tree : 결정된 전체 구조에 대한 정보를 바탕으로 객체들의 위치와 크기를 결정한다. (reflow)</li>
+      <li>Painting the render tree : 화면에 직접 그림을 그린다. (paint)</li>
+    </ul>
+  </li>
+  <li>
+    <p>main flow의 대표적인 예인 Webkit main flow 그림</p>
+
+    <p><img src="/img/Browser_3.png" alt="" /></p>
+
+    <p>위의 그림과 rendering engine flow를 비교해보면 Render Tree가 Render tree construction 부분이고, Layout이 Layout of the render tree 부분이고, Painting이 Painting the render tree  부분이다.</p>
+
+    <p>Style Rules를 만드는 과정이 CSS Tree(CSS Object Model)을 만드는 과정이다. DOM Tree와 CSS Tree는 서로 연관되어 있으므로 Render Tree로 다시 조합된다. 이 Render Tree는 화면에 어떻게 배치할지에 대한 크기, 위치 정보 등을 담고 있고 이 정보들을 통해 화면에 색칠하는 Painting 과정이 진행된다.</p>
+  </li>
+</ul>
+
+<p>Data Persistence : 브라우저가 캐싱하고 저장하는 정보를 관리하는 영역. 이 부분은 지속적인 계층이다. 브라우저는 쿠키들과 같이 지역적으로 데터의 모든 부분들을 저장할 필요가 있다. 브라우저들은 localStorage, IndexedDB, WebSQL, FileSystem과 같은 저장 체계를 지원한다.</p>
+
+<p>Networking : 브라우저가 HTTP를 통해서 특정 인터넷 주소를 해석을 한 후 해당 웹 서버와 통신을 하기 위해 네트워킹 모듈이 필요하다.</p>
+
+<p>JavaScript Interpreter : 자바스크립트 코드를 해석하는 엔진</p>
+
+<p>UI Backend : UI 영역을 처리하는 backend영역. combe box와 창과 같은 기본 위젯을 그리는데 사용된다. 이 백엔드는 플랫폼별로 다르지 않은 일반적인 인터페이스를 제공한다.</p>
+
+<h3 id="일반적으로-parsing을-하는-과정">일반적으로 Parsing을 하는 과정</h3>
+
+<p><img src="/img/Browser_4.png" alt="" /></p>
+
+<p>2 + 3 - 1 라는 식이 있다면 숫자와 기호들을 분리해서 각각의 값(token)들이 가진 의미를 해석하여 결과를 반환한다. 이러한 token들을 가지고 syntax tree를 만들고 이 트리에 따라서 값의 처리가 일어나게 된다. 즉, token 단위로 잘라서 의미를 해석하고 이 의미에 따라 실행을 하는 것이라고 생각하면 된다. Tokenizer가 parsing을 하는 역할을 담당하는 부분이다.</p>
+
+<h3 id="html과-css을-parsing한-후-저장되는-구조-그림">HTML과 CSS을 parsing한 후 저장되는 구조 그림</h3>
+
+<p><img src="/img/Browser_5.png" alt="" /></p>
+
+<p><img src="/img/Browser_6.png" alt="" /></p>
+
+<p>Boostcourse 참고 자료 :</p>
+
+<p>https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/</p>
+
+<p>https://d2.naver.com/helloworld/59361</p>
+
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/web/2018/05/20/%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%8B%E1%85%AE%E1%84%8C%E1%85%A5%E1%84%8B%E1%85%B4-%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A1%E1%86%A8-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/web/2018/05/20/%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%8B%E1%85%AE%E1%84%8C%E1%85%A5%E1%84%8B%E1%85%B4-%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A1%E1%86%A8-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/web/2018/05/20/%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%8B%E1%85%AE%E1%84%8C%E1%85%A5%E1%84%8B%E1%85%B4-%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A1%E1%86%A8-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/web/2018/05/20/%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%8B%E1%85%AE%E1%84%8C%E1%85%A5%E1%84%8B%E1%85%B4-%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A1%E1%86%A8-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/web/2018/05/20/%E1%84%87%E1%85%B3%E1%84%85%E1%85%A1%E1%84%8B%E1%85%AE%E1%84%8C%E1%85%A5%E1%84%8B%E1%85%B4-%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8C%E1%85%A1%E1%86%A8-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

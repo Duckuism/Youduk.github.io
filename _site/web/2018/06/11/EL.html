@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>EL</title>
+  <meta name="description" content="Expression Language">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/web/2018/06/11/EL.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/Boostcourse.png"
+  
+  alt="EL feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="EL">EL</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        11 JUN 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    6 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>이 강의는 connect 재단의 boostcourse 강의를 공부 목적으로 정리한 것입니다.</p>
+
+<h1 id="elexpression-language">EL(Expression Language)</h1>
+
+<h2 id="표현-언어란"><strong>표현 언어란?</strong></h2>
+
+<ul>
+  <li>표현 언어(Expression Language)는 값을 표현하는 데 사용되는 스크립트 언어로서 JSP의 기본 문법을 보완하는 역할을 한다.</li>
+  <li>JSP를 사용하다 보면, JSP에는 자바 코드도 들어가지만 html, css, js 등의 요소들이 더 많이 들어가고 있는 걸 목격한다. 백엔드 개발자가 다루어야하는 부분인지, 프론트 개발자 혹은 디자이너가 다루어야 할 부분일지 헷갈릴 때가 많다. 그래서 어떻게하면 JSP를 효율적으로 쓸 수 있는지에 대한 것들이 화두가 되었다. 그래서 나온 결과물 중에 하나가 MVC 패턴이기도 하다.</li>
+  <li>만약 JSP에 자바 코드가 등장하게 된다면 프론트 개발자나 디자이너에게는 혼란이 올 수 도 있다. 그래서 자바 코드보다 조금 더 간단하고 직관적으로 사용할 수 있는, 혹은 프론트 개발자나 디자이너도 직관적으로 이해할 수 있는 코드를 작성할 수 는 없을까? 하는 물음이 뒤따랐고, 이 물음에 대한 결과로 생긴 것이 EL 태그이다.</li>
+</ul>
+
+<h2 id="표현-언어가-제공하는-기능"><strong>표현 언어가 제공하는 기능</strong></h2>
+
+<ul>
+  <li>JSP의 스코프(scope)에 맞는 속성 사용
+    <ul>
+      <li>JSP에서 내장 객체를 이용하여 자바코드를 가지고 사용할 수도 있지만 표현 언어를 사용하면 각 scope의 변수들을 좀 더 쉽게 출력할 수 있다.</li>
+    </ul>
+  </li>
+  <li>집합 객체에 대한 접근 방법 제공
+    <ul>
+      <li>Collection, Framework에서 제공하는 객체가 가지고 있는 값을 출력할 때도 쉽게 출력이 가능하다.</li>
+    </ul>
+  </li>
+  <li>수치 연산, 관계 연산, 논리 연산자 제공</li>
+  <li>자바 클래스 메소드 호출 기능 제공</li>
+  <li>표현언어만의 기본 객체 제공</li>
+</ul>
+
+<h2 id="표현언어의-표현방법"><strong>표현언어의 표현방법</strong></h2>
+
+<p><img src="/img/EL_1.png" alt="" /></p>
+
+<p>위의 그림에서 예제처럼 EL태그는 jsp코드 내에 갑자기 삽입 되어도 되고, html 코드 사이에 삽입 되어도 된다.</p>
+
+<h2 id="표현언어의-기본-객체"><strong>표현언어의 기본 객체</strong></h2>
+
+<p><img src="/img/EL_2.png" alt="" /></p>
+
+<h2 id="표현-언어의-기본-객체-사용-예"><strong>표현 언어의 기본 객체 사용 예</strong></h2>
+
+<p><img src="/img/EL_3.png" alt="" /></p>
+
+<p>오른쪽에 작은 폰트로 적혀 있는 부분은 해당 EL태그를 자바 코드로 사용할 때이다. 조금더 간단해진 것을 확인할 수 있다. JSP는 결과를 출력할 때만 사용하므로 EL태그에 익숙해지면 자바 코드를 사용하는 것보다 훨씬 깔끔하게 JSP를 작성할 수가 있다.</p>
+
+<h2 id="표현-언어의-데이터-타입"><strong>표현 언어의 데이터 타입</strong></h2>
+
+<ul>
+  <li>불리언 타입 - true와 false</li>
+  <li>정수타입 - 0~9로 이루어진 정수 값 음수의 경우 ‘-‘가 붙음</li>
+  <li>실수타입 - 0~9로 이루어져 있으며, 소수점(‘.’)을 사용할 수 있고, 3.24e3과 같이 지수형으로 표현 가능하다.</li>
+  <li>문자열 타입 - 따옴표( ‘ 또는” )로 둘러싼 문자열. 만약 작은 따옴표(‘)를 사용해서 표현할 경우 값에 포함된 작은 따옴표는 ' 와 같이 \ 기호와 함께 사용해야 한다.</li>
+  <li>\ 기호 자체는 \ 로 표시한다.</li>
+  <li>널 타입 - null</li>
+</ul>
+
+<h2 id="객체-접근-규칙"><strong>객체 접근 규칙</strong></h2>
+
+<p><img src="/img/EL_4.png" alt="" /></p>
+
+<ul>
+  <li>표현 1이나 표현 2가 null이면 null을 반환한다.</li>
+  <li>표현1이 Map일 경우 표현2를 key로한 값을 반환한다.</li>
+  <li>표현1이 List나 배열이면 표현2가 정수일 경우 해당 정수 번째 index에 해당하는 값을 반환한다.</li>
+  <li>만약 정수가 아닐 경우에는 오류가 발생한다.</li>
+  <li>표현1이 객체일 경우는 표현2에 해당하는 getter메소드에 해당하는 메소드를 호출한 결과를 반환한다.</li>
+</ul>
+
+<h2 id="표현-언어의-수치-연산자"><strong>표현 언어의 수치 연산자</strong></h2>
+
+<ul>
+  <li>+ : 덧셈</li>
+  <li>- : 뺄셈</li>
+  <li>* : 곱셈</li>
+  <li>/ 또는 div : 나눗셈</li>
+  <li>% 또는 mod : 나머지</li>
+  <li>숫자가 아닌 객체와 수치 연산자를 사용할 경우 객체를 숫자 값으로 변환 후 연산자를 수행 : <code class="highlighter-rouge">${"10"+1}</code> →<code class="highlighter-rouge">${10+1}</code></li>
+  <li>숫자로 변환할 수 없는 객체와 수치 연산자를 함께 사용하면 에러를 발생 :<code class="highlighter-rouge">${"열"+1}</code> → 에러</li>
+  <li>수치 연산자에서 사용되는 객체가 null이면 0으로 처리 : <code class="highlighter-rouge">${null + 1}</code> → <code class="highlighter-rouge">${0+1}</code></li>
+</ul>
+
+<h2 id="비교-연산자"><strong>비교 연산자</strong></h2>
+
+<ul>
+  <li>== 또는 eq</li>
+  <li>!= 또는 ne</li>
+  <li>&lt; 또는 lt - html 태그와 헷갈릴 수 있으므로 영문자로 바꿔서 사용을 하도록 해야한다.</li>
+  <li>&gt; 또는 gt</li>
+  <li>&lt;= 또는 le</li>
+  <li>&gt;= 또는 ge</li>
+  <li>문자열 비교: ${str == ‘값’} str.compareTo(“값”) == 0 과 동일</li>
+</ul>
+
+<h2 id="논리-연산자"><strong>논리 연산자</strong></h2>
+
+<ul>
+  <li>&amp;&amp; 또는 and</li>
+  <li>|| 또는 or</li>
+  <li>! 또는 not</li>
+</ul>
+
+<h2 id="empty-연산자-비교선택-연산자"><strong>empty 연산자, 비교선택 연산자</strong></h2>
+
+<p><img src="/img/EL_5.png" alt="" /></p>
+
+<h2 id="연산자-우선순위"><strong>연산자 우선순위</strong></h2>
+
+<ol>
+  <li>[] .</li>
+  <li>()</li>
+  <li>- (단일) not ! empty</li>
+  <li>* / div % mod</li>
+  <li>+ -</li>
+  <li>&lt; &gt; &lt;= &gt;= lt gt le ge</li>
+  <li>== != eq ne</li>
+  <li>&amp;&amp; and</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td> </td>
+          <td>or</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>? :</li>
+</ol>
+
+<h2 id="표현-언어-비활성화--jsp에-명시하기"><strong>표현 언어 비활성화 : JSP에 명시하기</strong></h2>
+
+<ul>
+  <li><code class="highlighter-rouge">&lt;%@ page isELIgnored = "true" %&gt;</code></li>
+</ul>
+
+<p><img src="/img/EL_6.png" alt="" /></p>
+
+<p>위의 표를 보면 Servlet 버전에 따라서 EL 스펙이 다르다. 2.4이상부터는 EL 자체가 기본적으로 사용되고, 2.3 이하에서는 EL 자체가 무시되고 있다.</p>
+
+<h2 id="el-실습-1">EL 실습 1</h2>
+
+<ul>
+  <li>Appliction scope, Session scope, Request scope, Page scope에 각각 값을 설정하고, EL태그를 통해 출력해본다.</li>
+</ul>
+
+<p>WebContent/el01.jsp</p>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;% 
+	//각각의 scope에 값을 지정
+    pageContext.setAttribute("p1", "page scope value");
+    request.setAttribute("r1", "request scope value");
+    session.setAttribute("s1", "session scope value");
+    application.setAttribute("a1", "application scope value");
+%&gt;    
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- JSP에서 일반적으로 사용할 때 --&gt;
+    pageContext.getAttribute("p1") : &lt;%=pageContext.getAttribute("p1")%&gt;&lt;br&gt;
+    &lt;br&gt;&lt;br&gt;
+    &lt;!-- EL 태그를 사용할 때 --&gt;
+    &lt;!-- 다른 scope에 변수명이 겹쳐서 사용됐을 경우에는 아래 처럼 scope를 명확하게 정의해주어야 한다. 만약 명시해주지 않았는데 변수명이 겹쳤다면, 작은 scope부터 찾아 나간다. 하지만 가독성을 위해서는 명시가 필수적.--&gt;
+    pageContext.getAttribute("p1") : ${pageScope.p1}&lt;br&gt;
+    request.getAttribute("r1") : ${requestScope.r1}&lt;br&gt;
+    session.getAttribute("s1") : ${sessionScope.s1}&lt;br&gt;
+    application.getAttribute("a1") : ${applicationScope.a1}&lt;br&gt;
+    &lt;br&gt;&lt;br&gt;
+    &lt;!-- scope사이에 변수명이 겹치지 않게 사용됐을 경우에는 아래 처럼 scope를 명시하지 않아도 된다.--&gt;    
+    pageContext.getAttribute("p1") : ${p1 }&lt;br&gt;
+    request.getAttribute("r1") : ${r1 }&lt;br&gt;
+    session.getAttribute("s1") : ${s1 }&lt;br&gt;
+    application.getAttribute("a1") : ${a1 }&lt;br&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><img src="/img/EL_7.png" alt="" /></p>
+
+<h2 id="el-실습-2">EL 실습 2</h2>
+
+<ul>
+  <li>사칙 연산이나 논리 연산을 EL태그를 이용해서 수행해본다.</li>
+</ul>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;%
+	//변수 저장
+    request.setAttribute("k", 10);
+    request.setAttribute("m", true);
+%&gt;    
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- EL 태그를 이용해서 출력 --&gt;    
+    k : ${k } &lt;br&gt;
+    k + 5 : ${ k + 5 } &lt;br&gt;
+    k - 5 : ${ k - 5 } &lt;br&gt;
+    k * 5 : ${ k * 5 } &lt;br&gt;
+    &lt;!-- '/'는 제대로 인식을 못할 수도 있으므로 예약어를 사용하도록 한다. --&gt;
+    k / 5 : ${ k div 5 } &lt;br&gt;
+
+
+    k : ${k }&lt;br&gt;
+    m : ${m }&lt;br&gt;
+    k &gt; 5 : ${ k &gt; 5 } &lt;br&gt;
+    k &lt; 5 : ${ k &lt; 5 } &lt;br&gt;
+    k &lt;= 10 : ${ k &lt;= 10} &lt;br&gt;
+    k &gt;= 10 : ${ k &gt;= 10 } &lt;br&gt;
+    m : ${ m } &lt;br&gt;
+    !m : ${ !m } &lt;br&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><img src="/img/EL_8.png" alt="" /></p>
+
+<ul>
+  <li>만약 EL 태그를 무시하는 구문을 넣으면 어떻게 될까?</li>
+</ul>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;!--EL태그 무시하는 구문 추가--&gt;
+&lt;%@ page isELIgnored = "true" %&gt;
+&lt;%
+	//변수 저장
+    request.setAttribute("k", 10);
+    request.setAttribute("m", true);
+%&gt;    
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- EL 태그를 이용해서 출력 --&gt;    
+    k : ${k } &lt;br&gt;
+    k + 5 : ${ k + 5 } &lt;br&gt;
+    k - 5 : ${ k - 5 } &lt;br&gt;
+    k * 5 : ${ k * 5 } &lt;br&gt;
+    &lt;!-- '/'는 제대로 인식을 못할 수도 있으므로 예약어를 사용하도록 한다. --&gt;
+    k / 5 : ${ k div 5 } &lt;br&gt;
+
+
+    k : ${k }&lt;br&gt;
+    m : ${m }&lt;br&gt;
+    k &gt; 5 : ${ k &gt; 5 } &lt;br&gt;
+    k &lt; 5 : ${ k &lt; 5 } &lt;br&gt;
+    k &lt;= 10 : ${ k &lt;= 10} &lt;br&gt;
+    k &gt;= 10 : ${ k &gt;= 10 } &lt;br&gt;
+    m : ${ m } &lt;br&gt;
+    !m : ${ !m } &lt;br&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><img src="/img/EL_9.png" alt="" /></p>
+
+<ul>
+  <li>위와 같이 EL태그를 문자열로 인식하는 것을 볼 수 있다.</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[**[참고링크] JSP Expression Language</td>
+      <td>EL - javatpoint**](https://www.javatpoint.com/EL-expression-in-jsp)</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/web/2018/06/11/EL.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/web/2018/06/11/EL.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/web/2018/06/11/EL.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/web/2018/06/11/EL.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/web/2018/06/11/EL.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

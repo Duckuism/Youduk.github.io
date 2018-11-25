@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Gaphics System</title>
+  <meta name="description" content="Fixed number, Metaphor, Component, Framework, Rendering, Fragment">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/css%20rendering/2018/06/13/Graphics-System.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/codespitz.png"
+  
+  alt="Gaphics System feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Gaphics System">Gaphics System</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        13 JUN 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    3 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>이 강의는 codespitz 스터디의 내용을 바탕으로 정리한 내용입니다.</p>
+
+<p><a href="https://www.youtube.com/watch?v=_o1zsrBkZyg&amp;t=4s">https://www.youtube.com/watch?v=_o1zsrBkZyg&amp;t=4s</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=ybNH1a14vQY&amp;t=4s">https://www.youtube.com/watch?v=ybNH1a14vQY&amp;t=4s</a></p>
+
+<h2 id="graphics-system">Graphics System</h2>
+
+<p>CSS Rendering을 배우기 전에 기본적인 배경지식인 Graphics System의 흐름과 개념들에 대해 알아본다.</p>
+
+<p><strong>fixed number</strong> 는 x,y 좌표 / width, height / color 등의 고정된 값을 일컫는 단어이다. 예전에 OS별로 전용 프로그램을 만들 때는 fixed number로 CSS rendering을 해도 상관이 없었으나, 디바이스가 다양해지면서 웹 페이지가 여러 디바이스에 적응할 수 있는 범용성을 요구받게 됨에 따라 fixed number로 모든 것을 표현할 수 없게 되었다. 그래서 등장한 것이 <strong>metaphor</strong>이다.</p>
+
+<p><strong>metaphor</strong>는 %, left, block, inline, float 등 추상화된 단어를 통해 고정된 값을 비율로 나타내는 것이다. 고정된 값을 비율로 나타내려면 부모 요소, 혹은 브라우저 screen 등의 어떤 ‘기준’이 필요하고, 이 기준에 대해 비율로 나타내야 한다. 하지만 이 metaphor도 결국에는 공식이자 함수에 불과하다. 어쨌든 css rendering을 하려면 마지막에는 숫자 결과가 나와야 하기 때문이다. 이렇게 metaphor를 이용하여 나타내는 체계를 ‘‘추상화 되어있는 그림 체계’‘라는 뜻으로 <strong>Abstract Calculator</strong>라고 부르기도 한다. 그리고 이런 추상화 되어있는 계산 체계를 가지고 있는 것들을 모으면 <strong>Component</strong>가 된다.</p>
+
+<blockquote>
+  <p>여기서 등장하는 단어들은 굉장히 상대적인 개념이다 Components의 정의가 추상화 되어있는 계산 체계라는 것이 아니다. 컴포넌트라는 단어는 공통된 속성을 가진 요소들을 묶는 어떠한 추상적인 개념이다. 보통 미국인들이 단어를 정의하는 Computer Science에서 가장 조심해야하는 것은 어떤 단어를 고유 명사로 인식하는 실수를 저지르는 것이다. 대부분의 단어는 보통 명사로 쓰인다.</p>
+
+  <ul>
+    <li>보통 명사: 일반적인 사물의 이름 ex) 하늘, 나무, 사랑, 희망</li>
+    <li>고유 명사: 특정한 사람이나 사물의 이름 ex) 안창호, 금강산, 신라, 한강, 독도 등</li>
+  </ul>
+</blockquote>
+
+<p><strong>Component</strong>의 대표적인 예는 HTML이다. HTML은 이미지를 넣을 때 내가 직접 계산하지 않고 특정 태그에 넣기만 하면 알아서 계산해준다. 따라서 component level이라고 볼 수 있다.</p>
+
+<p><strong>component</strong>들이 일정한 규칙과 사용방법을 지키는 형식을 갖춘다면 이 component들을 만든 체계를 다시 <strong>Framework</strong>라고 지칭할 수 있다. 위에서 언급한 HTML도 각각의 태그마다 동일한 style을 가지고 있다. 즉, 어떤 약속과 규정 아래의 공통된 시스템 속에서 component들이 개발된 것이다. 따라서 이러한 HTML 체계 전체를 <strong>framework</strong>라고 지칭할 수도 있다. 이 개념들이 서로 유사한 부분이 많아서 헷갈릴 수 있지만, 항상 상대적이라는 것을 유념하고 본다면 그리 어렵지 않을 것이다.</p>
+
+<p>Graphics System에서 <strong>Graphics</strong>는 점찍는 방법을 나타낸다. 그리고 CSS Rendering에서 <strong>Rendering</strong>은 어떠한 대상을 원하는 모습으로 바꾸는 행위이다. 이 렌더링이라는 단어도 상대적이기 때문에 여러가지의 경우에 모두 쓰일 수 있다.(특정한 데이터를 내가 원하는 차트의 모양으로 바꾸면 이것도 렌더링이고, 이미 만들어진 차트 데이터를 내가 원하는 기준에 맞춰서 다시 만든다면 이것도 렌더링이다.) 렌더링은 일반적으로 보다 구체적이고 시각적인 형태로 바꾸는 행위들을 일컫는다. CSS Rendering에서의 렌더링은 ‘그림을 그리기 위한 데이터를 어떻게 그림으로 바꿀 수 있는가?’ 의 문제라고 할 수 있다.</p>
+
+<ul>
+  <li>렌더링 시스템 1단계 : Geometry Calculate (브라우저 : reflow 단계)
+    <ul>
+      <li>땅따먹기를 하듯이 물리적인 영역을 나누는 단계이다.</li>
+    </ul>
+  </li>
+  <li>렌더링 시스템 2단계 : Fragment (브라우저 : repaint 단계)
+    <ul>
+      <li>색칠을 하는 단계이다. 색칠을 하는 하나하나의 대상을 <strong>Fragment</strong>라고 부른다. 단편, 조각이라는 뜻이다. Pixel은 중의적인 의미이므로 어떠한 단위 개념을 나타내기에는 부적합하다. (요즘에는 디바이스에 따라 최소 Pixel의 단위가 같지 않으므로. 대표적으로 레티나 같은 경우가 그렇다. 자세한 내용은 추가로 검색해보길.) 따라서 절대적으로 중립적인 의미에서 물리적인 점을 나타내는 Fragement를 쓴다. 즉, 언제나 모든 공간에 존재하는 모든 점 하나하나를 가리키는 단어이다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>그럼 우리가 본격적으로 배워야할 CSS는 무엇을 위한 것일까?</p>
+
+<p>기존에 Graphics System에서는 여러가지 문제들이 대두되었다.</p>
+
+<ul>
+  <li>어떻게 하면 ‘Fixed number’를 사용하지 않고 계산된 체계로 그래픽을 표현할 것인가?</li>
+  <li>geometry의 영역을 어떤 식으로 표현할 것인가?</li>
+  <li>색칠을 할 때 어떤 방식으로 명령을 내릴 것인가?</li>
+</ul>
+
+<p>이 문제들에 대한 일종의 언어가 <strong>CSS</strong>이다.</p>
+
+<blockquote>
+  <p>background-color:red -&gt; 내가 땅따먹기 한 공간들의 Fragment들을 빨간색으로 채워라!</p>
+</blockquote>
+
+<p>CSS metaphor 중에서 %, 숫자까지는 쉽다. 그러나 이것만으로는 모든 것을 표현하기가 어렵다. 그래서 더욱 추상적인 체계를 표현하는 개념들이 생겼다. 예를 들어 <code class="highlighter-rouge">float:right</code> 라는 명령어는 명령을 내리는 대상의 부모 요소의 width를 계산하고 명령 대상의 width를 계산 한 후, 부모 요소의 width에서 대상 요소의 width를 뺀 만큼의 공간을 나의 left로 삼는다는 뜻이다. 이렇게 되면 오른쪽으로 여백 없이 대상 요소가 붙게 된다. 이처럼 추상적인 체계를 표현하는 개념들을 %처럼 공식이 쉽게 떨어지지 않는 경우도 많다. 보다 어려운 계산식이지만 사람에게는 더 쉬울 수 있는 것이다. 따라서 CSS에서는 추상적인 계산 체계를 나타내는 어려운 metaphor들이 많이 나오므로, 이 어려운 metaphor들의 내부원리를 이해해야 우리가 원하는 layout을 잡을 수 있다.</p>
+
+<p><strong>CSS를 배운다</strong>는 뜻은 CSS에 나오는 속성 혹은 값이 구체적으로 발현될 때 어떠한 방식으로 계산되서 표현이 되는 것인지를 이해하는 데에 있다고 할 수 있다.</p>
+
+<p>그런데 브라우저 별로 이 CSS를 계산하는 방법이 다르므로 먼저 표준에 맞추어 작업하고 예외를 처리하는 방식으로 일을 해야한다. 따라서 어느 것이 표준인지를 아는 것이 제일 중요하다고 할 수 있다.</p>
+
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/css%20rendering/2018/06/13/Graphics-System.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/css%20rendering/2018/06/13/Graphics-System.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/css%20rendering/2018/06/13/Graphics-System.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/css%20rendering/2018/06/13/Graphics-System.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/css%20rendering/2018/06/13/Graphics-System.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

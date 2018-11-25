@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CSS3 - FLEXBOX</title>
+  <meta name="description" content="flexbox">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/css/2017/09/13/CSS3(flexbox).html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="CSS3 - FLEXBOX">CSS3 - FLEXBOX</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        13 SEP 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    3 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>참고 자료</p>
+<ol>
+  <li>멋사 5기 웹 개발자 노지승님의 강의(멋사 5기가 아니면 볼 수 없다. 문제시 게시글을 내리겠다.)</li>
+  <li>https://flexboxfroggy.com/(flexbox 연습 사이트)</li>
+</ol>
+
+<p>flexbox를 이용하면 float랑 position이 필요없을 정도이다.</p>
+
+<h3>flexbox 사용시 고려해야 하는 순서</h3>
+
+<p><img src="/img/2017-09-13-17.PNG" alt="Smithsonian Image" /><br /></p>
+
+<h1>flexbox 사용법</h1>
+
+<h3>1.정렬을 할 요소를 가진 부모에게 display:flex만 설정하면, flexbox 사용 준비 완료.</h3>
+
+<p><img src="/img/2017-09-13-18.PNG" alt="Smithsonian Image" /><img src="/img/2017-09-13-19.PNG" alt="Smithsonian Image" /><br /></p>
+
+<h3>2.방향 결정 : 아이템을 어느 방향으로 정렬할 지를 결정하는 flex-direction: row || column;</h3>
+
+<ul>
+  <li>자식 요소들을 가로로 배치하고 싶으면 flex-direction:row;(기본값)</li>
+  <li>세로로 배치하고 싶으면 flex-direction:column;</li>
+</ul>
+
+<p><img src="/img/2017-09-13-20.PNG" alt="Smithsonian Image" /><br /><img src="/img/2017-09-13-21.PNG" alt="Smithsonian Image" /><img src="/img/2017-09-13-22.PNG" alt="Smithsonian Image" /><br /></p>
+
+<ul>
+  <li>
+    <p>flex-direction: row, row-reverse(row역정렬), column, column-reverse(column역정렬);</p>
+  </li>
+  <li>
+    <p>flex-direction에 따라 바뀌는 정렬의 기준, 두 개의 축.
+flex-direction과 같은 방향의 축 : main axis (flex-direction:row일 때: 가로 / flex-direction:column일 때: 세로)
+flex-direction과 수직 방향의 축 : cross axis (flex-direction:row일 때: 세로 / flex-direction:column일 때: 가로)</p>
+  </li>
+</ul>
+
+<p><img src="/img/2017-09-13-23.PNG" alt="Smithsonian Image" /><img src="/img/2017-09-13-24.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p><img src="/img/2017-09-13-28.PNG" alt="Smithsonian Image" /></p>
+
+<ul>
+  <li>justify-content : center(라인마다 가운데 정렬),flex-start(라인마다 시작선을 기준으로 정렬. 만약 reverse를 했을 경우는 start의 방향도 반대로 바뀐다.),flex-end(라인마다 끝선을 기준으로 정렬. 만약 reverse를 했을 경우는 start의 방향도 반대로 바뀐다.), space-between(맨 끝 요소가 양 옆 공간에 딱 맞게 정렬되고 중간 요소들은 비례에 맞게 정렬된다.), space-around(라인 별로 각 요소의 마진 값이 똑같게 형성. 왼쪽 오른쪽의 마진 붕괴가 일어나지 않는다. 라인 별이므로 모든 요소들의 마진이 똑같아진다는 뜻이 아니다.)</li>
+  <li>align-items(flex 컨테이너 이내에서 하나의 뭉태기로써 아이템들이 어떻게 할당될것인지를 결정한다.) : flex-start, flex-end, center, stretch, baseline, initial, inherit</li>
+  <li>align-content(한 라인을 통째로 묶어서 움직인다. 즉, 라인 사이의 공간을 조절한다. align-items와의 차이는 아래 참고) : flex-start, flex-end, center, space-between, space-around, stretch, initial, inherit</li>
+  <li>align-self(각각의 아이템 하나하나에 적용.) : auto(기본 값. 요소는 부모 컨테이너의 align-items 속성을 상속받는다. 만약 부모 컨테이너가 없다면 strech를 기본으로 갖는다.), stretch(요소는 컨테이너에 딱 맞게 100% 폭으로 늘어나서 위치된다.), center(컨테이너의 가운데에 위치된다.), flex-start, flex-end, baseline(컨테이너의 베이스 라인(아래 참고)에 위치된다.), inital(기본 값으로 이 요소의 속성을 고정한다.), inherit(부모 요소로부터 이 속성을 상속받는다.)</li>
+</ul>
+
+<p><img src="https://i.stack.imgur.com/bNwiG.png" alt="Smithsonian Image" /></p>
+
+<ul>
+  <li>align-items: center 와 align-content:center 비교</li>
+</ul>
+
+<pre><code class="language-CSS">{display:flex; flex-wrap: wrap; align-items: center || align-content:center;}
+</code></pre>
+
+<p><img src="/img/2017-09-13-34.PNG" alt="Smithsonian Image" /><img src="/img/2017-09-13-35.PNG" alt="Smithsonian Image" /><br /></p>
+
+<ul>
+  <li>align-items: flex-start 와 align-content: flex-start 비교</li>
+</ul>
+
+<pre><code class="language-CSS">{display:flex; flex-wrap: wrap; align-items: flex-start; || align-content: flex-start;}
+</code></pre>
+
+<p><img src="/img/2017-09-13-36.PNG" alt="Smithsonian Image" /><img src="/img/2017-09-13-37.PNG" alt="Smithsonian Image" /></p>
+
+<ul>
+  <li>align-items: flex-end 와 align-content: flex-end 비교</li>
+</ul>
+
+<pre><code class="language-CSS">{display:flex; flex-wrap: wrap; align-items: flex-end; || align-content: flex-end;}
+</code></pre>
+
+<p><img src="/img/2017-09-13-39.PNG" alt="Smithsonian Image" /><img src="/img/2017-09-13-38.PNG" alt="Smithsonian Image" /></p>
+
+<ul>
+  <li>align-items: space-between 와 align-content: space-between 비교</li>
+</ul>
+
+<pre><code class="language-CSS">{display:flex; flex-wrap: wrap; align-items: space-between; || align-content: space-between;}
+</code></pre>
+
+<p><img src="/img/2017-09-13-40.PNG" alt="Smithsonian Image" /><img src="/img/2017-09-13-41.PNG" alt="Smithsonian Image" /></p>
+
+<ul>
+  <li>align-items: space-around 와 align-content: space-around 비교</li>
+</ul>
+
+<pre><code class="language-CSS">{display:flex; flex-wrap: wrap; align-items: space-around; || align-content: space-around;}
+</code></pre>
+
+<p><img src="/img/2017-09-13-40.PNG" alt="Smithsonian Image" /><img src="/img/2017-09-13-42.PNG" alt="Smithsonian Image" /></p>
+
+<h3>3.크기를 비례하게 줄여서 한 줄만 쓸 것인가, 본래 크기를 유지한 채 다른 줄로 내려 갈 것인가.</h3>
+
+<p><img src="/img/2017-09-13-25.PNG" alt="Smithsonian Image" /><br /><img src="/img/2017-09-13-26.PNG" alt="Smithsonian Image" /><img src="/img/2017-09-13-27.PNG" alt="Smithsonian Image" /><br /></p>
+
+<ul>
+  <li>
+    <p>flex-wrap : nowrap, wrap, wrap-reverse;</p>
+  </li>
+  <li>
+    <p>flex-flow : flex-direction과 flex-wrap을 함께 줄여쓰는 방법이다. e.g) flex-flow: row wrap;</p>
+  </li>
+</ul>
+
+<h3>4.아이템들의 순서를 한 번에 바꿀 수 있다!</h3>
+
+<p><img src="/img/2017-09-13-29.PNG" alt="Smithsonian Image" /><img src="/img/2017-09-13-30.PNG" alt="Smithsonian Image" /><br /></p>
+
+<ul>
+  <li>이 떄 순서 정렬시, -1 혹은 length 이상의 값을 넣으면 맨 앞이나 맨 뒤로 감</li>
+</ul>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/css/2017/09/13/CSS3(flexbox).html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/css/2017/09/13/CSS3(flexbox).html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/css/2017/09/13/CSS3(flexbox).html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/css/2017/09/13/CSS3(flexbox).html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/css/2017/09/13/CSS3(flexbox).html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Spring 3</title>
+  <meta name="description" content="코드로 배우는 스프링 웹 프로젝트 part1 스프링 초기 설정 및 프로그래밍 순서">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/spring/2017/10/16/spring3.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio &amp; Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href="http://localhost:4000/">
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Spring 3">Spring 3</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        16 OCT 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    5 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h5 id="참고-자료--코드로-배우는-스프링-웹-프로젝트-구멍가게-코딩단-남가람북스">참고 자료 : 코드로 배우는 스프링 웹 프로젝트 (구멍가게 코딩단, 남가람북스)</h5>
+
+<h1> 초기 설정 순서와 필수 개념, 전체 구조 설명 </h1>
+
+<h3>1. Spring Legacy Project 선택 (Spring starter project 프로젝트는 spring boot를 이용해서 개발하는 프로젝트인데, 웬만한 개발 환경이 모두 준비되어 경험이 없는 개발자라도 쉽게 웹 프로젝트를 만들 수 있다.)</h3>
+
+<h3>2. Spring MVC Proeject 생성</h3>
+
+<h3>3. JDK 버전 설정(pom.xml)</h3>
+<p>Spring Framework 버전 설정(pom.xml)</p>
+
+<h3>4. MySQL설정</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td>
+<td class="rouge-code"><pre>* 스키마 추가
+* DB 테스트 (SQL 쿼리가 정상적으로 실행되는지.)
+    * MySQL &lt;-&gt; JDBC 연결 후 확인 테스트
+    * JDK, Junit test 버전 맞추기(pom.xml)
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h3>5. MyBatis연동 (Spring-jdbc / Spring-test 모듈 탑재 - pom.xml)</h3>
+
+<h3>6. Spring과 MyBatis연동 구조와 설정 파일 설명</h3>
+
+<p><img src="/img/2017-10-16-01.jpg" alt="Smithsonian Image"><br></p>
+
+<ul>
+  <li>spring/root-context.xml : 웹 자원과 관련되지 않은 나머지 모든 자원의 설정 -&gt; namespace 설정으로 사용가능한 xml태그를 늘린다.</li>
+  <li>spring/appServlet/servlet-context.xml : 웹과 관련된 설정, 즉 스프링 MVC 관련 설정</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td>
+<td class="rouge-code"><pre><span class="n">spring</span><span class="o">/</span><span class="n">appServlet</span><span class="o">/</span><span class="n">servlet</span><span class="o">-</span><span class="n">context</span><span class="o">.</span><span class="na">xml</span><span class="err">의</span> <span class="err">주요</span> <span class="err">부분</span> <span class="err">설명</span>
+
+<span class="o">&lt;</span><span class="n">annotation</span><span class="o">-</span><span class="n">driven</span> <span class="o">/&gt;</span>
+<span class="c1">//클래스 선언에 애노테이션을 이용해서 컨트롤러를 작성할 수 있다는 선언</span>
+
+<span class="o">&lt;</span><span class="n">resources</span> <span class="n">mapping</span><span class="o">=</span><span class="s">"/resources/**"</span> <span class="n">location</span><span class="o">=</span><span class="s">"/resources/"</span> <span class="o">/&gt;</span>
+<span class="c1">//CSS, Javascript 파일과 같이 고정된 자원들의 위치를 의미한다.</span>
+
+<span class="o">&lt;</span><span class="nl">beans:</span><span class="n">bean</span> <span class="kd">class</span><span class="err">="</span><span class="nc">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">servlet</span><span class="o">.</span><span class="na">view</span><span class="o">.</span><span class="na">InternalResourceViewResolver</span><span class="s">"&gt;
+  &lt;beans:property name="</span><span class="n">prefix</span><span class="s">" value="</span><span class="o">/</span><span class="n">WEB</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">views</span><span class="o">/</span><span class="s">" /&gt;
+  &lt;beans:property name="</span><span class="n">suffix</span><span class="s">" value="</span><span class="o">.</span><span class="na">jsp</span><span class="s">" /&gt;
+&lt;/beans:bean&gt;
+//위 부분은 뷰를 어떻게 처리하는가에 대한 설정. WEB-INF는 절대로 부라우저에서 직접 접근할 수 없는 경로이므로 컨트롤러의 호출이 우선되는 모델 2방식에 맞는 구조가 된다.
+
+&lt;context:component-scan base-package="</span><span class="n">org</span><span class="o">.</span><span class="na">zerock</span><span class="o">.</span><span class="na">web</span><span class="err">"</span> <span class="o">/&gt;</span>
+<span class="c1">//component-scan은 base-package 속성값에 해당하는 패키지 내부의 클래스들을 조사한다는 뜻. 이는 &lt;annotation-driven&gt;과 같이 결합해서 해당 패키지에 애노테이션 처리가 된 컨트롤러를 작성만 해주면 자동으로 인식한다.</span>
+
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h3>7. JDBC의 커넥션을 처리하는 DataSource설정(root-context.xml)으로 MySQL과 연결</h3>
+
+<h3>8. MyBatis와 MySQL연결</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td>
+<td class="rouge-code"><pre>* sqlSessionFactory 객체
+* MyBatis-config.xml 파일 : MyBatis는 SQL Mapping 프레임워크로써 별도의 설정 파일을 갖는다.
+* MyBatis와 MySQL까지 정상인지 연결 테스트
+</pre></td>
+</tr></tbody></table></code></pre></div></div>
+
+<h3>9. 스프링 MVC의 모델1과 모델2</h3>
+
+<p><img src="https://cfile2.uf.tistory.com/image/01304D3D50EC59230B8F81" alt="Smithsonian Image"><br></p>
+
+<p>모델 1 : 모든 클라리언트 요청과 응답을 jsp가 담당하는 구조
+장점: 단순한 페이지 작성으로 쉽게 구현 가능하다. 중소형 프로젝트에 적합하다.
+단점: 웹 애플리케이션이 복잡해지면 유지보수 문제가 발생.</p>
+
+<p><img src="https://cfile10.uf.tistory.com/image/1120884150EC5AC501EC73" alt="Smithsonian Image"><br></p>
+
+<p>모델 2 : 클라이언트의 요청처리와 응답처리, 비즈니스 로직 처리하는 부분을 모듈화시킨 구조
+장점: 처리 작업의 분리로 인해 유지보수와 학장이 용이하다.
+단점: 구조 설계를 위한 시간이 많이 소요되므로 개발 시간이 증가.</p>
+
+<p>model : 데이터 혹은 데이터를 처리하는 영역
+view : 결과 화면을 만들어내는 데 사용하는 자원
+controller : 웹의 요청을 처리하는 존재. 뷰와 모델사이의 중간 통신 역할</p>
+
+<h3>10. 모델 2에서 FrontController패턴으로 변경</h3>
+
+<p><img src="https://dev.anyframejava.org/docs/anyframe/4.6.0/reference/image/foundation/springmvc/dispatcher.jpg" alt="Smithsonian Image"><br></p>
+
+<p>전체 로직의 일부만을 Controller가 처리. 전체 로직의 일부를 Controller에게 위임하고 모든 흐름의 제어는 앞쪽의 FrontController가 담당.</p>
+
+<p>장점 :</p>
+<ul>
+  <li>개발자가 작성하는 Controller는 전체 로직의 일부분만을 처리하므로 개발자가 작성해야하는 코드가 줄어듬</li>
+  <li>모든 Controller는 FrontController의 일부분을 구현하는 형태이므로, 좀 더 규격화된 코드 작성 가능.</li>
+</ul>
+
+<ol>
+  <li>MyBatis를 사용하는 spring MVC 구조 요약</li>
+</ol>
+
+<p><img src="https://terasolunaorg.github.io/guideline/1.0.1.RELEASE/en/_images/introduction-software-framework.png" alt="Smithsonian Image"><br></p>
+
+<h3>12. 현재 만드는 spring MVC 전체 구조와 작업 순서</h3>
+
+<p><img src="/img/2017-10-16-02.jpg" alt="Smithsonian Image"><br></p>
+
+<p>1번 : 사용자의 모든 요청은 스프링 MVC의 FrontController에게 전달<br>
+2번 : 전달된 요청은 적절한 Controller를 찾아서 호출<br>
+3번 : Controller는 적절한 서비스 객체를 찾아서 호출<br>
+4번 : 호출된 서비스는 데이터벱이스의 작업을 담당하는 DAO(Data Access Object)를 이용해서 원하는 데이터 요청<br>
+5번 : DAO객체는 MyBatis를 이용하는 Mapper를 통해서 원하는 데이터 관련 작업 수행<br>
+6번 : 데이터 관련 작업이 끝난 후 Mapper는 DAO에 결과 값 반환<br>
+7번 : DAO는 서비스에게 처리한 데이터 값을 반환<br>
+8번 : 서비스는 처리한 데이터 값을 컨트롤러에게 반환<br>
+9번 : 컨트롤러는 다시 FrontController에게 처리한 데이터 값을 반환<br>
+10번 : FrontController는 처리된 데이터를 바탕으로 View에 데이터 전송 후 출력<br></p>
+
+<h3>13. 스프링 MVC에서 주로 사용하는 애노테이션의 종류</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"><center>애노테이션</center></th>
+      <th style="text-align: left"><center>설명</center></th>
+      <th style="text-align: left"><center>사용</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/Controller" class="user-mention">@Controller</a></strong></td>
+      <td style="text-align: left"><center>스프링 MVC의 컨트롤러 객체임을 명시하는 애노테이션</center></td>
+      <td style="text-align: left">클래스</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/RequestMapping" class="user-mention">@RequestMapping</a></strong></td>
+      <td style="text-align: left"><center>특정 URI에 매칭되는 클래스나 메소드임을 명시하는 애노테이션</center></td>
+      <td style="text-align: left">클래스, 메소드</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/RequestParam" class="user-mention">@RequestParam</a></strong></td>
+      <td style="text-align: left"><center>요청(request)에서 특정한 파라미터의 값을 찾아낼 때 사용하는 애노테이션</center></td>
+      <td style="text-align: left">파라미터</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/RequestHeader" class="user-mention">@RequestHeader</a></strong></td>
+      <td style="text-align: left"><center>요청(request)에서 특정 HTTP 헤더 정보를 추출할 때 사용</center></td>
+      <td style="text-align: left">파라미터</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/PathVariable" class="user-mention">@PathVariable</a></strong></td>
+      <td style="text-align: left"><center>현재의 URI에서 원하는 정보를 추출할 때 사용하는 애노테이션</center></td>
+      <td style="text-align: left">파라미터</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/CookieValue" class="user-mention">@CookieValue</a></strong></td>
+      <td style="text-align: left"><center>현재 사용자의 쿠키가 존재하는 경우 쿠키의 이름을 이용해서 쿠키의 값을 추출</center></td>
+      <td style="text-align: left">파라미터</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/ModelAttribute" class="user-mention">@ModelAttribute</a></strong></td>
+      <td style="text-align: left"><center>자동으로 해당 객체를 뷰까지 전달하도록 만드는 애노테이션</center></td>
+      <td style="text-align: left">메소드, 파라미터</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/SessionAttribute" class="user-mention">@SessionAttribute</a></strong></td>
+      <td style="text-align: left"><center>세션상에서 모델의 정보를 유지하고 싶은 경우에 사용</center></td>
+      <td style="text-align: left">클래스</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/InitBinder" class="user-mention">@InitBinder</a></strong></td>
+      <td style="text-align: left"><center>파라미터를 수집해서 객체로 만들 경우에 커스터마이징</center></td>
+      <td style="text-align: left">메소드</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/ResponseBody" class="user-mention">@ResponseBody</a></strong></td>
+      <td style="text-align: left"><center>리턴 타입이 HTTP의 응답 메세지로 전송</center></td>
+      <td style="text-align: left">메소드, 리턴타입</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/RequestBody" class="user-mention">@RequestBody</a></strong></td>
+      <td style="text-align: left"><center>요청(request)문자열이 그대로 파라미터로 전달</center></td>
+      <td style="text-align: left">파라미터</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/Repository" class="user-mention">@Repository</a></strong></td>
+      <td style="text-align: left"><center>DAO(Data Access Object)객체</center></td>
+      <td style="text-align: left">클래스</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><a href="https://github.com/Service" class="user-mention">@Service</a></strong></td>
+      <td style="text-align: left"><center>서비스 객체</center></td>
+      <td style="text-align: left">클래스</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>JSP EL(Expression Language)</h3>
+
+<p>https://gangzzang.tistory.com/entry/JSP-%ED%91%9C%ED%98%84-%EC%96%B8%EC%96%B4Expression-Language-%EB%98%90%EB%8A%94-%EC%9D%B5%EC%8A%A4%ED%94%84%EB%A0%88%EC%85%98-%EC%96%B8%EC%96%B4</p>
+
+<h3>스프링 logging 방법(slf4j) 참고 자료</h3>
+
+<p>https://addio3305.tistory.com/43<br></p>
+
+<p>https://sonegy.wordpress.com/2014/05/23/how-to-slf4j/<br></p>
+
+<p>https://madeinjeon.tistory.com/18<br></p>
+
+<h3>JSON의 개요</h3>
+
+<p>JavaScript Object Notation <br></p>
+
+<p>자바스크립트 객체 표기법의 줄임말이 JSON이다. <br></p>
+
+<p>https://ko.wikipedia.org/wiki/JSON<br></p>
+
+<p>https://www.json.org/json-ko.html<br></p>
+
+<h3>어노테이션 <a href="https://github.com/inject" class="user-mention">@inject</a>에 대해</h3>
+
+<p>https://dev-eido.tistory.com/entry/Autowired-Resource-Inject%EC%9D%98-%EC%B0%A8%EC%9D%B4<br></p>
+
+<h3>typeMismatch.cri.perPageNum,typeMismatch.perPageNum,typeMismatch.int,typeMismatch 에러</h3>
+
+<p>https://glqdlt.tistory.com/366</p>
+
+<h3>MyBatis 동적 sql</h3>
+
+<p>https://www.mybatis.org/mybatis-3/ko/dynamic-sql.html</p>
+
+<p>MyBatis의 표현식은 OGNL이라는 표준적인 규약의 표현식을 그대로 활용한다.</p>
+
+<p>https://commons.apache.org/proper/commons-ognl/language-guide.html</p>
+
+<p>수업 정리 내용</p>
+
+<ol>
+  <li>New Project</li>
+  <li>버전 관리, 의존성 라이브러리(Mybatis, Spring JDBC) - pom.xml</li>
+  <li>DataSource - root-context.xml</li>
+  <li>MyBatis - root-context.xml / MyBatis-config.xml</li>
+</ol>
+
+<ul>
+  <li>web.xml
+    <ol>
+      <li>root-context.xml (전체 설정)</li>
+      <li>servlet-context.xml (웹 관련 설정)</li>
+      <li>dispatcher 설정 (appServlet으로 설정되어 있음)</li>
+    </ol>
+  </li>
+</ul>
+
+<ol>
+  <li>Controller
+    <ol>
+      <li>리턴타입 void =&gt; doA.jsp</li>
+      <li>리턴타입 String =&gt; /WEB-INF/views/result.jsp</li>
+      <li>Model =&gt; view까지 전달</li>
+      <li>redirect &amp; forward</li>
+      <li>JSON</li>
+    </ol>
+  </li>
+  <li>DB
+    <ol>
+      <li>테이블 만들기</li>
+      <li>VO</li>
+      <li>DAO 인터페이스 작성</li>
+      <li>Mapper.xml =&gt; 메서드, sql</li>
+      <li>DAO 인터페이스 구현</li>
+      <li>TEST</li>
+    </ol>
+  </li>
+</ol>
+
+<h3>servlet.init()뭐시기 에러</h3>
+
+<p>리스너 문제 였다. 리스너나 필터 둘 중에 하나</p>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/spring/2017/10/16/spring3.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/spring/2017/10/16/spring3.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/spring/2017/10/16/spring3.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/spring/2017/10/16/spring3.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/spring/2017/10/16/spring3.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  © 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

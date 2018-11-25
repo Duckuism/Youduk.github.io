@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>알고리즘 기초 지식(JAVA)</title>
+  <meta name="description" content="시간 복잡도, ==와 equals()의 차이, 배열 선언, Collection사용법, HashMap 사용법">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/algorithm/2018/04/02/%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7-%E1%84%80%E1%85%B5%E1%84%8E%E1%85%A9-%E1%84%8C%E1%85%B5%E1%84%89%E1%85%B5%E1%86%A8(JAVA).html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="알고리즘 기초 지식(JAVA)">알고리즘 기초 지식(JAVA)</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        2 APR 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    3 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h2 id="todays-algorithm">Today’s Algorithm</h2>
+
+<h3 id="자바-코딩-인터뷰-준비-강의-정리">자바 코딩 인터뷰 준비 강의 정리</h3>
+
+<h4 id="1-시간-복잡도">1. 시간 복잡도</h4>
+
+<p>면접에서 해당 문제의 시간 복잡도는 어떻게 되나요? -&gt; 더 효율적인 방법은 없을까요? 어떻게 구현해야할까요? 코드로 작성해보시겠어요? -&gt; 개선된 코드의 시간 복잡도는 얼마나 좋아졌나요?</p>
+
+<p>이런 형식으로 물어보는 경우가 빈번하다.</p>
+
+<p>기준은 빅오 표기법이다. 빅오의 엔제곱이다라고 대답을 하는 것이 옳다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="c1">//O(n) n이 10이면 10번 돈다. n이 10배 증가하면 10배 더 돈다.</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+    <span class="n">sum</span> <span class="o">+=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="o">}</span>
+
+<span class="c1">//O(n^2) n이 10이면 100번 돈다. n이 10배 증가하면 100배 더 돈다.</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">k</span><span class="o">++){</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="n">a</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>        
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>암기해야 할 부분</p>
+
+<ul>
+  <li>Binary Search(이분 검색 - 정렬된 배열이 들어왔을 때, 반 씩 좁혀나가면서 찾는 방법) : O(logn) -&gt; 이분 검색을 n번했다면 logn을 n번 수행한 것이므로 O(nlogn)이라고 대답해야 한다.</li>
+  <li>Quick Sort (빠른 정렬)
+    <ul>
+      <li>평균 : O(nlogn) - 함수 한 줄로 되어있어도 기본적으로 정렬은 O(nlogn)이다.</li>
+      <li>최악 : O(n^2) - 이런 경우가 발생하지 않게 보통 앞에서 suffling을 한다.</li>
+    </ul>
+  </li>
+  <li>Bubble Sort, Insertion Sort(느린 정렬) : O(n^2)</li>
+</ul>
+
+<h4 id="코딩할-때-자기-자신이-먼저-시간-복잡도를-분석하는-연습을-해봐야한다">코딩할 때, 자기 자신이 먼저 시간 복잡도를 분석하는 연습을 해봐야한다!</h4>
+
+<h4 id="2-와-equals의-차이">2. ==와 equals()의 차이</h4>
+
+<p>자바에서 두 개를 비교하는 연산자가 두 가지가 있어서 이 차이를 모르는 경우가 많다.</p>
+
+<p><img src="/img/2018-03-30-1.png" alt="" /></p>
+
+<p>== 는 다른 객체를 가르킬 때 false를 반환한다.</p>
+
+<p>그러나 equals()는 값만을 비교하므로 true를 반환한다.</p>
+
+<p>시험 때 헷갈릴 수 있는 부분이므로 꼭 차이점을 잘 알아두자.</p>
+
+<h4 id="3-배열-선언하기">3. 배열 선언하기</h4>
+
+<p>면접 때 배열 선언조차 못해서 떨어지는 사람이 굉장히 많다. 긴장하면 생각이 안날 수도 있다. 기초 문법을 반드시 숙지해야한다.</p>
+
+<p>웬만하면 다 integer 배열이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kt">int</span><span class="o">[]</span> <span class="n">array1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span> <span class="c1">//10은 사이즈</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>캐릭터 배열도 은근 많이쓰인다. 문제에 String이 주어졌을 때 함수를 짜라고 할 때가 있는데, 이 때 배열로 변환해야하는 경우가 자주 있다. 이 때 많이 쓰인다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kt">char</span><span class="o">[]</span> <span class="n">array2</span> <span class="o">=</span> <span class="s">"Good"</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span> <span class="c1">//character array로 바꿀 수 있다.</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="4-collection-사용법">4. Collection 사용법</h4>
+
+<p>자바에서는 여러가지 Collection을 제공하고, 시험 볼 때 활용해야할 경우가 많이 생긴다. 그런데 잘 모르는 경우가 있다.</p>
+
+<ul>
+  <li>ArrayList</li>
+  <li>LinkedList</li>
+  <li>Stack</li>
+  <li>Queue</li>
+  <li>HashMap (여기부터는 조금 어려워 진다. 하지만 많이 나온다.)</li>
+  <li>HashSet (기본적으로는 HashMap으로 되어 있다.)</li>
+  <li>PriorityQueue (등장했다고 하면 까다롭다.)</li>
+</ul>
+
+<h4 id="5-hashmap-사용법">5. HashMap 사용법</h4>
+
+<p>HashMap은 특정 섹션에 속하기가 어려워서 미리 알고 문제를 풀어보는 것이 좋다.</p>
+
+<p><img src="/img/2018-03-30-02.png" alt="" /></p>
+
+<p>HashMap은 Java util 패키지에 있다. 온라인 코딩 시 import해야하는 경우도 있으므로 알아두어야한다. HashMap은 Class다. 오른쪽 부분에서는 Map이 interface고 아래 HashMap, TreeMap은 Class이다. 기본적으로 사용법은 거의 같다. 차이가 있다면 TreeMap은 정렬이 된다. 그러나 대부분의 문제는 HashMap으로 풀이가 가능하다. 속도도 HashMap이 좀 더 빠르다.</p>
+
+<h4 id="6-대략적인-2의-제곱-수-알아두기">6. 대략적인 2의 제곱 수 알아두기</h4>
+
+<p>코딩인터뷰인데 갑자기 왠 2의 제곱 수? 밀접한 연관이 있다. 코딩 면접이나 전화 면접에서 어림 짐작이 필요한 경우가 있다. 이럴 때 아무런 연관이 없는 것이 아니므로, 이러한 2의 제곱 수에 대한 것은 미리 숙지해야한다.</p>
+
+<p>예) 입력 데이터가 6만 4천개 목록이 2개 들어오고 모든 조합을 확인 한다면?</p>
+
+<p><img src="/img/2018-03-30-03.png" alt="" /></p>
+
+<p>여기서 물결표는 대략적으로 나타낸 것을 의미한다. 즉 1000의 2제곱은 2의 10제곱인 1024의 2제곱과 유사하므로 1000을 2의10제곱으로 변환하여 생각하는 것이다.</p>
+
+<p>그리고 마지막에 2의 32제곱을 2의 2제곱과 2의 30제곱으로 나누는 것은 2의 10제곱이 1024로 1KB이므로 2의 30제곱은 1GB와 같다고 생각하는 것(2의 20제곱 = 1MB, 2의 30제곱 = 1GB)이다. 그래서 조합 하나가 1byte라고 생각한다면 최소 메모리가 4GB가 필요하다고 보는 것.</p>
+
+<p>배열에 저장할 경우 32비트 int로 인덱싱 할 수 있다.</p>
+
+<p>하나의 조합이 int 2개로 이뤄져 8byte라면(interger 하나는 4byte) 32GB(8byte x 4GB)가 최소로 필요하다.</p>
+
+<p>메모리 제한이 4GB로 조건이 주어졌다면 제한은 4GB인데 32GB가 필요하므로 어떻게하면 이 차이를 메꿀 수 있을지에 대해 생각해보고 메모리를 효율적으로 쓰는 방법을 묻는 문제이다.</p>
+
+<p><img src="/img/2018-03-30-04.png" alt="" /></p>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/algorithm/2018/04/02/%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7-%E1%84%80%E1%85%B5%E1%84%8E%E1%85%A9-%E1%84%8C%E1%85%B5%E1%84%89%E1%85%B5%E1%86%A8(JAVA).html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/algorithm/2018/04/02/%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7-%E1%84%80%E1%85%B5%E1%84%8E%E1%85%A9-%E1%84%8C%E1%85%B5%E1%84%89%E1%85%B5%E1%86%A8(JAVA).html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/algorithm/2018/04/02/%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7-%E1%84%80%E1%85%B5%E1%84%8E%E1%85%A9-%E1%84%8C%E1%85%B5%E1%84%89%E1%85%B5%E1%86%A8(JAVA).html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/algorithm/2018/04/02/%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7-%E1%84%80%E1%85%B5%E1%84%8E%E1%85%A9-%E1%84%8C%E1%85%B5%E1%84%89%E1%85%B5%E1%86%A8(JAVA).html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/algorithm/2018/04/02/%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7-%E1%84%80%E1%85%B5%E1%84%8E%E1%85%A9-%E1%84%8C%E1%85%B5%E1%84%89%E1%85%B5%E1%86%A8(JAVA).html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

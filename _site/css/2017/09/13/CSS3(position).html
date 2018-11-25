@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CSS3 - POSITION</title>
+  <meta name="description" content="position - static, relative, absolute, fixed">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/css/2017/09/13/CSS3(position).html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="CSS3 - POSITION">CSS3 - POSITION</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        13 SEP 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    2 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>float랑 position을 언제 써야할까?</p>
+
+<p>float는 부모의 영역 속에 제한되는 느낌이고, position은 화면 안에서 자유자재로 움직일 수 있다. 내가 해당 요소를 써야하는 기능과 이유를 잘 생각해보고 맞는 것을 골라 쓰면 된다.</p>
+
+<h1>POSITION</h1>
+
+<p>position에서 고려해야 될 것 : 종류(내가 어떤 종류의 position을 쓰는지, 종류에 따라 작용하는 방법이 다르므로) &amp;&amp; 기준점(기준점이 position에 따라 달라지므로)</p>
+
+<h1>POSITION - static</h1>
+
+<h3>기본 position은 항상 static!(top,bottom,left,rigth 속성이 안 먹힌다.)</h3>
+
+<h1>POSITION - relative</h1>
+
+<p>float와 같이 붕 뜨기는 하지만 자신이 있던 곳의 기준점을 잊지 않고 이 기준점을 기준으로 움직인다. 그리고 다른 요소들도 이 relative를 인식할 수 있기 때문에 당겨지거나 하지 않는다.</p>
+
+<p><img src="/img/2017-09-13-01.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p><img src="/img/2017-09-13-02.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p><img src="/img/2017-09-13-03.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p><img src="/img/2017-09-13-04.PNG" alt="Smithsonian Image" /><br /></p>
+
+<h1>POSITION - absolute</h1>
+
+<p><strong><em>absolute는 float와 유사하지만 inline요소들이 인식할 수 없다는 점이 가장 큰 차이이다. 또한, overflow:hidden / cleaf:both 같이 다시 인식할 수 있는 방법이 없다. 그래서 float가 집 가간 자식이라면 absolute는 버린 자식이라고 표현하는 것.</em></strong> float 속성을 적용했을 때 처럼 absolute를 적용하는 순간, display 값은 block으로 바뀌는 데, block은 길막을 하지 않는 block이라서 contents만큼의 width를 갖는 블록이다. width를 설정해 주지 않았을 때 부모의 width만큼 자동으로 차지하거나, width를 설정해 주었을 때 남는 부분이 모두 margin으로 변하는 등의 현상이 일어나지 않는다.</p>
+
+<p><img src="/img/2017-09-13-05.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p>기준점이 부모 요소에 한정되는 float속성과 달리, absolute는 조건이 맞다면(position이 static이 아닌 relative, absolute, fixed 라면) 조상 요소들 중에 하나로 기준 점을 새로 정할 수 있다. 이 떄 조상 요소의 postion은 보통 absolute가 아닌 relative로 많이 주는데, absolute로 조상 요소의 기준을 잡게 될 경우 이 요소 또한 자신의 조상 중에 조건이 맞는 조상을 기준으로 삼게 되므로 기준점을 생각하기가 복잡해지기 때문이다.</p>
+
+<p><img src="/img/2017-09-13-06.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p><img src="/img/2017-09-13-08.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p><img src="/img/2017-09-13-09.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p><img src="/img/2017-09-13-10.PNG" alt="Smithsonian Image" /><br /></p>
+
+<h1>POSITION - fixed</h1>
+
+<p>기본 속성은 absolute랑 똑같다. absolute를 적용했을 때처럼 길막할 수 없는 block이 되고, inline요소들이 인식할 수 없고, 다시 인식하게 할 수 있는 방법이 없다는 것은 같다. <strong><em>한 가지 차이점은 우리가 기준점을 생각할 필요없이 무조건 viewport(웹사이트가 보여지는 창의 전체 크기)를 기준으로 위치한다는 것이다.</em></strong></p>
+
+<p><img src="/img/2017-09-13-11.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p><img src="/img/2017-09-13-12.PNG" alt="Smithsonian Image" /><br /></p>
+
+<h1>POSITION - offset</h1>
+
+<p>position을 설정하는 것은 내가 어떤 기준으로 움직일 것인지를 선언하는 것일 뿐, 실제로 움직이는 것은 아니다. 따라서 position을 설정했다고 해서 해당 position 속성의 기준점으로 요소가 움직이지 않는 것이다. 이 요소를 움직이려면 top, bottom, left, right 값으로 움직여야 한다.</p>
+
+<p>이 기준점 위치를 움직이는 방법이 바로 offset이다. offset은 X축(top, bottom)에 하나, Y축(left, right)에 각각 하나씩만 가져야 한다.</p>
+
+<p><img src="/img/2017-09-13-13.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p><img src="/img/2017-09-13-14.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p><img src="/img/2017-09-13-15.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p><img src="/img/2017-09-13-16.PNG" alt="Smithsonian Image" /><br /></p>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/css/2017/09/13/CSS3(position).html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/css/2017/09/13/CSS3(position).html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/css/2017/09/13/CSS3(position).html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/css/2017/09/13/CSS3(position).html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/css/2017/09/13/CSS3(position).html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

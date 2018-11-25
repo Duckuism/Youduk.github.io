@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>DOM API 활용</title>
+  <meta name="description" content="DOM node 생성과 추가, 문자열 기반으로 조작하기, DOM APIs 실습">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/web/2018/07/07/DOM-API.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/Boostcourse.png"
+  
+  alt="DOM API 활용 feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="DOM API 활용">DOM API 활용</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        7 JUL 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    8 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p><strong>1. 다양한 APIs</strong></p>
+
+<p>document. 으로 사용할 수 있는 APIs : <a href="https://www.w3schools.com/jsref/dom_obj_document.asp">링크 바로가기</a></p>
+
+<p>element. 으로 사용할 수 있는 APIs : <a href="https://www.w3schools.com/jsref/dom_obj_all.asp">링크 바로가기</a></p>
+
+<p><strong>2. DOM 탐색 APIs</strong></p>
+
+<p>몇 가지 유용한 속성</p>
+
+<ul>
+  <li>tagName</li>
+  <li>textContent</li>
+  <li>nodeType</li>
+</ul>
+
+<p>이동</p>
+
+<ul>
+  <li>childNodes</li>
+  <li>firstChild(firstElementChild와의 차이점 : 공백이나 텍스트 노드까지 인식한다.)</li>
+  <li>firstElementChild(firstChild보다 좀 더 많이 쓴다.)</li>
+  <li>parentElement</li>
+  <li>nextSibling</li>
+  <li>nextElementSibling</li>
+</ul>
+
+<p><strong>3. DOM 조작 API</strong></p>
+
+<p>삭제, 추가, 이동, 교체를 위해서는 아래 API 사용법을 잘 익혀두면 좋습니다.
+간단해보이지만 추가를 한다는 것은 원하는 태그의 element를 만들어서 객체화해서 넣어야한다는 것을 의미한다. 객체화한다는 것은 DOM API를 이용해서 정해진 메서드들을 사용하여 DOM TREE의 요소로 넣는 과정을 의미한다.</p>
+
+<ul>
+  <li>removeChild()</li>
+  <li>appendChild()</li>
+  <li>insertBefore()</li>
+  <li>cloneNode()</li>
+  <li>replaceChild()</li>
+  <li>closest() //상위로 올라가면서 근접 엘리먼트 찾기. delegation에서 꽤 유용한 메서드입니다.</li>
+</ul>
+
+<p>chrome 개발자도구에서 선택되어있는 요소는 ‘$0’으로 접근이 가능하다!</p>
+
+<p>각종 메서드 사용방법은 mdn에서 example을 보는 것이 가장 좋다.</p>
+
+<h4 id="appendchild">appendChild()</h4>
+
+<p>만약 div 태그를 만들어서 넣고 싶다면?</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="c1">//현재 내가 선택한 요소.</span>
+<span class="nx">$0</span><span class="p">;</span>
+
+<span class="c1">//일단 div 태그 요소를 생성한다.</span>
+<span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"div"</span><span class="p">);</span>
+<span class="c1">//만약 이 div에 텍스트 노드를 넣고 싶다면 텍스트 노드를 생성하고</span>
+<span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">"오늘 하루는 정말 ..좋아"</span><span class="p">);</span>
+<span class="c1">//이 텍스트 노드를 appendChild()로 미리 만들어놓은 div 태그에 붙여넣는다.</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">appendCilde</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+<span class="c1">//그리고 내가 원하는 요소에 이 div 태그를 넣는다.</span>
+<span class="nx">$0</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위와 같은 방법이 불편하고 번거로워서 react, angular, vue와 같은 프레임워크에서는 템플릿이라고 해서 html을 만들어두고 이 html에서 변경이 필요한 데이터 부분을 연결을 해놓고 변경사항이 바뀌면 자동으로 렌더링이 돼서 화면에 넣어주는 방식으로 작업을 많이 한다. 하지만 이런 자동화된 방법이 갖춰져있지 않은 상태에서는 위와 같은 방식으로 할 수 있어야 한다.</p>
+
+<h4 id="insertbefore">insertBefore()</h4>
+
+<p>어떤 요소의 직전에 요소를 넣는다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="c1">//w3-table-all클래스의 3번째 자식을 선택하여 base 변수에 할당</span>
+<span class="kd">var</span> <span class="nx">base</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">".w3-table-all tr:nth-child(3)"</span><span class="p">);</span>
+<span class="c1">//insertBefore()는 부모 element기반이므로 부모 element를 선택해서 저장</span>
+<span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">".w3-table-all tbody"</span><span class="p">);</span>
+<span class="c1">//넣을 요소를 생성한다.</span>
+<span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"div"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">ducument</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">"여기에 추가됐어요."</span><span class="p">);</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+<span class="c1">//insertBefore()를 사용하여</span>
+<span class="c1">//생성한 element를 base element 직전에 넣는다.</span>
+<span class="nx">parent</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">div</span><span class="p">,</span><span class="nx">base</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<hr />
+
+<p><strong>참고 자료</strong></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Document_Object_Model"><img src="https://cphinf.pstatic.net/mooc/20180202_218/1517557874903atIi5_PNG/EVASVIN8yf4llZb8Ct8d.png?type=mfullfill_199_148" alt="img" /></a></p>
+
+<ul>
+  <li>
+    <p><strong>[참고링크] 위키피디아 DOM설명</strong><a href="https://en.wikipedia.org/wiki/Document_Object_Model">https://en.wikipedia.org/wiki/Document_Object_Model</a></p>
+  </li>
+  <li>
+    <p><strong>[참고링크] document. 으로 사용할 수 있는 APIs</strong><a href="https://www.w3schools.com/jsref/dom_obj_document.asp">https://www.w3schools.com/jsref/dom_obj_document.asp</a></p>
+  </li>
+  <li>
+    <p><strong>[참고링크] element. 으로 사용할 수 있는 APIs</strong><a href="https://www.w3schools.com/jsref/dom_obj_all.asp">https://www.w3schools.com/jsref/dom_obj_all.asp</a></p>
+  </li>
+</ul>
+
+<h4 id="문자열기반으로-dom-조작하기">문자열기반으로 DOM 조작하기</h4>
+
+<p>HTML을 어떤 메서드 기반으로 넣는게 아니고 문자열 처리를 통해서 DOM을 html기반으로 조작하는 방법들이 현업에서 더 많이 쓰이는 빠른방법이다.</p>
+
+<p><strong>HTML을 문자열로 처리해주는 DOM API</strong></p>
+
+<p>DOM에 문자열단위로 데이터를 추가하는 것은 매우 편리하고 자주 사용하는 방법입니다.</p>
+
+<p>아래메서드는 잘 기억해두고 모두 실습을 해둘 필요가 있습니다.</p>
+
+<ul>
+  <li>innerText  //getter, setter !</li>
+  <li>innerHTML  //getter, setter !</li>
+  <li>insertAdjacentHTML</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="c1">//tbody 태그에 있는 것을 통째로 뽑아내고 싶을 때</span>
+<span class="kd">var</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">".w3-table-all tbody"</span><span class="p">);</span>
+<span class="c1">//텍스트 내용을 쭉 가져온다. 별로 쓸모는 없음</span>
+<span class="nx">parent</span><span class="p">.</span><span class="nx">innerText</span><span class="p">;</span>
+<span class="c1">//아래처럼 가져와야 태그까지 그대로 가져오는 것이다.</span>
+<span class="nx">parent</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
+<span class="c1">//getter의 역할도 하지만, setter의 역할도 한다.</span>
+<span class="nx">parent</span><span class="p">.</span><span class="nx">innerHTML</span><span class="o">=</span><span class="s2">"&lt;p&gt;child...&lt;/p&gt;"</span>
+<span class="c1">//위와 같이 사용하면 createElement()+createTextNode()+appendChild()로 복잡하게 쓰지 않아도 된다.</span>
+<span class="c1">//아래와 같은 식으로도 가능하다.</span>
+<span class="nx">$0</span><span class="p">.</span><span class="nx">innerText</span><span class="p">;</span> <span class="o">=</span> <span class="nx">$0</span><span class="p">.</span><span class="nx">innerText</span><span class="o">+</span><span class="s2">"DSJKFLSJDKLSDJ"</span><span class="p">;</span>
+<span class="nx">$0</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">+=</span> <span class="s2">"X"</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위와 같이 DOM의 텍스트나 element를 문자열로 조작을 할 수 있다.</p>
+
+<p>insertAdjacentHTML은 특정 위치를 바꿀 수 있게하는 메서드이다.</p>
+
+<p>https://developer.mozilla.org/ko/docs/Web/API/Element/insertAdjacentHTML</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>JS Bin<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, fuga facere. Voluptate architecto quia, officia perferendis inventore est minus nobis cupiditate praesentium eum dignissimos iure hic ipsam ullam laudantium blanditiis.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam magnam iure quod officia quos similique, unde nam praesentium illum facilis aliquid eius sit, tempore dignissimos, quibusdam beatae asperiores culpa pariatur.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">base</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"div"</span><span class="p">);</span>
+<span class="nx">base</span><span class="p">.</span><span class="nx">insertAdjacentHTML</span><span class="p">(</span><span class="s2">"afterbegin"</span><span class="p">,</span> <span class="s2">"&lt;h1&gt;afterbegin&lt;/h1&gt;"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">base2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"p:nth-child(3)"</span><span class="p">);</span>
+<span class="nx">base2</span><span class="p">.</span><span class="nx">insertAdjacentHTML</span><span class="p">(</span><span class="s2">"beforebegin"</span><span class="p">,</span> <span class="s2">"&lt;p&gt;나는 가운데 끼였어요.&lt;/p&gt;"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="/img/DOM1.png" alt="" /></p>
+
+<p><strong>참고 자료</strong></p>
+
+<ul>
+  <li>
+    <p><strong>[참고링크] insertAdjacentHTML-vs-innerHTML-vs-appendChild</strong><a href="https://jsperf.com/insertadjacenthtml-perf/3">https://jsperf.com/insertadjacenthtml-perf/3</a></p>
+
+    <p>비슷한 방법의 API간의 성능차이도 관심사항입니다.</p>
+  </li>
+</ul>
+
+<hr />
+
+<p>DOM APIs 실습</p>
+
+<p><strong>실습1</strong></p>
+
+<p>지금 나온 DOM API를 사용해서, strawberry 아래에 새로운 과일을 하나 더 추가하시오.</p>
+
+<p>추가 된 이후에는 다시 삭제하시오.</p>
+
+<p><a href="https://jsbin.com/mebuha/1/edit?html,js,output">링크 바로가기</a></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1">//insert</span>
+<span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">);</span>
+<span class="nx">element</span><span class="p">.</span><span class="nx">insertAdjacentHTML</span><span class="p">(</span><span class="s2">"beforeend"</span><span class="p">,</span><span class="s2">"&lt;li&gt;melon&lt;/li&gt;"</span><span class="p">);</span>
+<span class="c1">//delete</span>
+<span class="kd">var</span> <span class="nx">insertedElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"li:nth-child(6)"</span><span class="p">);</span>
+<span class="nx">insertedElement</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>실습2</strong></p>
+
+<p>insertBefore메서드를 사용해서, orange와  banana 사이에 새로운 과일을 추가하시오.</p>
+
+<p><a href="https://jsbin.com/mebuha/1/edit?html,js,output">링크 바로가기</a></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"li"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">"watermelon"</span><span class="p">);</span>
+<span class="nx">container</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+<span class="nx">element</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"li:nth-child(3)"</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>실습3</strong></p>
+
+<p>실습2를 insertAdjacentHTML메서드를  사용해서, orange와 banana 사이에 새로운 과일을 추가하시오.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"li:nth-child(2)"</span><span class="p">);</span>
+<span class="nx">element</span><span class="p">.</span><span class="nx">insertAdjacentHTML</span><span class="p">(</span><span class="s2">"afterend"</span><span class="p">,</span> <span class="s2">"&lt;li&gt;watermelon&lt;/li&gt;"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>실습4</strong></p>
+
+<p>apple을 grape 와 strawberry 사이로 옮기시오.</p>
+
+<p><a href="https://jsbin.com/mebuha/1/edit?html,js,output">링크 바로가기</a></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"ul"</span><span class="p">);</span>
+<span class="c1">//save element in variable 'apple'</span>
+<span class="kd">var</span> <span class="nx">apple</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"li:nth-child(1)"</span><span class="p">).</span><span class="nx">innerText</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"li"</span><span class="p">);</span>
+<span class="c1">//delete the element that originally exists</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">//add a element saved in variable 'apple' before last element.</span>
+<span class="nx">element</span><span class="p">.</span><span class="nx">insertAdjacentHTML</span><span class="p">(</span><span class="s2">"beforeend"</span><span class="p">,</span> <span class="s2">"&lt;li&gt;"</span><span class="o">+</span> <span class="nx">apple</span> <span class="o">+</span> <span class="s2">"&lt;/li&gt;"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>실습5</strong></p>
+
+<p>class 가 ‘red’인 노드만 삭제하시오.</p>
+
+<p><a href="https://jsbin.com/redetul/1/edit?html,css,js,output">링크 바로가기</a></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">"li"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">reds</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="s2">"red"</span><span class="p">);</span>
+<span class="c1">//visit all elements</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">className</span> <span class="o">==</span> <span class="s2">"red"</span><span class="p">){</span>    
+    <span class="nx">element</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+  <span class="p">}</span>  
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>실습6</strong></p>
+
+<p>section 태그의 자손 중에 blue라는 클래스를 가지고 있는 노드가 있다면, 그 하위에 있는 h2 노드를 삭제하시오.</p>
+
+<p><a href="https://jsbin.com/ricopa/1/edit?html,css,js,output">링크 바로가기</a></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">sectionList</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">"section"</span><span class="p">);</span>
+<span class="c1">//visit all section tags</span>
+<span class="nx">sectionList</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span>
+  <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">){</span>      
+  <span class="kd">var</span> <span class="nx">liList</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">"li"</span><span class="p">);</span>
+  <span class="c1">//visit all li tags</span>
+  <span class="nx">liList</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">element2</span><span class="p">){</span>
+    <span class="c1">//check class name value  </span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">element2</span><span class="p">.</span><span class="nx">className</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">)){</span>
+      <span class="kd">var</span> <span class="nx">sectionTitle</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"h2"</span><span class="p">);</span>
+      <span class="nx">sectionTitle</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>좀더  알아보기</strong></p>
+
+<p><strong>polyfill</strong>은 무엇인지 한번 찾아보세요!</p>
+
+<p>어떠한 기능을 쓰고 싶은데, 지원하지 않는 브라우저에서도 동작시키게 하고 싶을때가 있죠. 그때 아주 유용합니다.</p>
+
+<ul>
+  <li>궁금한 것 : innerHTML과 insertAdjacentHTML의 차이는?</li>
+</ul>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/web/2018/07/07/DOM-API.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/web/2018/07/07/DOM-API.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/web/2018/07/07/DOM-API.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/web/2018/07/07/DOM-API.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/web/2018/07/07/DOM-API.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

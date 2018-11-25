@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JavaScript 객체지향 프로그래밍</title>
+  <meta name="description" content="원시 타입과 참조 타입">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/javascriptes5/2018/02/19/JavaScript-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%B5%E1%86%BC.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="JavaScript 객체지향 프로그래밍">JavaScript 객체지향 프로그래밍</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        19 FEB 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    10 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>참고 자료 : 객체지향 자바스크립트의 원리 - 니콜라스 C.자카스 / 김태곤 역</p>
+
+<h1 id="소개">소개</h1>
+
+<ul>
+  <li>객체 지향 언어의 특징
+    <ul>
+      <li>캡슐화(Encapsulation) : 데이터와 데이터를 다루는 기능은 한 그룹으로 묶을 수 있다. 단순하게 말하면 이것이 객체의 정의이다.</li>
+      <li>집합(Aggregation) : 한 객체는 다른 객체를 참조할 수 있다.</li>
+      <li>상속(Inheritance) : 새로 생성된 객체는 다른 객체의 특성을 명시적으로 복제하지 않아도 다른 객체의 특성을 가진다.</li>
+      <li>다형성(Polymorphism) : 여러 객체에서 같은 인터페이스를 구현할 수 있다.</li>
+    </ul>
+  </li>
+  <li>자바 스크립트에는 클래스가 없지만 위의 4가지 특성은 모두 가지고 있으며, 의외의 방식으로 구성되어 있다.</li>
+  <li>타입 제약이 약하다는 자바스크립트의 특성을 활용하면 같은 작업을 위해 작성해야 할 코드가 다른 언어보다 더 적다. 나중에 필요한 클래스에 대해 고민하지 않고 바로 코딩을 시작할 수 있다. 특정 프로퍼티를 지닌 객체가 필요하다면? 원할 때 바로 만들어 쓰면 된다. 객체에 추가해야 할 메소드를 빠트렸다면? 나중에 추가하면 된다.</li>
+</ul>
+
+<h1 id="목차">목차</h1>
+
+<ol>
+  <li>원시 타입과 참조 타입 : 자바스크립트에 존재하는 두 종류의 타입, 원시 타입과 참조 타입에 대해 다룬다. 두 타입의 차이를 아는 것이 중요하다.</li>
+  <li>함수 : 함수의 입출력에 대해 다룬다. 자바스크립트는 일급 함수에 대한 개념을 알아야 한다.</li>
+  <li>객체의 이해 : 자바스크립트의 객체 구조를 설명한다. 자바스크립트의 객체는 다른 언어의 객체와 다르게 동작하므로 객체의 동작원리를 잘 이해하고 있어야 한다.</li>
+  <li>생성자와 프로토타입 : 생성자에 대해 살펴보며 함수에 대해 배웠던 내용을 심화 학습한다. 모든 생성자는 함수이지만 일반적인 함수와는 사용법이 다르다. 두 방식의 차이점을 살펴보고, 고유 타입을 작성하는 법을 배운다.</li>
+  <li>상속 : 자바 스크립트에서 상속이 이루어지는 방식을 설명한다. 자바스크립트에 클래스가 없지만 상속을 할 수 없는 것은 아니다. 프로토타입 상속을 배우고 프로토타입 상속과 클래스 기반 상속의 차이점에 대해 알아본다.</li>
+  <li>
+    <p>객체 패턴 : 자주 사용되는 객체 패턴을 살펴본다. 자바스크립트에서는 여러 방법으로 객체를 작성하고 구성할 수 있다. 이 장에서는 그 중 가장 유명한 패턴 몇 가지를 살펴본다.</p>
+  </li>
+  <li>
+    <h1 id="원시-타입과-참조-타입">원시 타입과 참조 타입</h1>
+  </li>
+</ol>
+
+<p>자바스크립트는 언어의 중심을 객체에 두고 있다. 자바스크립트에서 데이터 대부분은 객체이거나 객체를 통해 접근하는 값이다. 자바스크립트는 함수조차 객체로 표현하며 덕분에 자바스크립트의 함수는 <strong>일급 함수(first-class functions)</strong>이다.</p>
+
+<h3 id="타입이란">타입이란?</h3>
+
+<p>클래스라는 개념을 대체할 타입이라는 개념이 존재하며, 타입은 크게 원시 타입과 참조타입 두 종류로 나뉜다.</p>
+
+<hr />
+
+<h3 id="리터럴-형식">리터럴 형식</h3>
+
+<p>들어가기 전에, 리터럴 형식이 무엇인지에 대해 파악할 필요가 있다.</p>
+
+<ul>
+  <li>
+    <p>리터럴 형식 : 값을 표현하는 방식</p>
+
+    <ul>
+      <li>
+        <p>리터럴(literal) : 코드에 직접 입력된 이름이나 가격처럼 변수에 저장되지 않은 값</p>
+      </li>
+      <li>
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="c1">//문자열</span>
+<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"Nicolas"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">selection</span> <span class="o">=</span> <span class="s2">"a"</span><span class="p">;</span>
+
+<span class="c1">//숫자</span>
+<span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">cost</span> <span class="o">=</span> <span class="mf">1.51</span><span class="p">;</span>
+
+<span class="c1">//불리언</span>
+<span class="kd">var</span> <span class="nx">found</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="c1">//null</span>
+<span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="c1">//undefined</span>
+<span class="kd">var</span> <span class="nx">flag</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">ref</span> <span class="p">;</span> <span class="c1">// 자동으로 undefined가 할당됨.</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="원시-타입">원시 타입</h3>
+
+<ul>
+  <li>
+    <p>원시 타입 : 단순한 데이터를 저장</p>
+
+    <ul>
+      <li>
+        <p>Boolean(불리언) : true/false</p>
+      </li>
+      <li>
+        <p>Number(숫자) : 정수 또는 부동소수점 실수 값</p>
+      </li>
+      <li>
+        <p>String(문자열) : 한 쌍의 작은 따옴표 또는 큰 따옴표로 감싼 일련의 문자(자바스크립트에는 문자 타입이 따로 없다.)</p>
+      </li>
+      <li>
+        <p>Null : null이라는 값만 있는 원시 타입</p>
+      </li>
+      <li>
+        <p>Undefined : undefined라는 값만 있는 타입 (undefined는 아무런 값도 할당되지 않은 변수에 할당되는 값)</p>
+      </li>
+      <li>
+        <p>원시 타입의 복사(값 자체가 저장된다.)</p>
+
+        <ul>
+          <li>
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">color1</span> <span class="o">=</span> <span class="s2">"red"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">color2</span> <span class="o">=</span> <span class="nx">color1</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>원시 타입의 종류 확인 (typeof 연산자 사용. null은 ‘===’ 사용)</p>
+
+        <ul>
+          <li>
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="s2">"Nicolas"</span><span class="p">);</span> <span class="c1">//"String"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">//"number"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="mf">5.1</span><span class="p">);</span> <span class="c1">//"number"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">true</span><span class="p">);</span> <span class="c1">//"boolean"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">//"undefined"</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">null</span><span class="p">);</span> <span class="c1">//"object" -&gt; 이 부분은 TC39 위원회에서 실수라고 인정 </span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span> <span class="o">===</span> <span class="kc">null</span><span class="p">);</span> <span class="c1">//true 또는 false</span>
+</pre></td></tr></tbody></table></code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>’==’와 ‘===’의 차이</p>
+
+        <ul>
+          <li>
+            <p>== : 비교 수행 전에 자동 형 변환 실행 후 비교</p>
+          </li>
+          <li>
+            <p>=== : 비교 수행 전에 자동 형 변환을 실행하지 않고 비교</p>
+          </li>
+          <li>
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"5"</span> <span class="o">==</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"5"</span> <span class="o">===</span> <span class="mi">5</span><span class="p">);</span> <span class="c1">// false</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="kc">undefined</span> <span class="o">==</span> <span class="kc">null</span><span class="p">);</span> <span class="c1">//true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">undefiend</span> <span class="o">===</span> <span class="kc">null</span><span class="p">);</span> <span class="c1">//false</span>
+</pre></td></tr></tbody></table></code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>원시 메소드</p>
+
+        <ul>
+          <li>문자열, 숫자, 불리언에는 메소드가 존재한다.(null, undefined는 메소드가 없다.)
+            <ul>
+              <li>String method : https://www.w3schools.com/js/js_string_methods.asp</li>
+              <li>Number method : https://www.w3schools.com/js/js_number_methods.asp</li>
+              <li>Boolean method : https://www.w3schools.com/js/js_booleans.asp</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="참조-타입">참조 타입</h3>
+
+<ul>
+  <li>
+    <p>참조 타입 : 객체로서 저장(메모리상의 주소를 가리킨다.). 자바스크립트 객체를 나타내며 클래스와 가장 가까운 개념.</p>
+
+    <ul>
+      <li>참조 값 : 참조 타입의 인스턴스(instance). 객체(objects)와 같은 말. 객체는 순서가 없는 프로퍼티(property로 구성)</li>
+      <li>프로퍼티(property) : 이름(문자열)과 값으로 구성되어 있다.</li>
+      <li>메소드(method) : 프로퍼티의 값이 함수 일 때 해당 프로퍼티</li>
+    </ul>
+  </li>
+  <li>
+    <p>객체 생성(객체 참조 생성)</p>
+
+    <ul>
+      <li>
+        <p>인스턴스 화(instantiate) : 객체를 만드는 것. 자바스크립트에는 객체 생성을 하는 두 가지 방법이 있다.</p>
+
+        <ol>
+          <li>
+            <p>new 연산자와 생성자를 사용 : 관례상 생성자는 대문자로 시작하여 생성자가 아닌 함수와 구분 한다.</p>
+
+            <ul>
+              <li>
+                <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span> <span class="c1">// 일반 객체(generic obejct)를 하나 작성하고 객체의 참조(값을 가리키는 메모리 주소)를 object변수에 저장</span>
+</pre></td></tr></tbody></table></code></pre></div>                </div>
+              </li>
+              <li>
+                <p>이 때, object에 저장된 값은 사실 객체 인스턴스가 아니라 객체가 있는 메모리 상의 위치를 가리키는 포인터(또는 참조)이다. 이것이 바로 객체와 원시 값의 가장 큰 차이점이다. 원시 값은 변수에 직접 값 자체가 저장된다.</p>
+              </li>
+              <li>
+                <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">object1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span> <span class="c1">//새로운 객체 생성 후, 참조 값을 object1에 할당</span>
+<span class="kd">var</span> <span class="nx">object2</span> <span class="o">=</span> <span class="nx">object1</span><span class="p">;</span> <span class="c1">//object1에 저장된 참조 값을 object2에 할당</span>
+</pre></td></tr></tbody></table></code></pre></div>                </div>
+              </li>
+              <li>이 때, object1과 object2는 같은 객체를 가리키는 포인터이다.</li>
+            </ul>
+          </li>
+          <li>
+            <p>객체 리터럴 방식 사용</p>
+
+            <ul>
+              <li>
+                <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{};</span>
+</pre></td></tr></tbody></table></code></pre></div>                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p><u>생성자, 객체 리터럴 방식의 차이</u></p>
+
+            <ol>
+              <li>생성자 함수로 생성된 객체(인스턴스)는 자신의 프로토타입으로 생성자 함수의 프로토타입 프로퍼티가 가리키는 프로토타입 객체를 참조한다.</li>
+              <li>반면, 객체 리터럴로 생성된 객체(인스턴스)는 자신의 프로토타입으로 Object를 참조한다.</li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>객체 참조 제거</p>
+
+    <ul>
+      <li>
+        <p>자바스크립트는 가비지 컬렉션 기능이 있는 언어이므로 참조 타입을 사용할 때 메모리 할당에 대해 고민하지 않아도 된다. 하지만 가비지 컬렉터가 메모리를 해제할 수 있도록 사용하지 않는 객체에 대해서는 참조 제거를 해두는 편이 좋다.</p>
+      </li>
+      <li>
+        <p>가비지 컬렉션(garbage collection) : 동적으로 할당된 메모리 블럭이나 객체 중 더 이상 사용하지 않는 것을 제거하여 사용할 수 있는 메모리로 만드는 기능</p>
+      </li>
+      <li>
+        <p>가비지 컬렉터(garbage collerctor) : 프로그래밍 언어에서 가비지 컬렉션을 수행하는 부분.</p>
+      </li>
+      <li>
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">object1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Ojbect</span><span class="p">();</span>
+<span class="c1">//실행할 코드</span>
+<span class="nx">object1</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// 참조 제거</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+      <li>객체를 수백만 개씩 사용하는 대규모 어플리케이션에서는 객체의 참조 제거가 특히 중요하다</li>
+    </ul>
+  </li>
+  <li>
+    <p>프로퍼티 추가 및 제거</p>
+
+    <ul>
+      <li>
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">object1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">object2</span> <span class="o">=</span> <span class="nx">object1</span><span class="p">;</span>
+
+<span class="nx">object1</span><span class="p">.</span><span class="nx">myCustomProperty</span> <span class="o">=</span> <span class="s2">"Awesome!"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object2</span><span class="p">.</span><span class="nx">myCustomProperty</span><span class="p">);</span> <span class="c1">//"Awesome!"</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="내장-참조-타입">내장 참조 타입</h3>
+
+<p>(Object 타입 외 JavaScript에서 기본적으로 제공하는 유용한 내장 참조 타입)</p>
+
+<ul>
+  <li>종류
+    <ul>
+      <li>Array : 숫자 인덱스 값을 가진 순차 목록</li>
+      <li>Date : 날짜와 시간</li>
+      <li>Error : 실행 중 발생하는 에러 (에러의 종류에 따라 더 구체적인 하위 에러 타입이 존재한다.)</li>
+      <li>Function : 함수</li>
+      <li>Object : 일반적인 객체</li>
+      <li>RegExp : 정규 표현식</li>
+    </ul>
+  </li>
+  <li>
+    <p>내장 참조 타입 인스턴스화</p>
+
+    <ul>
+      <li>
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">error</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">"에러가 발생했습니다."</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s2">"console.log('Hi');"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">re</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">"</span><span class="err">\\</span><span class="s2">d+"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>리터럴 형식</p>
+
+    <ul>
+      <li>
+        <p>일부 내장 참조 타입은 리터럴 형식 사용 가능 : new 연산자와 객체의 생성자를 사용하여 명시적으로 객체를 만들지 않고도 참조 값을 만들 수 있다.(원시 값 리터럴에 new 연산자가 필요 없는 것과 같다.)</p>
+
+        <ul>
+          <li>
+            <p>객체 및 배열 리터럴</p>
+
+            <ul>
+              <li>
+                <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">book</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span> <span class="p">:</span> <span class="s2">"객체지향 자바스크립트의 원리"</span><span class="p">,</span>
+    <span class="na">year</span> <span class="p">:</span> <span class="mi">2014</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">book</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span> <span class="p">:</span> <span class="s2">"객체지향 자바스크립트의 원리"</span><span class="p">,</span>
+    <span class="s2">"year"</span> <span class="p">:</span> <span class="mi">2014</span>
+<span class="p">};</span> <span class="c1">// 프로퍼티 이름을 문자열 리터럴로 만들면 공백과 같은 특수 문자도 사용 가능.</span>
+</pre></td></tr></tbody></table></code></pre></div>                </div>
+              </li>
+              <li>
+                <p>위 방식은 아래 코드와 동일하다.</p>
+
+                <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">book</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="nx">book</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">"객체지향 자바스크립트의 원리"</span><span class="p">;</span>
+<span class="nx">book</span><span class="p">.</span><span class="nx">year</span> <span class="o">=</span> <span class="mi">2014</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div>                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>배열 리터럴</p>
+
+            <ul>
+              <li>
+                <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">//"red"</span>
+</pre></td></tr></tbody></table></code></pre></div>                </div>
+              </li>
+              <li>
+                <p>위 방식은 아래 코드와 동일하다.</p>
+
+                <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">colors</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">//"red"</span>
+</pre></td></tr></tbody></table></code></pre></div>                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>함수 리터럴</p>
+
+            <ul>
+              <li>
+                <p>함수는 보통 리터럴 형식을 사용해 정의된다.</p>
+              </li>
+              <li>
+                <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">reflect</span><span class="p">(</span><span class="nx">value</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>                </div>
+              </li>
+              <li>
+                <p>위 방식은 아래 코드와 동일하다.</p>
+
+                <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">reflect</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s2">"value"</span><span class="p">,</span> <span class="s2">"return value;"</span><span class="p">);</span>
+<span class="c1">//생성자 함수 정의 방식은 가독성이 떨어지고 디버그가 어려우므로 사용 빈도가 낮다.</span>
+</pre></td></tr></tbody></table></code></pre></div>                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>정규 표현식 리터럴</p>
+
+            <ul>
+              <li>
+                <p>RegExp생성자를 사용하지 않고 정규표현식을 정의할 수 있다.</p>
+              </li>
+              <li>
+                <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="sr">/</span><span class="se">\d</span><span class="sr">+/g</span><span class="p">;</span> <span class="c1">//문자열 안에 있는 문자를 어떻게 이스케이프 해야 할지 고민 할 필요가 없어 코드 작성이 훨씬 수월하다.</span>
+</pre></td></tr></tbody></table></code></pre></div>                </div>
+              </li>
+              <li>
+                <p>위 방식은 아래 코드와 동일하다.</p>
+
+                <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">"</span><span class="err">\\</span><span class="s2">d+"</span><span class="p">,</span><span class="s2">"g"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>                </div>
+
+                <p>​</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/javascriptes5/2018/02/19/JavaScript-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%B5%E1%86%BC.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/javascriptes5/2018/02/19/JavaScript-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%B5%E1%86%BC.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/javascriptes5/2018/02/19/JavaScript-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%B5%E1%86%BC.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/javascriptes5/2018/02/19/JavaScript-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%B5%E1%86%BC.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/javascriptes5/2018/02/19/JavaScript-%E1%84%80%E1%85%A2%E1%86%A8%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%B5%E1%84%92%E1%85%A3%E1%86%BC-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%B5%E1%86%BC.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

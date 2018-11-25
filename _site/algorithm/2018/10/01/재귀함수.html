@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>재귀함수</title>
+  <meta name="description" content="재귀함수의 정의, 수학적 귀납법, 재귀함수의 깊은 이해, 재귀함수 디자인 방법">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/algorithm/2018/10/01/%E1%84%8C%E1%85%A2%E1%84%80%E1%85%B1%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/algorithms.png"
+  
+  alt="재귀함수 feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="재귀함수">재귀함수</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        1 OCT 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    7 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h2 id="재귀함수">재귀함수</h2>
+
+<p>컴퓨터 전반적으로 가장 중요한 개념. 처음 배울 때 제대로 배워야한다.</p>
+
+<p>재귀함수는 일단 함수이므로 함수를 복기해본다.</p>
+
+<h3 id="함수">함수</h3>
+
+<ul>
+  <li>값을 입력받아 특정 연산을 수행하여 결과를 반환</li>
+  <li>기본 형태
+    <ul>
+      <li>반환 형, 함수 이름, 인자, 값 반환</li>
+    </ul>
+  </li>
+  <li>스코프는 함수간 작업의 완벽한 분담을 위해 존재한다.</li>
+  <li>의미단위의 프로그래밍을 해야한다.
+    <ul>
+      <li>문제 해결을 위해 어떤 일을 하는 함수가 필요한지를 설계</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="재귀함수-1">재귀함수</h3>
+
+<ul>
+  <li>자기 자신을 부르는 함수</li>
+</ul>
+
+<p>그럼 재귀함수는 언제 쓰나?</p>
+
+<h3 id="재귀함수가-의미있는-예제-ver1">재귀함수가 의미있는 예제 ver.1</h3>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="c1">//getFactorial(n) : n!을 반환하는 함수
+</span><span class="kt">int</span> <span class="n">getFactorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">getFactorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">prinf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">getFactorial</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>주의해서 봐야하는 것</p>
+
+<ol>
+  <li>getFactorial(n)이 getFactorial(n-1)을 기다리고 있다.</li>
+  <li>gerFactorial(n)과 getFactorial(n-1)의 scope는 다르다.</li>
+</ol>
+
+<h3 id="재귀함수를-이해하기-위한-질문">재귀함수를 이해하기 위한 질문</h3>
+
+<ul>
+  <li>재귀함수의 의미는 무엇인가? 도대체 이걸 왜 쓰는 것인가?와 같은 질문은 재귀함수가 왜 필요한지를 몰라서 나오는 질문이다. 따라서 재귀함수의 의미에 대해 알아본다.</li>
+  <li>재귀함수를 만들기 위해서는 어떤 절차를 따라야 하나?</li>
+</ul>
+
+<h3 id="재귀함수의-의미">재귀함수의 의미</h3>
+
+<ul>
+  <li>귀납적 계산 방법 (귀납적 문제해결 방법)
+    <ul>
+      <li>귀납적이 무엇일까?</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="두-가지-계산-방법">두 가지 계산 방법</h3>
+
+<ul>
+  <li>순차적 계산법 (지금까지 해왔던 방법)
+    <ul>
+      <li>A를 계산한다.</li>
+      <li>A를 이용해서 B를 계산한다.</li>
+      <li>B를 이용해서 C를 계산한다.</li>
+      <li>C를 이용해서 D를 계산함으로써 원하는 결과를 얻는다.</li>
+      <li>ex) 4의 약수의 개수를 구하라.
+        <ul>
+          <li>C에 9을 넣는다.</li>
+          <li>4가 1로 나누어 떨어지면 C에 1을 더한다.</li>
+          <li>4가 2로 나누어 떨어지면 C에 1을 더한다.</li>
+          <li>4가 3으로 나누어 떨어지면 C에 1을 더한다.</li>
+          <li>4가 4로 나누어 떨어지면 C에 1을 더한다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>귀납적 계산법 (지금까지 해왔던 모든 계산 방법과 다른 새로운 방법)
+    <ul>
+      <li>구하려고 하는 값을 f(x)라고 하자.</li>
+      <li><strong>f(x)를 구하기 위하여 또 다시 f(x)를 활용한다.</strong>
+        <ul>
+          <li>대표적인 예제 : <script type="math/tex">f(n) = n * f(n-1)</script></li>
+          <li>우리는 보통 factorial의 정의를 <script type="math/tex">n!=1*2\cdot\cdot\cdot*n</script>이라고  알고 있지만, 네이버, 위키피디아에는 정의가 전혀 이렇게 되어있지 않다. factorial의 정의는 <script type="math/tex">n!=n*(n-1)!</script>라고 나와 있다.</li>
+          <li><script type="math/tex">n!=n*(n-1)!</script> 정의가 귀납적으로 계산한 진짜 정의 이고, 이 정의를 순차적으로 바꾼 계산이 <script type="math/tex">n!=1*2\cdot\cdot\cdot*n</script>일 뿐이다.</li>
+          <li><script type="math/tex">f(5)=5*f(4)=5*4*f(3)=5*4*3*f(2)=5*4*3*2*f(1)=5*4*3*2*1*f(0)</script>이렇게 계산하다 보면 어디까지 계산해야하는지 알 수가 없다. 따라서 <strong><u>귀납적으로 계산하는 모든 방법은 멈춰야하는 부분이있다.</u></strong> 이 부분도 factorial에 정의가 되어 있다.</li>
+          <li>종료 시점을 나타낸 <script type="math/tex">f(0)=1</script>이 추가된 <script type="math/tex">f(n) = n * f(n-1), f(0)=1</script>가 진짜 factorial의 정의인 것. 이 때, <script type="math/tex">f(0)</script>이 1인 것에 대한 이유는 없다. 그냥 공리인 수학적 정의일 뿐이다.</li>
+        </ul>
+      </li>
+      <li><strong>‘나’를 계산하기 위해 또 다시 ‘나’를 활용한다.</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="귀납적-계산법의-깊은-이해">귀납적 계산법의 깊은 이해</h3>
+
+<p>하지만 여전히 왜 필요한거지? 에 대한 질문에는 대답이 모호하다. 다른 예제를 살펴본다.</p>
+
+<ul>
+  <li>예제 2 : <script type="math/tex">n^m</script> 을 귀납적으로 계산하여라
+    <ul>
+      <li>정의가 두 가지 나와야한다는 것을 기억해야한다. 한 가지는 나를 다시 활용하는 부분이 포함된 식에 대한 정의, 다른 한 가지는 종료 시점에 대한 정의이다.</li>
+      <li>귀납적으로 <script type="math/tex">n^m</script>을 정의한 식 : <script type="math/tex">n^m=n^{m-1}*n</script></li>
+      <li><script type="math/tex">5^4 = 5^3*5</script>에서  <script type="math/tex">5^4</script>의 값이 제대로 <script type="math/tex">5</script>를 4번 곱한 값으로 나오려면 <script type="math/tex">5^3</script>이 <script type="math/tex">5</script>를 3번 곱한 값이다라는 <strong>가정</strong>이 있어야 한다. 즉, ‘<script type="math/tex">5^3</script>이 5를 3번 곱한다면, <script type="math/tex">5^4</script>이 5를 4번 곱한다.’가 성립이 되는 것이다.</li>
+      <li>여기서 가정의 관계가 나오는 것이다. <script type="math/tex">5^4</script>이 <script type="math/tex">5</script>를 4번 곱한 값으로 나오려면 <script type="math/tex">5^3</script>은 <script type="math/tex">5</script>를 3번 곱한 값이다라는 <strong>가정</strong>이 <strong>성립</strong>해야하는 것. 그러면 우리는 <script type="math/tex">5^3</script>이 제대로 5를 3번 곱한다면 <script type="math/tex">5^4</script>이 제대로 성립을 한다는 것을 알고 있으므로, <script type="math/tex">5^3</script>이 정말로 5를 3번 곱하는 지에 대해서만 초점을 맞추면 된다. 그런데 <script type="math/tex">5^3</script>이 제대로 계산되는 지를 보려면 <script type="math/tex">5^2</script>이 5를 2번 곱한 값이라는 가정이 있어야 하고, <script type="math/tex">5^2</script>이 5를 2번 곱한 값이 맞다면 <script type="math/tex">5^3</script> 의 연산도 성립할 것이므로 <script type="math/tex">5^2</script>가 정말로 5를 2번 곱한 것인지에 대해서만 초점을 맞추면 된다. 이렇게 계속 가정과 가정 사이의 귀납적 증명이 반복된다.</li>
+      <li>위의 과정을 보면 함수의 관계가 그대로 나타난다. <script type="math/tex">5^4</script>은 <script type="math/tex">5^3</script>가 5를 3번 곱한 값이 맞다는 걸 증명하기를 기다리고 있다. <script type="math/tex">5^3</script>은 <script type="math/tex">5^2</script>가 5를 2번 곱한 값이 맞다는 걸 증명하기를 기다리고 있다. <script type="math/tex">5^2</script>은 <script type="math/tex">5^1</script>가 5를 1번 곱한 값이 맞다는 걸 증명하기를 기다리고 있다. <script type="math/tex">5^1</script>은 <script type="math/tex">5^0</script>가 5를 0번 곱한 값이 맞다는 걸 증명하기를 기다리고 있다. 그런데 여기서 5를 0번 곱한 값은 수학적으로 1이라고 정의가 되어있다. 이것은 틀린 것이 아니라 맞는 정의이다. 따라서 거꾸로 올라가면서 기다리고 있는 모든 함수들에게 기다리고 있는 정의가 모두 맞다는 것을 알려주면서 결국 <script type="math/tex">5^4</script>가 5를 4번 곱한다는 것이 참임을 증명한다.</li>
+    </ul>
+  </li>
+  <li>왜 귀납적 계산법이 제대로 된 값을 반환하는가?
+    <ol>
+      <li>수 많은 가정을 하다가</li>
+      <li>맨 끝에는 정확한 값이 있기 때문이다.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="재귀함수가-의미있는-예제-ver2">재귀함수가 의미있는 예제 ver.2</h3>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="c1">//getFactorial(n) : n!을 반환하는 함수
+</span><span class="kt">int</span> <span class="n">getFactorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">getFactorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">prinf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">getFactorial</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>getFactorial(n)이 n!을 반환한다는 것을 수학적으로 증명해야 모든 수에 대해 위의 재귀 함수에 성립한다고 볼 수 있다. 이것을 수학적으로 증명하는 방법이 있는데, 바로 ‘수학적 귀납법’이다.</p>
+
+<h2 id="수학적-귀납법을-통한-재귀함수의-정확성-증명">수학적 귀납법을 통한 재귀함수의 정확성 증명</h2>
+
+<h3 id="수학적-귀납법">수학적 귀납법</h3>
+
+<ul>
+  <li>명제(참/거짓을 판단할 수 있는 문장) P(n)이 모든 자연수 n에 대하여 성립함을 보이는 하나의 방법</li>
+  <li>증명 순서
+    <ol>
+      <li>P(1)이 참임을 보인다.</li>
+      <li>P(k)가 성립한다고 가정한 후, P(k+1)이 성립함을 보인다.</li>
+      <li>따라서 모든 자연수 n에 대하여 P(n)이 성립한다.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="수학적-귀납법의-예">수학적 귀납법의 예</h3>
+
+<ul>
+  <li>
+    <p>명제 : 모든 자연수 n에 대하여 다음이 성립함을 보여라.</p>
+  </li>
+  <li>
+    <script type="math/tex; mode=display">1+2+3+\cdot\cdot\cdot+n=\frac{n(n+1)}{2}</script>
+  </li>
+  <li>
+    <p>즉 P(n)은 위의 식이 성립하면 true, 아니면 false가 되는 것</p>
+  </li>
+  <li>
+    <p>증명 절차에 따른 증명</p>
+
+    <ol>
+      <li>P(1)이 성립함을 보인다.
+        <ol>
+          <li>왼쪽도 1, 오른쪽도 1이므로 성립</li>
+        </ol>
+      </li>
+      <li>P(k)가 성립한다고 가정한 후, P(k+1)이 성립함을 보인다.
+        <ol>
+          <li><script type="math/tex">1+2+3+\cdot\cdot\cdot+k=\frac{k(k+1)}{2}</script>가 성립할 때, <script type="math/tex">1+2+3+\cdot\cdot\cdot+(k+1)=\frac{(k+1)(k+2)}{2}</script> 가 맞는가?</li>
+          <li>P(k)의 양 변에 k+1을 더하면 <script type="math/tex">1+2+3+\cdot\cdot\cdot+(k+1)=\frac{k(k+1)}{2}+(k+1)</script>이 된다. 이것이 P(k+1)과 같으면 된다.</li>
+          <li>왼쪽은 자연스럽게 같은 꼴이 만들어졌다. 그럼 우리의 질문은 <script type="math/tex">\frac{k(k+1)}{2}+(k+1)</script> 도 <script type="math/tex">\frac{k(k+1)}{2}</script>꼴이 만들어지냐이다.</li>
+          <li>우변을 정리하면 <script type="math/tex">\frac{k^2+k+(2k+2)}{2}</script>가 되고, 다시 <script type="math/tex">\frac{k^2+3k+2}{2}</script>가 되고, 인수분해를 하면 결국 <script type="math/tex">\frac{(k+1)(k+2)}{2}</script>이 되어서 우리가 원하는 꼴이 만들어진다.</li>
+        </ol>
+      </li>
+      <li>이렇게 도미노 처럼 2부터 계속 증명이 참임을 밝힐 수 있으므로, 모든 자연수 n에 대하여 성립한다는 것을 알 수 있다.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="재귀함수가-의미있는-예제-ver3">재귀함수가 의미있는 예제 ver.3</h3>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="c1">//getFactorial(n) : n!을 반환하는 함수
+</span><span class="kt">int</span> <span class="n">getFactorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">getFactorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">prinf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">getFactorial</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>다시 돌아와서 getFactorial(n)이 n!을 반환한다는 것을 수학적 귀납법으로 증명해본다.</p>
+
+<ol>
+  <li>제일 처음인 0일 때 성립하는가?
+    <ol>
+      <li>getFactorial(0) = 1이므로 참이다.</li>
+    </ol>
+  </li>
+  <li>getFactorial(k)가 성립할 때 getFactorial(k+1)이 성립하는가? 즉, getFactorial(K)이 k!를 반환할 때, getFactorial(k+1)이 (k+1)!을 반환하는가? 같은 방식으로 조금 더 편하게 증명하기 위해 getFactorial(k-1)이 (k-1)!일 때, getFactorial(k)가 k!임을 증명해본다.
+    <ol>
+      <li>getFactorial(k)일 때, getFactorial(k)은 k*getFactorial(k-1)이다.</li>
+      <li>그런데 이 때 우리는 수학적 귀납법에 의해 getFactorial(k-1)이 (k-1)!이 성립한다는 것을 이미 가정했으므로, 당연하게 getFactorial(k-1)에 k를 곱하면 k!이라는 것이 성립한다.</li>
+    </ol>
+  </li>
+  <li>따라서 모든 자연수 n에 대해 getFactorial(n)이 성립하므로 getFactorial(n)은 n!을 제대로 반환한다는 것을 수학적 귀납법으로 증명했다.</li>
+</ol>
+
+<p>사실 getFactorial(n) 코드 자체가 증명의 과정이다. 즉, 재귀함수가 하는 일은 <strong>귀납적으로 계산하는 방법</strong>이고, 이 과정은 수학적 귀납법으로 증명할 수 있다. 이 때, getFactorial(n)이 n!을 반환하는지 모름에도 불구하고 getFactorial(n)이 n!을 반환한다고 정의하면 <u>getFactorial(n-1)이 (n-1)!을 반환한다고 가정할 수 있다는 것</u>이 굉장히 중요한 부분이다. 따라서 <strong>우리는 getFactorial(n-1)이 (n-1)!을 반환한다고 치고 getFactorial(n)이 n!을 반환하게 만들기만 하면 되는 것</strong>이다!!</p>
+
+<h2 id="재귀함수-디자인의-절차">재귀함수 디자인의 절차</h2>
+
+<p>재귀함수가 나오면 이 3가지 절차를 <strong>!!!무조건!!!</strong>따라야 한다.</p>
+
+<ol>
+  <li><strong>함수의 역할을 말로 정확하게 정의한다.</strong>
+    <ol>
+      <li>수학적 귀납법에서는 증명해야될 명제가 무엇인지를 아는 것과 같다. 증명해야될 것이 무엇인지를 알아야 증명을 한다.</li>
+      <li>마찬가지로 계산할 것이 무엇인지를 알아야 계산을 한다. 즉, 함수에 무엇을 넣으면 무엇이 나오는 지, 함수의 역할을 말로 명확하게 정의해야 한다.</li>
+    </ol>
+  </li>
+  <li><strong>기저조건(Base condition = 제일 단순한 경우)에서 함수가 제대로 동작함을 보인다.</strong></li>
+  <li><strong>함수가 (작은 input에 대하여) 제대로 동작한다고 가정하고 함수를 완성한다.</strong>
+    <ol>
+      <li>수학적 귀납법에서 k일 때 성립한다고 가정하고 k+1을 증명하는 것과 똑같다.</li>
+    </ol>
+  </li>
+</ol>
+
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/algorithm/2018/10/01/%E1%84%8C%E1%85%A2%E1%84%80%E1%85%B1%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/algorithm/2018/10/01/%E1%84%8C%E1%85%A2%E1%84%80%E1%85%B1%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/algorithm/2018/10/01/%E1%84%8C%E1%85%A2%E1%84%80%E1%85%B1%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/algorithm/2018/10/01/%E1%84%8C%E1%85%A2%E1%84%80%E1%85%B1%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/algorithm/2018/10/01/%E1%84%8C%E1%85%A2%E1%84%80%E1%85%B1%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

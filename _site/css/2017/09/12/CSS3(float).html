@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CSS3 - FLOAT</title>
+  <meta name="description" content="float / clear / ::before, ::after">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/css/2017/09/12/CSS3(float).html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="CSS3 - FLOAT">CSS3 - FLOAT</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        12 SEP 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    2 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h5 id="참고-자료--멋쟁이-사자처럼-노지승님의-동영상-강의멋쟁이-사자처럼-5기가-아니면-들을-수-없는-강의이다-강의를-바탕으로-정리한-것이므로-문제가-될-시-자진-삭제하겠다">참고 자료 : 멋쟁이 사자처럼 노지승님의 동영상 강의(멋쟁이 사자처럼 5기가 아니면 들을 수 없는 강의이다. 강의를 바탕으로 정리한 것이므로 문제가 될 시 자진 삭제하겠다.)</h5>
+
+<h1>FLOAT</h1>
+
+<h4>* float를 배우는 가장 큰 이유는 가로배치 때문이다!</h4>
+
+<blockquote>
+  <p>float:(물 위나 공중에서) 떠[흘러]가다[떠돌다] -&gt; float 속성은 말 그대로 붕 뜨는 상태가 되는 것을 의미하고, float 속성이 적용되는 순간 parent요소와 float가 적용되지 않은 상태의 다른 형제요소들은 자식이 집을 나간 것처럼 float가 적용된 박스를 인식하지 못한다.</p>
+</blockquote>
+
+<h4>1) float 미적용 상태</h4>
+
+<p><img src="/img/2017-09-12-01.PNG" alt="Smithsonian Image" /><img src="/img/2017-09-12-05.PNG" alt="Smithsonian Image" /><br /></p>
+<h4>2) 레드 박스에 float:left 속성 적용 -&gt; 레드 박스가 붕 뜬다.</h4>
+
+<p><img src="/img/2017-09-12-02.PNG" alt="Smithsonian Image" /><br /></p>
+
+<h5>이렇게 float속성을 적용할 때, 아주 중요한 속성 변화가 일어난다. 블록이 인라인이든 인라인 블록이든 float를 하게 되면 block요소로 무조건 바뀐다! 인라인 요소였다고 할지라도 block으로 바뀌므로 width, height, padding-top/bottom, margin-top/bottom 등을 사용할 수 있게 된다는 말이다! 하지만 놓치지 말아야할 더 중요한 부분은 바로 길막을 할 수 없는 block이 된다는 것. 별도의 width가 주어지지 않으면 부모의 width만큼 늘어나는 것이 아니라, 자신이 가진 contents 만큼만 width가 늘어난다. 또한 별도의 width가 주어졌다고 해서 parent요소와 비교하여 남는 width를 자동으로 margin으로 채우던 특성도 사라진다. 이 이유는 빈 공간을 가지고 가로배치를 하기 위해서이다.</h5>
+
+<p><img src="/img/2017-09-12-07.PNG" alt="Smithsonian Image" /></p>
+
+<p><img src="/img/2017-09-12-08.PNG" alt="Smithsonian Image" /><br /></p>
+
+<h4>3) float 속성이 적용되지 않은 다른 형제 박스들이 레드 박스를 인식하지 못해서 왼쪽으로 자리를 당겨서 정렬한다.<br /></h4>
+
+<p><img src="/img/2017-09-12-03.PNG" alt="Smithsonian Image" /><br /></p>
+
+<h4>4) 부모 박스도 레드 박스를 인식하지 못해서 자신의 width를 자신이 인식하는 형제박스들만의 width로 축소한다.</h4>
+
+<p><img src="/img/2017-09-12-04.PNG" alt="Smithsonian Image" /></p>
+
+<p><img src="/img/2017-09-12-06.PNG" alt="Smithsonian Image" /><br /></p>
+
+<ul>
+  <li>이 때 추가로 알아둬야할 점은 lnline 속성을 가진 다른 요소들은 float속성이 적용된 요소들을 인식할 수 있다는 것이다. 이 점이 사소하지만 중요한 차이다. 아래의 이미지에서는 검은색 배경 박스는 block 속성이라서 float가 적용된 요소들을 인식하지 못하고 왼쪽상단으로 바로 붙지만, p태그는 기본적으로 inline 속성을 가지고 있기 때문에 float가 적용된 요소들을 인식할 수 있어서 float 요소들 옆 왼쪽 상단에 붙는 모습을 볼 수 있다. 따라서 float 요소들에 padding이나 margin을 주면 p태그가 모두 인식하는 것을 볼 수 있다.<br /></li>
+</ul>
+
+<p><img src="/img/2017-09-12-24.PNG" alt="Smithsonian Image" /></p>
+
+<p><img src="/img/2017-09-12-26.PNG" alt="Smithsonian Image" /><br /></p>
+
+<h1>float로 무너진 레이아웃을 바로 잡는 방법 1<br /> 야매 - OVERFLOW</h1>
+
+<p>overflow:hidden을 적용하면 float이 적용된 자식 요소들을 인식하지 못했던 부모 요소가 갑자기 float가 적용된 모든 자식 요소들을 다시 인지한다. 하지만 이 방법은 어느 정도 한계가 있으므로 추천하지 않는다.<br /></p>
+
+<p><img src="/img/2017-09-12-27.PNG" alt="Smithsonian Image" /><br /></p>
+
+<h1>float로 무너진 레이아웃을 바로 잡는 방법 2<br /> 정석 - CLEARFIX</h1>
+
+<p>clear:both은 float:right, float:left가 적용된 모든 요소들을 찾는다는 의미이고, clear:left은 float:left가 적용된 요소, clear:right는 float:right가 적용된 요소들을 찾겠다는 의미이다.<br /></p>
+
+<p><img src="/img/2017-09-12-29.PNG" alt="Smithsonian Image" />
+<img src="/img/2017-09-12-30.PNG" alt="Smithsonian Image" /><br /></p>
+
+<h3>clearfix 가상 요소를 응용해서 레이아웃 독립시키기</h3>
+
+<p>clearfix의 가상요소를 이용해서 내가 원하는 레이아웃의 맨 앞과 뒤에 넣고 다른 레이아웃에 영향을 받지 않게 할 수 있다.<br />
+<img src="/img/2017-09-12-31.PNG" alt="Smithsonian Image" />
+<img src="/img/2017-09-12-32.PNG" alt="Smithsonian Image" /><br /></p>
+
+<p>응용을 하면 이렇게 가상요소의 마지막인 after만 넣어서 부모 요소가 float 속성이 적용된 모든 요소들을 찾게 할 수 있다.<br />
+<img src="/img/2017-09-12-34.PNG" alt="Smithsonian Image" />
+<img src="/img/2017-09-12-33.PNG" alt="Smithsonian Image" /><br /></p>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/css/2017/09/12/CSS3(float).html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/css/2017/09/12/CSS3(float).html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/css/2017/09/12/CSS3(float).html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/css/2017/09/12/CSS3(float).html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/css/2017/09/12/CSS3(float).html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

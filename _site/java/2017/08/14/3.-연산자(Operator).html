@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>3. 연산자(Operator)</title>
+  <meta name="description" content="이전에 배웠던 변수들을 가지고 하는 연산">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/java/2017/08/14/3.-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1(Operator).html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="3. 연산자(Operator)">3. 연산자(Operator)</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        14 AUG 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    9 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h3 id="참고도서--자바의-정석-남궁성-저-도우-출판">참고도서 : 자바의 정석 (남궁성 저, 도우 출판)</h3>
+
+<h3 id="1-연산자와-피연산자">1. 연산자와 피연산자</h3>
+
+<blockquote>
+  <ul>
+    <li>연산자(operator): 연산을 수행하는 기호(+,-,*,/등)</li>
+    <li>피연산자(operand): 연산자의 작업 대상(변수,상수,리터럴,수식)</li>
+    <li>연산자는 피연산자로 연산을 수행하고 나면 항상 결과값을 반환한다.</li>
+  </ul>
+</blockquote>
+
+<h3 id="2-식">2. 식</h3>
+
+<blockquote>
+  <ul>
+    <li>식(expresiion): 연산자와 피연산자를 조합하여 계산하고자하는 바를 표현한 것</li>
+    <li>식을 평가(evaluation)한다: 식을 계산하여 결과를 얻는 것</li>
+  </ul>
+</blockquote>
+
+<h3 id="3-연산자의-종류와-우선순위">3. 연산자의 종류와 우선순위</h3>
+
+<p><img src="https://cfile239.uf.daum.net/image/1525EA4C5021BEDE196B3B" alt="Smithsonian Image" /><br /></p>
+<ul>
+  <li>(타입)은 ‘형변환 할 때 형변환을 하는 대상을 기재하는 형변환 연산자’를 의미한다.</li>
+  <li>피연산자의 개수에 따라 단항, 이항, 삼항을 분류</li>
+  <li>연산자의 기능에 따라 산술, 비교, 논리, 대입을 분류</li>
+  <li>우선순위가 확실하지 않다면 먼저 계산되어야하는 부분을 괄호로 묶는 것이 확실하고 가독성도 좋다.</li>
+  <li>산술 &gt; 비교 &gt; 논리 &gt; 대입. 대입은 제일 마지막에 수행된다.</li>
+  <li>단항(1) &gt; 이항(2) &gt; 삼항(3). 단항 연산자의 우선순위가 이항 연산자보다 높다.</li>
+  <li><u>단항 연산자와 대입 연산자를 제외</u>한 모든 연산의 진행방향은 왼쪽에서 오른쪽이다.</li>
+</ul>
+
+<h3 id="4-산술-변환">4. 산술 변환</h3>
+
+<p><strong>일반 산술 변환</strong>이란? <strong>연산 수행 직전에 발생하는 피연산자의 자동 형변환</strong></p>
+
+<p>이항 연산자는 두 피연산자의 타입이 일치해야 연산이 가능하므로, 피연산자의 타입이 서로 다르다면 연산 전에 형변환 연산자로 타입을 일치시켜야 한다. 대부분의 경우, 두 피연산자의 타입 중에서 더 큰 타입으로 일치시키는데 작은 타입으로 형변환하면 원래의 값이 손실될 가능성이 있기 때문이다. 변수의 형변환과 같은 개념이다.</p>
+
+<blockquote>
+  <p>두 피연산자의 타입을 같게 일치시킨다(보다 큰 타입으로 일치)
+피연산자의 타입이 int보다 작은 타입이면 int로 변환된다.</p>
+</blockquote>
+
+<h3 id="5-연산자-종류">5. 연산자 종류</h3>
+
+<h5 id="1-단항-연산자">1. 단항 연산자</h5>
+
+<ul>
+  <li>++(증가 연산자): 피연산자를 1증가 시킨다</li>
+  <li>–(감소 연산자): 피연산자를 1감소 시킨다</li>
+  <li>+, - (부호 연산자): 피연산자가 음수면 ‘-‘를 앞에 붙이고 양수면 ‘+’를 붙인다. 부호 연산자는 boolean형과 char형을 제외한 기본형에만 사용이 가능하다. 덧셈, 뺄셈의 사칙 연산자와는 피연산자의 개수로 구별한다.</li>
+</ul>
+
+<h5 id="2-산술-연산자">2. 산술 연산자</h5>
+
+<ul>
+  <li>+, -, *, / (사칙 연산자): 설명 생략</li>
+</ul>
+
+<p>피연산자가 정수형인 경우, 나누는 수로 0을 사용할 수 없다. 만일 0으로 나누면, 컴파일은 정상적으로 되지만 실행 시 오류(ArithmeticException)가 발생한다.</p>
+
+<p>부동 소수점값인 0.0f, 0.0d로 나누는 것은 가능하지만 그 결과는 Infinity(무한대)이다. 나눗셈 연산자 ‘/’와 나머지 연산자’%’의 피연산자가 무한대(Infinity)또는 0.0인 경우의 표는 아래와 같다.</p>
+
+<p><img src="https://i0.wp.com/www.javachobo.com/images/p3_6.gif" alt="Smithsonian Image" /><br /></p>
+
+<h5 id="3-나머지-연산자">3. 나머지 연산자</h5>
+
+<ul>
+  <li>
+    <p>% : 왼쪽의 피연산자를 오른쪽 피연산자로 나누고 남은 나머지 값을 결과로 반환하는 연산자. 나눗셈에서처럼 나누는 수(오른쪽 피연산자)로 0을 사용할 수 없고, <strong>피연산자로 정수만 허용한다.</strong></p>
+  </li>
+  <li>
+    <p>양쪽 부호 중 왼쪽 부호를 따르는 특징이 있다.</p>
+
+    <ul>
+      <li>
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="mi">10</span><span class="o">%</span><span class="mi">8</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="mi">10</span><span class="o">%-</span><span class="mi">8</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="o">-</span><span class="mi">10</span><span class="o">%</span><span class="mi">8</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="o">-</span><span class="mi">10</span><span class="o">*-</span><span class="mi">8</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="4-비교-연산자">4. 비교 연산자</h5>
+
+<ul>
+  <li>&lt;, &gt;, &lt;=, &gt;= (대소 비교 연산자)
+  &gt; : 좌변 값이 크면, true 아니면 false 반환
+  &lt; : 좌변 값이 작으면, true 아니면 false 반환
+  &gt;= : 좌변 값이 크거나 같으면, true 아니면 false 반환
+  &lt;= : 좌변 값이 작거나 같으면, true 아니면 false 반환</li>
+  <li>==, != (등가 비교 연산자)
+  == : 두 값이 같으면 true, 아니면 false 반환
+  != : 두 값이 다르면 true, 아니면 false 반환</li>
+  <li>문자열의 비교: 두 문자의 내용이 같은지를 비교할 때는 ‘==’ 대신 equals()라는 메서드를 사용해야 한다. ‘==’는 서로 다른 객체면 false를 반환하기 때문이다. (String은 클래스이므로 같은 내용일지라도 다른 참조 변수명을 사용하여 객체를 생성하면 서로 다른 객체가 된다. 즉, 내용만 같을 뿐 참조하는 주소는 다른 객체인 것. 패스워드는 같은데 아이디는 다른 것이라고 생각하면 이해가 쉽다.)</li>
+</ul>
+
+<h5 id="4-논리-연산자">4. 논리 연산자</h5>
+
+<ul>
+  <li>&amp;&amp;, ||, !
+||(OR결합) : 피연산자 중 어느 한 쪽만 true이면 true를 결과로 얻는다
+&amp;&amp;(AND결합) : 피연산자 양쪽 모두 true이어야 true를 결과로 얻는다.
+! (논리 부정 연산자) : 피연산자가 true이면 false를, false면 true를 결과로 반환한다.</li>
+</ul>
+
+<p><img src="https://cfile4.uf.tistory.com/image/2725BB4256A8F7F4359EEA" alt="Smithsonian Image" /><br /></p>
+
+<ul>
+  <li>&amp;, |, ^, ~, «, »,»&gt;
+비트 연산자는 피연산자를 비트단위로 논리 연산한다. 피연산자를 이진수로 표현했을 때의 각 자리를 규칙에 따라 연산을 수행한다. 피연산자로 실수는 허용하지 않고 정수(문자 포함 : 컴퓨터는 문자도 숫자로 인식하고 연산하므로)만 허용된다.
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>(OR연산자) : 피연산자 중 한 쪽의 값이 1이면, 1을 결과로 반환한다. 그 외에는 0을 반환한다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>&amp;(AND연산자) : 피연산자 양 쪽이 모두 1이어야만 1을 결과로 얻는다. 그 외에는 0을 얻는다.</li>
+      <li>^(XOR연산자) : 피연산자의 값이 서로 다를 때만 1을 결과로 얻는다. 같을 때는 0을 얻는다.</li>
+      <li>!(비트 전환 연산자) : 이 연산자는 피연산자를 2진수로 표현했을 때, 0은 1로, 1은 0으로 바꾼다. 논리부정 연산자’!’와 유사하다.</li>
+      <li>«(쉬프트 연산자) : 피연산자의 각 자리를 2진수로 표현했을 때, 왼쪽으로 한칸 씩 이동 =&gt; 피연산자가 양수, 음수일 경우 모두 빈칸은 0으로 채운다. (x«n은 x*2^n의 결과와 같다.)</li>
+      <li>&gt;&gt;(쉬프트 연산자) : 피연산자의 각 자리를 2진수로 표현했을 때, 왼쪽으로 한칸 씩 이동 =&gt; 피연산자가 양수일 경우 빈칸은 0으로 채운다.(2진수 맨 앞자리는 부호비트 이기 때문에 왼쪽 피연산자가 음수인 경우는 빈자리를 1로 채운다.) (x«n은 x/2^n의 결과와 같다.)</li>
+      <li>&gt;&gt;&gt;(쉬프트 연산자) : 오른쪽으로 2비트 시프트 한다. (C 언어에는 없고 자바에만 있는 연산자이다.)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://cfile10.uf.tistory.com/image/183EDD365090D094156F3C" alt="Smithsonian Image" /><br /></p>
+
+<h5 id="6-그-외-연산자">6. 그 외 연산자</h5>
+
+<ul>
+  <li>? (조건 연산자)
+조건식 ? 식1 : 식 2
+위와 같은 형태를 삼항 연산자라고 하며 조건식의 결과가 true면 식1이, false이면 식2가 연산결과가 된다.</li>
+  <li>= (대입 연산자)
+오른쪽 피연산자의 값(식이라면 평가값)을 왼쪽 피연산자에 저장한다. 그리고 저장된 값을 연산결과로 반환한다.</li>
+  <li>op(다른 연산자들) + = (복합 대입 연산자)</li>
+</ul>
+
+<p><img src="https://cfile209.uf.daum.net/image/2353EF435430FAD7080B44" alt="Smithsonian Image" /></p>
+
+<h3 id="6-이항연산자의특징">6. 이항연산자의특징</h3>
+
+<p>이항연산자는 연산을 수행하기 전에 피연산자의 타입을 일치시킨다. 그러나 타입을 일치시키는 과정을 제대로 알지 못해 많은 혼란이 일어나므로 여러가지 경우의 예제를 통해 헷갈리는 일이 없도록 하자.</p>
+
+<ul>
+  <li>int보다 크기가 작은 기본형 정수 타입은 int로 변환 (byte, char, short → int)</li>
+  <li>피연산자 중 표현범위가 큰 타입으로 형변환
+    <ul>
+      <li>byte + byte → int + int → int</li>
+      <li>char + int → int + int → int  (char 타입은 해당 문자의 유니코드 값으로 계산)</li>
+      <li>float + int → float + float → float</li>
+      <li>long + float → float + float → float</li>
+      <li>float + double → double + double → double</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="kt">byte</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">;</span>
+
+<span class="c1">//byte + byte → int + int → int</span>
+<span class="kt">byte</span> <span class="n">c</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">;</span> <span class="c1">//에러. byte타입인 a와 int타입인 b를 연산할 수 없다.</span>
+<span class="kt">byte</span> <span class="n">c</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">);</span> <span class="c1">//oK. int타입인 a+b의 결과 값을 byte로 형 변환 하여 변수 c에 저장</span>
+
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1000000</span><span class="o">;</span> <span class="c1">//1,000,0000</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2000000</span><span class="o">;</span> <span class="c1">//1,000,0000</span>
+
+<span class="c1">//int * int → int</span>
+<span class="kt">long</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">;</span> <span class="c1">// c는 2,000,000,000,000이어야 할 것 같지만, 결과 값을 출력해보면 -1454759936이 나온다. a*b의 결과 값이 int타입이 나타낼 수 있는 값의 범위를 넘었으므로 정수의 오버플로우 현상이 일어난 것이다. 대부분의 컴파일러는 오버플로우를 무시하기 때문에 조심해야할 부분이다. 자칫 잘못하면 코드 내에서 문제를 일으킬 수 있다. 궁금한 분은 직접 찾아보길 권한다.</span>
+
+<span class="c1">//long * int → long * long → long</span>
+<span class="kt">long</span> <span class="n">c</span> <span class="o">=</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span><span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="c1">//c=2,000,000,000,000. 위와 같은 정수의 오버플로우 현상을 해결하는 방법은 a와 b중 하나를 long으로 형변환 시키는 것이다. 이항 연산자는 피연산자 중 표현범위가 큰 타입으로 자동 형변환 하므로 a가 long 타입이면 int타입인 b는 long타입으로 자동 형변환 되어 연산되고, 결과 값도 long이 된다. 따라서 2,000,000,000,000이라는 큰 숫자를 다룰 수 있다.</span>
+ 
+<span class="kt">long</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1000000</span> <span class="o">*</span> <span class="mi">1000000</span><span class="o">;</span> <span class="c1">// a = -727,379,968 / int 타입(오버플로우 발생)</span>
+<span class="kt">long</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1000000</span> <span class="o">*</span> <span class="mi">1000000L</span><span class="o">;</span> <span class="c1">// b = 1,000,000,000,000 / long 타입(이항 연산자의 특징으로 인하여 모든 피연산자가 long으로 형변환 되고 결과 값도 long 타입이 된다.)</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1000000</span> <span class="o">*</span> <span class="mi">1000000</span> <span class="o">/</span> <span class="mi">1000000</span><span class="o">;</span> <span class="c1">// c는 -727 / int타입(오버플로우 발생) 이항연산자의 연산 방향은 왼쪽→오른쪽 이므로 1000000 * 1000000 연산하면, int타입이 다룰 수 없는 큰 값의 결과가 나옴에 따라 오버플로우가 발생한다. 따라서 다시 1000000으로 나눈다고 하더라도 정상적인 값이 나오지 않는다.</span>
+<span class="kt">int</span> <span class="n">d</span> <span class="o">=</span>  <span class="mi">1000000</span> <span class="o">/</span> <span class="mi">1000000</span> <span class="o">*</span> <span class="mi">1000000</span><span class="o">;</span> <span class="c1">// 1000000 / 1000000의 연산의 결과는 1이므로 1000000을 곱해도 int 타입의 범위를 넘어서지 않는다. 따라서 정상적으로 1000000이 결과 값으로 반환된다.</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위의 코드는 정수형의 데이터 타입의 예제들이다. 그렇다면 문자타입과 정수 타입의 연산은 어떻게 가능할까?</p>
+
+<p>컴퓨터는 0,1을 제외한 어떤 것도 인식할 수 없다. 문자를 인식할 수 없는 건 당연한 사실이다. 그래서 사람들은 문자마다 고유의 십진수 값을 정하고 이 십진수 값을 이진수로 변환하여 컴퓨터가 연산할 수 있게 하도록 만들었다. 여기서 문자마다 쓰인 십진수 값이 무엇인지 나타낸 것이 <strong>유니코드</strong>이다. 추가적으로 궁금한 사람은 검색을 해보길 바란다. char타입은 모두 이 유니코드의 값으로 이루어져 있다.</p>
+
+<p>다음은 문자 타입의 여러가지 연산 경우이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kt">char</span> <span class="n">c1</span> <span class="o">=</span> <span class="sc">'a'</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">//에러. c1의 값은 'a'이므로 유니코드에서 정수값 65에 해당한다. 따라서 int 타입이 되고 c1 + 1은 int 타입 66의 결과 값을 갖게 되는데, 이 정수형 int 타입은 문자 타입인 char이 아니므로 대입할 수 없다는 에러가 난다. </span>
+<span class="kt">char</span> <span class="n">c2</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)(</span><span class="n">c1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span> <span class="c1">//OK. 결과 값인 66을 char으로 형변환 하면 'b'가 되므로 대입이 가능하다.</span>
+<span class="kt">char</span> <span class="n">c2</span> <span class="o">=</span> <span class="o">++</span><span class="n">c1</span><span class="o">;</span> <span class="c1">//OK. c1의 값인 'a'는 int 타입 65와 같으므로 ++연산자도 사용 가능하다.</span>
+
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="sc">'B'</span> <span class="o">-</span> <span class="sc">'A'</span><span class="o">;</span> <span class="c1">//1. //문자에서 문자를 빼면 두 문자 사이의 문자 갯수를 알 수 있다.</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="sc">'2'</span> <span class="o">-</span> <span class="sc">'0'</span><span class="o">;</span> <span class="c1">//2. //char타입 숫자에서 char타입 숫자를 빼면 두 숫자 값 사이의 개수를 알 수 있다.</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>실수형 타입의 예제도 살펴보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">//실수형 타입을 int형으로 형 변환할 때 컴파일러는 정수 부분을 제외한 나머지 소수점 부분을 다 버린다. 또한 int형은 자동으로 더 큰 범위인 float으로 형변환 된다.</span>
+<span class="kt">float</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.141592f</span><span class="o">;</span>
+<span class="kt">float</span> <span class="kt">short</span> <span class="n">Pi</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">pi</span><span class="o">*</span><span class="mi">1000</span><span class="o">)/</span><span class="mi">1000</span><span class="n">f</span><span class="o">;</span>
+				 <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="mf">3.141592f</span><span class="o">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">)/</span><span class="mi">1000</span><span class="n">f</span><span class="o">;</span>
+				 <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="mf">3141.592f</span><span class="o">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="n">f</span><span class="o">;</span>
+				 <span class="mi">3141</span> <span class="o">/</span> <span class="mi">1000</span><span class="n">f</span><span class="o">;</span>
+				 <span class="mf">3141.0f</span> <span class="o">/</span> <span class="mi">1000</span><span class="n">f</span><span class="o">;</span>
+				 <span class="mf">3.141f</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/java/2017/08/14/3.-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1(Operator).html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/java/2017/08/14/3.-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1(Operator).html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/java/2017/08/14/3.-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1(Operator).html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/java/2017/08/14/3.-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1(Operator).html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/java/2017/08/14/3.-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1(Operator).html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>

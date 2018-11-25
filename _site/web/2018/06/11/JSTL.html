@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121414052-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121414052-1');
+</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JSTL</title>
+  <meta name="description" content="JSP Standard Tag Library">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/web/2018/06/11/JSTL.html">
+  <link rel="alternate" type="application/rss+xml" title="Ducku Salon" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+<body>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="table cover">
+        
+<div class="cover-card table-cell table-middle">
+  
+  <img src="http://localhost:4000/img/authorLogo.jpeg" alt="" class="avatar">
+  
+  <a href="http://localhost:4000/" class="author_name">Ducku Salon</a>
+  <span class="author_job">portfolio & Tech blog</span>
+  <span class="author_bio mbm">Dreams are not dreamt, they are commplished.</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/resume/">Resume</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+                                                                           
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on https://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rnejrl123456@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="https://facebook.com/originducku" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    <li><a href="https://linkedin.com/in/youduk-han-2bbb94108" class="social-link-item" target="_blank"><i class="fa fa-fw fa-linkedin"></i></a></li>
+    
+    
+    
+    
+    <li><a href="https://github.com/Youduk" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m12">
+      <div class="post-listing">
+        <div class="post-container">
+<a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/Boostcourse.png"
+  
+  alt="JSTL feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="JSTL">JSTL</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        11 JUN 2018
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    6 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <p>이 강의는 connect 재단의 boostcourse 강의를 공부 목적으로 정리한 것입니다.</p>
+
+<h1 id="jstljsp-standard-tag-library">JSTL(JSP Standard Tag Library)</h1>
+
+<p>프론트 개발자가 JSP를 수정하는데 JSP 안에 자바 코드와 HTML 코드가 섞여 있다면 수정할 때 굉장히 어려움을 느끼게 될 가능성이 크다. 이런 문제를 해결하기 위해 등장한 것이 JSTL이다. JSTL을 이용하면 태그형식으로 조건문, 반복문 등을 사용할 수 있고 앞에서 배운 EL과 연동하면 더욱 강력하게 사용이 가능하다.</p>
+
+<p><img src="/img/JSTL_1.png" alt="" /></p>
+
+<h2 id="jstl을-사용하려면"><strong>JSTL을 사용하려면?</strong></h2>
+
+<ul>
+  <li><a href="https://tomcat.apache.org/download-taglibs.cgi">https://tomcat.apache.org/download-taglibs.cgi</a></li>
+  <li>위의 사이트에서 3가지 jar파일을 다운로드 한 후 WEB-INF/lib/ 폴더에 복사를 한다.</li>
+  <li>이클립스에서 파일을 추가하거나 삭제할 때는 웬만하면 이클립스 창에서 수행하는 것이 좋다. 만약 파일 탐색기나 파인더에서 임의로 파일을 생성하거나 삭제하는 등의 작업을 하면 이클립스에서 인식하지 못한 정보로 분류되어 인식하지 못하는 경우가 생긴다.</li>
+</ul>
+
+<p><img src="/img/JSTL_2.png" alt="" /></p>
+
+<h2 id="jstl이-제공하는-태그의-종류">JSTL이 제공하는 태그의 종류</h2>
+
+<p><img src="/img/JSTL_3.png" alt="" /></p>
+
+<p>코어가 가장 중요하다. 조건문, 반복문등을 처리한다. 이번 강의에서는 코어 태그만 더 자세하게 살펴본다.</p>
+
+<h2 id="코어-태그">코어 태그</h2>
+
+<p><img src="/img/JSTL_4.png" alt="" /></p>
+
+<h2 id="코어-태그-변수-지원-태그---set-remove">코어 태그: 변수 지원 태그 - set, remove</h2>
+
+<p><img src="/img/JSTL_5.png" alt="" /></p>
+
+<ul>
+  <li>set : JSTL이 제공하는 set태그는 JSP의 4가지 scope에 값을 저장할 수 있다. remove로 삭제도 가능하다.</li>
+</ul>
+
+<h4 id="set-remove-활용-실습">set, remove 활용 실습</h4>
+
+<p>WebContent/jstl01.jsp</p>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;!-- jstl은 커스텀 태그를 만들어서 사용도 가능하기에 태그 사용 시 태그가 중복 될 수도 있으므로, prefix를 이용하여 태그를 확실하게 명시해준다. --&gt;
+&lt;%@ taglib prefix="c" uri="https://java.sun.com/jsp/jstl/core" %&gt; 
+&lt;c:set var="value1" scope="request" value="kang"/&gt;
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+성 : ${value1} &lt;br&gt;
+
+&lt;!--태그 사이에 값이 없다면 단일 태그로 사용 가능--&gt;    
+&lt;c:remove var="value1" scope="request"/&gt;
+
+성 : ${value1}
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><img src="/img/JSTL_13.png" alt="" /></p>
+
+<p>위의 그림 처럼 c:set 태그를 통해 변수가 생성되었다가 c:remove 태그를 통해 변수가 삭제된 것을 볼 수 있다.</p>
+
+<h2 id="코어-태그--변수-지원-태그---프로퍼티-맵의-처리">코어 태그 : 변수 지원 태그 - 프로퍼티, 맵의 처리</h2>
+
+<p><img src="/img/JSTL_6.png" alt="" /></p>
+
+<ul>
+  <li>변수 지원 태그를 이용하여 프로퍼티나 맵을 처리할 수 있다. 자바를 공부할 때 객체의 프로퍼티라는 용어가 나오면 객체의 값을 변경하거나 값을 읽어들이기 위한 getter(), setter() 메서드를 생각하면 된다.</li>
+  <li>set 태그를 이용하여 특정한 객체의 메서드의 값을 전달할 수도 있다. <code class="highlighter-rouge">&lt;c:set target="${some}" property="propertyName" value="anyValue"/&gt;</code> 라는 형식으로 태그를 사용하면 실제 클래스를 사용할 때 <code class="highlighter-rouge">some.setPropertyName(anyvalue)</code> 혹은 <code class="highlighter-rouge">some.put(propertyName, anyValue)</code>의 형식으로 바뀌어서 실행된다. 하지만 이 부분이 정상적으로 실행되려면 getter(), setter()의 메서드 명이 바뀌지 않고 기존의 관례대로 생성되어 있다는 것을 가정해야한다.</li>
+</ul>
+
+<h2 id="코어-태그--흐름제어-태그---if">코어 태그 : 흐름제어 태그 - if</h2>
+
+<p><img src="/img/JSTL_7.png" alt="" /></p>
+
+<ul>
+  <li>자바의 조건문과는 다르게 else가 없다.</li>
+</ul>
+
+<h4 id="if-태그-활용-실습">if 태그 활용 실습</h4>
+
+<p>WebContent/jstl02.jsp</p>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%&gt;
+&lt;%@ taglib prefix="c" uri="https://java.sun.com/jsp/jstl/core" %&gt; 
+&lt;%
+//request scope에 값 지정
+request.setAttribute("n", 10);
+%&gt;
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;c:if test="${n == 0}"&gt;
+n은 0과 같습니다.
+&lt;/c:if&gt;
+
+&lt;c:if test="${n == 10}"&gt;
+n은 10과 같습니다.
+&lt;/c:if&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><img src="/img/JSTL_14.png" alt="" /></p>
+
+<h2 id="코어-태그--흐름제어-태그---choose">코어 태그 : 흐름제어 태그 - choose</h2>
+
+<p><img src="/img/JSTL_8.png" alt="" /></p>
+
+<ul>
+  <li>이 태그가 if-else 구문과 유사하다고 볼 수 있다.</li>
+</ul>
+
+<h4 id="choose-태그-활용-실습">choose 태그 활용 실습</h4>
+
+<p>WebContent/jstl03.jsp</p>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;%@ taglib prefix="c" uri="https://java.sun.com/jsp/jstl/core" %&gt; 
+&lt;%@ page import="java.util.*" %&gt;
+&lt;%
+    request.setAttribute("score", 83);
+%&gt;
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;c:choose&gt;
+    &lt;c:when test="${score &gt;=90 }"&gt;
+    A학점입니다.
+    &lt;/c:when&gt;
+    &lt;c:when test="${score &gt;=80 }"&gt;
+    B학점입니다.
+    &lt;/c:when&gt;
+    &lt;c:when test="${score &gt;=70 }"&gt;
+    C학점입니다.
+    &lt;/c:when&gt;
+    &lt;c:when test="${score &gt;=60 }"&gt;
+    D학점입니다.
+    &lt;/c:when&gt;
+    &lt;c:otherwise&gt;
+    F학점입니다.
+    &lt;/c:otherwise&gt;            
+&lt;/c:choose&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><img src="/img/JSTL_15.png" alt="" /></p>
+
+<h2 id="코어-태그--흐름제어-태그---foreach">코어 태그 : 흐름제어 태그 - forEach</h2>
+
+<p><img src="/img/JSTL_9.png" alt="" /></p>
+
+<ul>
+  <li>forEach를 이용하면 배열이나 list같은 자료구조에서 자료들을 하나씩 뽑아 올 수 있다.</li>
+  <li>‘아이템’에 올 수 있는 것은 Collection들의 다양한 종류가 들어올 수 있다. 이것들은 값을 하나가 아니라 여러개 저장하고 있는 것들이다. 따라서 이 아이템들을 forEach 태그로 모두 돌면서 각각의 요소를 가리킬 이름을 ‘변수’부분에 넣어 주는 것이다.</li>
+  <li>[]로 되어있는 부분은 생략이 가능한 부분이다. 시작번호와 끝번호는 생략이 가능하다.</li>
+</ul>
+
+<h4 id="foreach-태그-활용-실습">forEach 태그 활용 실습</h4>
+
+<ul>
+  <li>list를 하나 만든다.</li>
+  <li>list는 request scope에 저장한다.</li>
+  <li>forEach로 list의 모든 요소를 돌면서 출력한다.</li>
+</ul>
+
+<p>WebContent/jstl04.jsp</p>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;%@ taglib prefix="c" uri="https://java.sun.com/jsp/jstl/core" %&gt; 
+&lt;!--list를 사용하기 위해 자바코드와 같이 import 필요. 이 부분이 없으면 list 사용 불가--&gt;
+&lt;%@ page import="java.util.*" %&gt;
+&lt;%
+	//리스트 생성
+    List&lt;String&gt; list = new ArrayList&lt;&gt;();
+    list.add("hello");
+    list.add("world");
+    list.add("!!!");
+    request.setAttribute("list", list);
+%&gt;
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!--request scope에 들어있는 list를 꺼내기 위해 EL태그 이용--&gt;
+    &lt;c:forEach items="${list}" var="item"&gt;
+    ${item } &lt;br&gt;
+    &lt;/c:forEach&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><img src="/img/JSTL_16.png" alt="" /></p>
+
+<h2 id="코어-태그--흐름제어-태그---import">코어 태그 : 흐름제어 태그 - import</h2>
+
+<p><img src="/img/JSTL_10.png" alt="" /></p>
+
+<ul>
+  <li>특정한 URL 페이지의 결과를 읽어들인 후, 이 결과를 변수에 저장하여 사용을 할 수 있게 해준다.</li>
+  <li>url :  실제 내가 읽어오고 싶은 URL. URL의 ‘?’ 뒤에 ‘변수명 = 값’ 형식으로 나오는 경우가 있는데 이런 부분을 읽기 위해서 param 태그가 필요하다.</li>
+  <li>charEncoding : 읽어오는 방식을 지정한다. 필수는 아니다.</li>
+  <li>var : 읽어와서 값을 가리킬 변수명</li>
+  <li>scope :  어떤 scope에 저장할지를 정한다.</li>
+</ul>
+
+<h4 id="import-태그-활용-실습">import 태그 활용 실습</h4>
+
+<p>WebContent/jstlValue.jsp</p>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+Han Youduk
+</code></pre>
+
+<p>jstlValue.jsp를 run on server하면</p>
+
+<p><img src="/img/JSTL_17.png" alt="" /></p>
+
+<p>위와 같은 결과가 나온다. 위의 브라우저에서 URL을 복사한다.</p>
+
+<p>WebContent/jstl05.jsp</p>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;%@ taglib prefix="c" uri="https://java.sun.com/jsp/jstl/core" %&gt; 
+&lt;%@ page import="java.util.*" %&gt;
+&lt;!--명시된 url에서 가져온 정보를 urlValue라는 변수에 담고, request scope에 저장한다.--&gt;
+&lt;c:import url="이 부분에 복사한 url을 붙여넣기 한다." var="urlValue" scope="request"&gt;&lt;/c:import&gt;
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+읽어들인 값 : ${urlValue}
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>jstl05.jsp를 run on server 하면</p>
+
+<p><img src="/img/JSTL_18.png" alt="" /></p>
+
+<p>와 같이 나오는 것을 확인할 수 있다.</p>
+
+<p>이와 같은 방식을 이용하면 검색 엔진에서 특정 검색어 검색 결과를 가져오는 것도 가능하다.</p>
+
+<h2 id="코어-태그--흐름제어-태그---redirect">코어 태그 : 흐름제어 태그 - redirect</h2>
+
+<p><img src="/img/JSTL_11.png" alt="" /></p>
+
+<h4 id="redirect-태그-활용-실습">redirect 태그 활용 실습</h4>
+
+<p>WebContent/jstl06.jsp</p>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;%@ taglib prefix="c" uri="https://java.sun.com/jsp/jstl/core" %&gt; 
+&lt;c:redirect url="jstlRedirectPage.jsp"&gt;&lt;/c:redirect&gt;
+</code></pre>
+
+<p>WebContent/jstlRedirectPage.jsp</p>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt; redirect된 화면입니다.&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>jstl06.jsp를 run on server하면 redirect된 페이지로 결과가 출력되는 것을 확인할 수 있다.</p>
+
+<p><img src="/img/JSTL_19.png" alt="" /></p>
+
+<h2 id="코어-태그-기타-태그---out">코어 태그: 기타 태그 - out</h2>
+
+<p><img src="/img/JSTL_12.png" alt="" /></p>
+
+<ul>
+  <li>JspWriter에 데이터를 출력하는 태그. out 태그를 이용하면 특정한 문자열을 출력할 수 있다. 이미 태그가 있는 문자열들을 출력할 때 excapeXml에 true를 설정하면 해당 태그가 그대로 출력되는 것을 확인 할 수 있다.</li>
+</ul>
+
+<h4 id="out-태그-활용-실습">out 태그 활용 실습</h4>
+
+<p>WebContent/jstl07.jsp</p>
+
+<pre><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;%@ taglib prefix="c" uri="https://java.sun.com/jsp/jstl/core" %&gt;
+&lt;%@ taglib prefix="fn" uri="https://java.sun.com/jsp/jstl/functions"%&gt; 
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;c:set var="t" value="&lt;script type='text/javascript'&gt;alert(1);&lt;/script&gt;" /&gt;
+${t}
+&lt;c:out value="${t}" escapeXml="true" /&gt;
+&lt;c:out value="${t}" escapeXml="false" /&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>jstl07.jsp를 run on server 하면 위와 같이 1이 두번 출력되고, 마지막에는 코드 그대로 출력되는 것을 확인 할 수 있다.</p>
+
+<p><img src="/img/JSTL_20.png" alt="" /></p>
+
+<p><img src="/img/JSTL_21.png" alt="" /></p>
+
+<p><img src="/img/JSTL_22.png" alt="" /></p>
+
+<p><strong>생각해보기</strong></p>
+
+<ol>
+  <li>JSTL의 태그는 XML태그 문법을 사용합니다. 그래서 반드시 태그가 닫히거나 ‘/&gt;’로 끝나야 합니다. JSP가 제공하는 문법 중 사용자 정의 태그라는 것을 통해 만들어졌기 때문입니다. 이번 시간엔 JSTL의 core태그에 대해서 살펴봤는데요. 그 외의 태그들에는 어떤 게 있는지 찾아보고, 왜 그러한 태그가 필요한지 생각해보세요.</li>
+</ol>
+
+<p><a href="https://cs.roosevelt.edu/eric/books/JSP/jstl-quick-reference.pdf"><strong>[참고링크] jstl-quick-reference.pdf</strong></a></p>
+
+  </article>
+</div>
+
+<!-- <div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/web/2018/06/11/JSTL.html" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/web/2018/06/11/JSTL.html" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/web/2018/06/11/JSTL.html" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/web/2018/06/11/JSTL.html" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/web/2018/06/11/JSTL.html" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div> -->
+
+
+<div id="disqus_thread"></div>
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-youduk-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+        <footer>
+  &copy; 2018 Ducku Salon. Powered by <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/renyuanz/leonids/">customized with leonids theme</a> <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+<!-- Channel Plugin Scripts -->
+<script>
+  ;window.channelPluginSettings = {
+    "pluginKey": "9de17a11-abe2-455f-a49c-1c7da4fa312c"
+  };
+  (function() {
+    var w = window;
+    if (w.ChannelIO) {
+      return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+    }
+    var d = window.document;
+    var ch = function() {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function(args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      s.charset = 'UTF-8';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', l);
+    } else {
+      window.addEventListener('DOMContentLoaded', l, false);
+      window.addEventListener('load', l, false);
+    }
+  })();
+</script>
+<!-- End Channel Plugin -->        
+      </div>
+    </div>
+  </div>
+  <script id="dsq-count-scr" src="//https-youduk-github-io.disqus.com/count.js" async></script>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+    
+</body>
+
+</html>
