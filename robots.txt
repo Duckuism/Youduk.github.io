@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://Youduk.github.io/sitemap.xml
+Sitemap: https://youduk.netlify.com/sitemap.xml

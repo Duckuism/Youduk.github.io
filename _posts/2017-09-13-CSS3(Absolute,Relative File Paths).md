@@ -28,7 +28,7 @@ image:
 
 절대 경로(Absolute path) : 절대 경로는 인터넷 파일의 모든 URL이 명시되어 있는 것이다.
 
-\<img src="https://youduk.github.io/img/Youduk.jpeg" alt="avatar">
+\<img src="https://youduk.netlify.com/img/Youduk.jpeg" alt="avatar">
 
 \https://www.google.com, C:\users\document\untitled.jpg
 
