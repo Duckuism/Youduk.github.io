@@ -120,7 +120,7 @@ int fiibonacci(int n){
 
 java ArrayList generics 예제
 
-http://arabiannight.tistory.com/entry/%EC%9E%90%EB%B0%94Java-ArrayListT-%EC%A0%9C%EB%84%A4%EB%A6%AD%EC%8A%A4Generics%EB%9E%80
+https://arabiannight.tistory.com/entry/%EC%9E%90%EB%B0%94Java-ArrayListT-%EC%A0%9C%EB%84%A4%EB%A6%AD%EC%8A%A4Generics%EB%9E%80
 
 
 
@@ -181,7 +181,7 @@ http://arabiannight.tistory.com/entry/%EC%9E%90%EB%B0%94Java-ArrayListT-%EC%A0%9
     ~~~
   ~~~
 
-* http://galgum.tistory.com/18
+* https://galgum.tistory.com/18
 
 
 

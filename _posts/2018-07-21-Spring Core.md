@@ -101,7 +101,7 @@ Framework : 반제품. 완전한 제품은 아니지만 어느정도 틀이 갖�
 - **[참고링크] Spring Framework Reference Documentation**<https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/#overview>
 
 
-- **[참고링크] Java BCI(Byte Code Instrumentation) 간단 예제와 설명**<http://deidesheim.tistory.com/entry/%EC%9E%90%EB%B0%94-BCIByte-Code-Instrumentation-%EA%B0%84%EB%8B%A8-%EC%98%88%EC%A0%9C%EC%99%80-%EC%84%A4%EB%AA%85>
+- **[참고링크] Java BCI(Byte Code Instrumentation) 간단 예제와 설명**<https://deidesheim.tistory.com/entry/%EC%9E%90%EB%B0%94-BCIByte-Code-Instrumentation-%EA%B0%84%EB%8B%A8-%EC%98%88%EC%A0%9C%EC%99%80-%EC%84%A4%EB%AA%85>
 
 
 # 2) Spring IoC/DI 컨테이너
@@ -252,12 +252,12 @@ DI를 적용함으로써 엔진이라는 인스턴스를 만드는 주체가 바
 
 **참고 자료**
 
-- **[참고링크] Spring - IoC & DI**<http://isstory83.tistory.com/91>
+- **[참고링크] Spring - IoC & DI**<https://isstory83.tistory.com/91>
 
 
-[![img](https://cphinf.pstatic.net/mooc/20180201_158/1517460788486yvBJi_PNG/lVj4LX3tpD7vajNBs8b0.png?type=mfullfill_199_148)](http://www.nextree.co.kr/p11247/)
+[![img](https://cphinf.pstatic.net/mooc/20180201_158/1517460788486yvBJi_PNG/lVj4LX3tpD7vajNBs8b0.png?type=mfullfill_199_148)](https://www.nextree.co.kr/p11247/)
 
-- **[참고링크] 세 가지 DI 컨테이너로 향하는 저녁 산책**<http://www.nextree.co.kr/p11247/>
+- **[참고링크] 세 가지 DI 컨테이너로 향하는 저녁 산책**<https://www.nextree.co.kr/p11247/>
 
 
 
@@ -312,8 +312,8 @@ DI를 적용함으로써 엔진이라는 인스턴스를 만드는 주체가 바
 pom.xml 파일에 JDK를 사용하기 위한 플러그인 설정을 추가합니다.
 
 ```xml
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>kr.or.connect</groupId>
@@ -322,7 +322,7 @@ pom.xml 파일에 JDK를 사용하기 위한 플러그인 설정을 추가합니
   <packaging>jar</packaging>
 
   <name>diexam01</name>
-  <url>http://maven.apache.org</url>
+  <url>https://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -531,8 +531,8 @@ public class UserBean {
 1) pom.xml 파일을 다음과 같이 수정합니다.
 
 ```xml
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>kr.or.connect</groupId>
@@ -541,7 +541,7 @@ public class UserBean {
   <packaging>jar</packaging>
 
   <name>diexam01</name>
-  <url>http://maven.apache.org</url>
+  <url>https://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -620,9 +620,9 @@ applicationContext.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns="https://www.springframework.org/schema/beans"
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="userBean" class="kr.or.connect.diexam01.UserBean"></bean>
 
@@ -1022,4 +1022,4 @@ ComponentScan은 약속된 어노테이션이 붙어있는 것들만 읽어온�
 - **[참고링크] Spring JavaConfig Reference Guide**<https://docs.spring.io/spring-javaconfig/docs/1.0.0.M4/reference/html/>
 
 
-- **[참고링크] Field Dependency Injection Considered Harmful**<http://vojtechruzicka.com/field-dependency-injection-considered-harmful/>
+- **[참고링크] Field Dependency Injection Considered Harmful**<https://vojtechruzicka.com/field-dependency-injection-considered-harmful/>

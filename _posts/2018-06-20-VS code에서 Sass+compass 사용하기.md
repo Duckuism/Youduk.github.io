@@ -102,19 +102,19 @@ SSH쉘로 접속합니다. (윈도우는 git bash, 맥은 터미널을 사용합
 compass는 모듈로 나눠져 있으므로 각각의 모듈들을 사용하기 위해서는 먼저 원하는 모듈을 scss파일로 import하여 가져온 후 사용해야합니다. compass의 모듈 종류를 한 번 볼까요?
 
 * Browser Support : ```@import "compass/support"```
-  http://compass-style.org/reference/compass/support/
+  https://compass-style.org/reference/compass/support/
 * CSS3 : ```@import "compass/css3"```
-  http://compass-style.org/reference/compass/css3/
+  https://compass-style.org/reference/compass/css3/
 * Helpers : Helper는 따로 import가 필요하지 않습니다. 기존에 Sass가 제공하는 함수들을 더 효과적으로 사용할 수 있게해줍니다.
-  http://compass-style.org/reference/compass/helpers/
+  https://compass-style.org/reference/compass/helpers/
 * Layout : ```@import "compass/layout"```
-  http://compass-style.org/reference/compass/layout/
+  https://compass-style.org/reference/compass/layout/
 * Reset : ```@import "compass/reset"```
-  http://compass-style.org/reference/compass/reset/
+  https://compass-style.org/reference/compass/reset/
 * Typography : ```@import "compass/typography"```
-  http://compass-style.org/reference/compass/typography/
+  https://compass-style.org/reference/compass/typography/
 * Utilities : ```@import "compass/utilities"```
-  http://compass-style.org/reference/compass/utilities/
+  https://compass-style.org/reference/compass/utilities/
 
 예시를 위해 scss 파일을 열고 맨 위에 다음 코드를 추가해보겠습니다. compass의 css3 모듈을 사용하겠다는 뜻입니다.
 
@@ -194,9 +194,9 @@ div
 
 참고: 
 
-* http://compass-style.org/install/
-* http://compass-style.org/help/
-* http://compass-style.org/reference/compass/
-* http://thesassway.com/beginner/getting-started-with-sass-and-compass
+* https://compass-style.org/install/
+* https://compass-style.org/help/
+* https://compass-style.org/reference/compass/
+* https://thesassway.com/beginner/getting-started-with-sass-and-compass
 * https://stackoverflow.com/questions/18375691/does-import-compass-includes-the-whole-framework
 * https://www.webdesignerdepot.com/2013/11/how-to-write-simple-elegant-css-with-compass-sass/

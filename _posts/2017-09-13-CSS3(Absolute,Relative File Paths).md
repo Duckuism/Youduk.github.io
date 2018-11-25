@@ -13,7 +13,7 @@ image:
 ######참고자료 :  
 
 1. https://www.w3schools.com/html/html_filepaths.asp
-2. http://88240.tistory.com/122
+2. https://88240.tistory.com/122
 
 <h3>HTML 파일 경로</h3>
 
@@ -30,7 +30,7 @@ image:
 
 \<img src="https://youduk.github.io/img/Youduk.jpeg" alt="avatar">
 
-\http://www.google.com, C:\users\document\untitled.jpg
+\https://www.google.com, C:\users\document\untitled.jpg
 
 상대 경로(Relative path) : 상대 경로는 현재 페이지에서 상대적으로 가리키는 경로이다.
 

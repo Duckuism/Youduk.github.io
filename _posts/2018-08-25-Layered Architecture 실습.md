@@ -56,7 +56,7 @@ image:
 
 방명록 요구사항 2/6
 
-* http://localhost:8080/guestbook/을 요청하면 자동으로 /guestbook/list로 리다이렉팅 한다.
+* https://localhost:8080/guestbook/을 요청하면 자동으로 /guestbook/list로 리다이렉팅 한다.
 * 방명록이 없으면 건수는 0이 나오고 아래에 방명록을 입력하는 폼이 보여진다.
 
 방명록 요구사항 3/6
@@ -802,8 +802,8 @@ list.jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- jstl 사용을 위한 부분 -->
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="https://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

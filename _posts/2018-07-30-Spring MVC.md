@@ -96,7 +96,7 @@ image:
 - **[참고링크] Web MVC framework**<https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/mvc.html>
 
 
-- **[참고링크] MVC Model2 | Opendocs**<http://myblog.opendocs.co.kr/archives/tag/mvc-model2>
+- **[참고링크] MVC Model2 | Opendocs**<https://myblog.opendocs.co.kr/archives/tag/mvc-model2>
 
 
 - **[참고링크] Model 1 and Model 2 (MVC) Architecture**<https://www.javatpoint.com/model-1-and-model-2-mvc-architecture>
@@ -314,10 +314,10 @@ org.springframework.web.servlet.ViewResolver
 - **[참고링크] Modules**<https://docs.spring.io/spring/docs/3.0.0.M4/reference/html/ch01s02.html>
 
 
-- **[참고링크] Spring MVC - DispatcherServlet 동작 원리 출처: http://jess-m.tistory.com/15 [Jess's Home]**<http://jess-m.tistory.com/15>
+- **[참고링크] Spring MVC - DispatcherServlet 동작 원리 출처: https://jess-m.tistory.com/15 [Jess's Home]**<https://jess-m.tistory.com/15>
 
 
-- **[참고링크] Spring DispatcherServlet의 기본 7가지 DI전략**<http://kimddochi.tistory.com/86>
+- **[참고링크] Spring DispatcherServlet의 기본 7가지 DI전략**<https://kimddochi.tistory.com/86>
 
 
 [![img](https://cphinf.pstatic.net/mooc/20180219_261/151900438006802DCv_JPEG/pEJs3PgwjklDD5acHu7a.jpg?type=mfullfill_199_148)](https://samerabdelkafi.wordpress.com/2014/08/03/spring-mvc-full-java-based-config/)
@@ -325,7 +325,7 @@ org.springframework.web.servlet.ViewResolver
 - **[참고링크] Spring MVC – Full java based config**<https://samerabdelkafi.wordpress.com/2014/08/03/spring-mvc-full-java-based-config/>
 
 
-- **[참고링크] web.xml vs Initializer with Spring**<http://www.baeldung.com/spring-xml-vs-java-config>
+- **[참고링크] web.xml vs Initializer with Spring**<https://www.baeldung.com/spring-xml-vs-java-config>
 
 
 - **[참고링크] Spring – Mixing XML and JavaConfig**<https://www.mkyong.com/spring/spring-mixing-xml-and-javaconfig/>
@@ -339,13 +339,13 @@ org.springframework.web.servlet.ViewResolver
 - **[참고링크] WebMvcConfigurationSupport**<https://docs.spring.io/spring/docs/3.0.6.RELEASE_to_3.1.0.BUILD-SNAPSHOT/3.1.0.BUILD-SNAPSHOT/org/springframework/web/servlet/config/annotation/WebMvcConfigurationSupport.html>
 
 
-- **[참고링크] Spring mvc (2) 그리고 Spring boot**<http://wonwoo.ml/index.php/post/1590>
+- **[참고링크] Spring mvc (2) 그리고 Spring boot**<https://wonwoo.ml/index.php/post/1590>
 
 
 - **[참고링크] Migrate Spring MVC servlet.xml to Java Config**<https://www.luckyryan.com/2013/02/07/migrate-spring-mvc-servlet-xml-to-java-config/>
 
 
-- **[참고링크] Spring RequestMapping**<http://www.baeldung.com/spring-requestmapping>
+- **[참고링크] Spring RequestMapping**<https://www.baeldung.com/spring-requestmapping>
 
 
 
@@ -555,7 +555,7 @@ web.xml
 
 ```java
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+<web-app xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="https://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://xmlns.jcp.org/xml/ns/javaee https://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
 
   <display-name>Spring JavaConfig Sample</display-name>
 
@@ -593,7 +593,7 @@ main.jsp
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -664,8 +664,8 @@ resolver.setViewClass(JstlView.**class**); 이 부분을 추가해 줬습니다
 
 **Controller작성 실습 1/3**
 
-1. 웹 브라우저에서 <http://localhost:8080/mvcexam/plusform> 이라고 요청을 보 내면 서버는 웹 브라우저에게 2개의 값을 입력받을 수 있는 입력 창과 버튼이 있는 화면을 출력한다.
-2. 웹 브라우저에 2개의 값을 입력하고 버튼을 클릭하면 <http://localhost:8080/mvcexam/plus> URL로 2개의 입력값이 POST방식으로 서버에게 전달한다. 서버는 2개의 값을 더한 후, 그 결과 값을 JSP에게 request scope으로 전달하여 출력한다.
+1. 웹 브라우저에서 <https://localhost:8080/mvcexam/plusform> 이라고 요청을 보 내면 서버는 웹 브라우저에게 2개의 값을 입력받을 수 있는 입력 창과 버튼이 있는 화면을 출력한다.
+2. 웹 브라우저에 2개의 값을 입력하고 버튼을 클릭하면 <https://localhost:8080/mvcexam/plus> URL로 2개의 입력값이 POST방식으로 서버에게 전달한다. 서버는 2개의 값을 더한 후, 그 결과 값을 JSP에게 request scope으로 전달하여 출력한다.
 
 **Spring MVC가 지원하는 Controller메소드 인수 타입**
 
@@ -757,7 +757,7 @@ plusForm.jsp
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -778,7 +778,7 @@ plusResult.jsp
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -845,13 +845,13 @@ servers에 mvcexam이 이미 등록되어 있으므로  web.xml을 바꿨을 때
 
  **Controller작성 실습 2/3**
 
-1. http://localhost:8080/mvcexam/userform 으로 요청을 보내면 이름, email, 나이를 물어보는 폼이 보여진다.
-2. 폼에서 값을 입력하고 확인을 누르면 post방식으로 http://localhost:8080/mvcexam/regist 에 정보를 전달하게 된다.
+1. https://localhost:8080/mvcexam/userform 으로 요청을 보내면 이름, email, 나이를 물어보는 폼이 보여진다.
+2. 폼에서 값을 입력하고 확인을 누르면 post방식으로 https://localhost:8080/mvcexam/regist 에 정보를 전달하게 된다.
 3. regist에서는 입력받은 결과를 콘솔 화면에 출력한다.
 
 **Controller작성 실습 3/3**
 
-1. http://localhost:8080/mvcexam/goods/{id} 으로 요청을 보낸다.
+1. https://localhost:8080/mvcexam/goods/{id} 으로 요청을 보낸다.
    1. 이렇게 중괄호로 넘기는 것을 path variable이라고 한다. 이렇게 받았을 때 어떻게 받는지를 연습해본다.
 2. 서버는 id를 콘솔에 출력하고, 사용자의 브라우저 정보를 콘솔에 출력한다.
 3. 서버는 HttpServletRequest를 이용해서 사용자가 요청한 PATH정보를 콘솔에 출력한다.
@@ -865,7 +865,7 @@ userform.jsp
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -960,7 +960,7 @@ regist.jsp
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -977,7 +977,7 @@ goodsById.jsp
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

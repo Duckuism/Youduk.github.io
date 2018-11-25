@@ -12,8 +12,8 @@ image:
 ---
 
 * https://www.excella.com/insights/typescript-vs-es6-vs-es2015
-* http://han41858.tistory.com/14
-* http://www.notforme.kr/archives/1809
+* https://han41858.tistory.com/14
+* https://www.notforme.kr/archives/1809
 * https://hyunseob.github.io/2016/09/25/typescript-introduction/
 
 요약 : 

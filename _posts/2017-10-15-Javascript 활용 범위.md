@@ -42,7 +42,7 @@ image:
 
   6. 데이터베이스 관리
     데이터베이스는 '데이터를 저장할 때 사용하는 프로그램'이고, Oracle, MySQL등의 관계형 데이터베이스 관리 시스템(RDBMS)이 모두 SQL프로그래밍 언어를 사용한다. 그런데 SQL이 복잡하고 무겁다는 이유로 간단하고 사용하기 쉬운 데이터베이스들이 등장했는데, 이를 NoSQL 데이터베이스라고 한다.
-      * 데이터 베이스 엔진 순위(2017년4월 <http://db-engines.com/en/ranking>)
+      * 데이터 베이스 엔진 순위(2017년4월 <https://db-engines.com/en/ranking>)
         1. Oracle
         2. MySQL
         3. Microsoft SQL Server

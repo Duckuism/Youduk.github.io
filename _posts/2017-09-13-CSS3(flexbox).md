@@ -12,7 +12,7 @@ image:
 
 참고 자료
 1. 멋사 5기 웹 개발자 노지승님의 강의(멋사 5기가 아니면 볼 수 없다. 문제시 게시글을 내리겠다.)
-2. http://flexboxfroggy.com/(flexbox 연습 사이트)
+2. https://flexboxfroggy.com/(flexbox 연습 사이트)
 
 
 flexbox를 이용하면 float랑 position이 필요없을 정도이다.

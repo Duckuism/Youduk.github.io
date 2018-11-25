@@ -30,7 +30,7 @@ kramdown:
   # https://github.com/jekyll/jekyll/pull/4090
   syntax_highlighter: rouge
 
-  # Rouge Highlighter in Kramdown › http://kramdown.gettalong.org/syntax_highlighter/rouge.html
+  # Rouge Highlighter in Kramdown › https://kramdown.gettalong.org/syntax_highlighter/rouge.html
   # span, block element options fall back to global
   syntax_highlighter_opts:
     # Rouge Options › https://github.com/jneen/rouge#full-options
@@ -82,7 +82,7 @@ owner:
   bing-verify:
   github: Youduk
   gitlab: #username
-  stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
+  stackoverflow: #123456/username   from a "https://stackoverflow.com/users/123456/username" link
   linkedin: youduk-han-2bbb94108
   skype: #username
   xing: #username

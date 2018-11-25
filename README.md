@@ -17,7 +17,7 @@ This project is under MIT license, so feel free to make it your own.
 
 # Leonids Jekyll Themes
 
-**[Leonids](http://renyuanz.github.io/leonids)** is a clean Jekyll theme perfect for powering your GitHub hosted blog.
+**[Leonids](https://renyuanz.github.io/leonids)** is a clean Jekyll theme perfect for powering your GitHub hosted blog.
 
 ## What is Leonids?
 
@@ -27,7 +27,7 @@ This project is under MIT license, so feel free to make it your own.
 * Support for multi-authors.
 * **And** the Leonids (/ˈliːənɪdz/ lee-ə-nidz) are a prolific meteor shower associated with the comet [Tempel-Tuttle](https://en.wikipedia.org/wiki/55P/Tempel%E2%80%93Tuttle).
 
-See a [demo](http://renyuanz.github.io/leonids/) hosted on GitHub.
+See a [demo](https://renyuanz.github.io/leonids/) hosted on GitHub.
 
 ## Quick setup
 
@@ -37,7 +37,7 @@ cd leonids
 jekyll server
 ```
 
-Check out your awesome blog at `http://localhost:4000` and Cheers!
+Check out your awesome blog at `https://localhost:4000` and Cheers!
 
 ## Running with Docker
 

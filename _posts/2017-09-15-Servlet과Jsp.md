@@ -15,7 +15,7 @@ image:
 
 톰캣 실행 위치 Downloads/apache-tomcat-8.5.13/bin/startup.sh
 
-###### 참고 영상 : http://olc.oss.kr/lec/detail.jsp?lecid=254
+###### 참고 영상 : https://olc.oss.kr/lec/detail.jsp?lecid=254
 ###### 참고 자료 : https://github.com/keesun/servlet2spring/tree/master/src/whiteship
 
 <h3>강의 주제 : 서블릿&jsp 프로그래밍에서 spring MVC 프로그래밍으로의 변화 과정</h3>

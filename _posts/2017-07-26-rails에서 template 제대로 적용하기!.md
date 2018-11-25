@@ -3,7 +3,7 @@ layout: post
 title: rails에서 template 제대로 적용하기!
 excerpt: "rails에서 내가 봤던 demo버전의 js,css를 그대로 적용하기위한 사투"
 categories: [rails]
-link: http://hashcode.co.kr/questions/2516/ruby-on-rails-template-%EC%A7%88%EB%AC%B8
+link: https://hashcode.co.kr/questions/2516/ruby-on-rails-template-%EC%A7%88%EB%AC%B8
 comments: true
 pinned: true
 image:
@@ -28,7 +28,7 @@ image:
 프론트엔드를 좋아하는 사람으로 나는 이번 멋쟁이 사자처럼에서 프론트엔드 부분을 맞아 웹서비스 페이지 디자인을 했다.
 하지만 얼마 전 한 팀원이 "형, 이런 것도 있네요? 유료템플릿이래요."
 
-![이모티콘](http://mblogthumb2.phinf.naver.net/20131114_233/jhyun4394_1384356056863KJfde_PNG/%BE%C6%C0%CC%C4%DC4.png?type=w2)<br />
+![이모티콘](https://mblogthumb2.phinf.naver.net/20131114_233/jhyun4394_1384356056863KJfde_PNG/%BE%C6%C0%CC%C4%DC4.png?type=w2)<br />
 아.. 아니 이런 게 존재했단 말야..?
 그에 비하면 내가 개발한 웹서비스 디자인은.. 똥 그자체였다.
 한껏 자괴감을 맛본 후 쿨하게 유료 템플릿을 이용해서 커스터마이징을 하기로 결정하고 신나게 쓸 페이지들을 골랐다. 그런데...
@@ -43,7 +43,7 @@ js랑 css가 적용되지 않은 완전 생 html파일만 로딩이 되었다. �
 
 일단 제일 빠른 길은 역시 rails 공식 레퍼런스를 참조하는 것!!
 
-(rails 한국어 가이드 에셋 파이프라인 부분: [http://guides.rorlab.org/asset_pipeline.html](http://guides.rorlab.org/asset_pipeline.html))
+(rails 한국어 가이드 에셋 파이프라인 부분: [https://guides.rorlab.org/asset_pipeline.html](https://guides.rorlab.org/asset_pipeline.html))
 
 내가 새롭게 알게된 사실들을 나열하면서 순서대로 과정을 정리해보겠다.
 
@@ -153,7 +153,7 @@ app/views/layout/application.html.erb 파일은 위 사진과 같은 상태로 �
 
 이 부분에 대해 구글링을 하다가 아주 좋은 자료를 발견했다.
 
-(rails파일 import관련 답변: [http://hashcode.co.kr/questions/2516/ruby-on-rails-template-%EC%A7%88%EB%AC%B8](http://hashcode.co.kr/questions/2516/ruby-on-rails-template-%EC%A7%88%EB%AC%B8))
+(rails파일 import관련 답변: [https://hashcode.co.kr/questions/2516/ruby-on-rails-template-%EC%A7%88%EB%AC%B8](https://hashcode.co.kr/questions/2516/ruby-on-rails-template-%EC%A7%88%EB%AC%B8))
 
 이 부분을 보면 우리가 assets 안에 파일을 넣은 후 사용하려면, import시켜서 해당 파일을 rails에서 쓸 수 있도록 지정해줘야 한다고 하고 있다.
 

@@ -52,7 +52,7 @@ WebContent/redirect02.jsp
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -94,7 +94,7 @@ redirect가 되었다는 것을 확인할 수 있는 text를 입력한다.
 
 [**[참고링크] HTTP 상태 코드**](https://developer.mozilla.org/ko/docs/Web/HTTP/Status)
 
-[**[참고링크] HTTP Status Code**](http://ooz.co.kr/260)
+[**[참고링크] HTTP Status Code**](https://ooz.co.kr/260)
 
 [**[참고링크] Redirections in HTTP**](https://developer.mozilla.org/ko/docs/Web/HTTP/Redirections)
 
@@ -129,7 +129,7 @@ Forward를 통해 결과를 보내는 Servlet1과 결과를 받는 Servlet2는 �
 #### Forward 실습
 
 - 2개의 서블릿을 작성 : FrontServlet, NextServlet
-- http://localhost:8080/firstweb/front
+- https://localhost:8080/firstweb/front
   - 위의 URL이 호출되면 FrontServlet이 실행됨
   - FrontServlet에서는 랜덤한 주사위 값을 구하고, 그 값을 NextServlet에게  forward
   - NextServlet에서는 FrontServlet으로부터 전달받은 주사위 값만큼 "hello"를 출력
@@ -297,7 +297,7 @@ WebContent/result.jsp
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -338,5 +338,5 @@ JSP에서는 되도록 자바코드를 줄이는 것이 좋다.
 
  
 
-[**[참고링크] URL Patterns**](http://docs.roguewave.com/hydraexpress/3.5.0/html/rwsfservletug/4-3.html)
+[**[참고링크] URL Patterns**](https://docs.roguewave.com/hydraexpress/3.5.0/html/rwsfservletug/4-3.html)
 

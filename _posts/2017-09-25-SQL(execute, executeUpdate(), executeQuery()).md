@@ -38,4 +38,4 @@ image:
 
 
 
-출처: http://gangyup.tistory.com/entry/execute-executeQuery-executeUpdate-메소드의-차이점 [쁨엽이]
+출처: https://gangyup.tistory.com/entry/execute-executeQuery-executeUpdate-메소드의-차이점 [쁨엽이]

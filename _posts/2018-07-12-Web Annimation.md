@@ -201,7 +201,7 @@ GPU가속을 이용하는 속성을 사용하면 애니메이션 처리가 빠�
 
 아래 링크를 참고해보세요.
 
-[링크 바로가기](http://d2.naver.com/helloworld/2061385)
+[링크 바로가기](https://d2.naver.com/helloworld/2061385)
 
 ------
 
@@ -214,7 +214,7 @@ GPU가속을 이용하는 속성을 사용하면 애니메이션 처리가 빠�
 
 **참고 자료**
 
-- **[참고링크] 하드웨어 가속에 대한 이해와 적용**<http://d2.naver.com/helloworld/2061385>
+- **[참고링크] 하드웨어 가속에 대한 이해와 적용**<https://d2.naver.com/helloworld/2061385>
 
 
 - **[참고링크] CSS Transitions and Transforms for Beginners**<https://robots.thoughtbot.com/transitions-and-transforms>
